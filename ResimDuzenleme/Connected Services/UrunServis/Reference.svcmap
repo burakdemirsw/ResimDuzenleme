@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f77a526b-8a2f-47a7-8ffd-131de7e05c92" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://misigo.com/servis/UrunServis.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UrunServis.xsd" MetadataType="Schema" ID="8ab31522-a615-4a28-acdc-934dbb874e14" SourceId="1" SourceUrl="https://misigo.com/Servis/UrunServis.svc?xsd=xsd1" />
+    <MetadataFile FileName="UrunServis1.xsd" MetadataType="Schema" ID="5c462fbe-bcd7-4c86-9050-0270a44e0705" SourceId="1" SourceUrl="https://misigo.com/Servis/UrunServis.svc?xsd=xsd3" />
+    <MetadataFile FileName="UrunServis2.xsd" MetadataType="Schema" ID="e078ad37-9d2e-4369-bdf8-acb9ba0b8277" SourceId="1" SourceUrl="https://misigo.com/Servis/UrunServis.svc?xsd=xsd4" />
+    <MetadataFile FileName="UrunServis.wsdl" MetadataType="Wsdl" ID="56630bfd-dda8-4c70-8dd0-a1603177db5f" SourceId="1" SourceUrl="https://misigo.com/Servis/UrunServis.svc?wsdl" />
+    <MetadataFile FileName="UrunServis3.xsd" MetadataType="Schema" ID="bcd841ea-8b0c-415d-9f74-c9bb742c7e30" SourceId="1" SourceUrl="https://misigo.com/Servis/UrunServis.svc?xsd=xsd2" />
+    <MetadataFile FileName="UrunServis.disco" MetadataType="Disco" ID="55d92173-f975-4a71-ab28-0e65d0d31e0b" SourceId="1" SourceUrl="https://misigo.com/Servis/UrunServis.svc?disco" />
+    <MetadataFile FileName="UrunServis4.xsd" MetadataType="Schema" ID="3092e5b0-5d61-4300-91b5-80dc367f81ec" SourceId="1" SourceUrl="https://misigo.com/Servis/UrunServis.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

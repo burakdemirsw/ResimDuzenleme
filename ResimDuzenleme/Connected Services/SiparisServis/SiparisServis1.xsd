@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Ticimax.BL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Ticimax.BL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfBLHediyeCekiKampanya">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BLHediyeCekiKampanya" nillable="true" type="tns:BLHediyeCekiKampanya" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBLHediyeCekiKampanya" nillable="true" type="tns:ArrayOfBLHediyeCekiKampanya" />
+  <xs:complexType name="BLHediyeCekiKampanya">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="tanim" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BLHediyeCekiKampanya" nillable="true" type="tns:BLHediyeCekiKampanya" />
+  <xs:complexType name="ArrayOfBLPaketlemeDurum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BLPaketlemeDurum" nillable="true" type="tns:BLPaketlemeDurum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBLPaketlemeDurum" nillable="true" type="tns:ArrayOfBLPaketlemeDurum" />
+  <xs:complexType name="BLPaketlemeDurum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Aktif" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Islem" type="xs:int" />
+      <xs:element minOccurs="0" name="Tanim" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BLPaketlemeDurum" nillable="true" type="tns:BLPaketlemeDurum" />
+  <xs:complexType name="ArrayOfBLTelefonSiparis">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BLTelefonSiparis" nillable="true" type="tns:BLTelefonSiparis" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBLTelefonSiparis" nillable="true" type="tns:ArrayOfBLTelefonSiparis" />
+  <xs:complexType name="BLTelefonSiparis">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arandi" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EklemeTarihi" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GuncellemeTarihi" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Isim" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MailIzin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Notlar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaticiNotlar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SatilanFiyat" type="xs:double" />
+      <xs:element minOccurs="0" name="Satildi" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SmsIzin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Telefon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrunAdi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrunKartiID" type="xs:int" />
+      <xs:element minOccurs="0" name="UrunUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UyeID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BLTelefonSiparis" nillable="true" type="tns:BLTelefonSiparis" />
+</xs:schema>

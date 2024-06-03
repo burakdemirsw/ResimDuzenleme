@@ -1,0 +1,2296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.4.2.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.4.2.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="..\packages\NUnit.3.13.2\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.2\build\NUnit.props')" />
+  <Import Project="..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props" Condition="Exists('..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props')" />
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AB66BF5D-6A47-4FF0-949C-EDD312213D3C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ResimDuzenleme</RootNamespace>
+    <AssemblyName>ResimDuzenleme</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\kadir\Desktop\Yeni klasör %285%29\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>4180FEBEB15AC2C8FAB0F7E23E3F57C14DEAA784</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ResimDuzenleme_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.87.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.87.1\lib\net40\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=30.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.30.0.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.1.Drawing, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1.UI, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Win, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.1.Extensions, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeMap.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=7.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.0.5\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="gcCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\gcXtraReports.1.0.24\lib\net40\gcCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Api.Gax, Version=4.3.1.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.Gax.4.3.1\lib\net462\Google.Api.Gax.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Api.Gax.Rest, Version=4.3.1.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.Gax.Rest.4.3.1\lib\net462\Google.Api.Gax.Rest.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.61.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.61.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.61.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.61.0\lib\net461\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.61.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.61.0\lib\net461\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.61.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.61.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.61.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.61.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Translate.v2, Version=1.60.0.875, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Translate.v2.1.60.0.875\lib\net45\Google.Apis.Translate.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Cloud.Translation.V2, Version=3.2.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Cloud.Translation.V2.3.2.0\lib\net462\Google.Cloud.Translation.V2.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.bouncy-castle-connector, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.bouncy-castle-connector.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.commons, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.commons.8.0.2\lib\net461\itext.commons.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.html2pdf, Version=5.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.pdfhtml.5.0.2\lib\net461\itext.html2pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.svg.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET-Q8-AnyCPU, Version=13.1.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET-Q8-AnyCPU.13.1.1\lib\netstandard20\Magick.NET-Q8-AnyCPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET.Core, Version=13.1.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET.Core.13.1.1\lib\netstandard20\Magick.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.Core.1.2.3\lib\net461\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.1.2.3\lib\net461\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.OpenXml4Net.1.2.3\lib\net461\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.OpenXmlFormats.1.2.3\lib\net461\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.13.2.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.13.2\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=110.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.110.2.0\lib\netstandard2.0\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.3\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="XtraSubreport.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\gcXtraReports.1.0.24\lib\net40\XtraSubreport.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="XtraSubreport.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\gcXtraReports.1.0.24\lib\net40\XtraSubreport.Engine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcilirPanelGoster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AcilirPanelGoster.Designer.cs">
+      <DependentUpon>AcilirPanelGoster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\AuthAdapter.cs" />
+    <Compile Include="Adapter\BaseAdapter.cs" />
+    <Compile Include="Adapter\CreditNoteAdapter.cs" />
+    <Compile Include="Adapter\EArchiveInvoiceAdapter.cs" />
+    <Compile Include="Adapter\EDespatchAdapter.cs" />
+    <Compile Include="Adapter\EInvoiceAdapter.cs" />
+    <Compile Include="Adapter\SmmAdapter.cs" />
+    <Compile Include="AnaUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnaUser.Designer.cs">
+      <DependentUpon>AnaUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="attribute.cs" />
+    <Compile Include="Authentication\AuthenticationSample.cs" />
+    <Compile Include="BaseAdapter.cs" />
+    <Compile Include="Connected Services\AuthenticationWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\CreditNoteWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\CustomServis\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\EArchiveInvoiceWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\EInvoiceWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\EIrsaliyeWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\MngKargo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SiparisServis\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SmmWs\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UrunServis\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UyeServis\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseService.cs" />
+    <Compile Include="DataHandler.cs" />
+    <Compile Include="DegisimListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DegisimListesi.Designer.cs">
+      <DependentUpon>DegisimListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryOption.cs" />
+    <Compile Include="ExcelIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelIslemleri.Designer.cs">
+      <DependentUpon>ExcelIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcellData.cs" />
+    <Compile Include="ExpenseVoucher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExpenseVoucher.Designer.cs">
+      <DependentUpon>ExpenseVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FaturaGorsel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FaturaGorsel.Designer.cs">
+      <DependentUpon>FaturaGorsel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAlisSiparis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlisSiparis.Designer.cs">
+      <DependentUpon>FrmAlisSiparis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFaturalastir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFaturalastir.Designer.cs">
+      <DependentUpon>frmFaturalastir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFaturalastirTekli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFaturalastirTekli.Designer.cs">
+      <DependentUpon>FrmFaturalastirTekli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIrsaliyeFaturalastirTekli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIrsaliyeFaturalastirTekli.Designer.cs">
+      <DependentUpon>FrmIrsaliyeFaturalastirTekli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKullanicilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKullanicilar.Designer.cs">
+      <DependentUpon>frmKullanicilar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMagazalar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMagazalar.Designer.cs">
+      <DependentUpon>frmMagazalar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNebimSiparis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNebimSiparis.Designer.cs">
+      <DependentUpon>FrmNebimSiparis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiderPusulasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiderPusulasi.Designer.cs">
+      <DependentUpon>GiderPusulasi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IadeListTicimax.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IadeListTicimax.designer.cs">
+      <DependentUpon>IadeListTicimax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="image.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Item2.cs" />
+    <Compile Include="Itemm.cs" />
+    <Compile Include="IzibizClient.cs" />
+    <Compile Include="KargoApi\ArasKargoApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KargoApi\ArasKargoApi.Designer.cs">
+      <DependentUpon>ArasKargoApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KargoApi\MngKargoApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KargoApi\MngKargoApi.Designer.cs">
+      <DependentUpon>MngKargoApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KargoApi\SuratKargoApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KargoApi\SuratKargoApi.Designer.cs">
+      <DependentUpon>SuratKargoApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KargoApi\YurtIciKargoApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KargoApi\YurtIciKargoApi.Designer.cs">
+      <DependentUpon>YurtIciKargoApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KargoCikis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KargoCikis.Designer.cs">
+      <DependentUpon>KargoCikis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KargoTakip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KargoTakip.Designer.cs">
+      <DependentUpon>KargoTakip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kategori.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Magaza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Magaza.Designer.cs">
+      <DependentUpon>Magaza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marka2.cs" />
+    <Compile Include="Misigo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Misigo.Designer.cs">
+      <DependentUpon>Misigo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MisigoFirmaBilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MisigoFirmaBilgileri.Designer.cs">
+      <DependentUpon>MisigoFirmaBilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MisigoKategoriEslestir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MisigoKategoriEslestir.Designer.cs">
+      <DependentUpon>MisigoKategoriEslestir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MisigoOzellikEslestir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MisigoOzellikEslestir.Designer.cs">
+      <DependentUpon>MisigoOzellikEslestir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MNGKargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MNGKargo.Designer.cs">
+      <DependentUpon>MNGKargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mng\MngCargoService.cs" />
+    <Compile Include="Mng\Order\OrderPieceList_MNG.cs" />
+    <Compile Include="Mng\Order\Order_MNG.cs" />
+    <Compile Include="Mng\Order\Recipient_MNG.cs" />
+    <Compile Include="Mng\Order\Shipper_MNG.cs" />
+    <Compile Include="Mng\Request\CreateBarcode_MNG_Request.cs" />
+    <Compile Include="Mng\Request\CreatePackage_MNG_Request.cs" />
+    <Compile Include="Mng\Request\CreateTokenResponse_MNG.cs" />
+    <Compile Include="Mng\Request\CreateToken_MNG_Request.cs" />
+    <Compile Include="Mng\Response\CreateBarcode_MNG_Response.cs" />
+    <Compile Include="Mng\Response\CreatePackage_MNG_Response.cs" />
+    <Compile Include="NebimApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimApi.Designer.cs">
+      <DependentUpon>NebimApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimBarkod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimBarkod.Designer.cs">
+      <DependentUpon>NebimBarkod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimFaturaList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimFaturaList.Designer.cs">
+      <DependentUpon>NebimFaturaList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimFaturaListesi2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimFaturaListesi2.Designer.cs">
+      <DependentUpon>NebimFaturaListesi2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimFaturaListesiAlis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimFaturaListesiAlis.Designer.cs">
+      <DependentUpon>NebimFaturaListesiAlis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimFaturaListesiGider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimFaturaListesiGider.Designer.cs">
+      <DependentUpon>NebimFaturaListesiGider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimFiyat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimFiyat.Designer.cs">
+      <DependentUpon>NebimFiyat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimIrsaliyeListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimIrsaliyeListesi.Designer.cs">
+      <DependentUpon>NebimIrsaliyeListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimKategori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimKategori.Designer.cs">
+      <DependentUpon>NebimKategori.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimOdemeYontemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimOdemeYontemleri.Designer.cs">
+      <DependentUpon>NebimOdemeYontemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimOzellik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimOzellik.Designer.cs">
+      <DependentUpon>NebimOzellik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimResim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimResim.Designer.cs">
+      <DependentUpon>NebimResim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimSayim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimSayim.Designer.cs">
+      <DependentUpon>NebimSayim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimSilmeIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimSilmeIslemleri.Designer.cs">
+      <DependentUpon>NebimSilmeIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimSiparisAktarExcell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimSiparisAktarExcell.Designer.cs">
+      <DependentUpon>NebimSiparisAktarExcell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NebimUrunAcma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NebimUrunAcma.Designer.cs">
+      <DependentUpon>NebimUrunAcma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Compress.cs" />
+    <Compile Include="Operations\EI.cs" />
+    <Compile Include="Operations\FilePaths.cs" />
+    <Compile Include="Operations\FolderPath.cs" />
+    <Compile Include="Operations\Utf8StringWriter.cs" />
+    <Compile Include="Operations\XmlProcess.cs" />
+    <Compile Include="Operations\XmlSerializerr.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QROlusturma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QROlusturma.Designer.cs">
+      <DependentUpon>QROlusturma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resim.cs" />
+    <Compile Include="PhotoDuzenleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhotoDuzenleme.Designer.cs">
+      <DependentUpon>PhotoDuzenleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Root.cs" />
+    <Compile Include="SatisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SatisForm.Designer.cs">
+      <DependentUpon>SatisForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings1.cs" />
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SiparisBarkodYazdir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SiparisBarkodYazdir.Designer.cs">
+      <DependentUpon>SiparisBarkodYazdir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SiparisListPdf.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SiparisListPdf.Designer.cs">
+      <DependentUpon>SiparisListPdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SiparisListPdf2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SiparisListPdf2.Designer.cs">
+      <DependentUpon>SiparisListPdf2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SiparisListTicimax.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SiparisListTicimax.Designer.cs">
+      <DependentUpon>SiparisListTicimax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SiparisServiceMethods.cs" />
+    <Compile Include="StaticFunctions.cs" />
+    <Compile Include="StaticVariables.cs" />
+    <Compile Include="Stok.cs" />
+    <Compile Include="TicimaxAyarlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicimaxAyarlar.Designer.cs">
+      <DependentUpon>TicimaxAyarlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TicimaxSiparisList.cs" />
+    <Compile Include="TrendyolApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrendyolApi.Designer.cs">
+      <DependentUpon>TrendyolApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrendyolContentModel.cs" />
+    <Compile Include="TrendyolItemModel.cs" />
+    <Compile Include="TrendyolResimCek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrendyolResimCek.Designer.cs">
+      <DependentUpon>TrendyolResimCek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrendyolRoot\Root2cs.cs" />
+    <Compile Include="TrendyolService.cs" />
+    <Compile Include="TrendyolSiparisAktar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrendyolSiparisAktar.Designer.cs">
+      <DependentUpon>TrendyolSiparisAktar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrendyolYurtDisiSiparis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrendyolYurtDisiSiparis.Designer.cs">
+      <DependentUpon>TrendyolYurtDisiSiparis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UblCreate\ArchiveUBL.cs" />
+    <Compile Include="UblCreate\BaseCreditNoteUBL.cs" />
+    <Compile Include="UblCreate\BaseDespatchUBL.cs" />
+    <Compile Include="UblCreate\BaseESmmUBL.cs" />
+    <Compile Include="UblCreate\BaseInvoiceUBL.cs" />
+    <Compile Include="UblCreate\BaseReceiptUBL .cs" />
+    <Compile Include="UblCreate\CreditNoteUBL .cs" />
+    <Compile Include="UblCreate\DespatchUBL.cs" />
+    <Compile Include="UblCreate\InvoiceUbl.cs" />
+    <Compile Include="UblCreate\ReceiptUBL.cs" />
+    <Compile Include="UblCreate\SmmUBL.cs" />
+    <Compile Include="UblSerializer\CreditNoteSerializer.cs" />
+    <Compile Include="UblSerializer\DespatchSerializer.cs" />
+    <Compile Include="UblSerializer\InvoiceSerializer.cs" />
+    <Compile Include="UblSerializer\ReceiptSerializer.cs" />
+    <Compile Include="Ubl\UblCreditNote.cs" />
+    <Compile Include="Ubl\UblDespatch.cs" />
+    <Compile Include="Ubl\UblInvoice.cs" />
+    <Compile Include="Ubl\UblReceipt.cs" />
+    <Compile Include="Ubl\Xslt.cs" />
+    <Compile Include="Urun.cs" />
+    <Compile Include="UrunAcmaParametreleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrunAcmaParametreleri.Designer.cs">
+      <DependentUpon>UrunAcmaParametreleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UrunServiceMethods.cs" />
+    <Compile Include="VM_HttpConnectionRequest.cs" />
+    <Compile Include="ZTMSGUrunListMisigo.cs" />
+    <Compile Include="ZtNebimFaturaRYD.cs" />
+    <Compile Include="ZtTicimaxUyeAdres.cs" />
+    <EmbeddedResource Include="AcilirPanelGoster.resx">
+      <DependentUpon>AcilirPanelGoster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DegisimListesi.resx">
+      <DependentUpon>DegisimListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelIslemleri.resx">
+      <DependentUpon>ExcelIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExpenseVoucher.resx">
+      <DependentUpon>ExpenseVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FaturaGorsel.resx">
+      <DependentUpon>FaturaGorsel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAlisSiparis.resx">
+      <DependentUpon>FrmAlisSiparis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFaturalastir.resx">
+      <DependentUpon>frmFaturalastir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFaturalastirTekli.resx">
+      <DependentUpon>FrmFaturalastirTekli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIrsaliyeFaturalastirTekli.resx">
+      <DependentUpon>FrmIrsaliyeFaturalastirTekli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKullanicilar.resx">
+      <DependentUpon>frmKullanicilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMagazalar.resx">
+      <DependentUpon>frmMagazalar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNebimSiparis.resx">
+      <DependentUpon>FrmNebimSiparis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiderPusulasi.resx">
+      <DependentUpon>GiderPusulasi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IadeListTicimax.resx">
+      <DependentUpon>IadeListTicimax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KargoApi\ArasKargoApi.resx">
+      <DependentUpon>ArasKargoApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KargoApi\MngKargoApi.resx">
+      <DependentUpon>MngKargoApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KargoApi\YurtIciKargoApi.resx">
+      <DependentUpon>YurtIciKargoApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KargoCikis.resx">
+      <DependentUpon>KargoCikis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KargoTakip.resx">
+      <DependentUpon>KargoTakip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Magaza.resx">
+      <DependentUpon>Magaza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Misigo.resx">
+      <DependentUpon>Misigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MisigoFirmaBilgileri.resx">
+      <DependentUpon>MisigoFirmaBilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MisigoKategoriEslestir.resx">
+      <DependentUpon>MisigoKategoriEslestir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MisigoOzellikEslestir.resx">
+      <DependentUpon>MisigoOzellikEslestir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MNGKargo.resx">
+      <DependentUpon>MNGKargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimApi.resx">
+      <DependentUpon>NebimApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimBarkod.resx">
+      <DependentUpon>NebimBarkod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimFaturaList.resx">
+      <DependentUpon>NebimFaturaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimFaturaListesi2.resx">
+      <DependentUpon>NebimFaturaListesi2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimFaturaListesiAlis.resx">
+      <DependentUpon>NebimFaturaListesiAlis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimFaturaListesiGider.resx">
+      <DependentUpon>NebimFaturaListesiGider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimFiyat.resx">
+      <DependentUpon>NebimFiyat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimIrsaliyeListesi.resx">
+      <DependentUpon>NebimIrsaliyeListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimKategori.resx">
+      <DependentUpon>NebimKategori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimOdemeYontemleri.resx">
+      <DependentUpon>NebimOdemeYontemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimOzellik.resx">
+      <DependentUpon>NebimOzellik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimResim.resx">
+      <DependentUpon>NebimResim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimSayim.resx">
+      <DependentUpon>NebimSayim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimSilmeIslemleri.resx">
+      <DependentUpon>NebimSilmeIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimSiparisAktarExcell.resx">
+      <DependentUpon>NebimSiparisAktarExcell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NebimUrunAcma.resx">
+      <DependentUpon>NebimUrunAcma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="QROlusturma.resx">
+      <DependentUpon>QROlusturma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhotoDuzenleme.resx">
+      <DependentUpon>PhotoDuzenleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SatisForm.resx">
+      <DependentUpon>SatisForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiparisBarkodYazdir.resx">
+      <DependentUpon>SiparisBarkodYazdir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiparisListPdf.resx">
+      <DependentUpon>SiparisListPdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiparisListPdf2.resx">
+      <DependentUpon>SiparisListPdf2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiparisListTicimax.resx">
+      <DependentUpon>SiparisListTicimax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicimaxAyarlar.resx">
+      <DependentUpon>TicimaxAyarlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrendyolApi.resx">
+      <DependentUpon>TrendyolApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrendyolResimCek.resx">
+      <DependentUpon>TrendyolResimCek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrendyolSiparisAktar.resx">
+      <DependentUpon>TrendyolSiparisAktar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrendyolYurtDisiSiparis.resx">
+      <DependentUpon>TrendyolYurtDisiSiparis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UrunAcmaParametreleri.resx">
+      <DependentUpon>UrunAcmaParametreleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Barkod\Barkod.repx" />
+    <None Include="Connected Services\AuthenticationWS\AuthenticationWS.wsdl" />
+    <None Include="Connected Services\AuthenticationWS\AuthenticationWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\AuthenticationWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\AuthenticationWS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\AuthenticationWS3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.CheckUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.CheckUserResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.GetAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.GetAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.GetGibUserListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.GetGibUserListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.GetUserAuthorizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.GetUserAuthorizationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.LoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.LoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.LogoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthenticationWS\ResimDuzenleme.AuthenticationWS.LogoutResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\CreditNote.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\CreditNote1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\CreditNote2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\CreditNote3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\CreditNoteWS.wsdl" />
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.CancelCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.CancelCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.GetCreditNoteReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.GetCreditNoteReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.GetCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.GetCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.GetCreditNoteStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.GetCreditNoteStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.LoadCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.LoadCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.MarkCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.MarkCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.SendCreditNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\ResimDuzenleme.CreditNoteWS.SendCreditNoteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\CustomServis.wsdl" />
+    <None Include="Connected Services\CustomServis\CustomServis.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CustomServis\CustomServis1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CustomServis\CustomServis2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CustomServis\CustomServis3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.AddFavoriUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.AddFiyatAlarmUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.AddStokAlarmUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.DeleteMailListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.DeleteMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.DeleteWebhookResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.Entegrasyon.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.GetCampaingBannersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.GetDinamikFormDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.GetFavoriUrunlerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.GetFiyatAlarmUrunlerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.GetMailListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.GetMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.GetStokAlarmUrunlerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.KargoDesiFiyatSelectResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.KargoFirma.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.KargoIl.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.KargoIlce.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.KargoUlke.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.MailList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.RemoveFavoriUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.RemoveFiyatAlarmUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.RemoveStokAlarmUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SaveMailListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SaveMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SaveOdemeBildirimDurumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SaveWebhookResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SelectBankaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SelectIadeOdemeListesiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SelectMarketPlaceBilgiRespone.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SelectOdemeBildirimiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SelectSilinenUyelerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.SelectWebhookResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.ServisGetSupportTicketMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.ServisGetSupportTicketsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.ServisGetSupportTicketSubjectsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.ServisSaveSupportTicketAnswerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.ServisSaveSupportTicketResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.ServisUpdateTicketStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebDegisimTalepResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebDegisimTalepUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebDegisimTalepUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebIadeTalepResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebIadeTalepUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebIadeTalepUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebKampanya.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebKampanyaTicimax.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebServisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CustomServis\ResimDuzenleme.CustomServis.WebTaksitSecenekResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive.wsdl" />
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\EFaturaArchive7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveGenericDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveGenericDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveGetInvoiceInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveGetInvoiceInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveInvoiceCopyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveInvoiceExtendedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveInvoiceReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ArchiveInvoiceWriteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.CancelEArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.CancelEArchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.CancelEDefterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.CancelEDefterResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.CopyToArchiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.EArchiveInvoiceCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.EArchiveInvoiceCountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GenericReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GenericReadResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveInvoiceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveInvoiceListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveInvoiceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveInvoiceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEArchiveReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetELedgerStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetELedgerStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEmailEarchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetEmailEarchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetGenericArchiveByPeriodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetGenericArchiveByPeriodResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetGenericArchiveStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.GetGenericArchiveStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.MarkEArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.MarkEArchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ReadEArchiveReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ReadEArchiveReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.ReadFromArchiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.SendSmsEarchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.SendSmsEarchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.WriteToArchiveExtendedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\ResimDuzenleme.EArchiveInvoiceWS.WriteToArchiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\EInvoiceWS.wsdl" />
+    <None Include="Connected Services\EInvoiceWS\EInvoiceWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\EInvoiceWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\EInvoiceWS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\EInvoiceWS3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.ArchiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.ArchiveInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.CancelDraftInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.CancelDraftInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.CheckUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.CheckUserResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.getApplicationResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.getAppRespResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetEnvelopeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetEnvelopeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetEnvelopeStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetEnvelopeStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceCountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceStatusAllResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceStatusAllResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceWithTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetInvoiceWithTypeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetUserListBinaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetUserListBinaryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetUserListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.GetUserListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.LoadInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.LoadInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.LoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.LoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.LogoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.LogoutResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.MarkEnvelopeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.MarkEnvelopeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.MarkInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.MarkInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.PrepareInvoiceResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.PrepareInvoiceResponseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.SendInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.SendInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.SendInvoiceResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.SendInvoiceResponseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.SendInvoiceResponseWithServerSignResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\ResimDuzenleme.EInvoiceWS.SendInvoiceResponseWithServerSignResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\EIrsaliye.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\EIrsaliye1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\EIrsaliye2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\EIrsaliye3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\EIrsaliyeWS.wsdl" />
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetDespatchAdviceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetDespatchAdviceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetDespatchAdviceWithStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetDespatchAdviceWithStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetReceiptAdviceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.GetReceiptAdviceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.LoadDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.LoadDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.LoadReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.LoadReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.MarkDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.MarkDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.MarkReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.MarkReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.SendDespatchAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.SendDespatchAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.SendDespatchResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.SendDespatchResponseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.SendReceiptAdviceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\ResimDuzenleme.EIrsaliyeWS.SendReceiptAdviceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\musterikargosiparis.wsdl" />
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.GonderiBarkodResponce.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.GonderiTeslimatProblemiIadeYanitiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.GonderiTeslimatProblemleriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.KargoBilgileriByReferansResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.KargoBilgileriByTarihResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.MarketPlaceOrderCancelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.MngGonderiKgDesiUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.MusteriBayiIslemResponce.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.MusteriOzelRaporResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.MusteriSiparisIptalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.MusteriTeslimatIptalIstegiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.PaletSiparisListesiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.SiparisToPaletIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MngKargo\ResimDuzenleme.MngKargo.TekBarkodGonderiIptaliResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.BLPaketlemeDurum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.BLTelefonSiparis.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.EFaturaIptalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.IadeOdemeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SaveBekleyenAramaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SaveEFaturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SaveSiparisKargoPaketKargoTakipNoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SelectEFaturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SelectIadeOdemeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SelectOdemeTipleriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SelectSiparisDurumlariResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SelectSiparisDurumLogListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SelectSiparisDurumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.ServisSepet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetHediyeCekiKullanildiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetReferansNoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetSepetKampanyaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetSiparisDurumListeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetSiparisDurumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetSiparisFaturaUrlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetSiparisOdemeDurumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetSiparisOzelAlanlarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SetSiparisUrunDurumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SiparisAnonimlestirResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SiparisiKargoyaGonderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SiparisOdemeTipleri.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.SiparisUrunDurumlari.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.UpdateEfaturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.UpdateMarketPlaceAreasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.UpdateTelefonlaSiparisDurumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.UrunIdaneNedenleriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebHediyeCekiOlusturResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebHediyeCekiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebHediyeCekiUygulaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebKargoFirma.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebKargoPaket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebMagaza.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebSaveMagazaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebSepet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebSiparis.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebSiparisKampanya.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebSiparisOdeme.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebSiparisSaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebSiparisUrun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\ResimDuzenleme.SiparisServis.WebUpdateSepetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SiparisServis\SiparisServis.wsdl" />
+    <None Include="Connected Services\SiparisServis\SiparisServis.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SiparisServis\SiparisServis1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SiparisServis\SiparisServis2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SiparisServis\SiparisServis3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SiparisServis\SiparisServis4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.CancelSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.CancelSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.GetSmmReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.GetSmmReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.GetSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.GetSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.GetSmmStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.GetSmmStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.LoadSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.LoadSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.SendSmmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\ResimDuzenleme.SmmWs.SendSmmResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmmWs\SmmWS.wsdl" />
+    <None Include="Connected Services\SmmWs\SmmWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SmmWs\SmmWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SmmWs\SmmWS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SmmWs\SmmWS3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.AsortiGrup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.AsortiMiktar.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.DeleteAksesuarResimResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.DeleteKombinUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.DeleteKonsinyeUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.DeleteTakimUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.DeleteTamamlayiciUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.DeleteUrunDetayTabResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.DeleteUrunOlusturmaGrupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.EkSecenekDeger.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.EkSecenekGrup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.Etiket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.IlgiliUrun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.Kategori.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.Marka.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.ParaBirimi.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveAksesuarGrupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveAksesuarUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveKombinUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveKonsinyeUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveMagazaStokResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveTakimUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveTamamlayiciUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveUrunDetayTabResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveUrunOlusturmaGrupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveUrunOlusturmaGrupUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SaveUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectAksesuarGrupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectAksesuarUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectKombinurunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectKonsinyeUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectMagazaStokResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectTakimUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectTamamlayiciUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectUrunDetayTabResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectUrunOlusturmaGrupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectUrunOlusturmaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SelectUrunStokFiyat.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SetAksesuarUrunResimResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.SiparisUrunDurumlari.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.Tedarikci.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.TeknikDetayDeger.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.TeknikDetayGrup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.TeknikDetayOzellik.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateAksesuarResimResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateAnaUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateIlgiliUrunResimResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateKonsinyeUrunResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateMagazaSiparisAdimindaGosterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateUrlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateUrunDetayTabResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UpdateUrunFiyatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.Urun360ResimYukleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunBarkodGuncelleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunEtiket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunKarti.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunKategori.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunKategoriGuncelleByStokKoduResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunOdemeSecenek.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunOdemeSecenekBanka.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunResimListeleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunResimYukleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.UrunYorum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.Varyasyon.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\ResimDuzenleme.UrunServis.WebServisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UrunServis\UrunServis.wsdl" />
+    <None Include="Connected Services\UrunServis\UrunServis.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UrunServis\UrunServis1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UrunServis\UrunServis2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UrunServis\UrunServis3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UrunServis\UrunServis4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.ParaPuanGuncelleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.UpdateBakiyeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.UpdateUyeIzinResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.Uye.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.UyeAdres.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.UyeGirisiSonuc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.UyeIzinGecmisiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.UyeSilResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\ResimDuzenleme.UyeServis.UyeTuru.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UyeServis\UyeServis.wsdl" />
+    <None Include="Connected Services\UyeServis\UyeServis.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UyeServis\UyeServis1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UyeServis\UyeServis2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UyeServis\UyeServis3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExpenseVoucher.repx" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Trendyol.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MngKargo\musterikargosiparis.disco" />
+    <None Include="Connected Services\MngKargo\configuration91.svcinfo" />
+    <None Include="Connected Services\MngKargo\configuration.svcinfo" />
+    <None Include="Connected Services\MngKargo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="logo.png" />
+    <Content Include="logo2.ico" />
+    <Content Include="MisigoScript2012Sürüm.sql" />
+    <Content Include="MisigoScript2019Sürüm.sql" />
+    <None Include="Connected Services\SiparisServis\SiparisServis.disco" />
+    <None Include="Connected Services\SiparisServis\configuration91.svcinfo" />
+    <None Include="Connected Services\SiparisServis\configuration.svcinfo" />
+    <None Include="Connected Services\SiparisServis\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UrunServis\UrunServis.disco" />
+    <None Include="Connected Services\UrunServis\configuration91.svcinfo" />
+    <None Include="Connected Services\UrunServis\configuration.svcinfo" />
+    <None Include="Connected Services\UrunServis\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UyeServis\UyeServis.disco" />
+    <None Include="Connected Services\UyeServis\configuration91.svcinfo" />
+    <None Include="Connected Services\UyeServis\configuration.svcinfo" />
+    <None Include="Connected Services\UyeServis\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\CustomServis\CustomServis.disco" />
+    <None Include="Connected Services\CustomServis\configuration91.svcinfo" />
+    <None Include="Connected Services\CustomServis\configuration.svcinfo" />
+    <None Include="Connected Services\CustomServis\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="imzaico.ico" />
+    <None Include="Connected Services\AuthenticationWS\configuration91.svcinfo" />
+    <None Include="Connected Services\AuthenticationWS\configuration.svcinfo" />
+    <None Include="Connected Services\AuthenticationWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\CreditNoteWS\configuration91.svcinfo" />
+    <None Include="Connected Services\CreditNoteWS\configuration.svcinfo" />
+    <None Include="Connected Services\CreditNoteWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\EArchiveInvoiceWS\configuration91.svcinfo" />
+    <None Include="Connected Services\EArchiveInvoiceWS\configuration.svcinfo" />
+    <None Include="Connected Services\EArchiveInvoiceWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\EInvoiceWS\configuration91.svcinfo" />
+    <None Include="Connected Services\EInvoiceWS\configuration.svcinfo" />
+    <None Include="Connected Services\EInvoiceWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\EIrsaliyeWS\configuration91.svcinfo" />
+    <None Include="Connected Services\EIrsaliyeWS\configuration.svcinfo" />
+    <None Include="Connected Services\EIrsaliyeWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SmmWs\configuration91.svcinfo" />
+    <None Include="Connected Services\SmmWs\configuration.svcinfo" />
+    <None Include="Connected Services\SmmWs\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="general.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AuthenticationWS\" />
+    <WCFMetadataStorage Include="Connected Services\CreditNoteWS\" />
+    <WCFMetadataStorage Include="Connected Services\CustomServis\" />
+    <WCFMetadataStorage Include="Connected Services\EArchiveInvoiceWS\" />
+    <WCFMetadataStorage Include="Connected Services\EInvoiceWS\" />
+    <WCFMetadataStorage Include="Connected Services\EIrsaliyeWS\" />
+    <WCFMetadataStorage Include="Connected Services\MngKargo\" />
+    <WCFMetadataStorage Include="Connected Services\SiparisServis\" />
+    <WCFMetadataStorage Include="Connected Services\SmmWs\" />
+    <WCFMetadataStorage Include="Connected Services\UrunServis\" />
+    <WCFMetadataStorage Include="Connected Services\UyeServis\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props'))" />
+    <Error Condition="!Exists('..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props'))" />
+    <Error Condition="!Exists('..\packages\Magick.NET-Q8-AnyCPU.13.1.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Magick.NET-Q8-AnyCPU.13.1.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit.3.13.2\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.2\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.4.2.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.4.2.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+  <Import Project="..\packages\Magick.NET-Q8-AnyCPU.13.1.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets" Condition="Exists('..\packages\Magick.NET-Q8-AnyCPU.13.1.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets')" />
+</Project>

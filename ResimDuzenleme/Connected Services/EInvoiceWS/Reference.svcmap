@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="266954f9-a3e9-481f-9a10-e11f960eda23" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://efaturatest.ResimDuzenleme.com.tr/EInvoiceWS?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EInvoiceWS.xsd" MetadataType="Schema" ID="d67ffbad-4459-4b5b-ab7e-4231630bab9d" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/EInvoiceWS?xsd=2" />
+    <MetadataFile FileName="EInvoiceWS1.xsd" MetadataType="Schema" ID="f903a506-933c-4cdc-bf4a-5b450fd037c3" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/EInvoiceWS?xsd=3" />
+    <MetadataFile FileName="EInvoiceWS2.xsd" MetadataType="Schema" ID="85c82b01-bbbb-453a-81b7-a69654f5dba7" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/EInvoiceWS?xsd=1" />
+    <MetadataFile FileName="EInvoiceWS3.xsd" MetadataType="Schema" ID="0feb4aff-70de-40cf-a4fc-8cb4a16fe083" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/EInvoiceWS?xsd=4" />
+    <MetadataFile FileName="EInvoiceWS.wsdl" MetadataType="Wsdl" ID="2f94708d-0563-4257-82dd-456771a8d05a" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/EInvoiceWS?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

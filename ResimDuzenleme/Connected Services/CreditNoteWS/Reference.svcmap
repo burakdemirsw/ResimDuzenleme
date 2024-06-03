@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4a6dbb72-b2af-44d7-b02a-0d07c980c963" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://efaturatest.ResimDuzenleme.com.tr/CreditNoteWS/CreditNote?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CreditNoteWS.wsdl" MetadataType="Wsdl" ID="ca706904-08c4-4d66-b58f-fcd2c9a7ba37" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/CreditNoteWS/CreditNote?wsdl" />
+    <MetadataFile FileName="CreditNote.xsd" MetadataType="Schema" ID="77f1a5e8-5f68-438c-8aa6-47057652204a" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/CreditNoteWS/CreditNote?xsd=4" />
+    <MetadataFile FileName="CreditNote1.xsd" MetadataType="Schema" ID="adaa4e98-3579-41cf-a84d-5d56436a88e4" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/CreditNoteWS/CreditNote?xsd=1" />
+    <MetadataFile FileName="CreditNote2.xsd" MetadataType="Schema" ID="5f12d7d4-2377-4d52-9123-5f589a4a532f" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/CreditNoteWS/CreditNote?xsd=2" />
+    <MetadataFile FileName="CreditNote3.xsd" MetadataType="Schema" ID="bcbcdd74-830f-4ae7-bb91-cce6e937308e" SourceId="1" SourceUrl="https://efaturatest.ResimDuzenleme.com.tr/CreditNoteWS/CreditNote?xsd=3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7ac15cf1-272a-4781-b15d-f378f4c31260" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://misigo.com/servis/UyeServis.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UyeServis.xsd" MetadataType="Schema" ID="736f38e1-8add-40f6-935b-86779bc5432a" SourceId="1" SourceUrl="https://misigo.com/Servis/UyeServis.svc?xsd=xsd3" />
+    <MetadataFile FileName="UyeServis1.xsd" MetadataType="Schema" ID="63369f79-c6e8-4379-b825-13ef9fa39872" SourceId="1" SourceUrl="https://misigo.com/Servis/UyeServis.svc?xsd=xsd2" />
+    <MetadataFile FileName="UyeServis.disco" MetadataType="Disco" ID="438dadf8-7659-46f9-a1bb-096706e4818b" SourceId="1" SourceUrl="https://misigo.com/Servis/UyeServis.svc?disco" />
+    <MetadataFile FileName="UyeServis2.xsd" MetadataType="Schema" ID="3e9ba23b-d3b4-4ea3-aea9-35766c229c01" SourceId="1" SourceUrl="https://misigo.com/Servis/UyeServis.svc?xsd=xsd1" />
+    <MetadataFile FileName="UyeServis3.xsd" MetadataType="Schema" ID="fa2515f4-afd8-4b9a-a5ab-319d87234e2f" SourceId="1" SourceUrl="https://misigo.com/Servis/UyeServis.svc?xsd=xsd0" />
+    <MetadataFile FileName="UyeServis.wsdl" MetadataType="Wsdl" ID="b5992ffe-c321-4cbe-8bff-086f6b503a6a" SourceId="1" SourceUrl="https://misigo.com/Servis/UyeServis.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
