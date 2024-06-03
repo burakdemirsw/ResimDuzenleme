@@ -16,7 +16,7 @@ namespace ResimDuzenleme
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Autofac Container'ını oluştur
+            // Autofac Container'ını oluştur burakk
             var builder = new ContainerBuilder();
 
             // Global hata işleyicileri kaydet
