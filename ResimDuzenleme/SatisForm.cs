@@ -1,10 +1,16 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.IO;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace ResimDuzenleme
 {
@@ -15,7 +21,7 @@ namespace ResimDuzenleme
         private Timer paketlenenTimer;
         private Timer kargolananTimer;
 
-        public SatisForm( )
+        public SatisForm()
         {
             InitializeComponent();
 
@@ -71,7 +77,7 @@ namespace ResimDuzenleme
             //UpdateChartsPKargolanan();
         }
 
-
+   
 
         private void SatisForm_Load(object sender, EventArgs e)
         {
@@ -89,7 +95,7 @@ namespace ResimDuzenleme
 
         }
 
-        private void UpdateCharts( )
+        private void UpdateCharts()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -121,7 +127,7 @@ namespace ResimDuzenleme
 
 
 
-        private void UpdateChartCount( )
+        private void UpdateChartCount()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -149,7 +155,7 @@ namespace ResimDuzenleme
                     }
                 }
             }
-
+          
         }
 
 
@@ -186,7 +192,7 @@ namespace ResimDuzenleme
 
 
 
-        private string UpdateChartCount2( )
+        private string UpdateChartCount2()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -216,13 +222,13 @@ namespace ResimDuzenleme
                     }
                 }
             }
-
+        
         }
 
 
 
 
-        private void Sil( )
+        private void Sil()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -231,14 +237,14 @@ namespace ResimDuzenleme
             string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
 
             // DataGridView'den seçili olan satırın SirketKodu değerini al
-
+         
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "DELETE FROM ZTMSGKargoTakip WHERE KargoNo = ''";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-
+                   
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
@@ -256,7 +262,7 @@ namespace ResimDuzenleme
             }
 
         }
-        private void SelectOdeme( )
+        private void SelectOdeme()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -275,7 +281,7 @@ namespace ResimDuzenleme
                 string sqlQuery = $"SELECT * FROM MSG_SiparisKontrolOdeme() WHERE Orderdate >= '{selectedDate}' Order by ORderDate, OdemeTipi, Site, Durumu";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-
+               
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -287,7 +293,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private void SelectPazaryeri( )
+        private void SelectPazaryeri()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -316,7 +322,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private void SelectSite( )
+        private void SelectSite()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -334,7 +340,7 @@ namespace ResimDuzenleme
                 string selectedDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
                 string sqlQuery = $"SELECT * FROM MSG_SiparisKontrolSite() WHERE Orderdate >= '{selectedDate}'  Order by ORderDate, Site";
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-
+               
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -357,7 +363,7 @@ namespace ResimDuzenleme
             UpdateCharts();
             UpdateChartCount();
         }
-        private void UpdateChartsPaketlenen( )
+        private void UpdateChartsPaketlenen()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -375,7 +381,7 @@ namespace ResimDuzenleme
                 string selectedDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
                 string sqlQuery = $"SELECT * FROM MSG_SiparisKontrol() WHERE Orderdate >= '{selectedDate}'  and  DURUMU = 'PAKETLENDİ' ORDER BY OrderDate,Pazaryeri,[Site Sipariş No]";
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-
+            
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -389,7 +395,7 @@ namespace ResimDuzenleme
 
 
 
-        private void UpdateChartsCountPaketlenen( )
+        private void UpdateChartsCountPaketlenen()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -420,7 +426,7 @@ namespace ResimDuzenleme
         }
 
 
-        private void UpdateChartsPKargolanan( )
+        private void UpdateChartsPKargolanan()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -438,7 +444,7 @@ namespace ResimDuzenleme
                 string selectedDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
                 string sqlQuery = $"SELECT * FROM MSG_SiparisKontrol() WHERE Orderdate >= '{selectedDate}'  and  DURUMU = 'KARGOLANDI' ORDER BY OrderDate,Pazaryeri,[Site Sipariş No]";
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-
+               
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -451,7 +457,7 @@ namespace ResimDuzenleme
         }
 
 
-        private void UpdateChartsCountPKargolanan( )
+        private void UpdateChartsCountPKargolanan()
         {
             // Grafikleri güncelleme kodları burada olacak
             // Örneğin, Chart kontrolü üzerinde verileri güncelle
@@ -484,7 +490,7 @@ namespace ResimDuzenleme
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-
+        
             SelectOdeme();
             SelectPazaryeri();
             SelectSite();
@@ -526,7 +532,7 @@ namespace ResimDuzenleme
                 timer.Start();
                 button1.Text = "GÜNCELLEMELERİ DURDUR";
             }
-
+       
 
         }
         private void ExportDataGridViewToPdf(string filePath)

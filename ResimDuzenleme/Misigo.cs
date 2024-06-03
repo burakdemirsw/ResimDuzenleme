@@ -1,22 +1,43 @@
-﻿using DevExpress.XtraBars;
-using Google.Cloud.Translation.V2;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-//using System.Threading;
-using ResimDuzenleme.UrunServis;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-//using System.Threading;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Text.Json;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
+using System.Data.SqlClient;
+using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
+using CsvHelper;
+using System.Globalization;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using DevExpress.XtraReports.UI;
+using Newtonsoft.Json.Linq;
+using System.Net;
+using System.Xml;
+using System.Xml.Linq;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Google.Cloud.Translation.V2;
+using System.ServiceProcess;
+using System.Diagnostics;
+using System.Security.Principal;
+using System.Configuration.Install;
+//using System.Threading;
+using ResimDuzenleme.SiparisServis;
+using ResimDuzenleme.UrunServis;
+using NUnit.Framework;
+using ResimDuzenleme.EArchiveInvoiceWS;
+using ResimDuzenleme.Operations;
+//using System.Threading;
+using System.Xml.XPath;
+using System.Xml.Xsl;
+using System.Net.Http.Headers;
+using System.Text.Json;
 
 
 
@@ -27,12 +48,12 @@ namespace ResimDuzenleme
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private HttpClient httpClient = new HttpClient();
         private System.Timers.Timer timer;
-
-        public Misigo( )
+      
+        public Misigo()
         {
             InitializeComponent();
-
-
+     
+         
 
         }
 
@@ -204,7 +225,7 @@ namespace ResimDuzenleme
                 }
             }
         }
-        private DataTable VerileriGetir( )
+        private DataTable VerileriGetir()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -289,7 +310,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private DataTable VerileriGetirRenk( )
+        private DataTable VerileriGetirRenk()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -385,7 +406,7 @@ namespace ResimDuzenleme
                 MessageBox.Show($"Çeviri işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private DataTable VerileriGetirOzellik( )
+        private DataTable VerileriGetirOzellik()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -473,7 +494,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private DataTable VerileriGetirOzellikTipi( )
+        private DataTable VerileriGetirOzellikTipi()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -810,7 +831,7 @@ namespace ResimDuzenleme
             }
         }
 
-
+      
 
         private void barButtonItem80_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -835,7 +856,7 @@ namespace ResimDuzenleme
         {
             List<Kategori> KategoriListe = UrunServiceMethods.SelectKategori();
 
-
+            
             int eklenenKategoriId = UrunServiceMethods.SaveKategori();
             MessageBox.Show("Kategori Aktarımı Tamamlandı...");
         }
@@ -972,8 +993,53 @@ namespace ResimDuzenleme
 
             return stoks;
         }
+        private async Task<List<Stok>> MSGVeritabanindaStokCikartemizle(string Firma)
+        {
+            List<Stok> stoks = new List<Stok>();
+            string serverName = Properties.Settings.Default.SunucuAdi;
+            string userName = Properties.Settings.Default.KullaniciAdi;
+            string password = Properties.Settings.Default.Sifre;
+            string database = Properties.Settings.Default.database;
+            string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
 
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand command = new SqlCommand("MSGNebim_SayimCikartemizle", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    Stok stok = new Stok();
+
+                    stok.ModelType = reader["ModelType"].ToString();
+                    stok.OfficeCode = reader["OfficeCode"].ToString();
+                    stok.StoreCode = reader["StoreCode"].ToString();
+                    stok.WarehouseCode = reader["WarehouseCode"].ToString();
+                    stok.CompanyCode = Convert.ToInt32(reader["CompanyCode"]);
+                    stok.InnerProcessType = Convert.ToInt32(reader["InnerProcessType"]);
+
+
+                    string LinesJson = reader["Lines"].ToString();
+                    JArray variantArray = JArray.Parse(LinesJson);
+                    stok.Lines = variantArray.ToObject<List<Lines>>();
+
+
+
+                    // Diğer alanları doldurmak için benzer işlemler...
+
+                    stoks.Add(stok);
+                }
+            }
+
+
+
+
+            return stoks;
+        }
+
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -1026,7 +1092,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        private async void SayimCikar( )
+       private async void  SayimCikar()
         {
             List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
             try
@@ -1036,7 +1102,7 @@ namespace ResimDuzenleme
                     //string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
                     //List<ZtNebimFaturaROnline> items = await VeritabanindanMusteriGetirFaturaROnline(faturaBilgisi.Firma);
 
-                    int totalRepeatCount = 30; // Toplam tekrar sayısı
+                    int totalRepeatCount = 1; // Toplam tekrar sayısı
 
                     for (int repeat = 0; repeat < totalRepeatCount; repeat++)
                     {
@@ -1111,10 +1177,11 @@ namespace ResimDuzenleme
                 Console.WriteLine(ex.Message, "Hata Alındı Tekrar Faturalaştır Tuşuna basınız.");
 
             }
-            SayimEkle();
+      
         }
 
-        private async void SayimEkle( )
+
+        private async void SayimTemizle()
         {
             List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
             try
@@ -1124,7 +1191,96 @@ namespace ResimDuzenleme
                     //string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
                     //List<ZtNebimFaturaROnline> items = await VeritabanindanMusteriGetirFaturaROnline(faturaBilgisi.Firma);
 
-                    int totalRepeatCount = 30; // Toplam tekrar sayısı
+                    int totalRepeatCount = 1; // Toplam tekrar sayısı
+
+                    for (int repeat = 0; repeat < totalRepeatCount; repeat++)
+                    {
+                        string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
+                        List<Stok> items = await MSGVeritabanindaStokCikartemizle(faturaBilgisi.Firma);
+
+                        //var currentBatch = items.Skip(repeat * batchSize).Take(batchSize).ToList();
+                        //labelStatus.Text = $"Veritabanından {items.Count} adet veri çekildi. Şimdi POST işlemi başlatılıyor...";
+                        int postCount = 0;
+                        try
+                        {
+                            var tasks = items.Select(async item =>
+                            {
+                                string json = JsonConvert.SerializeObject(item);
+                                try
+                                {
+                                    string serverName = Properties.Settings.Default.SunucuAdi;
+                                    string userName = Properties.Settings.Default.KullaniciAdi;
+                                    string password = Properties.Settings.Default.Sifre;
+                                    string database = Properties.Settings.Default.database;
+                                    string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
+
+                                    string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+                                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                                    var response = await httpClient.PostAsync($"http://{faturaBilgisi.IpAdres}/(S({sessionID}))/IntegratorService/post?", content);
+
+                                    if (response.IsSuccessStatusCode)
+                                    {
+                                        postCount++;
+                                        //var result = await response.Content.ReadAsStringAsync();
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        Console.WriteLine("Sunucu Yanıtı: " + result); // Sunucu yanıtını yazdır
+                                        dynamic jsonResponse = JsonConvert.DeserializeObject(result);
+
+                                    }
+                                    else
+                                    {
+                                        postCount++;
+                                        //var result = await response.Content.ReadAsStringAsync();
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        Console.WriteLine("Sunucu Yanıtı: " + result); // Sunucu yanıtını yazdır
+                                        dynamic jsonResponse = JsonConvert.DeserializeObject(result);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine($"Hata: {ex.ToString()}");  // Daha detaylı hata bilgisi
+                                }
+                            }).ToList();
+
+                            await Task.WhenAll(tasks);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message, "Hata Alındı Tekrar Faturalaştır Tuşuna basınız.");
+
+                        }
+
+
+
+
+
+                        // Eğer miktar 0'dan büyükse, işlemlere devam edin
+                        //     labelStatus.Text = $"İşlem devam ediyor, kalan miktar: {miktar}";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message, "Hata Alındı Tekrar Faturalaştır Tuşuna basınız.");
+
+            }
+
+        }
+
+
+        private async void SayimEkle()
+        {
+            List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
+            try
+            {
+                foreach (var faturaBilgisi in faturaBilgileri)
+                {
+                    //string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
+                    //List<ZtNebimFaturaROnline> items = await VeritabanindanMusteriGetirFaturaROnline(faturaBilgisi.Firma);
+
+                    int totalRepeatCount = 1; // Toplam tekrar sayısı
 
                     for (int repeat = 0; repeat < totalRepeatCount; repeat++)
                     {
@@ -1246,21 +1402,122 @@ namespace ResimDuzenleme
             }
         }
         private bool isGreen = false;
-
-        private void InitializeTimer( )
+     
+        private void InitializeTimer()
         {
             // Timer oluştur
             timer = new System.Timers.Timer();
-            timer.Interval = 1 * 60 * 1000; // 5 dakika
+            timer.Interval = 1 * 60 * 10000; // 5 dakika
             timer.Elapsed += TimerElapsed;
+            timer.AutoReset = true; // Otomatik tekrar et
+            timer.Enabled = true; // Timer'ı başlat
+        }
+        private void InitializeTimer2()
+        {
+            // Timer oluştur
+            timer = new System.Timers.Timer();
+            timer.Interval = 1 * 60 * 10000; // 5 dakika
+            timer.Elapsed += TimerElapsed2;
+            timer.AutoReset = true; // Otomatik tekrar et
+            timer.Enabled = true; // Timer'ı başlat
+        }
+
+        private void InitializeTimerSiparis()
+        {
+            // Timer oluştur
+            timer = new System.Timers.Timer();
+            timer.Interval = 1 * 60 * 10000; // 5 dakika
+            timer.Elapsed += TimerElapsedSiparis;
+            timer.AutoReset = true; // Otomatik tekrar et
+            timer.Enabled = true; // Timer'ı başlat
+        }
+        private void InitializeTimerIrsaliye()
+        {
+            // Timer oluştur
+            timer = new System.Timers.Timer();
+            timer.Interval = 1 * 60 * 10000; // 5 dakika
+            timer.Elapsed += TimerElapsedIrsaliye;
+            timer.AutoReset = true; // Otomatik tekrar et
+            timer.Enabled = true; // Timer'ı başlat
+        }
+        private void InitializeTimerKoctas()
+        {
+            // Timer oluştur
+            timer = new System.Timers.Timer();
+            timer.Interval = 1 * 60 * 10000; // 5 dakika
+            timer.Elapsed += TimerElapsedKoctas;
             timer.AutoReset = true; // Otomatik tekrar et
             timer.Enabled = true; // Timer'ı başlat
         }
         private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            SayimCikar();
+
+
+            try
+            {
+                SayimTemizle();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Sayim Çıkarırken hata oluştu" + ex.Message);
+            }
+            try
+            {
+                SayimCikar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Sayim Çıkarırken hata oluştu"+ex.Message);
+            }
+
+
+
+            try
+            {
+                SayimEkle();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Sayim Eklerken hata oluştu" + ex.Message);
+            }
+
+        
 
         }
+        private void TimerElapsed2(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            SiparisTopluCek();
+
+        }
+
+
+
+        private void TimerElapsedSiparis(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            FrmNebimSiparis frm = new FrmNebimSiparis();
+            frm.TopluFaturalastir();
+
+        }
+
+
+        private void TimerElapsedIrsaliye(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Magaza frm = new Magaza();
+            frm.IrsaliyeFaturalastir();
+
+        }
+
+
+        private void TimerElapsedKoctas(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            FrmNebimSiparis frm = new FrmNebimSiparis();
+            frm.KoctasCek();
+
+        }
+
 
         private void barButtonItem85_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1268,7 +1525,7 @@ namespace ResimDuzenleme
             Durumu = "False";
             string ServisAdi;
             ServisAdi = "Nebim Stok Eşitle";
-            if (isGreen == false)
+            if (isGreen == false )
             {
                 barButtonItem85.Appearance.BackColor = Color.Green;
                 isGreen = true;
@@ -1285,7 +1542,7 @@ namespace ResimDuzenleme
                 ServisDurum(ServisAdi, Durumu);
                 timer.Stop();
             }
-
+        
         }
 
         private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
@@ -1300,6 +1557,8 @@ namespace ResimDuzenleme
 
         private void barButtonItem87_ItemClick(object sender, ItemClickEventArgs e)
         {
+
+            SayimTemizle();
             SayimCikar();
         }
 
@@ -1543,9 +1802,7 @@ namespace ResimDuzenleme
                         musteri.SalesViaInternetInfo = SalesViaInternetInfoArray.ToObject<List<SalesViaInternetInfo>>().First();
 
 
-                        string PaymentsJson = reader["Payments"].ToString();
-                        JArray PaymentsArray = JArray.Parse(PaymentsJson);
-                        musteri.Payments = PaymentsArray.ToObject<List<Payments>>();
+                    
 
                         //string attributesJson = reader["Attributes"].ToString();
                         //JArray attributesArray = JArray.Parse(attributesJson);
@@ -1567,7 +1824,7 @@ namespace ResimDuzenleme
 
         }
 
-        private async Task<int> GetOrderForInvoiceToplamAsync( )
+        private async Task<int> GetOrderForInvoiceToplamAsync()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -1635,7 +1892,7 @@ namespace ResimDuzenleme
                             {
                                 postCount++;
                                 //var result = await response.Content.ReadAsStringAsync();
-
+                             
 
 
                                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -1652,7 +1909,7 @@ namespace ResimDuzenleme
                                         //cmd.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar, -1) { Value = json });
                                         //cmd.Parameters.Add(new SqlParameter("@Cevap", SqlDbType.NVarChar, -1) { Value = jsonResponse });
 
-
+                                      
                                         conn.Open();
                                         cmd.ExecuteNonQuery();
 
@@ -1721,11 +1978,339 @@ namespace ResimDuzenleme
 
         }
 
+        private void barButtonItem58_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+
+            string Durumu;
+            Durumu = "False";
+            string ServisAdi;
+            ServisAdi = "Toplu Siparis Çek";
+            if (isGreen == false)
+            {
+                barButtonItem58.Appearance.BackColor = Color.Green;
+                isGreen = true;
+                Durumu = "true";
+                ServisDurum(ServisAdi, Durumu);
+                //timer.Enabled = true;
+                InitializeTimer2();
+            }
+            else
+            {
+                barButtonItem58.Appearance.BackColor = Color.Red;
+                isGreen = false;
+                Durumu = "false";
+                ServisDurum(ServisAdi, Durumu);
+                timer.Stop();
+            }
+      
+        }
+        private  void SiparisTopluCek()
+        {
+            List<WebSiparis> uyeListe = SiparisServiceMethods.SelectSiparis();
+            List<WebSiparisUrun> uyeAdresListe = SiparisServiceMethods.SelectSiparisDetay();
+            SayimEsitle();
+
+        }
+        private async Task<List<Stok>> MSGVeritabanindaStokEsitle(string Firma)
+        {
+            List<Stok> stoks = new List<Stok>();
+            string serverName = Properties.Settings.Default.SunucuAdi;
+            string userName = Properties.Settings.Default.KullaniciAdi;
+            string password = Properties.Settings.Default.Sifre;
+            string database = Properties.Settings.Default.database;
+            string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand command = new SqlCommand("MSGNebim_SayimEsitle", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    Stok stok = new Stok();
+
+                    stok.ModelType = reader["ModelType"].ToString();
+                    stok.OfficeCode = reader["OfficeCode"].ToString();
+                    stok.StoreCode = reader["StoreCode"].ToString();
+                    stok.WarehouseCode = reader["WarehouseCode"].ToString();
+                    stok.CompanyCode = Convert.ToInt32(reader["CompanyCode"]);
+                    stok.InnerProcessType = Convert.ToInt32(reader["InnerProcessType"]);
+
+
+                    string LinesJson = reader["Lines"].ToString();
+                    JArray variantArray = JArray.Parse(LinesJson);
+                    stok.Lines = variantArray.ToObject<List<Lines>>();
+
+
+
+                    // Diğer alanları doldurmak için benzer işlemler...
+
+                    stoks.Add(stok);
+                }
+            }
+
+
+
+
+            return stoks;
+        }
+        private async void SayimEsitle()
+        {
+            List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
+            try
+            {
+                foreach (var faturaBilgisi in faturaBilgileri)
+                {
+                    //string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
+                    //List<ZtNebimFaturaROnline> items = await VeritabanindanMusteriGetirFaturaROnline(faturaBilgisi.Firma);
+
+                    int totalRepeatCount = 30; // Toplam tekrar sayısı
+
+                    for (int repeat = 0; repeat < totalRepeatCount; repeat++)
+                    {
+                        string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
+                        List<Stok> items = await MSGVeritabanindaStokEsitle(faturaBilgisi.Firma);
+
+                        //var currentBatch = items.Skip(repeat * batchSize).Take(batchSize).ToList();
+                        //labelStatus.Text = $"Veritabanından {items.Count} adet veri çekildi. Şimdi POST işlemi başlatılıyor...";
+                        int postCount = 0;
+                        try
+                        {
+                            var tasks = items.Select(async item =>
+                            {
+                                string json = JsonConvert.SerializeObject(item);
+                                try
+                                {
+                                    string serverName = Properties.Settings.Default.SunucuAdi;
+                                    string userName = Properties.Settings.Default.KullaniciAdi;
+                                    string password = Properties.Settings.Default.Sifre;
+                                    string database = Properties.Settings.Default.database;
+                                    string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
+
+                                    string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+                                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                                    var response = await httpClient.PostAsync($"http://{faturaBilgisi.IpAdres}/(S({sessionID}))/IntegratorService/post?", content);
+
+                                    if (response.IsSuccessStatusCode)
+                                    {
+                                        postCount++;
+                                        //var result = await response.Content.ReadAsStringAsync();
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        Console.WriteLine("Sunucu Yanıtı: " + result); // Sunucu yanıtını yazdır
+                                        dynamic jsonResponse = JsonConvert.DeserializeObject(result);
+
+                                    }
+                                    else
+                                    {
+                                        postCount++;
+                                        //var result = await response.Content.ReadAsStringAsync();
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        Console.WriteLine("Sunucu Yanıtı: " + result); // Sunucu yanıtını yazdır
+                                        dynamic jsonResponse = JsonConvert.DeserializeObject(result);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine($"Hata: {ex.ToString()}");  // Daha detaylı hata bilgisi
+                                }
+                            }).ToList();
+
+                            await Task.WhenAll(tasks);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message, "Hata Alındı Tekrar Faturalaştır Tuşuna basınız.");
+
+                        }
+
+
+
+
+
+                        // Eğer miktar 0'dan büyükse, işlemlere devam edin
+                        //     labelStatus.Text = $"İşlem devam ediyor, kalan miktar: {miktar}";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message, "Hata Alındı Tekrar Faturalaştır Tuşuna basınız.");
+
+            }
+    
+        }
+
+        private void barButtonItem56_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            string Durumu;
+            Durumu = "False";
+            string ServisAdi;
+            ServisAdi = "Toplu Siparis Faturalaştır";
+            if (isGreen == false)
+            {
+                barButtonItem56.Appearance.BackColor = Color.Green;
+                isGreen = true;
+                Durumu = "true";
+                ServisDurum(ServisAdi, Durumu);
+                //timer.Enabled = true;
+                InitializeTimerSiparis();
+            }
+            else
+            {
+                barButtonItem56.Appearance.BackColor = Color.Red;
+                isGreen = false;
+                Durumu = "false";
+                ServisDurum(ServisAdi, Durumu);
+                timer.Stop();
+            }
+        }
+
+        private void barButtonItem57_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string Durumu;
+            Durumu = "False";
+            string ServisAdi;
+            ServisAdi = "Toplu Irsaliye Faturalaştır";
+            if (isGreen == false)
+            {
+                barButtonItem57.Appearance.BackColor = Color.Green;
+                isGreen = true;
+                Durumu = "true";
+                ServisDurum(ServisAdi, Durumu);
+                //timer.Enabled = true;
+                InitializeTimerIrsaliye();
+            }
+            else
+            {
+                barButtonItem57.Appearance.BackColor = Color.Red;
+                isGreen = false;
+                Durumu = "false";
+                ServisDurum(ServisAdi, Durumu);
+                timer.Stop();
+            }
+        }
+
         private void barButtonItem102_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmFaturalastirTekli frm = new FrmFaturalastirTekli();
-            frm.MdiParent = this;
-            frm.Show();
+            string Durumu;
+            Durumu = "False";
+            string ServisAdi;
+            ServisAdi = "Toplu Koctas Çek";
+            if (isGreen == false)
+            {
+                barButtonItem102.Appearance.BackColor = Color.Green;
+                isGreen = true;
+                Durumu = "true";
+                ServisDurum(ServisAdi, Durumu);
+                //timer.Enabled = true;
+                InitializeTimerKoctas();
+            }
+            else
+            {
+                barButtonItem102.Appearance.BackColor = Color.Red;
+                isGreen = false;
+                Durumu = "false";
+                ServisDurum(ServisAdi, Durumu);
+                timer.Stop();
+            }
         }
+
+        private async void barButtonItem50_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            await DownloadImagesAsync();
+        }
+        private async Task DownloadImagesAsync()
+        {
+            try
+            {
+                string serverName = Properties.Settings.Default.SunucuAdi;
+                string userName = Properties.Settings.Default.KullaniciAdi;
+                string password = Properties.Settings.Default.Sifre;
+                string database = Properties.Settings.Default.database;
+                string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+                string spName = "MSG_TrendyolResimIndirListe";
+
+                DataTable dt = new DataTable();
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(spName, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+
+                int count = 1;
+                string lastBarcode = string.Empty;
+
+                using (HttpClient client = new HttpClient())
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        try
+                        {
+                            string barcode = row["Barcode"].ToString();
+                            string url = row["Url"].ToString();
+                            string folderName = row["Marka"].ToString();
+                            string folderPath = Path.Combine("C:\\Resimler", folderName);
+
+                            if (!Directory.Exists(folderPath))
+                            {
+                                Directory.CreateDirectory(folderPath);
+                            }
+
+                            // Check if this is a new barcode or a repeat
+                            if (barcode != lastBarcode)
+                            {
+                                // This is a new barcode, so reset the count
+                                count = 1;
+                                lastBarcode = barcode;
+                            }
+
+                            string filename = count > 1 ? $"{barcode}_{count}.jpg" : $"{barcode}.jpg";
+                            string path = Path.Combine(folderPath, filename);
+
+                            byte[] imageBytes = await client.GetByteArrayAsync(url);
+
+                            using (FileStream sourceStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 4096, useAsync: true))
+                            {
+                                await sourceStream.WriteAsync(imageBytes, 0, imageBytes.Length);
+                            }
+
+                            // Increment the count for the next loop
+                            count++;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            // Hata mesajını görmezden gel, sadece kaydet ve işlemi devam ettir
+                            // Bu şekilde hata alan verileri atlatabilirsiniz.
+                            // Burada hata işlenmiyor ve işlem devam ediyor.
+                        }
+                    }
+                }
+
+                MessageBox.Show("Resim İndirme Tamamlandı!");
+            }
+            catch (Exception ex)
+            {
+                // Top seviyedeki hata işleme, uygulamanın çökmemesini sağlar.
+                MessageBox.Show("Uygulama genelinde bir hata oluştu: " + ex.Message);
+            }
+        }
+
     }
 }

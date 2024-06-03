@@ -1,10 +1,16 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ResimDuzenleme.UblSerializer
 {
-    public abstract class CreditNoteSerializer
+   public abstract class CreditNoteSerializer
     {
-        public static XmlSerializerNamespaces GetXmlSerializerNamespace( )
+        public static XmlSerializerNamespaces GetXmlSerializerNamespace()
         {
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
 
@@ -24,8 +30,8 @@ namespace ResimDuzenleme.UblSerializer
             ns.Add("d3p1", "http://www.w3.org/2005/05/xmlmime");
             ns.Add("xades", "http://uri.etsi.org/01903/v1.3.2#");
             ns.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-
-
+          
+            
             return ns;
         }
 

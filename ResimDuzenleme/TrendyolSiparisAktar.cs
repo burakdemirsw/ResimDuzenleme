@@ -2,6 +2,10 @@
 using ResimDuzenleme.TrendyolRoot;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +15,12 @@ namespace ResimDuzenleme
 {
     public partial class TrendyolSiparisAktar : Form
     {
-        public TrendyolSiparisAktar( )
+        public TrendyolSiparisAktar()
         {
             InitializeComponent();
         }
 
-        private async void btnSiparisCek_Click(object sender, EventArgs e)
+        private async  void btnSiparisCek_Click(object sender, EventArgs e)
         {
             await GetTrendyolOrderModels();
         }
@@ -25,7 +29,7 @@ namespace ResimDuzenleme
             DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return (long)(dateTime - epoch).TotalMilliseconds;
         }
-        private HttpClient TrendyolClient( )
+        private  HttpClient TrendyolClient()
         {
             HttpClient client = new HttpClient();
 
@@ -44,7 +48,7 @@ namespace ResimDuzenleme
 
             return client;
         }
-        public async Task<List<TrendyolOrderModel>> GetTrendyolOrderModels( )
+        public  async Task<List<TrendyolOrderModel>> GetTrendyolOrderModels()
         {
             // Trendyol API isteği için gereken bilgiler
             string apiUrl = $"https://api.trendyol.com/sapigw/suppliers/{Properties.Settings.Default.TxtSatici}/orders";
@@ -218,11 +222,11 @@ namespace ResimDuzenleme
                     root2List.Add(root2);
                 }
                 root2List.RemoveAll(o => o.invoiceLink != null);
-                // bakim bi
-
+             // bakim bi
+             
                 dataGridView1.DataSource = root2List;
 
-                return null;
+                return null ;
             }
             else
             {

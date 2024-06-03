@@ -1,21 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using ResimDuzenleme.MngKargo;
+using System.Web;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using ResimDuzenleme.Mng;
+using GoogleAPI.Domain.Models.Cargo.Mng.Request;
+using GoogleAPI.Domain.Models.Cargo.Mng.Order;
 
 namespace ResimDuzenleme
 {
     public partial class MNGKargo : Form
     {
-        public MNGKargo( )
+        public MNGKargo()
         {
             InitializeComponent();
         }
 
         public class MngKargoBilgileriModel
         {
-
+     
             public string KullaniciAdi { get; set; }
             public string Sifre { get; set; }
         }
@@ -75,7 +90,7 @@ namespace ResimDuzenleme
         //    }
         //}
 
-        public MngKargoBilgileriModel GetMngBilgileri( )
+        public MngKargoBilgileriModel GetMngBilgileri()
         {
             MngKargoBilgileriModel mng = new MngKargoBilgileriModel();
 
@@ -260,7 +275,7 @@ namespace ResimDuzenleme
             try
             {
 
-
+              
 
 
                 ////string KullaniciAdi = "302617285";
@@ -327,7 +342,70 @@ namespace ResimDuzenleme
             }
         }
 
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            MngCargoService cs = new MngCargoService();
+            CreatePackage_MNG_Request request = new CreatePackage_MNG_Request();
+            request.Order.ReferenceId = cs.GenerateRandomNumber().ToString();
+            request.Order.Barcode = "Orderno";
+            request.Order.BillOfLandingId = "Orderno";
+            request.Order.IsCOD = 0;//kapıda ödeme
+            request.Order.CodAmount = 0;
+            request.Order.ShipmentServiceType = 1;//1:STANDART_TESLİMAT, 7:GUNİCİ_TESLİMAT, 8:AKŞAM_TESLİMAT Gönderi Tipi
+            request.Order.PackagingType = 3;// 1:DOSYA, 2:Mİ, 3:PAKET, 4:KOLİ Kargo Cinsi
+            request.Order.Content = "1 Adet Ürün Paketlenmiştir";//  Genel İçerik Bilgisi
+            request.Order.SmsPreference1 = 0;// Kargo varış şubesine ulaştığında alıcıya SMS gitsin mi
+            request.Order.SmsPreference2 = 0;// Kargo ilk hazırlandığında alıcıya SMS gitsin mi?
+            request.Order.SmsPreference3 = 0;// Kargo teslim edildiğinde göndericiye SMS gitsin mi?
+            request.Order.PaymentType = 2;//1:GONDERICI_ODER, 2:ALICI_ODER
+            request.Order.DeliveryType = 1;//1:ADRESE_TESLIM, 2:ALICISI_HABERLİ Teslim Şekli
+            request.Order.Description = "DAVYE";// TRND, N11, GG, VIVE Pazaryeri Kodu örneğin: TRND, N11, GG, VIVE
+            request.Order.MarketPlaceShortCode = "";// MarketPlace Pazaryeri Satış Kodu
+            request.Order.MarketPlaceSaleCode = "";// msg_GetOrderDetail
 
 
+            request.OrderPieceList = new List<OrderPieceList_MNG>();
+            //foreach (var item in Order.OrderDetail.Items)
+            //{
+            //    OrderPieceList_MNG _item = new OrderPieceList_MNG();
+            //    _item.Barcode = item.StockCode == null ? "" : item.StockCode;
+            //    _item.Desi = 2;//1den büyük olması lazım 
+            //    _item.Kg = 2;//1den büyük olması lazım 
+            //    _item.Content = item.Description;
+            //    request.OrderPieceList.Add(_item);
+            //}
+            OrderPieceList_MNG _item = new OrderPieceList_MNG();
+            _item.Barcode = "869456247265";
+            _item.Desi = 2;//1den büyük olması lazım 
+            _item.Kg = 2;//1den büyük olması lazım 
+            _item.Content = "El Aleti";
+            request.OrderPieceList.Add(_item);
+
+            request.Recipient = new Recipient_MNG
+            {
+                CustomerId = "",
+                RefCustomerId = "",
+                CityCode = 0,
+                DistrictCode = 0,
+                CityName = "İstanbul",
+                DistrictName = "Üsküdar",
+                Address = "Küçük Çamlıca Mahallesi Müftü Kuyusu Sokak Şekerkaya villaları no: 11 daire 2 ",
+                BussinessPhoneNumber = "",
+                Email = "demir.burock96@gmail.com",
+                TaxOffice = "",
+                TaxNumber = "",
+                FullName = "Burak Demir",
+                HomePhoneNumber = "",
+                MobilePhoneNumber = "05393465584"
+            };
+
+            var response=  await cs.CreateCargo(request);
+           string response2 = request.Order.ReferenceId;
+            string response3 = request.Order.Barcode;
+
+
+        }
+
+  
     }
 }

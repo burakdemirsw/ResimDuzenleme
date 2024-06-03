@@ -11,12 +11,12 @@ namespace ResimDuzenleme
     static class Program
     {
         [STAThread]
-        static void Main( )
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Autofac Container'ını oluştur burakk
+            // Autofac Container'ını oluştur burak demir
             var builder = new ContainerBuilder();
 
             // Global hata işleyicileri kaydet

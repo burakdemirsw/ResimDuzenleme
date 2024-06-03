@@ -1,13 +1,20 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 
 namespace ResimDuzenleme.KargoApi
 {
     public partial class YurtIciKargoApi : Form
     {
-        public YurtIciKargoApi( )
+        public YurtIciKargoApi()
         {
             InitializeComponent();
         }
@@ -96,7 +103,7 @@ namespace ResimDuzenleme.KargoApi
                         cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
                         cmd.Parameters.AddWithValue("@Password", txtPassWord.Text);
                         cmd.Parameters.AddWithValue("@CustomerCode", txtCustomerCode.Text);
-
+                      
 
 
 

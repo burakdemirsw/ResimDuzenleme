@@ -1,31 +1,32 @@
-﻿using CsvHelper;
-using Google.Cloud.Translation.V2;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
+using CsvHelper;
+using System.Globalization;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using ResimDuzenleme.SiparisServis;
-using System;
-using System.Collections.Generic;
-//using System.Threading;
-using System.ComponentModel;
-using System.Configuration.Install;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
+using DevExpress.XtraReports.UI;
+using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Security.Principal;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
-using Excel = Microsoft.Office.Interop.Excel;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Google.Cloud.Translation.V2;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ServiceProcess;
+using System.Diagnostics;
+using System.Security.Principal;
+using System.Configuration.Install;
+//using System.Threading;
+using System.ComponentModel;
+using ResimDuzenleme.SiparisServis;
 
 
 namespace ResimDuzenleme
@@ -36,11 +37,11 @@ namespace ResimDuzenleme
         private DatabaseService _databaseService;
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private ServiceController serviceController;
-
+   
         private int remainingMinutes = 1;
 
 
-        public Form1( )
+        public Form1()
         {
             InitializeComponent();
             var apiKey = Properties.Settings.Default.txtApiKey;
@@ -78,7 +79,7 @@ namespace ResimDuzenleme
         }
 
 
-        private async Task<string> ConnectIntegrator( )
+        private async Task<string> ConnectIntegrator()
         {
             try
             {
@@ -198,11 +199,11 @@ namespace ResimDuzenleme
         //    UpdateRemainingTime();
         //}
 
-        private void UpdateRemainingTime( )
+        private void UpdateRemainingTime()
         {
             if (label2.InvokeRequired)
             {
-                ((ISynchronizeInvoke)this).Invoke((MethodInvoker)(( ) =>
+                ((ISynchronizeInvoke)this).Invoke((MethodInvoker)(() =>
                 {
                     label2.Text = $"{remainingMinutes} dakika kaldı";
                 }), null);
@@ -216,13 +217,13 @@ namespace ResimDuzenleme
         //private async void TumunuGuncelle()
         //{
         //    await UpdateDownloadedItem();
-
+  
 
 
         //}
         private void Form1_Load(object sender, EventArgs e)
         {
-
+          
 
             // Servis adını burada değiştirin.
             serviceController = new ServiceController("TicimaxMusteriAktar");
@@ -687,7 +688,7 @@ namespace ResimDuzenleme
             NebimUrunAcma frm = new NebimUrunAcma();
             frm.Show();
         }
-        private async Task<List<ZTMSGTicUyeAdres>> VeritabanindanMusteriGetir( )
+        private async Task<List<ZTMSGTicUyeAdres>> VeritabanindanMusteriGetir()
         {
             List<ZTMSGTicUyeAdres> musteriler = new List<ZTMSGTicUyeAdres>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -745,7 +746,7 @@ namespace ResimDuzenleme
             return musteriler;
         }
 
-        private async Task<List<ZTMSGTicUyeAdresR>> VeritabanindanMusteriGetirR( )
+        private async Task<List<ZTMSGTicUyeAdresR>> VeritabanindanMusteriGetirR()
         {
             List<ZTMSGTicUyeAdresR> musteriler = new List<ZTMSGTicUyeAdresR>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -804,7 +805,7 @@ namespace ResimDuzenleme
         }
 
 
-        private async Task<List<ZtNebimFaturaR>> VeritabanindanMusteriGetirFaturaR( )
+        private async Task<List<ZtNebimFaturaR>> VeritabanindanMusteriGetirFaturaR()
         {
 
             try
@@ -1225,7 +1226,7 @@ namespace ResimDuzenleme
             }
         }
 
-        public List<Marka2> GetMarkalarFromStoredProcedure( )
+        public List<Marka2> GetMarkalarFromStoredProcedure()
         {
             List<Marka2> markalar = new List<Marka2>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -1258,7 +1259,7 @@ namespace ResimDuzenleme
         }
 
 
-        public List<Marka2> GetMarkalarFromStoredProcedureKAT( )
+        public List<Marka2> GetMarkalarFromStoredProcedureKAT()
         {
             List<Marka2> markalar = new List<Marka2>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -1446,7 +1447,7 @@ namespace ResimDuzenleme
             }
 
         }
-        public void ProcessXmlItemUrls( )
+        public void ProcessXmlItemUrls()
         {
             try
             {
@@ -1488,7 +1489,7 @@ namespace ResimDuzenleme
             }
 
         }
-        public void ProcessXmlItemUrls2( )
+        public void ProcessXmlItemUrls2()
         {
             try
             {
@@ -1530,7 +1531,7 @@ namespace ResimDuzenleme
             }
 
         }
-        public void ProcessXmlUrls( )
+        public void ProcessXmlUrls()
         {
             try
             {
@@ -1683,7 +1684,7 @@ namespace ResimDuzenleme
             }
 
         }
-        public void ProcessXmlKategoriUrls( )
+        public void ProcessXmlKategoriUrls()
         {
             try
             {
@@ -1808,7 +1809,7 @@ namespace ResimDuzenleme
             ProcessXmlKategoriUrls();
 
         }
-        private async Task DownloadImagesAsync( )
+        private async Task DownloadImagesAsync()
         {
             try
             {
@@ -1899,7 +1900,7 @@ namespace ResimDuzenleme
         {
             await DownloadImagesAsync();
         }
-        private async Task SendRequest( )
+        private async Task SendRequest()
 
         {
             try
@@ -1957,7 +1958,7 @@ namespace ResimDuzenleme
             await SendRequest();
         }
 
-        private async Task<List<Item>> VeritabanindanItemGetir( )
+        private async Task<List<Item>> VeritabanindanItemGetir()
         {
             List<Item> items = new List<Item>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -2033,7 +2034,7 @@ namespace ResimDuzenleme
 
 
 
-        private async Task<List<Item3>> VeritabanindanItemGetirMisigo( )
+        private async Task<List<Item3>> VeritabanindanItemGetirMisigo()
         {
             List<Item3> items = new List<Item3>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -2108,7 +2109,7 @@ namespace ResimDuzenleme
         }
 
 
-        private async Task<List<Stok>> VeritabanindaStokEkle( )
+        private async Task<List<Stok>> VeritabanindaStokEkle()
         {
             List<Stok> stoks = new List<Stok>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -2156,8 +2157,8 @@ namespace ResimDuzenleme
 
 
 
-
-        private async Task<List<Stok>> VeritabanindaStokCikar( )
+    
+        private async Task<List<Stok>> VeritabanindaStokCikar()
         {
             List<Stok> stoks = new List<Stok>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -2325,7 +2326,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private DataTable VerileriGetir( )
+        private DataTable VerileriGetir()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -2388,7 +2389,7 @@ namespace ResimDuzenleme
 
 
 
-        private DataTable VerileriGetirRenk( )
+        private DataTable VerileriGetirRenk()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -2450,7 +2451,7 @@ namespace ResimDuzenleme
 
 
 
-        private DataTable VerileriGetirOzellik( )
+        private DataTable VerileriGetirOzellik()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -2514,7 +2515,7 @@ namespace ResimDuzenleme
 
 
 
-        private DataTable VerileriGetirOzellikTipi( )
+        private DataTable VerileriGetirOzellikTipi()
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -2788,14 +2789,14 @@ namespace ResimDuzenleme
 
         }
 
-        private bool IsAdministrator( )
+        private bool IsAdministrator()
         {
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
-        private void RunAsAdmin( )
+        private void RunAsAdmin()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = Application.ExecutablePath;
@@ -2917,7 +2918,7 @@ namespace ResimDuzenleme
             }
 
         }
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -2949,7 +2950,7 @@ namespace ResimDuzenleme
             return faturaBilgileri;
         }
 
-        private async Task<List<FaturaBilgisi2>> GetFaturaBilgileriFromDatabasee2( )
+        private async Task<List<FaturaBilgisi2>> GetFaturaBilgileriFromDatabasee2()
         {
             List<FaturaBilgisi2> faturaBilgileri = new List<FaturaBilgisi2>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -3099,7 +3100,7 @@ namespace ResimDuzenleme
             //    PerformSomeTask();
             //}
         }
-        private void StartService( )
+        private void StartService()
         {
             try
             {
@@ -3125,7 +3126,7 @@ namespace ResimDuzenleme
                 MessageBox.Show("Servis başlatma hatası: " + ex.Message);
             }
         }
-        private void StartService2( )
+        private void StartService2()
         {
             try
             {
@@ -3151,7 +3152,7 @@ namespace ResimDuzenleme
                 MessageBox.Show("Servis başlatma hatası: " + ex.Message);
             }
         }
-        private void PerformSomeTask( )
+        private void PerformSomeTask()
         {
             // Herhangi bir işlemi burada gerçekleştirin.
 
@@ -3199,7 +3200,7 @@ namespace ResimDuzenleme
 
             //StartTimer();
         }
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabase( )
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabase()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -3364,7 +3365,7 @@ namespace ResimDuzenleme
             }
 
         }
-        private async Task<string> ResimEkle( )
+        private async Task<string> ResimEkle()
         {
             try
             {
@@ -3397,7 +3398,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private async Task<string> FiyatDuzenle( )
+        private async Task<string> FiyatDuzenle()
         {
             try
             {
@@ -3577,7 +3578,7 @@ namespace ResimDuzenleme
             frm.Show();
         }
 
-        private async Task<List<Stok2>> MisigoVeritabanindaStokEkle( )
+        private async Task<List<Stok2>> MisigoVeritabanindaStokEkle()
         {
             List<Stok2> stoks = new List<Stok2>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -3629,7 +3630,7 @@ namespace ResimDuzenleme
             return stoks;
         }
 
-        private async Task<List<Stok2>> MisigoVeritabanindaStokCikar( )
+        private async Task<List<Stok2>> MisigoVeritabanindaStokCikar()
         {
             List<Stok2> stoks = new List<Stok2>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -3706,10 +3707,10 @@ namespace ResimDuzenleme
 
         }
 
+ 
 
 
-
-        private async Task StokGuncelle( )
+        private async Task StokGuncelle()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -3795,9 +3796,9 @@ namespace ResimDuzenleme
             return new string(fileName.Where(c => !invalidChars.Contains(c)).ToArray());
         }
 
+       
 
-
-        private async Task ItemsEkle( )
+        private async Task ItemsEkle()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -3871,7 +3872,7 @@ namespace ResimDuzenleme
             labelStatus.Text = "Ürün Aktarma İşlem tamamlandı.";
         }
 
-        private async Task UpdateDownloadedItem2( )
+        private async Task UpdateDownloadedItem2()
         {
             try
             {
@@ -3964,7 +3965,7 @@ namespace ResimDuzenleme
                             if (urunListesi.Any())
                             {
                                 await DeleteExistingBarcodes(urunListesi);
-
+                        
                             }
                             if (urunListesi.Any())
                             {
@@ -3988,7 +3989,7 @@ namespace ResimDuzenleme
                 Console.WriteLine($"Hata: {ex.ToString()}");
             }
         }
-
+     
         private async Task DeleteExistingBarcodes(List<ZTMSGUrunListMisigo> urunListesi)
         {
             try
@@ -4027,9 +4028,9 @@ namespace ResimDuzenleme
 
                 Console.WriteLine($"SQL kaydetme hatası: {ex.Message}");
             }
-
+            
         }
-
+   
         private async Task BulkInsertProducts(List<ZTMSGUrunListMisigo> urunListesi)
         {
 
@@ -4236,7 +4237,7 @@ namespace ResimDuzenleme
                 } // Veritabanına toplu ekleme yap
             }
         }
-        private async Task UpdateDownloadedItemUpdate( )
+        private async Task UpdateDownloadedItemUpdate()
         {
 
             try
@@ -4379,7 +4380,7 @@ namespace ResimDuzenleme
                 // Örneğin: MessageBox.Show("URL güncellenirken bir hata oluştu: " + ex.Message);
             }
         }
-        private async Task DownloadImagesAsyncMisigo( )
+        private async Task DownloadImagesAsyncMisigo()
         {
             try
             {
@@ -4487,8 +4488,8 @@ namespace ResimDuzenleme
 
         private async void misigoÜrünleriGüncelleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // await UpdateDownloadedItem2();
-
+           // await UpdateDownloadedItem2();
+         
             await UpdateDownloadedItemUpdate();
             await ResimEkle();
             await FiyatDuzenle();
@@ -4528,7 +4529,7 @@ namespace ResimDuzenleme
 
         private void misigoÖzellikEşleştirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MisigoOzellikEslestir frm = new MisigoOzellikEslestir();
+            MisigoOzellikEslestir frm =new MisigoOzellikEslestir();
             frm.Show();
         }
 

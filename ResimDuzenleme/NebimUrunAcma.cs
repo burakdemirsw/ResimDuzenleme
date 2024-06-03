@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Text;
+using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Net.Http;
-using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 namespace ResimDuzenleme
 {
     public partial class NebimUrunAcma : Form
     {
-        public NebimUrunAcma( )
+        public NebimUrunAcma()
         {
             InitializeComponent();
         }
@@ -129,7 +129,7 @@ namespace ResimDuzenleme
         }
 
 
-        private List<string> GetSirketKodlari( )
+        private List<string> GetSirketKodlari()
         {
             List<string> sirketKodlari = new List<string>();
 
@@ -197,7 +197,7 @@ namespace ResimDuzenleme
                             command.Parameters.AddWithValue("@NebimUrunKodu", $"{anaUrunKodu}-{sirketKodu}-{checkedValue}");
                             command.Parameters.AddWithValue("@NebimUrunAdi", txtNebimUrunAdi.Text);
                             command.Parameters.AddWithValue("@Variant", comboBoxEdit1.SelectedIndex);
-                            command.Parameters.AddWithValue("@UrunHiyerarsi", $"{checkedValue}");
+                            command.Parameters.AddWithValue("@UrunHiyerarsi", $"{ checkedValue}");
                             command.Parameters.AddWithValue("@MaddeVergiGrubu", cmbVergiGrubu.Text);
                             command.Parameters.AddWithValue("@MaddeHesapGrubu", textBox1.Text);
                             command.Parameters.AddWithValue("@MagazadaSatisaAcik", checkBox1.Checked);
@@ -343,7 +343,7 @@ namespace ResimDuzenleme
             ozellikForm.ShowDialog();
         }
 
-        private async Task<string> ConnectIntegrator( )
+        private async Task<string> ConnectIntegrator()
         {
             try
             {

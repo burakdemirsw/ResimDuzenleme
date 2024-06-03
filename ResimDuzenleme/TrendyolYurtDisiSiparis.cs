@@ -1,17 +1,19 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.IO;
+using System.Drawing;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.IO;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 
 
@@ -23,7 +25,7 @@ namespace ResimDuzenleme
 {
     public partial class TrendyolYurtDisiSiparis : Form
     {
-        public TrendyolYurtDisiSiparis( )
+        public TrendyolYurtDisiSiparis()
         {
             InitializeComponent();
         }
@@ -39,7 +41,7 @@ namespace ResimDuzenleme
 
             ISheet sheet = workbook.GetSheetAt(0);  // 0-indexed (get the first sheet)
 
-
+         
 
             for (int i = 1; i <= sheet.LastRowNum; i++)  // 0-indexed (skip the first row)
             {
@@ -59,7 +61,7 @@ namespace ResimDuzenleme
 
                     InsertDataToSql(TakipNo, ToptanSatisFiyati, Barkod, UrunAdi, Adet, MusteriKodu, CurrencyCode);
 
-
+                 
                     Application.DoEvents();
                 }
                 catch (Exception ex)
@@ -73,7 +75,7 @@ namespace ResimDuzenleme
         }
 
 
-        private void DeleteDataToSql( )
+        private void DeleteDataToSql()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -94,8 +96,8 @@ namespace ResimDuzenleme
                 }
             }
         }
-
-        private void InsertDataToSql(string TakipNo, decimal ToptanSatisFiyati, string Barkod, string UrunAdi, int Adet, string MusteriKodu, string CurrencyCode)
+        
+        private void InsertDataToSql(string TakipNo, decimal ToptanSatisFiyati, string Barkod, string UrunAdi, int Adet,string MusteriKodu,string CurrencyCode)
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -126,7 +128,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private async Task<List<ZtNebimFaturaRYD>> VeritabanindanMusteriGetirFaturaR( )
+        private async Task<List<ZtNebimFaturaRYD>> VeritabanindanMusteriGetirFaturaR()
         {
 
             try
@@ -201,7 +203,7 @@ namespace ResimDuzenleme
                         musteri.OrdersViaInternetInfo = OrdersViaInternetInfoArray.ToObject<List<OrdersViaInternetInfo>>().First();
 
 
-
+                   
 
                         //string attributesJson = reader["Attributes"].ToString();
                         //JArray attributesArray = JArray.Parse(attributesJson);
@@ -223,7 +225,7 @@ namespace ResimDuzenleme
 
         }
 
-        private async Task<string> ConnectIntegrator( )
+        private async Task<string> ConnectIntegrator()
         {
             try
             {
@@ -261,7 +263,7 @@ namespace ResimDuzenleme
                 }
             }
 
-
+        
             string sessionID = await ConnectIntegrator();
 
             try

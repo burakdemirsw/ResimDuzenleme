@@ -1,16 +1,19 @@
 ﻿
-using QRCoder;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using QRCoder;
 using System.Xml.Linq;
+using System.IO;
 
 
 
@@ -19,11 +22,11 @@ namespace ResimDuzenleme
 {
     public partial class QROlusturma : Form
     {
-        public QROlusturma( )
+        public QROlusturma()
         {
             InitializeComponent();
         }
-        public void ProcessXmlItemUrls( )
+        public void ProcessXmlItemUrls()
         {
             try
             {
@@ -270,7 +273,7 @@ namespace ResimDuzenleme
 
 
 
-        public void ProcessXmlUrls( )
+        public void ProcessXmlUrls()
         {
             try
             {
@@ -322,7 +325,7 @@ namespace ResimDuzenleme
 
 
         }
-        public void ProcessXmlKategoriUrls( )
+        public void ProcessXmlKategoriUrls()
         {
             try
             {
@@ -365,7 +368,7 @@ namespace ResimDuzenleme
 
         }
 
-        public List<Marka2> GetMarkalarFromStoredProcedureKAT( )
+        public List<Marka2> GetMarkalarFromStoredProcedureKAT()
         {
             List<Marka2> markalar = new List<Marka2>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -544,8 +547,8 @@ namespace ResimDuzenleme
 
         }
 
-
-
+      
+     
         private void btnQRServisKontrol_Click(object sender, EventArgs e)
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -586,7 +589,7 @@ namespace ResimDuzenleme
                             // Eğer QR kod oluşturma işlemi başarılı ise veritabanına kayıt ekle
                             if (File.Exists(outputPath))
                             {
-                                InsertQRCodeToDatabase(barkod, url);
+                                InsertQRCodeToDatabase( barkod, url);
                             }
                         }
                         // SqlDataReader'ı kapatın veya Dispose edin
@@ -617,7 +620,7 @@ namespace ResimDuzenleme
                 // İsterseniz hatayı loglama veya başka işlemler yapabilirsiniz
             }
         }
-        private void InsertQRCodeToDatabase(string barkod, string url)
+        private void InsertQRCodeToDatabase( string barkod, string url)
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -638,12 +641,12 @@ namespace ResimDuzenleme
                     if (result > 0)
                     {
                         // Ekleme başarılı
-
+              
                     }
                 }
             }
         }
-        public List<Marka2> GetMarkalarFromStoredProcedure( )
+        public List<Marka2> GetMarkalarFromStoredProcedure()
         {
             List<Marka2> markalar = new List<Marka2>();
             string serverName = Properties.Settings.Default.SunucuAdi;

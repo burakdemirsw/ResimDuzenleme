@@ -1,12 +1,19 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ResimDuzenleme.KargoApi
 {
     public partial class ArasKargoApi : Form
     {
-        public ArasKargoApi( )
+        public ArasKargoApi()
         {
             InitializeComponent();
         }
@@ -88,10 +95,10 @@ namespace ResimDuzenleme.KargoApi
                         cmd.Parameters.AddWithValue("@AddressIdGonderimi", cmbAddressID.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@ParcaBilgisi", cmbParcaBilgisi.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@BarkodCiktisi", cmbBarkodCikti.SelectedItem.ToString());
+                   
 
 
-
-
+                        
 
                         //cmd.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar, -1) { Value = json });
                         //cmd.Parameters.Add(new SqlParameter("@Cevap", SqlDbType.NVarChar, -1) { Value = jsonResponse });
@@ -107,40 +114,40 @@ namespace ResimDuzenleme.KargoApi
 
 
 
-
-            using (SqlConnection conn2 = new SqlConnection(connectionString))
-            {
-                string query = "INSERT INTO ZTMSGArasKargoApi (KargoTipi,SenderUserName,SenderPassword,SenderCustomerCode,QueryUserName,QueryPassWord,QueryCustomerCode,AddressIdGonderimi,ParcaBilgisi,BarkodCiktisi) VALUES (@KargoTipi,@SenderUserName,@SenderPassword,@SenderCustomerCode,@QueryUserName,@QueryPassWord,@QueryCustomerCode,@AddressIdGonderimi,@ParcaBilgisi,@BarkodCiktisi)";
-                using (SqlCommand cmd = new SqlCommand(query, conn2))
+          
+                using (SqlConnection conn2 = new SqlConnection(connectionString))
                 {
+                    string query = "INSERT INTO ZTMSGArasKargoApi (KargoTipi,SenderUserName,SenderPassword,SenderCustomerCode,QueryUserName,QueryPassWord,QueryCustomerCode,AddressIdGonderimi,ParcaBilgisi,BarkodCiktisi) VALUES (@KargoTipi,@SenderUserName,@SenderPassword,@SenderCustomerCode,@QueryUserName,@QueryPassWord,@QueryCustomerCode,@AddressIdGonderimi,@ParcaBilgisi,@BarkodCiktisi)";
+                    using (SqlCommand cmd = new SqlCommand(query, conn2))
+                    {
 
 
-                    cmd.Parameters.AddWithValue("@KargoTipi", label19.Text);
-                    cmd.Parameters.AddWithValue("@SenderUserName", txtSenderUserName2.Text);
-                    cmd.Parameters.AddWithValue("@SenderPassword", txtSenderPassWord2.Text);
-                    cmd.Parameters.AddWithValue("@SenderCustomerCode", txtSenderCustomerCode2.Text);
-                    cmd.Parameters.AddWithValue("@QueryUserName", txtQueryUserName2.Text);
-                    cmd.Parameters.AddWithValue("@QueryPassWord", txtQueryPassWord2.Text);
-                    cmd.Parameters.AddWithValue("@QueryCustomerCode", txtQueryCustomerCode2.Text);
-                    cmd.Parameters.AddWithValue("@AddressIdGonderimi", cmbAddressID.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@ParcaBilgisi", cmbParcaBilgisi.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@BarkodCiktisi", cmbBarkodCikti.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@KargoTipi", label19.Text);
+                        cmd.Parameters.AddWithValue("@SenderUserName", txtSenderUserName2.Text);
+                        cmd.Parameters.AddWithValue("@SenderPassword", txtSenderPassWord2.Text);
+                        cmd.Parameters.AddWithValue("@SenderCustomerCode", txtSenderCustomerCode2.Text);
+                        cmd.Parameters.AddWithValue("@QueryUserName", txtQueryUserName2.Text);
+                        cmd.Parameters.AddWithValue("@QueryPassWord", txtQueryPassWord2.Text);
+                        cmd.Parameters.AddWithValue("@QueryCustomerCode", txtQueryCustomerCode2.Text);
+                        cmd.Parameters.AddWithValue("@AddressIdGonderimi", cmbAddressID.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@ParcaBilgisi", cmbParcaBilgisi.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@BarkodCiktisi", cmbBarkodCikti.SelectedItem.ToString());
 
 
 
 
 
-                    //cmd.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar, -1) { Value = json });
-                    //cmd.Parameters.Add(new SqlParameter("@Cevap", SqlDbType.NVarChar, -1) { Value = jsonResponse });
+                        //cmd.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar, -1) { Value = json });
+                        //cmd.Parameters.Add(new SqlParameter("@Cevap", SqlDbType.NVarChar, -1) { Value = jsonResponse });
 
 
-                    conn2.Open();
-                    cmd.ExecuteNonQuery();
+                        conn2.Open();
+                        cmd.ExecuteNonQuery();
 
 
+                    }
                 }
-            }
-
+            
             MessageBox.Show("Kayıt Başarılı");
         }
 

@@ -1,10 +1,16 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ResimDuzenleme.UblSerializer
 {
-    public abstract class InvoiceSerializer
+   public abstract class InvoiceSerializer
     {
-        public static XmlSerializerNamespaces GetXmlSerializerNamespace( )
+        public static XmlSerializerNamespaces GetXmlSerializerNamespace()
         {
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
 

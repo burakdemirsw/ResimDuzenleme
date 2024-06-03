@@ -100,7 +100,7 @@ namespace ResimDuzenleme.Services.Forms
                 if (string.IsNullOrWhiteSpace(referenceIdsInput) || string.IsNullOrWhiteSpace(shipmentIdsInput))
                 {
                     MessageBox.Show("Reference IDs or Shipment IDs cannot be empty.");
-                    return; 
+                    return;
                 }
 
                 List<string> referenceIdList = new List<string>(referenceIdsInput.Split(','));

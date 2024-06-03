@@ -1,25 +1,27 @@
-﻿using DevExpress.XtraEditors.Repository;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraReports.UI;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using ResimDuzenleme.EArchiveInvoiceWS;
 using ResimDuzenleme.Operations;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Views.Grid;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Xsl;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraReports.UserDesigner;
+
+using System.Diagnostics;
 //using iTextSharp.text;
 //using iTextSharp.text.pdf;
 
@@ -31,18 +33,18 @@ namespace ResimDuzenleme
 {
     public partial class FrmFaturalastirTekli : DevExpress.XtraEditors.XtraForm
     {
-        public FrmFaturalastirTekli( )
+        public FrmFaturalastirTekli()
         {
             InitializeComponent();
-            //  this.Height = 1080;
+          //  this.Height = 1080;
         }
         Encoding encoding = Encoding.UTF8;
 
-        //     string pngOutputPath;
+   //     string pngOutputPath;
         private FaturaGorsel faturaGorselForm = new FaturaGorsel();
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private HttpClient httpClient = new HttpClient();
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -97,7 +99,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private async Task<List<ZtNebimFaturaROnlineCount>> VeritabanindanMusteriGetirFaturaROnline(string Ordernumber, string BarcodeType)
+        private async Task<List<ZtNebimFaturaROnlineCount>> VeritabanindanMusteriGetirFaturaROnline(string Ordernumber,string BarcodeType)
         {
 
             try
@@ -230,7 +232,7 @@ namespace ResimDuzenleme
             {
                 MessageBox.Show("DURUN!!! Siparişte Toplamaması gereken Ürünler Mevcut... Sipariş İptal Edilmiş olabilir.");
             }
-            if (siparisDurumu == 1)
+                if (siparisDurumu == 1)
             {
                 DialogResult result2 = MessageBox.Show("Sipariş Toplandı. Faturalaştırma yapılacak mı?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -243,7 +245,7 @@ namespace ResimDuzenleme
                     foreach (var faturaBilgisi in faturaBilgileri)
                     {
                         string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
-
+                        
                         List<ZtNebimFaturaROnlineCount> items = await VeritabanindanMusteriGetirFaturaROnline(orderNumber, barcode);
                         if (items.Count == 1)
                         {
@@ -254,8 +256,8 @@ namespace ResimDuzenleme
                             var tasks = items.Select(async item =>
                             {
                                 string json = JsonConvert.SerializeObject(item);
-
-
+                             
+                              
 
                                 try
                                 {
@@ -267,38 +269,38 @@ namespace ResimDuzenleme
 
                                     if (response.IsSuccessStatusCode)
                                     {
-                                        //var result = await response.Content.ReadAsStringAsync();
-                                        //labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
-                                        //var responseContent = await response.Content.ReadAsStringAsync();
-                                        //// Yanıt içeriğindeki InvoiceHeaderID'yi çıkarmak için uygun bir yöntem kullanın
-                                        //// Örnek olarak, JSON'dan çıkarım yapıldığını varsayıyoruz
-                                        //var invoiceData = JsonConvert.DeserializeObject<dynamic>(responseContent);
-                                        //string invoiceID = invoiceData.InvoiceHeaderID;
+                                    //var result = await response.Content.ReadAsStringAsync();
+                                    //labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
+                                    //var responseContent = await response.Content.ReadAsStringAsync();
+                                    //// Yanıt içeriğindeki InvoiceHeaderID'yi çıkarmak için uygun bir yöntem kullanın
+                                    //// Örnek olarak, JSON'dan çıkarım yapıldığını varsayıyoruz
+                                    //var invoiceData = JsonConvert.DeserializeObject<dynamic>(responseContent);
+                                    //string invoiceID = invoiceData.InvoiceHeaderID;
 
-                                        //// InvoiceID ile ilgili işlemleri başlat
-                                        //var filePath = await ReadFromArchive_XML(invoiceID);
-                                        //string xsltContent = File.ReadAllText("general.xslt", Encoding.UTF8);
-                                        //string xmlContent = File.ReadAllText(filePath, Encoding.UTF8);
-                                        //string htmlContent = TransformXmlToHtml(xmlContent, xsltContent);
-                                        //ShowInvoice(htmlContent);
-                                        var responseContent = await response.Content.ReadAsStringAsync();
+                                    //// InvoiceID ile ilgili işlemleri başlat
+                                    //var filePath = await ReadFromArchive_XML(invoiceID);
+                                    //string xsltContent = File.ReadAllText("general.xslt", Encoding.UTF8);
+                                    //string xmlContent = File.ReadAllText(filePath, Encoding.UTF8);
+                                    //string htmlContent = TransformXmlToHtml(xmlContent, xsltContent);
+                                    //ShowInvoice(htmlContent);
+                                    var responseContent = await response.Content.ReadAsStringAsync();
                                         string filePath = "C:\\temp\\response.txt"; // Dosya yolu örneğidir, değiştirebilirsiniz.
                                         File.WriteAllText(filePath, "JSON:\n" + json + "\n\nResponse:\n" + responseContent);
 
                                         // Not defterini (Notepad) bu dosya ile aç
                                         Process.Start("notepad.exe", filePath);
                                         var invoiceData = JsonConvert.DeserializeObject<dynamic>(responseContent);
-
+                               
                                         string base64EncodedInvoiceString = invoiceData.UnofficialInvoiceString;
 
-                                        // Base64 kodlu metni byte dizisine dönüştür
-                                        byte[] decodedBytes = Convert.FromBase64String(base64EncodedInvoiceString);
+                                    // Base64 kodlu metni byte dizisine dönüştür
+                                    byte[] decodedBytes = Convert.FromBase64String(base64EncodedInvoiceString);
 
-                                        // Byte dizisini string'e çevir (Eğer metin UTF-8 kodlamasında ise)
-                                        string decodedInvoiceString = Encoding.UTF8.GetString(decodedBytes);
+                                    // Byte dizisini string'e çevir (Eğer metin UTF-8 kodlamasında ise)
+                                    string decodedInvoiceString = Encoding.UTF8.GetString(decodedBytes);
 
-                                        // Decode edilmiş metni ShowInvoice metoduna gönder
-                                        ShowInvoice(decodedInvoiceString);
+                                    // Decode edilmiş metni ShowInvoice metoduna gönder
+                                    ShowInvoice(decodedInvoiceString);
 
                                         using (SqlConnection conn = new SqlConnection(connectionString))
                                         {
@@ -328,7 +330,7 @@ namespace ResimDuzenleme
 
                                                     Console.WriteLine("gridControl1 veya gridView1 null. Lütfen kontrol edin.");
                                                 }
-
+                                               
                                             }
                                         }
 
@@ -414,7 +416,7 @@ namespace ResimDuzenleme
             {
 
 
-
+              
                 DialogResult result2 = MessageBox.Show("Sipariş Toplandı. Faturalaştırma yapılacak mı?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result2 == DialogResult.Yes)
@@ -455,7 +457,7 @@ namespace ResimDuzenleme
 
                                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                                 var response = await httpClient.PostAsync($"http://{faturaBilgisi.IpAdres}/(S({sessionID}))/IntegratorService/post?", content);
-
+                            
                                 if (response.IsSuccessStatusCode)
                                 {
                                     //var result = await response.Content.ReadAsStringAsync();
@@ -550,7 +552,7 @@ namespace ResimDuzenleme
                         labelStatus.Text = "Fatura Aktarımı tamamlandı.";
                     }
 
-
+               
 
 
                     gridView1.ClearSelection(); // Tüm seçimleri temizle
@@ -581,14 +583,14 @@ namespace ResimDuzenleme
                 gridView1.ClearSelection(); // Tüm seçimleri temizle
                 gridView1.RefreshData(); // GridView verilerini yenile
                 textBox1.Focus();
-
+                
             }
             else
             {
                 MessageBox.Show("Lütfen tüm siparişleri seçin.");
             }
         }
-
+    
         private DataTable GetInvoiceData(string FaturaNo)
         {
             DataTable dataTable = new DataTable();
@@ -648,13 +650,13 @@ namespace ResimDuzenleme
 
             return dataTable;
         }
-        private void InitializeGridView( )
+        private void InitializeGridView()
         {
             // CheckBox için RepositoryItemCheckEdit oluştur
             RepositoryItemCheckEdit repositoryItemCheckEdit = new RepositoryItemCheckEdit();
             gridControl1.RepositoryItems.Add(repositoryItemCheckEdit);
 
-
+           
             // CheckBox ile satır seçimini etkinleştir
             gridView1.OptionsSelection.MultiSelect = true;
             gridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
@@ -671,7 +673,7 @@ namespace ResimDuzenleme
                 // Fatura numarasına göre verileri çek
                 DataTable invoiceData = GetInvoiceData(FaturaNo);
 
-                if (gridControl1 != null && gridView1 != null && FaturaNo != "")
+                if (gridControl1 != null && gridView1 != null  && FaturaNo != "")
                 {
                     // gridControl1'in MainView'unu kontrol etmek yerine, doğrudan DataSource'unu ayarla
                     gridControl1.DataSource = invoiceData;
@@ -680,7 +682,7 @@ namespace ResimDuzenleme
                     InitializeGridView(); // Bu satırı ekleyin
                                           //gridView1.SelectAll();
                     gridView1.ClearSelection();
-
+                 
                     gridView1.RefreshData(); // GridView verilerini yenile
                 }
                 else
@@ -690,7 +692,7 @@ namespace ResimDuzenleme
                 }
             }
         }
-
+    
         private void ExecuteStoredProcedure(string invoiceNumber, string currAccCode, string barcode, string qty1)
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -698,7 +700,7 @@ namespace ResimDuzenleme
             string password = Properties.Settings.Default.Sifre;
             string database = Properties.Settings.Default.database;
             string storecode = Properties.Settings.Default.StoreCode;
-
+          
             string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -712,7 +714,7 @@ namespace ResimDuzenleme
                     command.Parameters.AddWithValue("@CurrAccCode", currAccCode);
                     command.Parameters.AddWithValue("@Barcode", barcode);
                     command.Parameters.AddWithValue("@Qty1", 1);
-
+                  
 
                     try
                     {
@@ -785,7 +787,7 @@ namespace ResimDuzenleme
 
                     // Parametreleri ekleyin
                     command.Parameters.AddWithValue("@Invoicenumber", invoiceNumber);
-
+                
                     try
                     {
                         connection.Open();
@@ -845,7 +847,7 @@ namespace ResimDuzenleme
             {
                 string inputBarcode = textBox2.Text;
                 bool matchFound = false;
-
+               
                 // Tüm satırları döngüye al
                 for (int i = 0; i < gridView1.DataRowCount; i++)
                 {
@@ -882,22 +884,22 @@ namespace ResimDuzenleme
                         }
                         else
                         {
-                            if (textBox1.Text != "")
-                            {
+                                if (textBox1.Text != "")
+                                {
 
-                                MessageBox.Show("Siparişte Okuttuğunuz barkod daha önce toplanmıştır");
-                                textBox1.Focus();
-                            }
+                                    MessageBox.Show("Siparişte Okuttuğunuz barkod daha önce toplanmıştır");
+                                    textBox1.Focus();
+                                }
                         }
+                     
 
-
-
+                            
 
 
                         gridView1.RefreshData(); // GridView verilerini yenile
                         break; // Döngüden çık
                     }
-
+                
                 }
                 if (!matchFound)
                 {
@@ -953,12 +955,12 @@ namespace ResimDuzenleme
                 {
                     e.Appearance.BackColor = System.Drawing.Color.Green; // Seçili satırın arka planını yeşil yap
                     e.Appearance.ForeColor = System.Drawing.Color.White; // Yazı rengini beyaz yap
-
-                    SelectRowsBasedOnCondition();
+                  
+                     SelectRowsBasedOnCondition();
                 }
             }
         }
-        private void SelectRowsBasedOnCondition( )
+        private void SelectRowsBasedOnCondition()
         {
             for (int i = 0; i < gridView1.DataRowCount; i++)
             {
@@ -974,11 +976,11 @@ namespace ResimDuzenleme
                 }
             }
         }
+  
+  //      private bool isAskingForConfirmation = false;
 
-        //      private bool isAskingForConfirmation = false;
 
-
-
+    
 
         private readonly ResimDuzenlemeClient _ResimDuzenlemeClient = new ResimDuzenlemeClient();
 
@@ -997,7 +999,7 @@ namespace ResimDuzenleme
                 PROFILE = nameof(EI.DocumentType.XML)
             };
 
-            ArchiveInvoiceReadResponse response = await Task.Run(( ) => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
+            ArchiveInvoiceReadResponse response = await Task.Run(() => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
 
             Assert.AreEqual(response.REQUEST_RETURN.RETURN_CODE, 0);
             Assert.IsTrue(response.INVOICE.Length > 0);
@@ -1038,7 +1040,7 @@ namespace ResimDuzenleme
             // Formu göster
             faturaGorselForm.Show();
         }
-        private void OpenNebimFaturaListesi2( )
+        private void OpenNebimFaturaListesi2()
         {
             var nebimFaturaListesi2 = new NebimFaturaListesi2();
             nebimFaturaListesi2.FrmFaturalastirTekliRef = this; // Bu satır önemli
@@ -1056,15 +1058,15 @@ namespace ResimDuzenleme
             set { textBox1.Text = value; }
         }
 
-        public void TriggerEnterOperation( )
+        public void TriggerEnterOperation()
         {
             // Enter tuşuna basıldığında gerçekleşmesini istediğiniz işlemler
             // Örneğin, simpleButton1'in click event'ini burada çağırabilirsiniz
             simpleButton1.PerformClick();
         }
 
-
-        private void UpdateChartCount( )
+     
+        private void UpdateChartCount()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -1077,12 +1079,12 @@ namespace ResimDuzenleme
             {
                 connection.Open();
                 string sqlQuery = $"SELECT PhotoPath=Photo, OrderDate, Barcode, [Ürün Kodu], [Ürün Adı], [Renk Kodu], [Renk], [Beden], Miktar, Tutar FROM MSG_SiparisKontrolList('{barcode}') ORDER BY OrderDate, [Ürün Kodu], [Renk Kodu], [Beden]";
-
-
+          
+               
             }
         }
 
-
+  
 
         private void FrmFaturalastirTekli_Load(object sender, EventArgs e)
         {
@@ -1092,7 +1094,7 @@ namespace ResimDuzenleme
 
 
 
-        private void simpleButton2_Click(object sender, EventArgs e)
+        private  void simpleButton2_Click(object sender, EventArgs e)
         {
             SiparisListPdf report = new SiparisListPdf();
 

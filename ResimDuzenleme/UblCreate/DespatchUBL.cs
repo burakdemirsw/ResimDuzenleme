@@ -1,5 +1,10 @@
-﻿using ResimDuzenleme.Ubl;
+﻿using ResimDuzenleme;
+using ResimDuzenleme.Ubl;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UblDespatch;
 
 
@@ -10,7 +15,7 @@ namespace ResimDuzenleme.UblCreate
     {
 
 
-        public DespatchUBL( )
+        public DespatchUBL()
            : base()
         {
             addAdinationalDocRefXslt();
@@ -18,12 +23,12 @@ namespace ResimDuzenleme.UblCreate
 
 
 
-        private void addAdinationalDocRefXslt( )
+        private void addAdinationalDocRefXslt()
         {
 
             var idRef = new DocumentReferenceType();
             idRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
-            idRef.IssueDate = new IssueDateType { Value = DateTime.Now };
+            idRef.IssueDate =new IssueDateType { Value= DateTime.Now}; 
             idRef.DocumentType = new DocumentTypeType { Value = "XSLT" };
             idRef.Attachment = new AttachmentType();
             idRef.Attachment.EmbeddedDocumentBinaryObject = new EmbeddedDocumentBinaryObjectType();
@@ -32,7 +37,7 @@ namespace ResimDuzenleme.UblCreate
             idRef.Attachment.EmbeddedDocumentBinaryObject.encodingCode = "Base64";
             idRef.Attachment.EmbeddedDocumentBinaryObject.filename = baseDespatchUBL.ID.Value.ToString() + ".xslt";
             idRef.Attachment.EmbeddedDocumentBinaryObject.mimeCode = "application/xml";
-
+          
             idRef.Attachment.EmbeddedDocumentBinaryObject.Value = Convert.FromBase64String(Xslt.xsltGibDespatch);
 
             docRefList.Add(idRef);

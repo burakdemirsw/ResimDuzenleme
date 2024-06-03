@@ -1,13 +1,18 @@
-﻿using CsvHelper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Globalization;
-using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.IO;
+using ImageMagick;
 using Excel = Microsoft.Office.Interop.Excel;
+using CsvHelper;
+using System.Globalization;
+using ClosedXML.Excel;
+using NPOI;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 //using OfficeOpenXml;
 //using OfficeOpenXml.Style;
 
@@ -16,7 +21,7 @@ namespace ResimDuzenleme
 {
     public partial class ExcelIslemleri : Form
     {
-        public ExcelIslemleri( )
+        public ExcelIslemleri()
         {
             InitializeComponent();
         }
@@ -166,7 +171,7 @@ namespace ResimDuzenleme
 
                     // Yazıları yazdır
                     excelWorkSheet.Cells[startRow, j + 2] = row[j].ToString();
-
+              
                     //excelWorkSheet.Columns[3].EntireColumn.AutoFit();
                     //excelWorkSheet.Columns[4].EntireColumn.AutoFit();
                     //excelWorkSheet.Columns[5].EntireColumn.AutoFit();
@@ -203,7 +208,7 @@ namespace ResimDuzenleme
                 addedProductCodes[uniqueCode]++; // Increment the row counter within the merged region
 
             }
-
+ 
 
 
             // Save and close

@@ -1,20 +1,34 @@
-﻿using DevExpress.XtraEditors.Repository;
-using DevExpress.XtraGrid.Views.Grid;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using System.Data.SqlClient;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Net.Http;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraPrinting; // Yazdırma ve önizleme için
+using DevExpress.XtraReports.UserDesigner; // Rapor tasarımcısı için
 
 
 namespace ResimDuzenleme
 {
     public partial class DegisimListesi : Form
     {
-        public DegisimListesi( )
+        public DegisimListesi()
         {
             InitializeComponent();
         }
-        private void OpenNebimFaturaListesi2( )
+        private void OpenNebimFaturaListesi2()
         {
             var nebimFaturaListesi2 = new NebimFaturaListesiGider();
             nebimFaturaListesi2.FrmFaturalastirTekliRef2 = this; // Bu satır önemli
@@ -92,7 +106,7 @@ namespace ResimDuzenleme
 
             return dataTable;
         }
-        private void InitializeGridView( )
+        private void InitializeGridView()
         {
             // CheckBox için RepositoryItemCheckEdit oluştur
             RepositoryItemCheckEdit repositoryItemCheckEdit = new RepositoryItemCheckEdit();
@@ -127,14 +141,14 @@ namespace ResimDuzenleme
             set { textBox4.Text = value; }
         }
 
-        public void TriggerEnterOperation( )
+        public void TriggerEnterOperation()
         {
             // Enter tuşuna basıldığında gerçekleşmesini istediğiniz işlemler
             // Örneğin, simpleButton1'in click event'ini burada çağırabilirsiniz
             simpleButton1.PerformClick();
         }
 
-        private void AcilirPanelGoster( )
+        private void AcilirPanelGoster()
         {
             using (var form = new AcilirPanelGoster())
             {

@@ -1,18 +1,21 @@
-﻿using ResimDuzenleme.UrunServis;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using ResimDuzenleme.UrunServis;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Threading;
-using System.Windows.Forms;
 
 
 namespace ResimDuzenleme
 {
     public static class UrunServiceMethods
     {
-        public static void StokAdediGuncelle( )
+        public static void StokAdediGuncelle()
         {
             try
             {
@@ -33,7 +36,7 @@ namespace ResimDuzenleme
                 MessageBox.Show(exception.Message);
             }
         }
-        public static SelectMagazaStokResponse selectMagazaStok( )
+        public static SelectMagazaStokResponse selectMagazaStok()
         {
             try
             {
@@ -58,7 +61,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static WebServisResponse UpdateEkSecenekGrupDil( )
+        public static WebServisResponse UpdateEkSecenekGrupDil()
         {
             try
             {
@@ -89,7 +92,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static WebServisResponse UpdateEkSecenekDegerDil( )
+        public static WebServisResponse UpdateEkSecenekDegerDil()
         {
             try
             {
@@ -122,7 +125,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static WebServisResponse UpdateTeknikDetayOzellikDil( )
+        public static WebServisResponse UpdateTeknikDetayOzellikDil()
         {
             try
             {
@@ -155,7 +158,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static WebServisResponse UpdateTeknikDetayGrupDil( )
+        public static WebServisResponse UpdateTeknikDetayGrupDil()
         {
             try
             {
@@ -188,7 +191,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static WebServisResponse UpdateTeknikDetayDegerDil( )
+        public static WebServisResponse UpdateTeknikDetayDegerDil()
         {
             try
             {
@@ -222,7 +225,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static WebServisResponse UpdateUrunDil( )
+        public static WebServisResponse UpdateUrunDil()
         {
             try
             {
@@ -286,7 +289,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static WebServisResponse UpdateKategoriDil( )
+        public static WebServisResponse UpdateKategoriDil()
         {
             try
             {
@@ -335,7 +338,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static List<UrunOdemeSecenekBanka> GetTaksitSecenekleri( )
+        public static List<UrunOdemeSecenekBanka> GetTaksitSecenekleri()
         {
             try
             {
@@ -353,7 +356,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static List<ParaBirimi> SelectParaBirimi( )
+        public static List<ParaBirimi> SelectParaBirimi()
         {
             try
             {
@@ -371,7 +374,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static int SaveParaBirimi( )
+        public static int SaveParaBirimi()
         {
             try
             {
@@ -437,7 +440,7 @@ namespace ResimDuzenleme
         //        return null;
         //    }
         //}
-        public static List<AsortiMiktar> SelectAsortiMiktar( )
+        public static List<AsortiMiktar> SelectAsortiMiktar()
         {
             try
             {
@@ -455,7 +458,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static List<AsortiGrup> SelectAsortiGrup( )
+        public static List<AsortiGrup> SelectAsortiGrup()
         {
             try
             {
@@ -473,7 +476,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static SaveResponse SaveAsortiMiktar( )
+        public static SaveResponse SaveAsortiMiktar()
         {
             try
             {
@@ -500,7 +503,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static SaveResponse SaveAsortiGrup( )
+        public static SaveResponse SaveAsortiGrup()
         {
             try
             {
@@ -526,7 +529,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static void VaryasyonGuncelle( )
+        public static void VaryasyonGuncelle()
         {
             try
             {
@@ -569,7 +572,7 @@ namespace ResimDuzenleme
                 MessageBox.Show(exception.Message);
             }
         }
-        public static void SaveVaryasyon( )
+        public static void SaveVaryasyon()
         {
             try
             {
@@ -615,7 +618,7 @@ namespace ResimDuzenleme
                 MessageBox.Show(exception.Message);
             }
         }
-        public static int SelectVaryasyonCount( )
+        public static int SelectVaryasyonCount()
         {
             try
             {
@@ -655,8 +658,7 @@ namespace ResimDuzenleme
                 {
                     attempts++;
                     kategoriListe = StaticVariables.urunServisClient.SelectUrun(WSYetki, urunFiltre, urunSayfalama);
-                    if (kategoriListe != null && kategoriListe.Count > 0)
-                        break; // Eğer sipariş listesi alındıysa döngüden çık
+                    if (kategoriListe != null && kategoriListe.Count > 0) break; // Eğer sipariş listesi alındıysa döngüden çık
                 }
                 catch (Exception ex)
                 {
@@ -686,8 +688,7 @@ namespace ResimDuzenleme
                 {
                     attempts++;
                     kategoriListe = StaticVariables.urunServisClient.SelectVaryasyon(WSYetki, varyasyonFiltre, urunSayfalama, selectVaryasyonAyar);
-                    if (kategoriListe != null && kategoriListe.Count > 0)
-                        break; // Eğer sipariş listesi alındıysa döngüden çık
+                    if (kategoriListe != null && kategoriListe.Count > 0) break; // Eğer sipariş listesi alındıysa döngüden çık
                 }
                 catch (Exception ex)
                 {
@@ -708,7 +709,7 @@ namespace ResimDuzenleme
 
 
 
-        public static List<UrunKarti> SelectUrun( )
+        public static List<UrunKarti> SelectUrun()
         {
             try
             {
@@ -810,7 +811,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static List<Varyasyon> SelectVaryasyon( )
+        public static List<Varyasyon> SelectVaryasyon()
         {
             try
             {
@@ -885,7 +886,7 @@ namespace ResimDuzenleme
             }
 
         }
-        public static List<Etiket> SelectEtiket( )
+        public static List<Etiket> SelectEtiket()
         {
             try
             {
@@ -904,7 +905,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static int SaveEtiket( )
+        public static int SaveEtiket()
         {
             try
             {
@@ -988,7 +989,7 @@ namespace ResimDuzenleme
         //        return null;
         //    }
         //}
-        public static int SaveTeknikDetayOzellik( )
+        public static int SaveTeknikDetayOzellik()
         {
             try
             {
@@ -1014,7 +1015,7 @@ namespace ResimDuzenleme
                 return 0;
             }
         }
-        public static int SaveTeknikDetayGrup( )
+        public static int SaveTeknikDetayGrup()
         {
             try
             {
@@ -1040,7 +1041,7 @@ namespace ResimDuzenleme
                 return 0;
             }
         }
-        public static int SaveTeknikDetayDeger( )
+        public static int SaveTeknikDetayDeger()
         {
             try
             {
@@ -1067,7 +1068,7 @@ namespace ResimDuzenleme
                 return 0;
             }
         }
-        public static List<UrunKategori> SelectUrunKategori( )
+        public static List<UrunKategori> SelectUrunKategori()
         {
             try
             {
@@ -1089,7 +1090,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static List<UrunYorum> SelectUrunYorum( )
+        public static List<UrunYorum> SelectUrunYorum()
         {
             try
             {
@@ -1107,7 +1108,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static List<UrunOdemeSecenek> SelectUrunOdemeSecenek( )
+        public static List<UrunOdemeSecenek> SelectUrunOdemeSecenek()
         {
             try
             {
@@ -1127,7 +1128,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-        public static int SelectUrunCount( )
+        public static int SelectUrunCount()
         {
             try
             {
@@ -1202,7 +1203,7 @@ namespace ResimDuzenleme
             public int KategoriID { get; set; }
         }
 
-        public static List<UrunServis.UrunKarti> GetUrunKartlariFromDatabase( )
+        public static List<UrunServis.UrunKarti> GetUrunKartlariFromDatabase()
         {
             List<UrunServis.UrunKarti> urunKartlari = new List<UrunServis.UrunKarti>();
 
@@ -1476,7 +1477,7 @@ namespace ResimDuzenleme
         //    }
         //}
 
-        public static void StokFiyatGuncelle( )
+        public static void StokFiyatGuncelle()
         {
             try
             {
@@ -1560,7 +1561,7 @@ namespace ResimDuzenleme
                     Base64Resim = false,
                     EtiketGuncelle = false,
                     KargoTipiGuncelle = false,
-                    OncekiKategoriEslestirmeleriniTemizle = false,
+                    OncekiKategoriEslestirmeleriniTemizle = true,
                     OncekiResimleriSil = false,
                     OzelAlan1Guncelle = false,
                     OzelAlan2Guncelle = false,
@@ -1635,7 +1636,7 @@ namespace ResimDuzenleme
             }
         }
 
-        public static void SaveUrun( )
+        public static void SaveUrun()
         {
             try
             {
@@ -1680,12 +1681,12 @@ namespace ResimDuzenleme
                         Vitrin = urunKartiZ.Vitrin,
                         YeniUrun = urunKartiZ.YeniUrun,
                         Varyasyonlar = varyasyonlar.Where(x => x.UrunKartiID == urunKartiZ.ID).ToList()
-                        // *
-                        // Varyasyonlar ve diğer eksik özellikler burada doldurulabilir.
-                    };
+                    // *
+                    // Varyasyonlar ve diğer eksik özellikler burada doldurulabilir.
+                };
 
                     // VaryasyonZ listesini ÜrünServis.Varyasyon listesine dönüştür
-
+                 
                     /*   urunKarti.Varyasyonlar = varyasyonlar.ToArray().ToList(); */// Diziye çevrilmiş varyasyonlar
                     urunServisKartlari.Add(urunKarti);
                 }
@@ -1719,7 +1720,7 @@ namespace ResimDuzenleme
                     Base64Resim = false,
                     EtiketGuncelle = false,
                     KargoTipiGuncelle = false,
-                    OncekiKategoriEslestirmeleriniTemizle = false,
+                    OncekiKategoriEslestirmeleriniTemizle = true,
                     OncekiResimleriSil = false,
                     OzelAlan1Guncelle = false,
                     OzelAlan2Guncelle = false,
@@ -2514,7 +2515,7 @@ END;";
 
 
 
-        public static List<Tedarikci> SelectTedarikci( )
+        public static List<Tedarikci> SelectTedarikci()
         {
             try
             {
@@ -2539,7 +2540,7 @@ END;";
                 return null;
             }
         }
-        public static int SaveTedarikci( )
+        public static int SaveTedarikci()
         {
             try
             {
@@ -2566,7 +2567,7 @@ END;";
                 return 0;
             }
         }
-        public static List<Marka> SelectMarka( )
+        public static List<Marka> SelectMarka()
         {
             try
             {
@@ -2591,7 +2592,7 @@ END;";
                 return null;
             }
         }
-        public static int SaveMarka( )
+        public static int SaveMarka()
         {
             try
             {
@@ -2617,7 +2618,7 @@ END;";
                 return 0;
             }
         }
-        public static UpdateUrlResponse UpdateUrl( )
+        public static UpdateUrlResponse UpdateUrl()
         {
             try
             {
@@ -2644,7 +2645,7 @@ END;";
                 return null;
             }
         }
-        public static void SaveResim( )
+        public static void SaveResim()
         {
             try
             {
@@ -2672,7 +2673,7 @@ END;";
                 MessageBox.Show(exception.Message);
             }
         }
-        public static WebServisResponse DeleteTedarikci( )
+        public static WebServisResponse DeleteTedarikci()
         {
             try
             {
@@ -2692,7 +2693,7 @@ END;";
                 return null;
             }
         }
-        public static WebServisResponse DeleteMarka( )
+        public static WebServisResponse DeleteMarka()
         {
             try
             {
@@ -2712,7 +2713,7 @@ END;";
                 return null;
             }
         }
-        public static WebServisResponse DeleteKategori( )
+        public static WebServisResponse DeleteKategori()
         {
             try
             {
@@ -2731,7 +2732,7 @@ END;";
                 return null;
             }
         }
-        public static SaveMagazaStokResponse SaveMagazaStok( )
+        public static SaveMagazaStokResponse SaveMagazaStok()
         {
             try
             {
@@ -2766,7 +2767,7 @@ END;";
                 return null;
             }
         }
-        public static List<SiparisUrunDurumlari> GetProductStatus( )
+        public static List<SiparisUrunDurumlari> GetProductStatus()
         {
             try
             {
@@ -2799,8 +2800,7 @@ END;";
                 {
                     attempts++;
                     kategoriListe = StaticVariables.urunServisClient.SelectKategori(WSYetki, sayi, dil);
-                    if (kategoriListe != null && kategoriListe.Count > 0)
-                        break; // Eğer sipariş listesi alındıysa döngüden çık
+                    if (kategoriListe != null && kategoriListe.Count > 0) break; // Eğer sipariş listesi alındıysa döngüden çık
                 }
                 catch (Exception ex)
                 {
@@ -2868,7 +2868,7 @@ END;";
                 }
             }
         }
-        public static List<Kategori> SelectKategori( )
+        public static List<Kategori> SelectKategori()
         {
             try
             {
@@ -2905,7 +2905,7 @@ END;";
                 return null;
             }
         }
-        public static void SaveKategoriParent( )
+        public static void SaveKategoriParent()
         {
             try
             {
@@ -2918,7 +2918,7 @@ END;";
             }
         }
 
-        public static List<Kategori> GetKategoriFromSP( )
+        public static List<Kategori> GetKategoriFromSP()
         {
             List<Kategori> kategoriListesi = new List<Kategori>();
 
@@ -2976,7 +2976,7 @@ END;";
         }
 
 
-        public static int SaveKategori( )
+        public static int SaveKategori()
         {
             try
             {
@@ -3010,7 +3010,7 @@ END;";
                 return 0;
             }
         }
-        public static void SaveIlgiliUrun( )
+        public static void SaveIlgiliUrun()
         {
             List<IlgiliUrun> ilgiliUrunListe = new List<IlgiliUrun>();
 
@@ -3031,7 +3031,7 @@ END;";
 
             StaticVariables.urunServisClient.SaveIlgiliUrun(StaticVariables.uyeKodu, ilgiliUrunListe);
         }
-        public static List<IlgiliUrun> SelectIlgiliUrun( )
+        public static List<IlgiliUrun> SelectIlgiliUrun()
         {
             try
             {
@@ -3049,7 +3049,7 @@ END;";
             }
         }
         // buradan aşağısı dökümanda ve mevcut versiyonda yok 
-        public static void SaveUrunKategori( )
+        public static void SaveUrunKategori()
         {
             List<UrunKategori> urunkategoriListe = new List<UrunKategori>();
             UrunKategori urunKategori = new UrunKategori
@@ -3061,7 +3061,7 @@ END;";
             urunkategoriListe.Add(urunKategori);
             StaticVariables.urunServisClient.SaveUrunKategori(StaticVariables.uyeKodu, urunkategoriListe);
         }
-        public static void DeleteUrunKategori( )
+        public static void DeleteUrunKategori()
         {
             List<UrunKategori> urunKategoriListe = new List<UrunKategori>();
             UrunKategori urunKategori = new UrunKategori
@@ -3073,7 +3073,7 @@ END;";
             urunKategoriListe.Add(urunKategori);
             StaticVariables.urunServisClient.DeleteUrunKategori(StaticVariables.uyeKodu, urunKategoriListe);
         }
-        public static void SaveUrunEtiket( )
+        public static void SaveUrunEtiket()
         {
             List<UrunEtiket> liste = new List<UrunEtiket>();
             UrunEtiket etiket = new UrunEtiket
@@ -3085,7 +3085,7 @@ END;";
             liste.Add(etiket);
             StaticVariables.urunServisClient.SaveUrunEtiket(StaticVariables.uyeKodu, liste);
         }
-        public static void DeleteUrunEtiket( )
+        public static void DeleteUrunEtiket()
         {
             try
             {
@@ -3106,13 +3106,13 @@ END;";
             }
 
         }
-        public static List<UrunEtiket> SelectUrunEtiket( )
+        public static List<UrunEtiket> SelectUrunEtiket()
         {
             // etiket id dolu urun karti id 0 gönderilir ise gönderilen etiket id yi içeren  tüm kayıtlar gelir aynısı ürün kartı id için de geçerlidir.  
             List<UrunEtiket> urunEtiketListe = StaticVariables.urunServisClient.SelectUrunEtiket(StaticVariables.uyeKodu, 0, 206);
             return urunEtiketListe;
         }
-        public static void DeleteIlgiliUrun( )
+        public static void DeleteIlgiliUrun()
         {
             // girilen idli ürün kartını içeren tüm ilgili ürünler silinir.
             StaticVariables.urunServisClient.DeleteIlgiliUrun(StaticVariables.uyeKodu, 205);

@@ -1,16 +1,39 @@
 ﻿using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using DevExpress.XtraReports.UI;
 using System.Data;
 using System.Data.SqlClient;
+
+
+
+
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Net.Http;
+
+using DevExpress.XtraPrinting; // Yazdırma ve önizleme için
+using DevExpress.XtraReports.UserDesigner; // Rapor tasarımcısı için
 
 namespace ResimDuzenleme
 {
     public partial class IadeListTicimax : DevExpress.XtraReports.UI.XtraReport
     {
-        public IadeListTicimax( )
+        public IadeListTicimax()
         {
             InitializeComponent();
         }
-
+      
 
         public void ConfigureDataSource(string storeCodeParameter)
         {

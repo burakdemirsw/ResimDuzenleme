@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ResimDuzenleme
 {
-    public class Item2
+   public class Item2
     {
         public string barcode { get; set; }
         public string title { get; set; }

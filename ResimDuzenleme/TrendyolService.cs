@@ -1,10 +1,14 @@
-﻿using Newtonsoft.Json;
-using RestSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Newtonsoft.Json;
+using RestSharp;
 
 namespace ResimDuzenleme
 {
@@ -41,7 +45,7 @@ namespace ResimDuzenleme
             }
             else
             {
-
+            
                 throw new Exception("API request failed: " + response.ErrorMessage);
             }
         }

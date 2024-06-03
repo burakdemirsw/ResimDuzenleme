@@ -1,5 +1,13 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using NUnit.Framework;
+using ResimDuzenleme.Adapter;
 using ResimDuzenleme.AuthenticationWS;
+using ResimDuzenleme.Operations;
 
 
 namespace ResimDuzenleme
@@ -11,7 +19,7 @@ namespace ResimDuzenleme
         string User = Properties.Settings.Default.DEUser;
         string sifre = Properties.Settings.Default.DESifre;
         [Test, Order(1)]
-        public void Loginn( )
+        public void Loginn()
         {
             var request = new LoginRequest
             {
@@ -33,7 +41,7 @@ namespace ResimDuzenleme
         }
 
         [Test, Order(2)]
-        public void CheckUserInvoice( )
+        public void CheckUserInvoice()
         {   //e-fatura mükellefi mi kontrol etme 
             var request = new CheckUserRequest
             {
@@ -55,7 +63,7 @@ namespace ResimDuzenleme
         }
 
         [Test, Order(3)]
-        public void CheckUserDespatchadvice( )
+        public void CheckUserDespatchadvice()
         {   //e-irsaliye mükellefi mi kontrol etme 
             var request = new CheckUserRequest
             {
@@ -79,7 +87,7 @@ namespace ResimDuzenleme
 
 
         //    [Test,Order(5)]
-        public void Logout( )
+        public void Logout()
         {
             var request = new LogoutRequest
             {

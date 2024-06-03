@@ -1,26 +1,33 @@
-﻿using ResimDuzenleme.UblSerializer;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
-using UblCreditNote;
-using UblDespatch;
+using ResimDuzenleme.Operations;
+using ResimDuzenleme.UblCreate;
+using ResimDuzenleme.UblSerializer;
 using UblInvoice;
+using UblDespatch;
+using UblCreditNote;
 using UblReceipt;
 
 namespace ResimDuzenleme.Operations
 {
-    public class XmlSerializerr
+   public class XmlSerializerr
     {
         public static String xmlString = null;
 
         public static string XmlSerializeInvoice(InvoiceType invoiceType)
-        {
-            using (var stringwriter = new Utf8StringWriter())
-            {
-                var serializer = new XmlSerializer(invoiceType.GetType());
-                serializer.Serialize(stringwriter, invoiceType, InvoiceSerializer.GetXmlSerializerNamespace());
-                xmlString = stringwriter.ToString();
-            }
-            return xmlString;
+        {                
+                using (var stringwriter = new Utf8StringWriter())
+                {
+                    var serializer = new XmlSerializer(invoiceType.GetType());
+                    serializer.Serialize(stringwriter, invoiceType, InvoiceSerializer.GetXmlSerializerNamespace());
+                    xmlString = stringwriter.ToString();
+                }
+                return xmlString; 
         }
 
         public static string XmlSerializeDespatch(DespatchAdviceType despatchType)

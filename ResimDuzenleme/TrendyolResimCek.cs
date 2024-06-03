@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -7,7 +12,7 @@ namespace ResimDuzenleme
 {
     public partial class TrendyolResimCek : Form
     {
-        public TrendyolResimCek( )
+        public TrendyolResimCek()
         {
             InitializeComponent();
             var apiKey = Properties.Settings.Default.txtApiKey;
@@ -21,7 +26,7 @@ namespace ResimDuzenleme
         {
             await SendRequest();
         }
-        private async Task SendRequest( )
+        private async Task SendRequest()
 
         {
             try

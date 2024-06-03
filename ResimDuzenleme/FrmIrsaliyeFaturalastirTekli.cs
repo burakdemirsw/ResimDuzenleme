@@ -1,16 +1,25 @@
-﻿using Newtonsoft.Json;
+﻿using DevExpress.XtraBars;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NUnit.Framework;
+using ResimDuzenleme.EArchiveInvoiceWS;
+using ResimDuzenleme.Operations;
 //using System.Threading;
 
+using ResimDuzenleme.SiparisServis;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.XPath;
+using System.Xml.Xsl;
 
 
 
@@ -18,13 +27,13 @@ namespace ResimDuzenleme
 {
     public partial class FrmIrsaliyeFaturalastirTekli : Form
     {
-        public FrmIrsaliyeFaturalastirTekli( )
+        public FrmIrsaliyeFaturalastirTekli()
         {
             InitializeComponent();
         }
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private HttpClient httpClient = new HttpClient();
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -158,10 +167,7 @@ namespace ResimDuzenleme
                         musteri.SalesViaInternetInfo = SalesViaInternetInfoArray.ToObject<List<SalesViaInternetInfo>>().First();
 
 
-                        string PaymentsJson = reader["Payments"].ToString();
-                        JArray PaymentsArray = JArray.Parse(PaymentsJson);
-                        musteri.Payments = PaymentsArray.ToObject<List<Payments>>();
-
+                 
                         //string attributesJson = reader["Attributes"].ToString();
                         //JArray attributesArray = JArray.Parse(attributesJson);
                         //musteri.Attributes = attributesArray.ToObject<List<Attribute>>();
@@ -196,108 +202,108 @@ namespace ResimDuzenleme
                 //string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
                 //List<ZtNebimFaturaROnline> items = await VeritabanindanMusteriGetirFaturaROnline(faturaBilgisi.Firma);
 
+               
+                    string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
+                    List<ZtNebimFaturaRShipment> items = await VeritabanindanMusteriGetirFaturaR(faturaBilgisi.Firma);
 
-                string sessionID = await ConnectIntegrator(faturaBilgisi.IpAdres);
-                List<ZtNebimFaturaRShipment> items = await VeritabanindanMusteriGetirFaturaR(faturaBilgisi.Firma);
-
-                //var currentBatch = items.Skip(repeat * batchSize).Take(batchSize).ToList();
-                labelStatus.Text = $"Veritabanından {items.Count} adet veri çekildi. Şimdi POST işlemi başlatılıyor...";
-                int postCount = 0;
-                var tasks = items.Select(async item =>
-                {
-                    string json = JsonConvert.SerializeObject(item);
-                    try
+                    //var currentBatch = items.Skip(repeat * batchSize).Take(batchSize).ToList();
+                    labelStatus.Text = $"Veritabanından {items.Count} adet veri çekildi. Şimdi POST işlemi başlatılıyor...";
+                    int postCount = 0;
+                    var tasks = items.Select(async item =>
                     {
-                        string serverName = Properties.Settings.Default.SunucuAdi;
-                        string userName = Properties.Settings.Default.KullaniciAdi;
-                        string password = Properties.Settings.Default.Sifre;
-                        string database = Properties.Settings.Default.database;
-                        string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
-
-                        string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
-
-                        var content = new StringContent(json, Encoding.UTF8, "application/json");
-                        var response = await httpClient.PostAsync($"http://{faturaBilgisi.IpAdres}/(S({sessionID}))/IntegratorService/post?", content);
-
-                        if (response.IsSuccessStatusCode)
+                        string json = JsonConvert.SerializeObject(item);
+                        try
                         {
-                            postCount++;
-                            //var result = await response.Content.ReadAsStringAsync();
-                            labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
+                            string serverName = Properties.Settings.Default.SunucuAdi;
+                            string userName = Properties.Settings.Default.KullaniciAdi;
+                            string password = Properties.Settings.Default.Sifre;
+                            string database = Properties.Settings.Default.database;
+                            string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
 
+                            string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
 
-                            using (SqlConnection conn = new SqlConnection(connectionString))
+                            var content = new StringContent(json, Encoding.UTF8, "application/json");
+                            var response = await httpClient.PostAsync($"http://{faturaBilgisi.IpAdres}/(S({sessionID}))/IntegratorService/post?", content);
+
+                            if (response.IsSuccessStatusCode)
                             {
-                                string query = "INSERT INTO ZTMSGTicSiparisKontrol (FaturaNo,Request,Cevap) VALUES (@FaturaNo,@Request,@Cevap)";
-                                using (SqlCommand cmd = new SqlCommand(query, conn))
+                                postCount++;
+                                //var result = await response.Content.ReadAsStringAsync();
+                                labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
+
+
+                                using (SqlConnection conn = new SqlConnection(connectionString))
                                 {
-                                    var result = await response.Content.ReadAsStringAsync();
-                                    dynamic jsonResponse = JsonConvert.DeserializeObject(result);
-
-                                    cmd.Parameters.AddWithValue("@FaturaNo", item.CustomerCode);
-                                    cmd.Parameters.AddWithValue("@Request", json);
-                                    cmd.Parameters.AddWithValue("@Cevap", "Aktarım Başarılı");
-                                    //cmd.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar, -1) { Value = json });
-                                    //cmd.Parameters.Add(new SqlParameter("@Cevap", SqlDbType.NVarChar, -1) { Value = jsonResponse });
-
-                                    labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
-                                    conn.Open();
-                                    cmd.ExecuteNonQuery();
-
-                                    if (jsonResponse != null && jsonResponse.UnofficialInvoiceString != null)
+                                    string query = "INSERT INTO ZTMSGTicSiparisKontrol (FaturaNo,Request,Cevap) VALUES (@FaturaNo,@Request,@Cevap)";
+                                    using (SqlCommand cmd = new SqlCommand(query, conn))
                                     {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        dynamic jsonResponse = JsonConvert.DeserializeObject(result);
 
-                                        ShowHtmlFromBase64(jsonResponse.UnofficialInvoiceString.ToString());
+                                        cmd.Parameters.AddWithValue("@FaturaNo", item.CustomerCode);
+                                        cmd.Parameters.AddWithValue("@Request", json);
+                                        cmd.Parameters.AddWithValue("@Cevap", "Aktarım Başarılı");
+                                        //cmd.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar, -1) { Value = json });
+                                        //cmd.Parameters.Add(new SqlParameter("@Cevap", SqlDbType.NVarChar, -1) { Value = jsonResponse });
+
+                                        labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
+                                        conn.Open();
+                                        cmd.ExecuteNonQuery();
+
+                                        if (jsonResponse != null && jsonResponse.UnofficialInvoiceString != null)
+                                        {
+
+                                            ShowHtmlFromBase64(jsonResponse.UnofficialInvoiceString.ToString());
+                                        }
                                     }
                                 }
+
                             }
-
-                        }
-                        else
-                        {
-                            postCount++;
-                            //var result = await response.Content.ReadAsStringAsync();
-                            labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
-
-                            using (SqlConnection conn = new SqlConnection(connectionString))
+                            else
                             {
-                                string query = "INSERT INTO ZTMSGTicSiparisKontrol (FaturaNo,Request,Cevap) VALUES (@FaturaNo,@Request,@Cevap)";
-                                using (SqlCommand cmd = new SqlCommand(query, conn))
+                                postCount++;
+                                //var result = await response.Content.ReadAsStringAsync();
+                                labelStatus.Text = $"POST işlemi {postCount}/{items.Count} veri için tamamlandı...";
+
+                                using (SqlConnection conn = new SqlConnection(connectionString))
                                 {
-                                    var result = await response.Content.ReadAsStringAsync();
-                                    cmd.Parameters.AddWithValue("@FaturaNo", item.CustomerCode);
-                                    cmd.Parameters.AddWithValue("@Request", json);
-                                    cmd.Parameters.AddWithValue("@Cevap", result);
+                                    string query = "INSERT INTO ZTMSGTicSiparisKontrol (FaturaNo,Request,Cevap) VALUES (@FaturaNo,@Request,@Cevap)";
+                                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        cmd.Parameters.AddWithValue("@FaturaNo", item.CustomerCode);
+                                        cmd.Parameters.AddWithValue("@Request", json);
+                                        cmd.Parameters.AddWithValue("@Cevap", result);
 
-                                    conn.Open();
-                                    cmd.ExecuteNonQuery();
+                                        conn.Open();
+                                        cmd.ExecuteNonQuery();
+                                    }
                                 }
+                                labelStatus.Text = $"POST işlemi başarısız: {response.StatusCode}";
                             }
-                            labelStatus.Text = $"POST işlemi başarısız: {response.StatusCode}";
                         }
-                    }
-                    catch (Exception ex)
+                        catch (Exception ex)
+                        {
+                            labelStatus.Text = $"Hata: {ex.ToString()}";  // Daha detaylı hata bilgisi
+                        }
+                    }).ToList();
+
+                    await Task.WhenAll(tasks);
+
+
+
+                    int miktar = await GetOrderForInvoiceToplamAsync();
+                    if (miktar == 0)
                     {
-                        labelStatus.Text = $"Hata: {ex.ToString()}";  // Daha detaylı hata bilgisi
+                        labelStatus.Text = "İşlem tamamlandı, daha fazla fatura bulunamadı.";
+                        break; // Döngüyü sonlandır
                     }
-                }).ToList();
 
-                await Task.WhenAll(tasks);
-
-
-
-                int miktar = await GetOrderForInvoiceToplamAsync();
-                if (miktar == 0)
-                {
-                    labelStatus.Text = "İşlem tamamlandı, daha fazla fatura bulunamadı.";
-                    break; // Döngüyü sonlandır
+                    // Eğer miktar 0'dan büyükse, işlemlere devam edin
+                    //     labelStatus.Text = $"İşlem devam ediyor, kalan miktar: {miktar}";
                 }
-
-                // Eğer miktar 0'dan büyükse, işlemlere devam edin
-                //     labelStatus.Text = $"İşlem devam ediyor, kalan miktar: {miktar}";
-            }
         }
-        private async Task<int> GetOrderForInvoiceToplamAsync( )
+        private async Task<int> GetOrderForInvoiceToplamAsync()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -321,7 +327,7 @@ namespace ResimDuzenleme
                 }
             }
         }
-        private void OpenNebimFaturaListesi2( )
+        private void OpenNebimFaturaListesi2()
         {
             var nebimFaturaListesi2 = new NebimIrsaliyeListesi();
             nebimFaturaListesi2.FrmIrsaliyeFaturalastirTekliRef = this; // Bu satır önemli
@@ -338,7 +344,7 @@ namespace ResimDuzenleme
             set { textBox1.Text = value; }
         }
 
-        public void TriggerEnterOperation( )
+        public void TriggerEnterOperation()
         {
             // Enter tuşuna basıldığında gerçekleşmesini istediğiniz işlemler
             // Örneğin, simpleButton1'in click event'ini burada çağırabilirsiniz

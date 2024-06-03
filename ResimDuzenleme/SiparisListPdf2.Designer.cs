@@ -226,7 +226,7 @@
             this.Title.BorderColor = System.Drawing.Color.Black;
             this.Title.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.Title.BorderWidth = 1F;
-            this.Title.Font = new DevExpress.Drawing.DXFont("Tahoma", 14F);
+            this.Title.Font = new System.Drawing.Font("Tahoma", 14F);
             this.Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.Title.Name = "Title";
             // 
@@ -236,7 +236,7 @@
             this.GroupCaption3.BorderColor = System.Drawing.Color.White;
             this.GroupCaption3.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.GroupCaption3.BorderWidth = 2F;
-            this.GroupCaption3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.GroupCaption3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.GroupCaption3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.GroupCaption3.Name = "GroupCaption3";
             this.GroupCaption3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 2, 0, 0, 100F);
@@ -248,7 +248,7 @@
             this.GroupData3.BorderColor = System.Drawing.Color.White;
             this.GroupData3.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.GroupData3.BorderWidth = 2F;
-            this.GroupData3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.GroupData3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.GroupData3.ForeColor = System.Drawing.Color.White;
             this.GroupData3.Name = "GroupData3";
             this.GroupData3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 2, 0, 0, 100F);
@@ -259,7 +259,7 @@
             this.DetailCaption3.BackColor = System.Drawing.Color.Transparent;
             this.DetailCaption3.BorderColor = System.Drawing.Color.Transparent;
             this.DetailCaption3.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.DetailCaption3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.DetailCaption3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.DetailCaption3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.DetailCaption3.Name = "DetailCaption3";
             this.DetailCaption3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100F);
@@ -267,7 +267,7 @@
             // 
             // DetailData3
             // 
-            this.DetailData3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.DetailData3.Font = new System.Drawing.Font("Tahoma", 8F);
             this.DetailData3.ForeColor = System.Drawing.Color.Black;
             this.DetailData3.Name = "DetailData3";
             this.DetailData3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100F);
@@ -279,7 +279,7 @@
             this.DetailData3_Odd.BorderColor = System.Drawing.Color.Transparent;
             this.DetailData3_Odd.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.DetailData3_Odd.BorderWidth = 1F;
-            this.DetailData3_Odd.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.DetailData3_Odd.Font = new System.Drawing.Font("Tahoma", 8F);
             this.DetailData3_Odd.ForeColor = System.Drawing.Color.Black;
             this.DetailData3_Odd.Name = "DetailData3_Odd";
             this.DetailData3_Odd.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100F);
@@ -295,7 +295,7 @@
             // 
             // PageInfo
             // 
-            this.PageInfo.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.PageInfo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.PageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.PageInfo.Name = "PageInfo";
             this.PageInfo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -320,7 +320,7 @@
             this.xrLabel4.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel4.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel4.BorderWidth = 2F;
-            this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.xrLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(124.2122F, 20.00001F);
             this.xrLabel4.Multiline = true;
@@ -346,7 +346,7 @@
             this.xrLabel5.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel5.BorderWidth = 2F;
-            this.xrLabel5.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.xrLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(422.7922F, 20.00001F);
             this.xrLabel5.Multiline = true;
@@ -372,7 +372,7 @@
             this.xrLabel6.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel6.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel6.BorderWidth = 2F;
-            this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel6.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.xrLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(537.7086F, 20.00001F);
             this.xrLabel6.Multiline = true;
@@ -398,7 +398,7 @@
             this.xrLabel7.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel7.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel7.BorderWidth = 2F;
-            this.xrLabel7.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.xrLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(596.9612F, 20.00001F);
             this.xrLabel7.Multiline = true;
@@ -424,7 +424,7 @@
             this.xrLabel8.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel8.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel8.BorderWidth = 2F;
-            this.xrLabel8.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.xrLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(0F, 20.00001F);
             this.xrLabel8.Multiline = true;
@@ -534,7 +534,7 @@
             this.sqlDataSource1});
             this.DataMember = "MSG_GetSiparisGorsel";
             this.DataSource = this.sqlDataSource1;
-            this.Margins = new DevExpress.Drawing.DXMargins(100, 100, 0, 100);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 0, 100);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.GroupCaption3,

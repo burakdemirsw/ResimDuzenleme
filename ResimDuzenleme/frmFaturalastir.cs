@@ -1,18 +1,18 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-//using PdfiumViewer;
-
-using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using Newtonsoft.Json;
+//using PdfiumViewer;
+
+using System.IO;
+using System.Diagnostics;
 
 
 
@@ -20,7 +20,7 @@ namespace ResimDuzenleme
 {
     public partial class frmFaturalastir : Form
     {
-        public frmFaturalastir( )
+        public frmFaturalastir()
         {
             InitializeComponent();
         }
@@ -47,7 +47,7 @@ namespace ResimDuzenleme
 
 
                     cmd.ExecuteNonQuery();
-
+                  
                 }
             }
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -85,7 +85,7 @@ namespace ResimDuzenleme
                         dataTable = dataTable.DefaultView.ToTable();
                     }
                 }
-
+           
             }
             textBox1.Clear(); // txtBarcode temizlenir
             textBox1.Focus();
@@ -106,7 +106,7 @@ namespace ResimDuzenleme
             txtFaturaNo.Text = "";
         }
 
-
+ 
         private async Task<string> ConnectIntegrator(string IpAdres)
         {
             try
@@ -176,7 +176,7 @@ namespace ResimDuzenleme
                             musteri.Invoicedate = Convert.ToDateTime(reader["Invoicedate"]); // DateTime'a çevirildi
                         }
                         musteri.IsSalesViaInternet = bool.Parse(reader["IsSalesViaInternet"].ToString());
-
+                       
                         musteri.Description = reader["Description"].ToString();
                         musteri.InternalDescription = reader["InternalDescription"].ToString();
 
@@ -233,7 +233,7 @@ namespace ResimDuzenleme
             }
 
         }
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabase( )
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabase()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -261,11 +261,11 @@ namespace ResimDuzenleme
                     faturaBilgileri.Add(Firma);
                 }
             }
-            // Her bir satır için FaturaBilgisi nesnesi oluşturup listeye ekleyin
-            return faturaBilgileri;
+                    // Her bir satır için FaturaBilgisi nesnesi oluşturup listeye ekleyin
+                    return faturaBilgileri;
         }
 
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriPDF( )
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriPDF()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -300,7 +300,7 @@ namespace ResimDuzenleme
 
 
         private HttpClient httpClient = new HttpClient();
-
+      
 
         private async void btnFaturalastir_Click(object sender, EventArgs e)
         {

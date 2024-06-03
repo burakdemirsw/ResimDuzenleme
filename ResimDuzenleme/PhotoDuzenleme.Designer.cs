@@ -42,6 +42,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button4
@@ -119,7 +120,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 272);
+            this.progressBar1.Location = new System.Drawing.Point(12, 305);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(390, 23);
             this.progressBar1.TabIndex = 17;
@@ -144,12 +145,23 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // ResimDuzenleme
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(12, 276);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(390, 23);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "Resim Adı Düzenle";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // PhotoDuzenleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 307);
+            this.ClientSize = new System.Drawing.Size(407, 331);
             this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button4);
@@ -160,7 +172,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxDestinationFolder);
-            this.Name = "ResimDuzenleme";
+            this.Name = "PhotoDuzenleme";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ResimDuzenleme";
             this.Load += new System.EventHandler(this.ResimDuzenleme_Load);
@@ -185,5 +197,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }

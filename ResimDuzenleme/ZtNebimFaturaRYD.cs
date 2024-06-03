@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ResimDuzenleme
 {
@@ -27,7 +30,7 @@ namespace ResimDuzenleme
         public string InternalDescription { get; set; }
         public List<InvoiceLinesYD> Lines { get; set; }
         public OrdersViaInternetInfo OrdersViaInternetInfo { get; set; }
-
+   
 
     }
 

@@ -1,9 +1,12 @@
-﻿using ResimDuzenleme.SiparisServis;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using ResimDuzenleme.SiparisServis;
 using System.Data.SqlClient;
 using System.Threading;
-using System.Windows.Forms;
 
 
 namespace ResimDuzenleme
@@ -21,8 +24,7 @@ namespace ResimDuzenleme
                 {
                     attempts++;
                     siparisListe = StaticVariables.siparisServisClient.SelectSiparis(WSYetki, webSiparisFiltre, webSiparisSayfalama);
-                    if (siparisListe != null && siparisListe.Count > 0)
-                        break; // Eğer sipariş listesi alındıysa döngüden çık
+                    if (siparisListe != null && siparisListe.Count > 0) break; // Eğer sipariş listesi alındıysa döngüden çık
                 }
                 catch (Exception ex)
                 {
@@ -67,7 +69,7 @@ namespace ResimDuzenleme
 
         //    return siparisListe;
         //}
-        public static List<WebSiparis> SelectSiparis( )
+        public static List<WebSiparis> SelectSiparis()
         {
             try
             {
@@ -104,13 +106,13 @@ namespace ResimDuzenleme
                     IptalEdilmisUrunler = false, // iptal edilmiş siparişlerin kontrolü 
 
                     FaturaNo = "",
-                    OdemeDurumu = 1,
+                    OdemeDurumu = -1,
                     OdemeTipi = -1, // siparisin ödeme tipi durumu 
-                    SiparisDurumu = 0,
+                    SiparisDurumu = -1,
                     SiparisID = -1,
                     SiparisKaynagi = "",
                     SiparisKodu = "",
-                    SiparisTarihiBas = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")), //Son 10 günlük siparişler çekiliyor.
+                    SiparisTarihiBas = Convert.ToDateTime(DateTime.Now.AddDays(-10).ToString("yyyy-MM-dd")), //Son 10 günlük siparişler çekiliyor.
                     SiparisTarihiSon = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")),
                     //SiparisTarihiBas = Convert.ToDateTime("2019-02-04"), //filtrede kullanılacak sipariş başlangıç tarihi
                     //SiparisTarihiSon = Convert.ToDateTime("2019-02-06"), // filtrede kullanılacak sipariş bitiş tarihi
@@ -132,7 +134,7 @@ namespace ResimDuzenleme
                 string sitead = Properties.Settings.Default.txtSiteAdi;
                 string WSYetki = Properties.Settings.Default.txtWsYetki;
                 StaticVariables.siparisServisClient = new SiparisServis.SiparisServisClient();
-
+       
                 StaticVariables.siparisServisClient.Endpoint.Address = new System.ServiceModel.EndpointAddress($"https://{sitead}/Servis/SiparisServis.svc");
 
                 List<WebSiparisUrun> uyeAdresListe = new List<WebSiparisUrun>();
@@ -143,11 +145,11 @@ namespace ResimDuzenleme
                 }
                 else
                 {
+                    
 
-
-                    MessageBox.Show("Siparişler Çekilemedi Tekrar deneyin.");
-                    // Sipariş listesi alınamadıysa uygun bir hata mesajı göster
-
+                            MessageBox.Show("Siparişler Çekilemedi Tekrar deneyin.");
+                            // Sipariş listesi alınamadıysa uygun bir hata mesajı göster
+                   
                 }
                 // List<WebSiparisUrun> uyeAdresListe = SiparisServiceMethods.SelectSiparisDetay();
                 // MessageBox.Show("Son 10 günün siparişleri listelendi");
@@ -158,13 +160,13 @@ namespace ResimDuzenleme
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+              MessageBox.Show(exception.Message);
                 return null;
             }
         }
 
 
-        public static List<WebSiparis> SelectSiparisKoctas( )
+        public static List<WebSiparis> SelectSiparisKoctas()
         {
             try
             {
@@ -188,7 +190,7 @@ namespace ResimDuzenleme
 
                 WebSiparisFiltre webSiparisFiltre = new WebSiparisFiltre
                 {
-                    EntegrasyonAktarildi = -1,  // sipariş aktarılma durumu 0 = aktarılmayanlar,  1 = aktarılanlar, -1 = hepsi  
+                    EntegrasyonAktarildi =-1,  // sipariş aktarılma durumu 0 = aktarılmayanlar,  1 = aktarılanlar, -1 = hepsi  
                     EntegrasyonParams = new WebSiparisEntegrasyon
                     {
                         AlanDeger = "",
@@ -353,9 +355,9 @@ namespace ResimDuzenleme
             }
         }
 
-        public static List<WebSiparisUrun> SelectSiparisDetay( )
+        public static List<WebSiparisUrun> SelectSiparisDetay()
         {
-
+           
             StaticVariables.siparisServisClient = new SiparisServis.SiparisServisClient();
             string sitead = Properties.Settings.Default.txtSiteAdi;
             StaticVariables.siparisServisClient.Endpoint.Address = new System.ServiceModel.EndpointAddress($"https://{sitead}/Servis/SiparisServis.svc");

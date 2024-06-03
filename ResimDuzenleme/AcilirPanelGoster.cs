@@ -1,16 +1,31 @@
-﻿//using System.Threading;
+﻿using DevExpress.XtraBars;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NUnit.Framework;
+using ResimDuzenleme.EArchiveInvoiceWS;
+using ResimDuzenleme.Operations;
+//using System.Threading;
 
+using ResimDuzenleme.SiparisServis;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.XPath;
+using System.Xml.Xsl;
 
 namespace ResimDuzenleme
 {
     public partial class AcilirPanelGoster : Form
     {
-        public AcilirPanelGoster( )
+        public AcilirPanelGoster()
         {
             InitializeComponent();
         }
@@ -32,7 +47,7 @@ namespace ResimDuzenleme
 
             // GridControl'ün DataSource'una DataTable ataması yapılıyor
             gridControl1.DataSource = dataTable;
-
+          
             gridView1.DoubleClick -= gridView1_DoubleClick; // Önceki bağlantıyı kaldır
             gridView1.DoubleClick += gridView1_DoubleClick; // Olayı yeniden bağla
             // GridView'i yeniden çizdir
@@ -63,7 +78,7 @@ namespace ResimDuzenleme
 
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                     {
-                        await Task.Run(( ) => dataAdapter.Fill(dataTable)); // DataTable'ı veri ile doldur
+                        await Task.Run(() => dataAdapter.Fill(dataTable)); // DataTable'ı veri ile doldur
                     }
                 }
             }

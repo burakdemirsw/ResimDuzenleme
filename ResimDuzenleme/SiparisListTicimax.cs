@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using DevExpress.XtraReports.UI;
 using System.Data;
 using System.Data.SqlClient;
 namespace ResimDuzenleme
 {
     public partial class SiparisListTicimax : DevExpress.XtraReports.UI.XtraReport
     {
-        public SiparisListTicimax( )
+        public SiparisListTicimax()
         {
             InitializeComponent();
         }
-
+      
 
         public void ConfigureDataSource(string storeCodeParameter)
         {

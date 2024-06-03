@@ -1,12 +1,23 @@
-﻿using ImageMagick;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Text;
+using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using ImageMagick;
+using Excel = Microsoft.Office.Interop.Excel;
+using CsvHelper;
+using System.Globalization;
+using ClosedXML.Excel;
+using NPOI;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+
 using System.Linq;
+
+
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 
 
@@ -15,7 +26,7 @@ namespace ResimDuzenleme
 {
     public partial class PhotoDuzenleme : Form
     {
-        public PhotoDuzenleme( )
+        public PhotoDuzenleme()
         {
             InitializeComponent();
         }
@@ -55,8 +66,7 @@ namespace ResimDuzenleme
             var orderedFiles = imageFiles.OrderBy(file =>
             {
                 string fileName = Path.GetFileNameWithoutExtension(file);
-                if (string.IsNullOrEmpty(fileName))
-                    return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
+                if (string.IsNullOrEmpty(fileName)) return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
                 return fileName.Contains(" ") || fileName.Contains("-") || fileName.Contains("(") ? int.MaxValue : 0;
             }).ThenBy(file => file).ToArray(); //Eğer dosya ismi " " veya "-" içermiyorsa, o dosyaları önce döndürür, sonrasında kalan dosyaları isim sıralamasına göre döndürür.
 
@@ -399,9 +409,9 @@ namespace ResimDuzenleme
             catch (Exception)
             {
 
-
+                
             }
-
+          
         }
         private void ProcessMiscPhotosFolders(string folder)
         {
@@ -513,7 +523,7 @@ namespace ResimDuzenleme
 
                 throw;
             }
-
+           
         }
         private void button5_Click(object sender, EventArgs e)
         {
@@ -527,7 +537,7 @@ namespace ResimDuzenleme
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+        
             if (string.IsNullOrEmpty(textBoxImageFolder.Text))
             {
                 MessageBox.Show("Lütfen önce bir klasör seçin.");
@@ -548,8 +558,7 @@ namespace ResimDuzenleme
             var orderedFiles = imageFiles.OrderBy(file =>
             {
                 string fileName = Path.GetFileNameWithoutExtension(file);
-                if (string.IsNullOrEmpty(fileName))
-                    return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
+                if (string.IsNullOrEmpty(fileName)) return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
                 return fileName.Contains(" ") || fileName.Contains("-") || fileName.Contains("(") ? int.MaxValue : 0;
             }).ThenBy(file => file).ToArray(); //Eğer dosya ismi " " veya "-" içermiyorsa, o dosyaları önce döndürür, sonrasında kalan dosyaları isim sıralamasına göre döndürür.
 
@@ -611,5 +620,69 @@ namespace ResimDuzenleme
 
             MessageBox.Show("İşlem tamamlandı!");
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxImageFolder.Text = folderBrowserDialog1.SelectedPath;
+            }
+            ProcessSelectedFolder2(folderBrowserDialog1.SelectedPath);
+            MessageBox.Show("Düzenleme işlemi tamamlandı.");
+        }
+
+        private void ProcessSelectedFolder2(string parentFolder)
+        {
+            // Alt klasörleri al ve her birini işle
+            string[] subfolders = Directory.GetDirectories(parentFolder);
+
+            foreach (string subfolder in subfolders)
+            {
+                RenameImagesInFolder(subfolder);
+            }
+        }
+
+        private void RenameImagesInFolder(string folder)
+        {
+            try
+            {
+                // Klasördeki tüm resim dosyalarını al
+                string[] imageFiles = Directory.GetFiles(folder, "*.*", SearchOption.TopDirectoryOnly)
+                                               .Where(s => s.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                                                           s.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
+                                                           s.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+                                                           s.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase) ||
+                                                           s.EndsWith(".gif", StringComparison.OrdinalIgnoreCase))
+                                               .ToArray();
+
+                // Klasör ismini büyük harflerle al
+                string folderName = Path.GetFileName(folder).ToUpper();
+                int counter = 1;
+
+                foreach (string imageFile in imageFiles)
+                {
+                    string extension = Path.GetExtension(imageFile);
+                    string newFileName = $"{folderName}_{counter}{extension}";
+                    string newFilePath = Path.Combine(folder, newFileName);
+
+                    // Dosya zaten varsa counter'ı artır ve yeniden adlandır
+                    while (File.Exists(newFilePath))
+                    {
+                        counter++;
+                        newFileName = $"{folderName}_{counter}{extension}";
+                        newFilePath = Path.Combine(folder, newFileName);
+                    }
+
+                    // Dosyayı yeniden adlandır
+                    File.Move(imageFile, newFilePath);
+                    counter++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Bir hata oluştu: {ex.Message}");
+            }
+        }
+
     }
 }

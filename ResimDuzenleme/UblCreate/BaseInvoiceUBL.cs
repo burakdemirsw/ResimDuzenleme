@@ -1,5 +1,10 @@
-﻿using System;
+﻿using ResimDuzenleme;
+using ResimDuzenleme.Ubl;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UblInvoice;
 
 
@@ -13,7 +18,7 @@ namespace ResimDuzenleme.UblCreate
         // public MonetaryTotalType baseMonetaryTotal { get; set; }
 
 
-        public BaseInvoiceUBL( )
+        public BaseInvoiceUBL()
         {
             baseInvoiceUBL = new InvoiceType();
             //eInvoice();
@@ -29,14 +34,14 @@ namespace ResimDuzenleme.UblCreate
             addInvoiceLine();
         }
 
-        public void createInvoiceHeader( )
+        public void createInvoiceHeader()
         {
             Random random = new Random();
             var invoiceId = random.Next(100000000, 999999999);
             baseInvoiceUBL.UBLVersionID = new UBLVersionIDType { Value = "2.1" }; //uluslararası fatura standardı 2.1
             baseInvoiceUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" }; //fakat GİB UBLTR olarak isimlendirdiği Türkiye'ye özgü 1.2 efatura formatını kullanıyor.
             baseInvoiceUBL.ProfileID = new ProfileIDType { Value = "TEMELFATURA" };
-            baseInvoiceUBL.ID = new IDType { Value = "DAA2022" + invoiceId };
+            baseInvoiceUBL.ID = new IDType { Value = "DAA2022"+ invoiceId };
             baseInvoiceUBL.CopyIndicator = new CopyIndicatorType { Value = false };
             baseInvoiceUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
             baseInvoiceUBL.IssueDate = new IssueDateType { Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")) };
@@ -47,11 +52,11 @@ namespace ResimDuzenleme.UblCreate
 
         }
 
-        public void addAdditionalDocumentReference( )
+        public void addAdditionalDocumentReference()
         {
 
             var arcRef = new DocumentReferenceType();
-            arcRef.ID = new IDType { Value = "1" };
+            arcRef.ID = new IDType { Value = "1"};
             arcRef.IssueDate = baseInvoiceUBL.IssueDate;
             arcRef.DocumentType = new DocumentTypeType { Value = "KAGIT" };
             arcRef.DocumentTypeCode = new DocumentTypeCodeType { Value = "SendingType" };
@@ -94,7 +99,7 @@ namespace ResimDuzenleme.UblCreate
             return party;
         }
 
-        public void createSignature( )
+        public void createSignature()
         {
             var signature = new[]
             {
@@ -119,7 +124,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void AccountSupplierParty( )
+        public void AccountSupplierParty()
         {
             var accountingSupplierParty = new SupplierPartyType //göndericinin fatura üzerindeki bilgileri
             {
@@ -129,7 +134,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void AccountCustomerParty( )
+        public void AccountCustomerParty()
         {
             var accountingCustomerParty = new CustomerPartyType //Alıcının fatura üzerindeki bilgileri
             {
@@ -138,7 +143,7 @@ namespace ResimDuzenleme.UblCreate
             baseInvoiceUBL.AccountingCustomerParty = accountingCustomerParty;
         }
 
-        public void CreateDelivery( )
+        public void CreateDelivery()
         {
             var deliveryArr = new[]
               {
@@ -153,7 +158,7 @@ namespace ResimDuzenleme.UblCreate
             baseInvoiceUBL.Delivery = deliveryArr;
         }
 
-        public void addInvoiceLine( )
+        public void addInvoiceLine()
         {
 
             InvoiceLineType invoiceLine = new InvoiceLineType
@@ -223,7 +228,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void createTaxTotal( )
+        public void createTaxTotal()
         {
             TaxTotalType[] taxtotal = new TaxTotalType[]
             {   new TaxTotalType
@@ -271,7 +276,7 @@ namespace ResimDuzenleme.UblCreate
             baseInvoiceUBL.TaxTotal = taxtotal;
         }
 
-        public void createLegalMonetarTotal( )
+        public void createLegalMonetarTotal()
         {
             var legalMonetaryTotal = new MonetaryTotalType
             {

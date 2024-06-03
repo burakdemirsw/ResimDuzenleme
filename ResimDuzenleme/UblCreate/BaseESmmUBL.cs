@@ -1,5 +1,10 @@
-﻿using System;
+﻿using ResimDuzenleme;
+using ResimDuzenleme.Ubl;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UblInvoice;
 
 
@@ -12,7 +17,7 @@ namespace ResimDuzenleme.UblCreate
         public List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
 
 
-        public BaseESmmUBL( )
+        public BaseESmmUBL()
         {
             baseInvoiceUBL = new InvoiceType();
             createInvoiceHeader();
@@ -25,7 +30,7 @@ namespace ResimDuzenleme.UblCreate
             addInvoiceLine();
         }
 
-        public void createInvoiceHeader( )
+        public void createInvoiceHeader()
         {
             Random random = new Random();
             var invoiceId = random.Next(100000000, 999999999);
@@ -43,7 +48,7 @@ namespace ResimDuzenleme.UblCreate
 
         }
 
-        public void addAdditionalDocumentReference( )
+        public void addAdditionalDocumentReference()
         {
 
             var arcRef = new DocumentReferenceType();
@@ -56,7 +61,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void addAdditionalDocumentReferencee( )
+        public void addAdditionalDocumentReferencee()
         {
 
             var arcRef = new DocumentReferenceType();
@@ -102,7 +107,7 @@ namespace ResimDuzenleme.UblCreate
             return party;
         }
 
-        public void createSignature( )
+        public void createSignature()
         {
             var signature = new[]
             {
@@ -127,7 +132,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void AccountSupplierParty( )
+        public void AccountSupplierParty()
         {
             var accountingSupplierParty = new SupplierPartyType //göndericinin fatura üzerindeki bilgileri
             {
@@ -137,7 +142,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void AccountCustomerParty( )
+        public void AccountCustomerParty()
         {
             var accountingCustomerParty = new CustomerPartyType //Alıcının fatura üzerindeki bilgileri
             {
@@ -147,7 +152,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void createPayments( )
+        public void createPayments()
         {
             var paymentMeans = new PaymentMeansType[]
             {
@@ -173,7 +178,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void addInvoiceLine( )
+        public void addInvoiceLine()
         {
 
             InvoiceLineType invoiceLine = new InvoiceLineType
@@ -314,7 +319,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void createWithHoldingTaxTotal( )
+        public void createWithHoldingTaxTotal()
         {
             var WithholdingTaxTotal = new TaxTotalType[]
                   {
@@ -362,7 +367,7 @@ namespace ResimDuzenleme.UblCreate
             baseInvoiceUBL.WithholdingTaxTotal = WithholdingTaxTotal;
         }
 
-        public void createTaxTotal( )
+        public void createTaxTotal()
         {
             TaxTotalType[] taxtotal = new TaxTotalType[]
             {   new TaxTotalType
@@ -439,7 +444,7 @@ namespace ResimDuzenleme.UblCreate
             baseInvoiceUBL.TaxTotal = taxtotal;
         }
 
-        public void createLegalMonetarTotal( )
+        public void createLegalMonetarTotal()
         {
             var legalMonetaryTotal = new MonetaryTotalType
             {

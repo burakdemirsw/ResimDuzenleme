@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class KargoTakip : Form
     {
-        public KargoTakip( )
+        public KargoTakip()
         {
             InitializeComponent();
         }
@@ -13,7 +20,7 @@ namespace ResimDuzenleme
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             KargoApi.MngKargoApi frm = new KargoApi.MngKargoApi();
-
+    
             frm.Show();
         }
 

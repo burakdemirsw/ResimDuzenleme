@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ResimDuzenleme
 {
     public partial class NebimFiyat : Form
     {
-        public NebimFiyat( )
+        public NebimFiyat()
         {
             InitializeComponent();
         }
@@ -16,7 +22,7 @@ namespace ResimDuzenleme
         {
             label2.Text = AnaUrunKodu;
         }
-        private List<string> GetSirketKodlari( )
+        private List<string> GetSirketKodlari()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -67,11 +73,11 @@ namespace ResimDuzenleme
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@ID", Guid.NewGuid());
-
+                    
                         command.Parameters.AddWithValue("@NebimUrunKodu", $"{sirketKodu}");
                         command.Parameters.AddWithValue("@BasepriceCode", 1);
                         command.Parameters.AddWithValue("@Price", txtmaliyet.Text);
-
+                       
 
                         command.ExecuteNonQuery();
                     }
@@ -174,7 +180,7 @@ namespace ResimDuzenleme
                         command.ExecuteNonQuery();
                     }
                 }
-
+               
             }
         }
     }

@@ -1,4 +1,10 @@
-﻿using ResimDuzenleme.Adapter;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using ResimDuzenleme.Adapter;
 
 namespace ResimDuzenleme
 {
@@ -11,7 +17,7 @@ namespace ResimDuzenleme
         private readonly CreditNoteAdapter _creditNoteAdapter;
         private readonly SmmAdapter _smmAdapter;
 
-        public ResimDuzenlemeClient( )
+        public ResimDuzenlemeClient()
         {
             _authAdapter = new AuthAdapter();
             _eInvoiceAdapter = new EInvoiceAdapter();
@@ -23,30 +29,30 @@ namespace ResimDuzenleme
         }
 
 
-        public AuthAdapter Auth( )
+        public AuthAdapter Auth()
         {
             return _authAdapter;
         }
 
-        public EInvoiceAdapter EInvoice( )
+        public EInvoiceAdapter EInvoice()
         {
             return _eInvoiceAdapter;
         }
-        public EArchiveInvoiceAdapter EInvoiceArchive( )
+        public EArchiveInvoiceAdapter EInvoiceArchive()
         {
             return _eInvoiceArchiveAdapter;
         }
-        public EDespatchAdapter EDespatch( )
+        public EDespatchAdapter EDespatch()
         {
             return _eDespatchAdapter;
         }
 
-        public CreditNoteAdapter CreditNote( )
+        public CreditNoteAdapter CreditNote()
         {
             return _creditNoteAdapter;
         }
 
-        public SmmAdapter Smm( )
+        public SmmAdapter Smm()
         {
             return _smmAdapter;
         }

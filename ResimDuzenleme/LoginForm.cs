@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
+using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 
 namespace ResimDuzenleme
 {
     public partial class LoginForm : Form
     {
-        public LoginForm( )
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -31,7 +37,7 @@ namespace ResimDuzenleme
             Properties.Settings.Default.Save();
         }
 
-        private void LoadCredentials( )
+        private void LoadCredentials()
         {
             if (Properties.Settings.Default.RememberMe)
             {
@@ -49,7 +55,7 @@ namespace ResimDuzenleme
                 checkBoxBeniHatirla.Checked = true;
             }
         }
-        private void ClearCredentials( )
+        private void ClearCredentials()
         {
             // Kaydedilmiş bilgileri temizle
             Properties.Settings.Default.EncryptedUserName = string.Empty;
@@ -112,7 +118,7 @@ namespace ResimDuzenleme
             }
 
             // Yetki seviyesine göre işlem yap
-
+       
         }
         private void Yonlendir(string yetki)
         {
@@ -143,7 +149,7 @@ namespace ResimDuzenleme
         private void LoginForm_Load(object sender, EventArgs e)
         {
             LoadCredentials();
-
+       
 
         }
     }

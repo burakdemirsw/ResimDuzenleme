@@ -1,28 +1,35 @@
-﻿using DevExpress.XtraEditors.Repository;
-using DevExpress.XtraGrid.Views.Grid;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Net.Http;
+using System.Drawing;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using System.Data.SqlClient;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Net.Http;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraPrinting; // Yazdırma ve önizleme için
+using DevExpress.XtraReports.UserDesigner; // Rapor tasarımcısı için
 
 
 namespace ResimDuzenleme
 {
     public partial class GiderPusulasi : DevExpress.XtraEditors.XtraForm
     {
-        public GiderPusulasi( )
+        public GiderPusulasi()
         {
             InitializeComponent();
         }
 
-        private void LoadYetkiData( )
+        private void LoadYetkiData()
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -105,11 +112,11 @@ namespace ResimDuzenleme
         }
         Encoding encoding = Encoding.UTF8;
 
-        //     string pngOutputPath;
+   //     string pngOutputPath;
         private FaturaGorsel faturaGorselForm = new FaturaGorsel();
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private HttpClient httpClient = new HttpClient();
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -227,7 +234,7 @@ namespace ResimDuzenleme
                                 // Yanıttan HeaderID değerini al
                                 string headerID = jsonResponse2.HeaderID;
 
-                                // string queryName = "OFInvoiceR"; // Bu örnekte sabit bir değer kullanılmıştır
+                               // string queryName = "OFInvoiceR"; // Bu örnekte sabit bir değer kullanılmıştır
 
                                 // Veritabanı bağlantısı ve sorguyu hazırla
                                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -462,149 +469,149 @@ namespace ResimDuzenleme
 
 
         public void GetIadeFromStoredProcedure(string storeCode)
+    {
+        string serverName = Properties.Settings.Default.SunucuAdi;
+        string userName = Properties.Settings.Default.KullaniciAdi;
+        string password = Properties.Settings.Default.Sifre;
+        string database = Properties.Settings.Default.database;
+        string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            string serverName = Properties.Settings.Default.SunucuAdi;
-            string userName = Properties.Settings.Default.KullaniciAdi;
-            string password = Properties.Settings.Default.Sifre;
-            string database = Properties.Settings.Default.database;
-            string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("MSG_GetReturnSeriNO", connection))
             {
-                using (SqlCommand command = new SqlCommand("MSG_GetReturnSeriNO", connection))
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@StoreCode", storeCode);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable); // Veritabanından gelen veriyi DataTable'a doldur
+
+                // DataTable'daki veriyi TextBox'a yazdır
+                if (dataTable.Rows.Count > 0)
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@StoreCode", storeCode);
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable); // Veritabanından gelen veriyi DataTable'a doldur
-
-                    // DataTable'daki veriyi TextBox'a yazdır
-                    if (dataTable.Rows.Count > 0)
+                    // İlk satırdaki ilk sütunun değerini textBox2'ye yaz
+                    textBox2.Text = dataTable.Rows[0][0].ToString();
+                    // Eğer ikinci sütun varsa, onun değerini textBox3'e yaz
+                    if (dataTable.Columns.Count > 1)
                     {
-                        // İlk satırdaki ilk sütunun değerini textBox2'ye yaz
-                        textBox2.Text = dataTable.Rows[0][0].ToString();
-                        // Eğer ikinci sütun varsa, onun değerini textBox3'e yaz
-                        if (dataTable.Columns.Count > 1)
-                        {
-                            textBox3.Text = dataTable.Rows[0][1].ToString();
-                        }
+                        textBox3.Text = dataTable.Rows[0][1].ToString();
                     }
-                    else
-                    {
-                        textBox2.Text = "Sonuç bulunamadı.";
-                    }
+                }
+                else
+                {
+                    textBox2.Text = "Sonuç bulunamadı.";
                 }
             }
         }
+    }
 
-        private void GiderPusulasi_Load(object sender, EventArgs e)
+    private void GiderPusulasi_Load(object sender, EventArgs e)
+    {
+        LoadYetkiData();
+        string storeCode = Properties.Settings.Default.StoreCode;
+        GetIadeFromStoredProcedure(storeCode);
+
+
+
+    }
+    private void ExecuteStoredProcedure(string InvoiceLineID, string invoiceNumber, string currAccCode, string barcode, string qty1, string ReturnReasonCode)
+    {
+        string serverName = Properties.Settings.Default.SunucuAdi;
+        string userName = Properties.Settings.Default.KullaniciAdi;
+        string password = Properties.Settings.Default.Sifre;
+        string database = Properties.Settings.Default.database;
+        string storecode = Properties.Settings.Default.StoreCode;
+
+        string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            LoadYetkiData();
-            string storeCode = Properties.Settings.Default.StoreCode;
-            GetIadeFromStoredProcedure(storeCode);
-
-
-
-        }
-        private void ExecuteStoredProcedure(string InvoiceLineID, string invoiceNumber, string currAccCode, string barcode, string qty1, string ReturnReasonCode)
-        {
-            string serverName = Properties.Settings.Default.SunucuAdi;
-            string userName = Properties.Settings.Default.KullaniciAdi;
-            string password = Properties.Settings.Default.Sifre;
-            string database = Properties.Settings.Default.database;
-            string storecode = Properties.Settings.Default.StoreCode;
-
-            string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("[dbo].[MSG_InvoiceReturnItemlistCount]", connection))
             {
-                using (SqlCommand command = new SqlCommand("[dbo].[MSG_InvoiceReturnItemlistCount]", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure;
 
-                    // Parametreleri ekleyin
-                    command.Parameters.AddWithValue("@InvoiceLineID", InvoiceLineID);
-                    command.Parameters.AddWithValue("@Invoicenumber", invoiceNumber);
-                    command.Parameters.AddWithValue("@CurrAccCode", currAccCode);
-                    command.Parameters.AddWithValue("@Barcode", barcode);
-                    command.Parameters.AddWithValue("@Qty1", 1);
+                // Parametreleri ekleyin
+                command.Parameters.AddWithValue("@InvoiceLineID", InvoiceLineID);
+                command.Parameters.AddWithValue("@Invoicenumber", invoiceNumber);
+                command.Parameters.AddWithValue("@CurrAccCode", currAccCode);
+                command.Parameters.AddWithValue("@Barcode", barcode);
+                command.Parameters.AddWithValue("@Qty1", 1);
                     command.Parameters.AddWithValue("@ReturnReasonCode", ReturnReasonCode);
 
 
                     try
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery(); // Stored Procedure'ü çalıştır
-                    }
-                    catch (SqlException ex)
-                    {
-                        // Hata yönetimi
-                        MessageBox.Show("Bir veritabanı hatası oluştu: " + ex.Message);
-                    }
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery(); // Stored Procedure'ü çalıştır
+                }
+                catch (SqlException ex)
+                {
+                    // Hata yönetimi
+                    MessageBox.Show("Bir veritabanı hatası oluştu: " + ex.Message);
                 }
             }
         }
+    }
 
 
 
 
-        private async Task<List<ZtNebimFaturaROnlineReturn>> VeritabanindanMusteriGetirFaturaROnline(string FaturaNo)
+    private async Task<List<ZtNebimFaturaROnlineReturn>> VeritabanindanMusteriGetirFaturaROnline(string FaturaNo)
+    {
+
+        try
         {
+            List<ZtNebimFaturaROnlineReturn> musteriler = new List<ZtNebimFaturaROnlineReturn>();
+            string serverName = Properties.Settings.Default.SunucuAdi;
+            string userName = Properties.Settings.Default.KullaniciAdi;
+            string password = Properties.Settings.Default.Sifre;
+            string database = Properties.Settings.Default.database;
+            string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
 
-            try
+            string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                List<ZtNebimFaturaROnlineReturn> musteriler = new List<ZtNebimFaturaROnlineReturn>();
-                string serverName = Properties.Settings.Default.SunucuAdi;
-                string userName = Properties.Settings.Default.KullaniciAdi;
-                string password = Properties.Settings.Default.Sifre;
-                string database = Properties.Settings.Default.database;
-                string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
+                await conn.OpenAsync();
+                SqlCommand command = new SqlCommand("MSG_GetOrderForInvoiceToplu_REOnlineReturn", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Invoicenumber", FaturaNo);
 
-                string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+                SqlDataReader reader = await command.ExecuteReaderAsync();
 
-
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                while (await reader.ReadAsync())
                 {
-                    await conn.OpenAsync();
-                    SqlCommand command = new SqlCommand("MSG_GetOrderForInvoiceToplu_REOnlineReturn", conn);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@Invoicenumber", FaturaNo);
-
-                    SqlDataReader reader = await command.ExecuteReaderAsync();
-
-                    while (await reader.ReadAsync())
-                    {
                         ZtNebimFaturaROnlineReturn musteri = new ZtNebimFaturaROnlineReturn();
-                        musteri.ModelType = Convert.ToInt32(reader["ModelType"]);
+                    musteri.ModelType = Convert.ToInt32(reader["ModelType"]);
                         musteri.Isreturn = bool.Parse(reader["Isreturn"].ToString());
                         musteri.CustomerCode = reader["CustomerCode"].ToString();
-                        musteri.OfficeCode = reader["OfficeCode"].ToString();
-                        musteri.StoreCode = reader["StoreCode"].ToString();
-                        musteri.WarehouseCode = reader["WarehouseCode"].ToString();
-                        musteri.DeliveryCompanyCode = reader["DeliveryCompanyCode"].ToString(); // Direk string olarak atandı
-                        musteri.BillingPostalAddressID = reader["BillingPostalAddressID"].ToString();
-                        musteri.ShippingPostalAddressID = reader["ShippingPostalAddressID"].ToString(); // Direk string olarak atandı
-                        musteri.PosTerminalID = Convert.ToInt32(reader["PosTerminalID"]); // int'e çevirildi
-                        musteri.TaxExemptionCode = Convert.ToInt32(reader["TaxExemptionCode"]); // int'e çevirildi
-                        musteri.ShipmentMethodCode = Convert.ToInt32(reader["ShipmentMethodCode"]); // int'e çevirildi
+                    musteri.OfficeCode = reader["OfficeCode"].ToString();
+                    musteri.StoreCode = reader["StoreCode"].ToString();
+                    musteri.WarehouseCode = reader["WarehouseCode"].ToString();
+                    musteri.DeliveryCompanyCode = reader["DeliveryCompanyCode"].ToString(); // Direk string olarak atandı
+                    musteri.BillingPostalAddressID = reader["BillingPostalAddressID"].ToString();
+                    musteri.ShippingPostalAddressID = reader["ShippingPostalAddressID"].ToString(); // Direk string olarak atandı
+                    musteri.PosTerminalID = Convert.ToInt32(reader["PosTerminalID"]); // int'e çevirildi
+                    musteri.TaxExemptionCode = Convert.ToInt32(reader["TaxExemptionCode"]); // int'e çevirildi
+                    musteri.ShipmentMethodCode = Convert.ToInt32(reader["ShipmentMethodCode"]); // int'e çevirildi
                         musteri.Series = textBox3.Text;
                         musteri.SeriesNumber = textBox2.Text;
 
-                        if (reader["Invoicedate"] != DBNull.Value)
-                        {
-                            musteri.Invoicedate = Convert.ToDateTime(reader["Invoicedate"]); // DateTime'a çevirildi
-                        }
+                    if (reader["Invoicedate"] != DBNull.Value)
+                    {
+                        musteri.Invoicedate = Convert.ToDateTime(reader["Invoicedate"]); // DateTime'a çevirildi
+                    }
+                 
+                    musteri.Description = reader["Description"].ToString();
+                    musteri.InternalDescription = reader["InternalDescription"].ToString();
 
-                        musteri.Description = reader["Description"].ToString();
-                        musteri.InternalDescription = reader["InternalDescription"].ToString();
+                    //   musteri.CustomerTypeCode = Convert.ToInt32(reader["CustomerTypeCode"]);
 
-                        //   musteri.CustomerTypeCode = Convert.ToInt32(reader["CustomerTypeCode"]);
-
-                        string LinesJson = reader["Lines"].ToString();
-                        JArray LinesArray = JArray.Parse(LinesJson);
-                        musteri.Lines = LinesArray.ToObject<List<InvoiceLinesReturn>>();
+                    string LinesJson = reader["Lines"].ToString();
+                    JArray LinesArray = JArray.Parse(LinesJson);
+                    musteri.Lines = LinesArray.ToObject<List<InvoiceLinesReturn>>();
 
                         //string OrdersViaInternetInfosJson = reader["OrdersViaInternetInfo"].ToString();
                         //JToken parsedToken = JToken.Parse(OrdersViaInternetInfosJson);
@@ -637,150 +644,150 @@ namespace ResimDuzenleme
 
 
                         musteri.IsCompleted = bool.Parse(reader["IsCompleted"].ToString());
-                        musteriler.Add(musteri);
-                    }
+                    musteriler.Add(musteri);
                 }
-
-                return musteriler;
             }
-            catch (Exception ex)
+
+            return musteriler;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Hata Alındı");
+            return null;
+        }
+
+    }
+
+
+ 
+
+    private DataTable GetInvoiceData(string FaturaNo)
+    {
+        DataTable dataTable = new DataTable();
+
+        // Veritabanı bağlantı string'inizi buraya ekleyin
+        string serverName = Properties.Settings.Default.SunucuAdi;
+        string userName = Properties.Settings.Default.KullaniciAdi;
+        string password = Properties.Settings.Default.Sifre;
+        string database = Properties.Settings.Default.database;
+        string storecode = Properties.Settings.Default.StoreCode;
+        string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            using (SqlCommand command = new SqlCommand("MSG_GetOrderForInvoiceToplu_ReturnItem", connection))
             {
-                MessageBox.Show(ex.Message, "Hata Alındı");
-                return null;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Invoicenumber", FaturaNo);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
             }
-
         }
+        gridControl1.DataSource = dataTable;
+        //gridView1.Columns["InvoiceNumber"].Caption = "Fatura NO";
+        //gridView1.Columns["CurrAccCode"].Caption = "Müşteri Kodu";
+        //gridView1.Columns["CurrAccDescription"].Caption = "Müşteri Adı";
+        //gridView1.Columns["ColorCode"].Caption = "Renk";
+        //gridView1.Columns["ColorDescription"].Caption = "Renk Açıklama";
+        //gridView1.Columns["ItemDim1Code"].Caption = "Beden";
+        //gridView1.Columns["Qty1"].Caption = "Miktar";
+
+        gridView1.Columns["InvoiceLineID"].Caption = "InvoiceLineID";
+        gridView1.Columns["InvoiceNumber"].Caption = "InvoiceNumber";
+        gridView1.Columns["CurrAccCode"].Caption = "CurrAccCode";
+        gridView1.Columns["CurrAccDescription"].Caption = "CurrAccDescription";
+        gridView1.Columns["Barcode"].Caption = "Barcode";
+        gridView1.Columns["ItemCode"].Caption = "ItemCode";
+        gridView1.Columns["ColorCode"].Caption = "ColorCode";
+        gridView1.Columns["ColorDescription"].Caption = "ColorDescription";
+        gridView1.Columns["ItemDim1Code"].Caption = "ItemDim1Code";
+        gridView1.Columns["Qty1"].Caption = "Qty1";
+
+
+        //gridView1.Columns["Fatura NO"].Caption = "InvoiceNumber";
+        //gridView1.Columns["Müşteri Kodu"].Caption = "CurrAccCode";
+        //gridView1.Columns["Müşteri Adı"].Caption = "CurrAccDescription" ;
+        //gridView1.Columns["Renk"].Caption = "ColorCode";
+        //gridView1.Columns["Renk Açıklama"].Caption = "ColorDescription";
+        //gridView1.Columns["Beden"].Caption = "ItemDim1Code";
+        //gridView1.Columns["Miktar"].Caption = "Qty1";
+        // ... Diğer sütun başlıkları
+
+        // GridView ayarları...
+        gridView1.BestFitColumns();
+
+        return dataTable;
+    }
+    private void InitializeGridView()
+    {
+        // CheckBox için RepositoryItemCheckEdit oluştur
+        RepositoryItemCheckEdit repositoryItemCheckEdit = new RepositoryItemCheckEdit();
+        gridControl1.RepositoryItems.Add(repositoryItemCheckEdit);
 
 
 
+        // CheckBox ile satır seçimini etkinleştir
+        gridView1.OptionsSelection.MultiSelect = true;
+        gridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
 
-        private DataTable GetInvoiceData(string FaturaNo)
+        gridView1.BestFitColumns();
+    }
+
+    private void textBox1_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
         {
-            DataTable dataTable = new DataTable();
+            string FaturaNo = textBox1.Text;
 
-            // Veritabanı bağlantı string'inizi buraya ekleyin
-            string serverName = Properties.Settings.Default.SunucuAdi;
-            string userName = Properties.Settings.Default.KullaniciAdi;
-            string password = Properties.Settings.Default.Sifre;
-            string database = Properties.Settings.Default.database;
-            string storecode = Properties.Settings.Default.StoreCode;
-            string connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
+            // Fatura numarasına göre verileri çek
+            DataTable invoiceData = GetInvoiceData(FaturaNo);
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (gridControl1 != null && gridView1 != null)
             {
-                using (SqlCommand command = new SqlCommand("MSG_GetOrderForInvoiceToplu_ReturnItem", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@Invoicenumber", FaturaNo);
+                // gridControl1'in MainView'unu kontrol etmek yerine, doğrudan DataSource'unu ayarla
+                gridControl1.DataSource = invoiceData;
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    adapter.Fill(dataTable);
-                }
+                // CheckBox sütunu ve GridView ayarlarını yapılandır
+                InitializeGridView(); // Bu satırı ekleyin
+                gridView1.SelectAll();
+                gridView1.RefreshData(); // GridView verilerini yenile
             }
-            gridControl1.DataSource = dataTable;
-            //gridView1.Columns["InvoiceNumber"].Caption = "Fatura NO";
-            //gridView1.Columns["CurrAccCode"].Caption = "Müşteri Kodu";
-            //gridView1.Columns["CurrAccDescription"].Caption = "Müşteri Adı";
-            //gridView1.Columns["ColorCode"].Caption = "Renk";
-            //gridView1.Columns["ColorDescription"].Caption = "Renk Açıklama";
-            //gridView1.Columns["ItemDim1Code"].Caption = "Beden";
-            //gridView1.Columns["Qty1"].Caption = "Miktar";
-
-            gridView1.Columns["InvoiceLineID"].Caption = "InvoiceLineID";
-            gridView1.Columns["InvoiceNumber"].Caption = "InvoiceNumber";
-            gridView1.Columns["CurrAccCode"].Caption = "CurrAccCode";
-            gridView1.Columns["CurrAccDescription"].Caption = "CurrAccDescription";
-            gridView1.Columns["Barcode"].Caption = "Barcode";
-            gridView1.Columns["ItemCode"].Caption = "ItemCode";
-            gridView1.Columns["ColorCode"].Caption = "ColorCode";
-            gridView1.Columns["ColorDescription"].Caption = "ColorDescription";
-            gridView1.Columns["ItemDim1Code"].Caption = "ItemDim1Code";
-            gridView1.Columns["Qty1"].Caption = "Qty1";
-
-
-            //gridView1.Columns["Fatura NO"].Caption = "InvoiceNumber";
-            //gridView1.Columns["Müşteri Kodu"].Caption = "CurrAccCode";
-            //gridView1.Columns["Müşteri Adı"].Caption = "CurrAccDescription" ;
-            //gridView1.Columns["Renk"].Caption = "ColorCode";
-            //gridView1.Columns["Renk Açıklama"].Caption = "ColorDescription";
-            //gridView1.Columns["Beden"].Caption = "ItemDim1Code";
-            //gridView1.Columns["Miktar"].Caption = "Qty1";
-            // ... Diğer sütun başlıkları
-
-            // GridView ayarları...
-            gridView1.BestFitColumns();
-
-            return dataTable;
-        }
-        private void InitializeGridView( )
-        {
-            // CheckBox için RepositoryItemCheckEdit oluştur
-            RepositoryItemCheckEdit repositoryItemCheckEdit = new RepositoryItemCheckEdit();
-            gridControl1.RepositoryItems.Add(repositoryItemCheckEdit);
-
-
-
-            // CheckBox ile satır seçimini etkinleştir
-            gridView1.OptionsSelection.MultiSelect = true;
-            gridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
-
-            gridView1.BestFitColumns();
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            else
             {
-                string FaturaNo = textBox1.Text;
-
-                // Fatura numarasına göre verileri çek
-                DataTable invoiceData = GetInvoiceData(FaturaNo);
-
-                if (gridControl1 != null && gridView1 != null)
-                {
-                    // gridControl1'in MainView'unu kontrol etmek yerine, doğrudan DataSource'unu ayarla
-                    gridControl1.DataSource = invoiceData;
-
-                    // CheckBox sütunu ve GridView ayarlarını yapılandır
-                    InitializeGridView(); // Bu satırı ekleyin
-                    gridView1.SelectAll();
-                    gridView1.RefreshData(); // GridView verilerini yenile
-                }
-                else
-                {
-                    // gridControl veya gridView null ise, hata mesajı göster veya logla
-                    Console.WriteLine("gridControl1 veya gridView1 null. Lütfen kontrol edin.");
-                }
+                // gridControl veya gridView null ise, hata mesajı göster veya logla
+                Console.WriteLine("gridControl1 veya gridView1 null. Lütfen kontrol edin.");
             }
-        }
-
-        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-
-        }
-        private void OpenNebimFaturaListesi2( )
-        {
-            var nebimFaturaListesi2 = new NebimFaturaListesiGider();
-            nebimFaturaListesi2.FrmFaturalastirTekliRef = this; // Bu satır önemli
-            nebimFaturaListesi2.MdiParent = this.MdiParent;
-            nebimFaturaListesi2.Show();
-        }
-
-        public string TextBox1Text
-        {
-            get { return textBox1.Text; }
-            set { textBox1.Text = value; }
-        }
-
-        public void TriggerEnterOperation( )
-        {
-            // Enter tuşuna basıldığında gerçekleşmesini istediğiniz işlemler
-            // Örneğin, simpleButton1'in click event'ini burada çağırabilirsiniz
-            simpleButton1.PerformClick();
-        }
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            OpenNebimFaturaListesi2();
         }
     }
+
+    private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+    {
+
+    }
+    private void OpenNebimFaturaListesi2()
+    {
+        var nebimFaturaListesi2 = new NebimFaturaListesiGider();
+        nebimFaturaListesi2.FrmFaturalastirTekliRef = this; // Bu satır önemli
+        nebimFaturaListesi2.MdiParent = this.MdiParent;
+        nebimFaturaListesi2.Show();
+    }
+
+    public string TextBox1Text
+    {
+        get { return textBox1.Text; }
+        set { textBox1.Text = value; }
+    }
+
+    public void TriggerEnterOperation()
+    {
+        // Enter tuşuna basıldığında gerçekleşmesini istediğiniz işlemler
+        // Örneğin, simpleButton1'in click event'ini burada çağırabilirsiniz
+        simpleButton1.PerformClick();
+    }
+    private void simpleButton1_Click(object sender, EventArgs e)
+    {
+        OpenNebimFaturaListesi2();
+    }
+}
 }

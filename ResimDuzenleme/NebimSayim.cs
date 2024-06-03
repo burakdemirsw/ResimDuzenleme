@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
@@ -10,16 +16,16 @@ namespace ResimDuzenleme
     {
         public Guid myGuid { get; private set; }
 
-        public NebimSayim( )
+        public NebimSayim()
         {
             InitializeComponent();
-
+      
         }
         private void NebimSayim_Load(object sender, EventArgs e)
         {
             myGuid = Guid.NewGuid();
         }
-
+     
 
         private void ExecuteStoredProc(string barcode)
         {
@@ -67,7 +73,7 @@ namespace ResimDuzenleme
 
                             txtBarcode.Clear();
 
-                            // txtBarcode temizlenir
+                       // txtBarcode temizlenir
                             txtBarcode.Focus();// txtBarcode temizlenir, Label1 değişmez.
                         }
                     }
@@ -77,13 +83,13 @@ namespace ResimDuzenleme
 
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
         {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                string barcode = txtBarcode.Text;
-                ExecuteStoredProc(barcode);
-            }
-
+           
+                if (e.KeyCode == Keys.Enter)
+                {
+                    string barcode = txtBarcode.Text;
+                    ExecuteStoredProc(barcode);
+                }
+       
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -115,7 +121,7 @@ namespace ResimDuzenleme
                         command.ExecuteNonQuery();
                     }
                     // SQL komutunu çalıştır
-
+                   
                 }
 
                 MessageBox.Show("Veriler başarıyla silindi!");

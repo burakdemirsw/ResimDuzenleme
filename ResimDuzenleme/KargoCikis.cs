@@ -1,18 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace ResimDuzenleme
 {
     public partial class KargoCikis : Form
     {
-        public KargoCikis( )
+        public KargoCikis()
         {
             InitializeComponent();
         }
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
-        private void ExecuteStoredProc(string barcode, string Kargo)
+        private void ExecuteStoredProc(string barcode , string Kargo)
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -93,7 +100,7 @@ namespace ResimDuzenleme
             {
                 string Kargo = textBox1.Text;
                 string barcode = textBox2.Text;
-                ExecuteStoredProc(barcode, Kargo);
+                ExecuteStoredProc(barcode,Kargo);
             }
         }
 

@@ -4,12 +4,12 @@ namespace ResimDuzenleme.Adapter
 {
     public class EArchiveInvoiceAdapter
     {
-
+      
 
         public ArchiveInvoiceExtendedResponse WritetoArchiveExtendedd(ArchiveInvoiceExtendedRequest writetoArchiveExtendedReq)
         {
             EFaturaArchivePortClient eFaturaArchivePortClient = new EFaturaArchivePortClient();
-            return eFaturaArchivePortClient.WriteToArchiveExtended(writetoArchiveExtendedReq);
+            return eFaturaArchivePortClient.WriteToArchiveExtended(writetoArchiveExtendedReq);           
         }
 
 
