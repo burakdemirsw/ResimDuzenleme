@@ -1,5 +1,7 @@
 ﻿using iText.Commons.Actions.Data;
 using Microsoft.EntityFrameworkCore;
+using ResimDuzenleme.Services.Models.Cargo.DTO_s;
+using ResimDuzenleme.Services.Models.DTO_s;
 using ResimDuzenleme.Services.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -37,11 +39,17 @@ namespace ResimDuzenleme.Services.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<ZTMSG_CreateCargoBarcode>().HasNoKey();   
+            modelBuilder.Entity<ZTMSG_CreateCargoBarcode>().HasNoKey();
+            modelBuilder.Entity<OrderDetail_DTO>().HasNoKey();
 
-         }
-        public DbSet<CargoBarcode> ZTMSG_CargoBarcodes { get; set; }
-        public DbSet<ZTMSG_CreateCargoBarcode> ZTMSG_CreateCargoBarcode { get; set; }
+
+        }
+
+        
+        public DbSet<MNG_CompanyInfo> ZTMSGMngKargoApi { get; set; } // TABLO VAR 
+        public DbSet<CargoBarcode> ZTMSG_CargoBarcodes { get; set; } // TABLO VAR 
+        public DbSet<ZTMSG_CreateCargoBarcode> ZTMSG_CreateCargoBarcode { get; set; } // TABLO YOK
+        public DbSet<OrderDetail_DTO> OrderDetail_DTO { get; set; } // TABLO YOK
 
 
 

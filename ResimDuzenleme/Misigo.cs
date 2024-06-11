@@ -38,6 +38,13 @@ using System.Xml.XPath;
 using System.Xml.Xsl;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using ResimDuzenleme.Services.Forms;
+using System.Runtime.Remoting.Contexts;
+using ResimDuzenleme.Services.Database;
+using Context = ResimDuzenleme.Services.Database.Context;
+using ResimDuzenleme.Services.Models.Entities;
+using DocumentFormat.OpenXml.InkML;
+using ResimDuzenleme.Services.Cargo;
 
 
 
@@ -48,12 +55,14 @@ namespace ResimDuzenleme
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private HttpClient httpClient = new HttpClient();
         private System.Timers.Timer timer;
-      
-        public Misigo()
+        private readonly Context _context; //OrderDetail_DTO
+        private readonly DbContextRepository<CargoBarcode> _repository;
+        public Misigo(Context context, DbContextRepository<CargoBarcode> repository)
         {
             InitializeComponent();
-     
-         
+            _repository = repository;
+            _context = context;
+
 
         }
 
@@ -2312,5 +2321,12 @@ namespace ResimDuzenleme
             }
         }
 
+        private void barButtonItem103_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MNG_CargoService srv = new MNG_CargoService(_context);  
+            MNG_CargoForm frm = new MNG_CargoForm(_context,_repository, srv);
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

@@ -22,7 +22,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\demir\OneDrive\Masaüstü\MISIGONEW\</PublishUrl>
+    <PublishUrl>C:\Users\kadir\Desktop\Yeni klasör %285%29\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,7 +32,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -58,11 +58,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>147F2A3F7A865699FE1DDC5EE769D78E15AD2FF2</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>4180FEBEB15AC2C8FAB0F7E23E3F57C14DEAA784</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>ResimDuzenleme_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -83,50 +82,40 @@
     <Reference Include="CsvHelper, Version=30.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.30.0.0\lib\net45\CsvHelper.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Charts.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.CodeParser.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Dashboard.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Docs.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\DevExpress 22.2\Components\Bin\Framework\DevExpress.Docs.v22.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.DataAccess.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.ExpressApp.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v22.2.Drawing, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Persistent.Base.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.TreeMap.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v22.2.UI, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Xpo.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGauges.v22.2.Win, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraNavBar.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPdfViewer.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v22.2.Extensions, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraScheduler.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v22.2.Core.Desktop, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraScheduler.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeMap.v22.2.UI, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeMap.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraWizard.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.1.Drawing, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1.UI, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Win, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.1.Extensions, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeMap.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
@@ -670,17 +659,17 @@
     <Compile Include="MNGKargo.Designer.cs">
       <DependentUpon>MNGKargo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\Cargo\Mng\MngCargoService.cs" />
-    <Compile Include="Services\Cargo\Mng\Order\OrderPieceList_MNG.cs" />
-    <Compile Include="Services\Cargo\Mng\Order\Order_MNG.cs" />
-    <Compile Include="Services\Cargo\Mng\Order\Recipient_MNG.cs" />
-    <Compile Include="Services\Cargo\Mng\Order\Shipper_MNG.cs" />
-    <Compile Include="Services\Cargo\Mng\Request\CreateBarcode_MNG_Request.cs" />
-    <Compile Include="Services\Cargo\Mng\Request\CreatePackage_MNG_Request.cs" />
-    <Compile Include="Services\Cargo\Mng\Request\CreateTokenResponse_MNG.cs" />
-    <Compile Include="Services\Cargo\Mng\Request\CreateToken_MNG_Request.cs" />
-    <Compile Include="Services\Cargo\Mng\Response\CreateBarcode_MNG_Response.cs" />
-    <Compile Include="Services\Cargo\Mng\Response\CreatePackage_MNG_Response.cs" />
+    <Compile Include="Mng\MngCargoService.cs" />
+    <Compile Include="Mng\Order\OrderPieceList_MNG.cs" />
+    <Compile Include="Mng\Order\Order_MNG.cs" />
+    <Compile Include="Mng\Order\Recipient_MNG.cs" />
+    <Compile Include="Mng\Order\Shipper_MNG.cs" />
+    <Compile Include="Mng\Request\CreateBarcode_MNG_Request.cs" />
+    <Compile Include="Mng\Request\CreatePackage_MNG_Request.cs" />
+    <Compile Include="Mng\Request\CreateTokenResponse_MNG.cs" />
+    <Compile Include="Mng\Request\CreateToken_MNG_Request.cs" />
+    <Compile Include="Mng\Response\CreateBarcode_MNG_Response.cs" />
+    <Compile Include="Mng\Response\CreatePackage_MNG_Response.cs" />
     <Compile Include="NebimApi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -808,58 +797,36 @@
       <DependentUpon>SatisForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\Cargo\MNG_CargoService.cs" />
-    <Compile Include="Services\Cargo\Reports\CargoBarcode.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Services\Cargo\Reports\CargoBarcode.Designer.cs">
-      <DependentUpon>CargoBarcode.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Services\Cargo\Reports\ReportModels\CargoBarcode_ZPL.cs" />
     <Compile Include="Services\Database\Context.cs" />
     <Compile Include="Services\Database\DbContextRepository.cs" />
-    <Compile Include="Services\Forms\MNG_CargoBarcodeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Services\Forms\MNG_CargoBarcodeForm.Designer.cs">
-      <DependentUpon>MNG_CargoBarcodeForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Services\Forms\MNG_CargoForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Services\Forms\MNG_CargoForm.Designer.cs">
       <DependentUpon>MNG_CargoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\Forms\PdfViewerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Services\Forms\PdfViewerForm.Designer.cs">
-      <DependentUpon>PdfViewerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Services\Helpers\GeneralService.cs" />
     <Compile Include="Services\Helpers\ZplPrinterService.cs" />
     <Compile Include="Services\Interceptors\GlobalExceptionHandler.cs" />
-    <Compile Include="Services\Models\Cargo\DTO%27s\MNG_CompanyInfo.cs" />
-    <Compile Include="Services\Models\Cargo\DTO%27s\OrderDetail_DTO.cs" />
     <Compile Include="Services\Models\Entities\BaseEntity.cs" />
     <Compile Include="Services\Models\Entities\CargoBarcode.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\BulkDeleteShipment_CM.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Order\OrderPieceList_MNG.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Order\Order_MNG.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Order\Recipient_MNG.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Order\Shipper_MNG.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Request\CreateBarcode_MNG_Request.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Request\CreatePackage_MNG_Request.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Request\CreateTokenResponse_MNG.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Request\CreateToken_MNG_Request.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Response\Barcode_MNG.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Response\CreateBarcode_MNG_Response.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Response\CreatePackage_MNG_Response.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Response\CreatePackage_MNG_RR.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Response\DeletePackage_MNG_Request.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\Response\GetPackageStatus_MNG_Response.cs" />
-    <Compile Include="Services\Models\Cargo\Mng\ZTMSG_CreateCargoBarcode.cs" />
+    <Compile Include="Services\Models\Mng\BulkDeleteShipment_CM.cs" />
+    <Compile Include="Services\Models\Mng\Order\OrderPieceList_MNG.cs" />
+    <Compile Include="Services\Models\Mng\Order\Order_MNG.cs" />
+    <Compile Include="Services\Models\Mng\Order\Recipient_MNG.cs" />
+    <Compile Include="Services\Models\Mng\Order\Shipper_MNG.cs" />
+    <Compile Include="Services\Models\Mng\Request\CreateBarcode_MNG_Request.cs" />
+    <Compile Include="Services\Models\Mng\Request\CreatePackage_MNG_Request.cs" />
+    <Compile Include="Services\Models\Mng\Request\CreateTokenResponse_MNG.cs" />
+    <Compile Include="Services\Models\Mng\Request\CreateToken_MNG_Request.cs" />
+    <Compile Include="Services\Models\Mng\Response\Barcode_MNG.cs" />
+    <Compile Include="Services\Models\Mng\Response\CreateBarcode_MNG_Response.cs" />
+    <Compile Include="Services\Models\Mng\Response\CreatePackage_MNG_Response.cs" />
+    <Compile Include="Services\Models\Mng\Response\CreatePackage_MNG_RR.cs" />
+    <Compile Include="Services\Models\Mng\Response\DeletePackage_MNG_Request.cs" />
+    <Compile Include="Services\Models\Mng\Response\GetPackageStatus_MNG_Response.cs" />
+    <Compile Include="Services\Models\Mng\ZTMSG_CreateCargoBarcode.cs" />
     <Compile Include="Services\StaticVariables.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="Settings1.cs" />
     <Compile Include="Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1113,14 +1080,8 @@
     <EmbeddedResource Include="SatisForm.resx">
       <DependentUpon>SatisForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Services\Cargo\Reports\CargoBarcode.resx">
-      <DependentUpon>CargoBarcode.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Services\Forms\MNG_CargoForm.resx">
       <DependentUpon>MNG_CargoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Services\Forms\PdfViewerForm.resx">
-      <DependentUpon>PdfViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SiparisBarkodYazdir.resx">
       <DependentUpon>SiparisBarkodYazdir.cs</DependentUpon>
@@ -2416,12 +2377,12 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 ve x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 </ProductName>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>

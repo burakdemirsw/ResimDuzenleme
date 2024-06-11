@@ -8,11 +8,11 @@ namespace ResimDuzenleme.Services
 {
     public  class ConnectionString
     {
-         string serverName = "192.168.1.37";
-         string userName = "sa";
-         string password = "1524";
-         string database = "assur";
-         string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
+        string serverName = Properties.Settings.Default.SunucuAdi;
+        string userName = Properties.Settings.Default.KullaniciAdi;
+        string password = Properties.Settings.Default.Sifre;
+        string database = Properties.Settings.Default.database;
+        string storedProcedureName = Properties.Settings.Default.StoredProcedureAdi;
 
         public string GetConnectionString()
         {

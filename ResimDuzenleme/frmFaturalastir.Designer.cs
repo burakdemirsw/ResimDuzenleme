@@ -81,7 +81,6 @@
             this.BtnFaturaGoster.TabIndex = 4;
             this.BtnFaturaGoster.Text = "Fatura Göster";
             this.BtnFaturaGoster.UseVisualStyleBackColor = true;
-            this.BtnFaturaGoster.Click += new System.EventHandler(this.BtnFaturaGoster_Click);
             // 
             // txtFaturaNo
             // 
@@ -91,7 +90,6 @@
             this.txtFaturaNo.TabIndex = 5;
             this.txtFaturaNo.Text = "Lütfen Fatura veya Kargo Kodu Okutun";
             this.txtFaturaNo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtFaturaNo_MouseClick);
-            this.txtFaturaNo.Enter += new System.EventHandler(this.txtFaturaNo_Enter);
             // 
             // labelStatus
             // 
@@ -116,7 +114,6 @@
             this.Name = "frmFaturalastir";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Faturalaştırma Ekranı";
-            this.Load += new System.EventHandler(this.frmFaturalastir_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

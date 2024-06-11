@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace GoogleAPI.Domain.Models.Cargo.Mng.Request
+namespace ResimDuzenleme.Models.Cargo.Mng.Request
 {
     public class CreateBarcode_MNG_Request
     {

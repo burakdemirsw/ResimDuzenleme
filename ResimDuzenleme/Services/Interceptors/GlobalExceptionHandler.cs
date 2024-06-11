@@ -24,7 +24,7 @@ namespace ResimDuzenleme.Services.Interceptors
 
         private static void ShowExceptionMessage(Exception ex)
         {
-            MessageBox.Show(ex.Message, "An Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(ex.Message+" "+ex.StackTrace, "An Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

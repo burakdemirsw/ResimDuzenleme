@@ -6,11 +6,31 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Drawing.Printing;
 using System.Drawing;
+using System.Text;
 
 namespace ResimDuzenleme.Services.Helpers
 {
     public static class GeneralService
     {
+
+        public static string GenerateRandomNumber( )
+        {
+            Random rand = new Random();
+            StringBuilder sb = new StringBuilder();
+
+            // İlk rakamın 0 olmaması için ayrı bir işlem yapılır
+            sb.Append(rand.Next(1, 10));
+
+            // Kalan 14 hane için döngü
+            for (int i = 1; i < 15; i++)
+            {
+                sb.Append(rand.Next(0, 10));
+            }
+
+            string randomNumberString = sb.ToString();
+
+            return randomNumberString;
+        }
         public static async Task<string> ConvertPngToPdf(string file)
         {
             var pdfDirectoryPath = $"C:\\code\\{Guid.NewGuid()}.pdf";

@@ -342,6 +342,7 @@ namespace ResimDuzenleme
 
                 labelStatus.Text = "Fatura Aktarımı tamamlandı.";
             }
+            
         }
 
         private static readonly HttpClient httpClientt = new HttpClient();
@@ -375,64 +376,66 @@ namespace ResimDuzenleme
                 // Hata durumunu işle
                 return null;
             }
-        }
-        public async Task<string> ReadInvoiceFromArchive(string sessionID, string invoiceID)
-        {
-            var requestHeader = new
-            {
-                SESSION_ID = sessionID,
-                APPLICATION_NAME = "misigostore", // Uygulamanızın adını buraya girin
-                COMPRESSED = "N"
-            };
-
-            var request = new
-            {
-                REQUEST_HEADER = requestHeader,
-                INVOICE_ID = invoiceID,
-                PORTAL_DIRECTION = "OUT", // Fatura alıcıya gönderildiyse "OUT", gönderen ise "IN" kullanılır
-                PROFILE = "PDF" // İstediğiniz fatura formatı: PDF, HTML, XML
-            };
-
-            var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync("E-Arşiv Fatura Okuma servisinin URL'si", content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                return responseContent; // Fatura içeriği burada döner
-            }
-            else
-            {
-                return null; // Hata durumu
+            
             }
         }
-        private void ShowPdfFromBase64(string base64String)
-        {
-            // Base64 string'ini byte dizisine çevir
-            byte[] pdfBytes = Convert.FromBase64String(base64String);
+    //    public async Task<string> ReadInvoiceFromArchive(string sessionID, string invoiceID)
+    //    {
+    //        var requestHeader = new
+    //        {
+    //            SESSION_ID = sessionID,
+    //            APPLICATION_NAME = "misigostore", // Uygulamanızın adını buraya girin
+    //            COMPRESSED = "N"
+    //        };
 
-            // Geçici bir dosya yolu oluştur
-            string tempFilePath = Path.GetTempFileName() + ".pdf";
+    //        var request = new
+    //        {
+    //            REQUEST_HEADER = requestHeader,
+    //            INVOICE_ID = invoiceID,
+    //            PORTAL_DIRECTION = "OUT", // Fatura alıcıya gönderildiyse "OUT", gönderen ise "IN" kullanılır
+    //            PROFILE = "PDF" // İstediğiniz fatura formatı: PDF, HTML, XML
+    //        };
 
-            // Byte dizisini dosyaya yaz
-            File.WriteAllBytes(tempFilePath, pdfBytes);
+    //        var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+    //        var response = await httpClient.PostAsync("E-Arşiv Fatura Okuma servisinin URL'si", content);
 
-            // Sistemde varsayılan PDF görüntüleyici ile dosyayı aç
-            Process.Start(tempFilePath);
-        }
-        private void BtnFaturaGoster_Click(object sender, EventArgs e)
-        {
+    //        if (response.IsSuccessStatusCode)
+    //        {
+    //            var responseContent = await response.Content.ReadAsStringAsync();
+    //            return responseContent; // Fatura içeriği burada döner
+    //        }
+    //        else
+    //        {
+    //            return null; // Hata durumu
+    //        }
+    //    }
+    //    private void ShowPdfFromBase64(string base64String)
+    //    {
+    //        // Base64 string'ini byte dizisine çevir
+    //        byte[] pdfBytes = Convert.FromBase64String(base64String);
 
-        }
+    //        // Geçici bir dosya yolu oluştur
+    //        string tempFilePath = Path.GetTempFileName() + ".pdf";
 
-        private void txtFaturaNo_Enter(object sender, EventArgs e)
-        {
+    //        // Byte dizisini dosyaya yaz
+    //        File.WriteAllBytes(tempFilePath, pdfBytes);
 
-        }
+    //        // Sistemde varsayılan PDF görüntüleyici ile dosyayı aç
+    //        Process.Start(tempFilePath);
+    //    }
+    //    private void BtnFaturaGoster_Click(object sender, EventArgs e)
+    //    {
 
-        private void frmFaturalastir_Load(object sender, EventArgs e)
-        {
+    //    }
 
-        }
-    }
+    //    private void txtFaturaNo_Enter(object sender, EventArgs e)
+    //    {
+
+    //    }
+
+    //    private void frmFaturalastir_Load(object sender, EventArgs e)
+    //    {
+
+    //    }
+    //}
 }

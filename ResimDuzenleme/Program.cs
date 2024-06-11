@@ -28,13 +28,14 @@ namespace ResimDuzenleme
             builder.RegisterGeneric(typeof(DbContextRepository<>)).As(typeof(DbContextRepository<>)).InstancePerLifetimeScope();
 
             // Formlar ve diğer bağımlılıkları kaydet
+            builder.RegisterType<LoginForm>().AsSelf().InstancePerLifetimeScope();
             builder.RegisterType<MNG_CargoForm>().AsSelf().InstancePerLifetimeScope();
 
             // Autofac Container'ını oluştur
             var container = builder.Build();
 
             // Autofac Container'ını kullanarak Dependency Injection'ı kur
-            Application.Run(container.Resolve<MNG_CargoForm>());
+            Application.Run(container.Resolve<LoginForm>());
         }
     }
 

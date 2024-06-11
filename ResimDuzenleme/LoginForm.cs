@@ -9,14 +9,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using ResimDuzenleme.Services.Database;
+using ResimDuzenleme.Services.Models.Entities;
+
 
 
 namespace ResimDuzenleme
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        private readonly Context _context; //OrderDetail_DTO
+        public readonly DbContextRepository<CargoBarcode> _repository;
+        public LoginForm(Context context, DbContextRepository<CargoBarcode> repository)
         {
+            _context = context;
+            _repository = repository;
             InitializeComponent();
         }
 
@@ -125,7 +132,7 @@ namespace ResimDuzenleme
             if (yetki == "1")
             {
                 this.Hide(); // Şu anki LoginForm'u gizle
-                Misigo frm = new Misigo();
+                Misigo frm = new Misigo(_context,_repository);
                 frm.FormClosed += (s, args) => this.Show(); // Magaza formu kapandığında LoginForm'u tekrar göster
                 frm.Show();
 

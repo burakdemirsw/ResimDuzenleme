@@ -244,7 +244,7 @@
             this.Title.BorderColor = System.Drawing.Color.Black;
             this.Title.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.Title.BorderWidth = 1F;
-            this.Title.Font = new DevExpress.Drawing.DXFont("Tahoma", 14F);
+            this.Title.Font = new System.Drawing.Font("Tahoma", 14F);
             this.Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.Title.Name = "Title";
             // 
@@ -254,7 +254,7 @@
             this.GroupCaption3.BorderColor = System.Drawing.Color.White;
             this.GroupCaption3.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.GroupCaption3.BorderWidth = 2F;
-            this.GroupCaption3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.GroupCaption3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.GroupCaption3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.GroupCaption3.Name = "GroupCaption3";
             this.GroupCaption3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 2, 0, 0, 100F);
@@ -266,7 +266,7 @@
             this.GroupData3.BorderColor = System.Drawing.Color.White;
             this.GroupData3.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.GroupData3.BorderWidth = 2F;
-            this.GroupData3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.GroupData3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.GroupData3.ForeColor = System.Drawing.Color.White;
             this.GroupData3.Name = "GroupData3";
             this.GroupData3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 2, 0, 0, 100F);
@@ -277,7 +277,7 @@
             this.DetailCaption3.BackColor = System.Drawing.Color.Transparent;
             this.DetailCaption3.BorderColor = System.Drawing.Color.Transparent;
             this.DetailCaption3.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.DetailCaption3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.DetailCaption3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.DetailCaption3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.DetailCaption3.Name = "DetailCaption3";
             this.DetailCaption3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100F);
@@ -285,7 +285,7 @@
             // 
             // DetailData3
             // 
-            this.DetailData3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.DetailData3.Font = new System.Drawing.Font("Tahoma", 8F);
             this.DetailData3.ForeColor = System.Drawing.Color.Black;
             this.DetailData3.Name = "DetailData3";
             this.DetailData3.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100F);
@@ -297,7 +297,7 @@
             this.DetailData3_Odd.BorderColor = System.Drawing.Color.Transparent;
             this.DetailData3_Odd.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.DetailData3_Odd.BorderWidth = 1F;
-            this.DetailData3_Odd.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.DetailData3_Odd.Font = new System.Drawing.Font("Tahoma", 8F);
             this.DetailData3_Odd.ForeColor = System.Drawing.Color.Black;
             this.DetailData3_Odd.Name = "DetailData3_Odd";
             this.DetailData3_Odd.Padding = new DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100F);
@@ -313,7 +313,7 @@
             // 
             // PageInfo
             // 
-            this.PageInfo.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.PageInfo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.PageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.PageInfo.Name = "PageInfo";
             this.PageInfo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -349,7 +349,7 @@
             this.label5.CanGrow = false;
             this.label5.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceDate]")});
-            this.label5.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 6F);
             this.label5.LocationFloat = new DevExpress.Utils.PointFloat(262.0355F, 268.1251F);
             this.label5.Name = "label5";
             this.label5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -369,7 +369,7 @@
             this.label23.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label23.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceNumber]")});
-            this.label23.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.label23.Font = new System.Drawing.Font("Tahoma", 6F);
             this.label23.LocationFloat = new DevExpress.Utils.PointFloat(263.0355F, 311.1249F);
             this.label23.Name = "label23";
             this.label23.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -387,7 +387,7 @@
             this.label36.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label36.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceTime]")});
-            this.label36.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.label36.Font = new System.Drawing.Font("Tahoma", 6F);
             this.label36.LocationFloat = new DevExpress.Utils.PointFloat(262.0353F, 288.1251F);
             this.label36.Name = "label36";
             this.label36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -404,7 +404,7 @@
             this.label8.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label8.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CurrAccCode]")});
-            this.label8.Font = new DevExpress.Drawing.DXFont("Tahoma", 7F);
+            this.label8.Font = new System.Drawing.Font("Tahoma", 7F);
             this.label8.LocationFloat = new DevExpress.Utils.PointFloat(72.00375F, 268.1251F);
             this.label8.Name = "label8";
             this.label8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -418,7 +418,7 @@
             // label14
             // 
             this.label14.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.label14.Font = new DevExpress.Drawing.DXFont("Tahoma", 7F);
+            this.label14.Font = new System.Drawing.Font("Tahoma", 7F);
             this.label14.LocationFloat = new DevExpress.Utils.PointFloat(3.201904F, 268.125F);
             this.label14.Name = "label14";
             this.label14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -488,7 +488,7 @@
             // xrLabel11
             // 
             this.xrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel11.Font = new DevExpress.Drawing.DXFont("Tahoma", 7F);
+            this.xrLabel11.Font = new System.Drawing.Font("Tahoma", 7F);
             this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(429.6725F, 268.125F);
             this.xrLabel11.Name = "xrLabel11";
             this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -505,7 +505,7 @@
             this.xrLabel12.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel12.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CurrAccCode]")});
-            this.xrLabel12.Font = new DevExpress.Drawing.DXFont("Tahoma", 7F);
+            this.xrLabel12.Font = new System.Drawing.Font("Tahoma", 7F);
             this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(498.4743F, 268.1251F);
             this.xrLabel12.Name = "xrLabel12";
             this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -522,7 +522,7 @@
             this.xrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel13.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceTime]")});
-            this.xrLabel13.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.xrLabel13.Font = new System.Drawing.Font("Tahoma", 6F);
             this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(688.5059F, 288.1251F);
             this.xrLabel13.Name = "xrLabel13";
             this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -540,7 +540,7 @@
             this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceNumber]")});
-            this.xrLabel14.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.xrLabel14.Font = new System.Drawing.Font("Tahoma", 6F);
             this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(689.5061F, 311.1249F);
             this.xrLabel14.Name = "xrLabel14";
             this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -559,7 +559,7 @@
             this.xrLabel15.CanGrow = false;
             this.xrLabel15.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceDate]")});
-            this.xrLabel15.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.xrLabel15.Font = new System.Drawing.Font("Tahoma", 6F);
             this.xrLabel15.LocationFloat = new DevExpress.Utils.PointFloat(688.506F, 268.1251F);
             this.xrLabel15.Name = "xrLabel15";
             this.xrLabel15.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -604,7 +604,7 @@
             this.xrLabel18.CanGrow = false;
             this.xrLabel18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceDate]")});
-            this.xrLabel18.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.xrLabel18.Font = new System.Drawing.Font("Tahoma", 6F);
             this.xrLabel18.LocationFloat = new DevExpress.Utils.PointFloat(1034F, 257.0956F);
             this.xrLabel18.Name = "xrLabel18";
             this.xrLabel18.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -624,7 +624,7 @@
             this.xrLabel19.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel19.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceNumber]")});
-            this.xrLabel19.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.xrLabel19.Font = new System.Drawing.Font("Tahoma", 6F);
             this.xrLabel19.LocationFloat = new DevExpress.Utils.PointFloat(1035F, 300.0954F);
             this.xrLabel19.Name = "xrLabel19";
             this.xrLabel19.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -642,7 +642,7 @@
             this.xrLabel20.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[InvoiceTime]")});
-            this.xrLabel20.Font = new DevExpress.Drawing.DXFont("Tahoma", 6F);
+            this.xrLabel20.Font = new System.Drawing.Font("Tahoma", 6F);
             this.xrLabel20.LocationFloat = new DevExpress.Utils.PointFloat(1034F, 277.0956F);
             this.xrLabel20.Name = "xrLabel20";
             this.xrLabel20.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -659,7 +659,7 @@
             this.xrLabel21.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel21.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CurrAccCode]")});
-            this.xrLabel21.Font = new DevExpress.Drawing.DXFont("Tahoma", 7F);
+            this.xrLabel21.Font = new System.Drawing.Font("Tahoma", 7F);
             this.xrLabel21.LocationFloat = new DevExpress.Utils.PointFloat(904.1116F, 257.0957F);
             this.xrLabel21.Name = "xrLabel21";
             this.xrLabel21.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -673,7 +673,7 @@
             // xrLabel22
             // 
             this.xrLabel22.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel22.Font = new DevExpress.Drawing.DXFont("Tahoma", 7F);
+            this.xrLabel22.Font = new System.Drawing.Font("Tahoma", 7F);
             this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(835.3098F, 257.0956F);
             this.xrLabel22.Name = "xrLabel22";
             this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -716,7 +716,7 @@
             this.label38.CanGrow = false;
             this.label38.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ItemDescription]")});
-            this.label38.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label38.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label38.LocationFloat = new DevExpress.Utils.PointFloat(14.26685F, 0F);
             this.label38.Name = "label38";
             this.label38.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -737,7 +737,7 @@
             this.label40.CanGrow = false;
             this.label40.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Price]")});
-            this.label40.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label40.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label40.LocationFloat = new DevExpress.Utils.PointFloat(243.2666F, 0.003306071F);
             this.label40.Name = "label40";
             this.label40.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -759,7 +759,7 @@
             this.label42.CanGrow = false;
             this.label42.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Doc_AmountVI]")});
-            this.label42.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label42.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label42.LocationFloat = new DevExpress.Utils.PointFloat(318.7766F, 0.003306071F);
             this.label42.Name = "label42";
             this.label42.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -779,7 +779,7 @@
             this.label6.CanGrow = false;
             this.label6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Qty1]")});
-            this.label6.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label6.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label6.LocationFloat = new DevExpress.Utils.PointFloat(220.5584F, 0F);
             this.label6.Name = "label6";
             this.label6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -797,7 +797,7 @@
             this.label56.CanGrow = false;
             this.label56.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Price]")});
-            this.label56.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label56.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label56.LocationFloat = new DevExpress.Utils.PointFloat(629.4994F, 0.0033202F);
             this.label56.Name = "label56";
             this.label56.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -819,7 +819,7 @@
             this.label52.CanGrow = false;
             this.label52.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ItemDescription]")});
-            this.label52.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label52.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label52.LocationFloat = new DevExpress.Utils.PointFloat(398.865F, 0F);
             this.label52.Name = "label52";
             this.label52.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -838,7 +838,7 @@
             this.label60.CanGrow = false;
             this.label60.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Qty1]")});
-            this.label60.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label60.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label60.LocationFloat = new DevExpress.Utils.PointFloat(605.3795F, 0F);
             this.label60.Name = "label60";
             this.label60.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -856,7 +856,7 @@
             this.label58.CanGrow = false;
             this.label58.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Doc_AmountVI]")});
-            this.label58.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label58.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label58.LocationFloat = new DevExpress.Utils.PointFloat(703.3748F, 0.0033202F);
             this.label58.Name = "label58";
             this.label58.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -878,7 +878,7 @@
             this.label62.CanGrow = false;
             this.label62.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Price]")});
-            this.label62.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label62.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label62.LocationFloat = new DevExpress.Utils.PointFloat(1024.166F, 0.0033202F);
             this.label62.Name = "label62";
             this.label62.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -900,7 +900,7 @@
             this.label61.CanGrow = false;
             this.label61.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ItemDescription]")});
-            this.label61.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label61.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label61.LocationFloat = new DevExpress.Utils.PointFloat(795.1661F, 0F);
             this.label61.Name = "label61";
             this.label61.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -919,7 +919,7 @@
             this.label65.CanGrow = false;
             this.label65.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Qty1]")});
-            this.label65.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label65.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label65.LocationFloat = new DevExpress.Utils.PointFloat(1005.124F, 0F);
             this.label65.Name = "label65";
             this.label65.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -937,7 +937,7 @@
             this.label64.CanGrow = false;
             this.label64.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Doc_AmountVI]")});
-            this.label64.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label64.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label64.LocationFloat = new DevExpress.Utils.PointFloat(1089.676F, 0.0033202F);
             this.label64.Name = "label64";
             this.label64.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -959,7 +959,7 @@
             this.label128.CanGrow = false;
             this.label128.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ItemDim1Code]")});
-            this.label128.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label128.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label128.LocationFloat = new DevExpress.Utils.PointFloat(214.5675F, 17.91998F);
             this.label128.Name = "label128";
             this.label128.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -980,7 +980,7 @@
             this.label129.CanGrow = false;
             this.label129.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ColorCode]")});
-            this.label129.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label129.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label129.LocationFloat = new DevExpress.Utils.PointFloat(14.26685F, 17.91999F);
             this.label129.Name = "label129";
             this.label129.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1001,7 +1001,7 @@
             this.label130.CanGrow = false;
             this.label130.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ColorDescription]")});
-            this.label130.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label130.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label130.LocationFloat = new DevExpress.Utils.PointFloat(65.23529F, 17.91668F);
             this.label130.Name = "label130";
             this.label130.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1022,7 +1022,7 @@
             this.label26.CanGrow = false;
             this.label26.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ColorDescription]")});
-            this.label26.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label26.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label26.LocationFloat = new DevExpress.Utils.PointFloat(449.8335F, 17.91335F);
             this.label26.Name = "label26";
             this.label26.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1043,7 +1043,7 @@
             this.label25.CanGrow = false;
             this.label25.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ColorCode]")});
-            this.label25.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label25.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label25.LocationFloat = new DevExpress.Utils.PointFloat(398.865F, 17.91668F);
             this.label25.Name = "label25";
             this.label25.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1064,7 +1064,7 @@
             this.label24.CanGrow = false;
             this.label24.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ItemDim1Code]")});
-            this.label24.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label24.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label24.LocationFloat = new DevExpress.Utils.PointFloat(599.1657F, 17.91668F);
             this.label24.Name = "label24";
             this.label24.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1085,7 +1085,7 @@
             this.label30.CanGrow = false;
             this.label30.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ItemDim1Code]")});
-            this.label30.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label30.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label30.LocationFloat = new DevExpress.Utils.PointFloat(995.4671F, 17.91998F);
             this.label30.Name = "label30";
             this.label30.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1106,7 +1106,7 @@
             this.label29.CanGrow = false;
             this.label29.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ColorDescription]")});
-            this.label29.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label29.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label29.LocationFloat = new DevExpress.Utils.PointFloat(846.1345F, 17.91669F);
             this.label29.Name = "label29";
             this.label29.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1127,7 +1127,7 @@
             this.label28.CanGrow = false;
             this.label28.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ColorCode]")});
-            this.label28.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label28.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label28.LocationFloat = new DevExpress.Utils.PointFloat(795.166F, 17.91998F);
             this.label28.Name = "label28";
             this.label28.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1177,7 +1177,7 @@
             this.label7.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label7.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum([Doc_AmountVI])")});
-            this.label7.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label7.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label7.LocationFloat = new DevExpress.Utils.PointFloat(288.4799F, 0F);
             this.label7.Name = "label7";
             this.label7.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1198,7 +1198,7 @@
             this.label11.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label11.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum([Doc_LDiscountVITotal])")});
-            this.label11.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label11.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label11.LocationFloat = new DevExpress.Utils.PointFloat(288.4799F, 18.95828F);
             this.label11.Name = "label11";
             this.label11.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1218,7 +1218,7 @@
             // 
             this.label27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(142)))), ((int)(((byte)(158)))));
             this.label27.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.label27.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label27.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label27.LocationFloat = new DevExpress.Utils.PointFloat(288.4799F, 38.95829F);
             this.label27.Name = "label27";
             this.label27.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1238,7 +1238,7 @@
             // 
             this.label44.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(142)))), ((int)(((byte)(158)))));
             this.label44.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.label44.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label44.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label44.LocationFloat = new DevExpress.Utils.PointFloat(289.4799F, 118.9582F);
             this.label44.Name = "label44";
             this.label44.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1259,7 +1259,7 @@
             this.label4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(142)))), ((int)(((byte)(158)))));
             this.label4.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label4.CanGrow = false;
-            this.label4.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label4.LocationFloat = new DevExpress.Utils.PointFloat(166.8007F, 116.8748F);
             this.label4.Name = "label4";
             this.label4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1279,7 +1279,7 @@
             this.label2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(142)))), ((int)(((byte)(158)))));
             this.label2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label2.CanGrow = false;
-            this.label2.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label2.LocationFloat = new DevExpress.Utils.PointFloat(166.8007F, 56.87486F);
             this.label2.Name = "label2";
             this.label2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1298,7 +1298,7 @@
             // 
             this.label3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(142)))), ((int)(((byte)(158)))));
             this.label3.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.label3.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label3.LocationFloat = new DevExpress.Utils.PointFloat(288.4799F, 58.95831F);
             this.label3.Name = "label3";
             this.label3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1316,7 +1316,7 @@
             // 
             // YaziIleTutar
             // 
-            this.YaziIleTutar.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.YaziIleTutar.Font = new System.Drawing.Font("Tahoma", 8F);
             this.YaziIleTutar.LocationFloat = new DevExpress.Utils.PointFloat(72.74977F, 151.6667F);
             this.YaziIleTutar.Name = "YaziIleTutar";
             this.YaziIleTutar.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -1335,7 +1335,7 @@
             this.label12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(142)))), ((int)(((byte)(158)))));
             this.label12.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label12.CanGrow = false;
-            this.label12.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label12.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label12.LocationFloat = new DevExpress.Utils.PointFloat(166.8007F, 76.87488F);
             this.label12.Name = "label12";
             this.label12.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1354,7 +1354,7 @@
             this.label13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(142)))), ((int)(((byte)(158)))));
             this.label13.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.label13.CanGrow = false;
-            this.label13.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F);
+            this.label13.Font = new System.Drawing.Font("Tahoma", 8F);
             this.label13.LocationFloat = new DevExpress.Utils.PointFloat(166.8007F, 96.87482F);
             this.label13.Name = "label13";
             this.label13.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 2, 2, 100F);
@@ -1464,7 +1464,7 @@
             this.DataMember = "MSG_GetIadeGorsel";
             this.DataSource = this.sqlDataSource1;
             this.Landscape = true;
-            this.Margins = new DevExpress.Drawing.DXMargins(9, 16, 0, 100);
+            this.Margins = new System.Drawing.Printing.Margins(9, 16, 0, 100);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;

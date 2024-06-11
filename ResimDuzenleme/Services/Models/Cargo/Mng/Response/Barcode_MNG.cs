@@ -5,7 +5,7 @@ namespace ResimDuzenleme.Services.Models.MNG.Response
     public class Barcode_MNG
     {
         [JsonProperty("pieceNumber")]
-        public int? PieceNumber { get; set; }
+        public int PieceNumber { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
