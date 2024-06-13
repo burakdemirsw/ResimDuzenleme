@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -14,15 +8,15 @@ namespace ResimDuzenleme
 {
     public partial class frmKullanicilar : Form
     {
-        public frmKullanicilar()
+        public frmKullanicilar( )
         {
             InitializeComponent();
 
         }
-   
 
 
-        private void LoadYetkiData()
+
+        private void LoadYetkiData( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -49,7 +43,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private void LoadmagazaData()
+        private void LoadmagazaData( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -163,7 +157,7 @@ namespace ResimDuzenleme
 
         private void frmKullanicilar_Load(object sender, EventArgs e)
         {
-         
+
             // ... diğer initializasyon kodları
             LoadYetkiData();
             LoadmagazaData();

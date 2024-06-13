@@ -1,10 +1,5 @@
-﻿using ResimDuzenleme;
-using ResimDuzenleme.Ubl;
+﻿using ResimDuzenleme.Ubl;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UblInvoice;
 
 
@@ -15,7 +10,7 @@ namespace ResimDuzenleme.UblCreate
     {
 
 
-        public InvoiceUBL()
+        public InvoiceUBL( )
            : base()
         {
             addAdinationalDocRefXslt();
@@ -23,12 +18,12 @@ namespace ResimDuzenleme.UblCreate
 
 
 
-        private void addAdinationalDocRefXslt()
+        private void addAdinationalDocRefXslt( )
         {
 
             var idRef = new DocumentReferenceType();
             idRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
-            idRef.IssueDate =new IssueDateType { Value= DateTime.Now}; 
+            idRef.IssueDate = new IssueDateType { Value = DateTime.Now };
             idRef.DocumentType = new DocumentTypeType { Value = "XSLT" };
             idRef.Attachment = new AttachmentType();
             idRef.Attachment.EmbeddedDocumentBinaryObject = new EmbeddedDocumentBinaryObjectType();

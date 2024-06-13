@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ResimDuzenleme.Services.Models.Entities
 {
@@ -23,7 +19,12 @@ namespace ResimDuzenleme.Services.Models.Entities
         public int Kg { get; set; }
         public int PackagingType { get; set; }
         public int BarcodeSequence { get; set; }
+        public string Marketplace { get; set; }
+        public string SalesUrl { get; set; }
 
+        public string FirstItem { get; set; }
+        public string OrderStatus { get; set; }
+        public string Country { get; set; }
 
 
     }
@@ -54,6 +55,11 @@ namespace ResimDuzenleme.Services.Models.Entities
         public string OrderPieceList { get; set; }
         public string BarcodeBase64 { get; set; }
         public int CargoFirmId { get; set; }
+        public string Marketplace { get; set; }
+        public string SalesUrl { get; set; }
+        public string FirstItem { get; set; }
+        public string OrderStatus { get; set; }
+        public string Country { get; set; }
 
 
     }

@@ -1,10 +1,5 @@
-﻿using ResimDuzenleme;
-using ResimDuzenleme.Ubl;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UblCreditNote;
 
 
@@ -17,7 +12,7 @@ namespace ResimDuzenleme.UblCreate
         public List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
 
 
-        public BaseCreditNoteUBL()
+        public BaseCreditNoteUBL( )
         {
             baseCreditNoteUBL = new CreditNoteType();
             createCreditNotehHeader();
@@ -32,14 +27,14 @@ namespace ResimDuzenleme.UblCreate
 
         }
 
-        public void createCreditNotehHeader()
+        public void createCreditNotehHeader( )
         {
             Random random = new Random();
-            var invoiceId= random.Next(100000000,999999999);
+            var invoiceId = random.Next(100000000, 999999999);
             baseCreditNoteUBL.UBLVersionID = new UBLVersionIDType { Value = "2.1" };
             baseCreditNoteUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" };
             baseCreditNoteUBL.ProfileID = new ProfileIDType { Value = "EARSIVBELGE" };
-            baseCreditNoteUBL.ID = new IDType { Value = "MUH2022"+ invoiceId };
+            baseCreditNoteUBL.ID = new IDType { Value = "MUH2022" + invoiceId };
             baseCreditNoteUBL.CopyIndicator = new CopyIndicatorType { Value = false };
             baseCreditNoteUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
             baseCreditNoteUBL.IssueDate = new IssueDateType { Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")) };
@@ -54,7 +49,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public static PartyType createParty(string partyName,string StreetName,string BuildingNumber,string CitySubD,string District, string cityName,string Postalzone, string Country,string VKN)
+        public static PartyType createParty(string partyName, string StreetName, string BuildingNumber, string CitySubD, string District, string cityName, string Postalzone, string Country, string VKN)
         {
             PartyType party = new PartyType();
             party.PartyName = new PartyNameType { Name = new NameType1 { Value = partyName } };
@@ -62,7 +57,7 @@ namespace ResimDuzenleme.UblCreate
             {
                 ID = new IDType { },
                 Room = new RoomType { },
-                StreetName = new StreetNameType { Value = StreetName},
+                StreetName = new StreetNameType { Value = StreetName },
                 BuildingNumber = new BuildingNumberType { Value = BuildingNumber },
                 CitySubdivisionName = new CitySubdivisionNameType { Value = CitySubD },
                 District = new DistrictType { Value = District },
@@ -90,7 +85,7 @@ namespace ResimDuzenleme.UblCreate
 
 
 
-        public void createSignature()
+        public void createSignature( )
         {
             var signature = new[]
             {
@@ -98,7 +93,7 @@ namespace ResimDuzenleme.UblCreate
                 {
                     ID = new IDType { schemeID = "VKN_TCKN", Value = "4840847211" },
                     SignatoryParty = BaseCreditNoteUBL.createParty("ResimDuzenleme BİLİŞİM TEKNOLOJİLERİ AŞ","Yıldız Teknik üniversitesi Teknopark B Blok Kat:2","412","Esenler","Davutpaşa","İstanbul","34065","Turkey","4840847211"),
-                                                        
+
                     DigitalSignatureAttachment=new AttachmentType
                     {
                         ExternalReference=new ExternalReferenceType
@@ -115,7 +110,7 @@ namespace ResimDuzenleme.UblCreate
             baseCreditNoteUBL.Signature = signature;
         }
 
-        public void SupplierParty()
+        public void SupplierParty( )
         {
             var supplierParty = new SupplierPartyType //göndericinin irsaliye üzerindeki bilgileri
             {
@@ -124,7 +119,7 @@ namespace ResimDuzenleme.UblCreate
             baseCreditNoteUBL.AccountingSupplierParty = supplierParty;
         }
 
-        public void CustomerParty()
+        public void CustomerParty( )
         {
             var customerParty = new CustomerPartyType //alıcının irsaliye üzerindeki bilgileri
             {
@@ -133,7 +128,7 @@ namespace ResimDuzenleme.UblCreate
             baseCreditNoteUBL.AccountingCustomerParty = customerParty;
         }
 
-        public void CreateDelivery()
+        public void CreateDelivery( )
         {
             var delivery = new DeliveryType[] //Alıcının irsaliye üzerindeki bilgileri
             {
@@ -144,9 +139,9 @@ namespace ResimDuzenleme.UblCreate
             baseCreditNoteUBL.Delivery = delivery;
 
         }
-    
 
-        public void TaxTotal()
+
+        public void TaxTotal( )
         {
             var taxTotal = new TaxTotalType[]
             {
@@ -177,7 +172,7 @@ namespace ResimDuzenleme.UblCreate
         }
 
 
-        public void legalMonetaryTotal()
+        public void legalMonetaryTotal( )
         {
             var monetaryTotal = new MonetaryTotalType
             {
@@ -189,7 +184,7 @@ namespace ResimDuzenleme.UblCreate
             baseCreditNoteUBL.LegalMonetaryTotal = monetaryTotal;
         }
 
-        public void addCreditNoteLine()
+        public void addCreditNoteLine( )
         {
             var creditNoteLine = new CreditNoteLineType
             {
@@ -229,10 +224,10 @@ namespace ResimDuzenleme.UblCreate
                     Name = new NameType1 { Value = "Müstahsil" },
                     SellersItemIdentification = new ItemIdentificationType { ID = new IDType { Value = "011" } }
                 },
-               Price=new PriceType
-               {
-                   PriceAmount=new PriceAmountType { currencyID = "TRY", Value = 25.0M }
-               }
+                Price = new PriceType
+                {
+                    PriceAmount = new PriceAmountType { currencyID = "TRY", Value = 25.0M }
+                }
             };
             listCreditNoteLine.Add(creditNoteLine);
             baseCreditNoteUBL.CreditNoteLine = listCreditNoteLine.ToArray();

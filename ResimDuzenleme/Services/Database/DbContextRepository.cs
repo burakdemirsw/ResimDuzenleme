@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ResimDuzenleme.Services.Database
@@ -19,37 +18,37 @@ namespace ResimDuzenleme.Services.Database
             _dbSet = context.Set<T>();
         }
 
-        public void Add(T entity)
+        public async Task Add(T entity)
         {
-            _dbSet.Add(entity);
-            _context.SaveChanges();
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public void AddRange(IEnumerable<T> entities)
+        public async Task AddRange(IEnumerable<T> entities)
         {
-            _dbSet.AddRange(entities);
-            _context.SaveChanges();
+            await _dbSet.AddRangeAsync(entities);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
             _dbSet.Remove(entity);
             _context.SaveChanges();
         }
 
-        public void DeleteRange(IEnumerable<T> entities)
+        public async Task DeleteRange(IEnumerable<T> entities)
         {
             _dbSet.RemoveRange(entities);
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
-        public void UpdateRange(IEnumerable<T> entities)
+        public async Task UpdateRange(IEnumerable<T> entities)
         {
             foreach (var entity in entities)
             {

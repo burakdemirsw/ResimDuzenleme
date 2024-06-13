@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ResimDuzenleme.Services.Interceptors
@@ -24,7 +20,7 @@ namespace ResimDuzenleme.Services.Interceptors
 
         private static void ShowExceptionMessage(Exception ex)
         {
-            MessageBox.Show(ex.Message+" "+ex.StackTrace, "An Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(ex.Message + " " + ex.StackTrace, "An Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

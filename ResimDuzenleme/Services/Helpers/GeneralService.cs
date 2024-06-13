@@ -1,12 +1,12 @@
-﻿using DevExpress.XtraRichEdit.API.Native;
-using DevExpress.XtraRichEdit;
+﻿using DevExpress.XtraRichEdit;
+using DevExpress.XtraRichEdit.API.Native;
 using System;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Drawing.Printing;
-using System.Drawing;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ResimDuzenleme.Services.Helpers
 {

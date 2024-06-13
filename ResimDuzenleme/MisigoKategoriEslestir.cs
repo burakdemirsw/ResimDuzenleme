@@ -1,28 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class MisigoKategoriEslestir : Form
     {
         DataTable dt3 = new DataTable();
-        public MisigoKategoriEslestir()
+        public MisigoKategoriEslestir( )
         {
             InitializeComponent();
         }
         List<string> tumListeItems = new List<string>();
 
-        private void GetInvoiceDate()
+        private void GetInvoiceDate( )
         {
-       
+
             // Veritabanı bağlantı string'inizi buraya ekleyin
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -36,14 +32,14 @@ namespace ResimDuzenleme
                 using (SqlCommand command = new SqlCommand("MSGMisigoKategoriGuncelle", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-               
 
-                   
+
+
                 }
-              
+
             }
 
-       
+
         }
         private void MisigoKategoriEslestir_Load(object sender, EventArgs e)
         {
@@ -120,7 +116,7 @@ namespace ResimDuzenleme
             //    // colorDescription ve colorCode değerlerini istediğiniz şekilde kullanabilirsiniz.
             //}
         }
-  
+
         private void button1_Click(object sender, EventArgs e)
         {
             var selectedItems = checkedListBoxControl1.CheckedItems.Cast<DataRowView>().Select(item => item.Row.Field<int>("ProductHierarchyID")).ToList();
@@ -181,7 +177,7 @@ namespace ResimDuzenleme
                 FilterCheckedListBox();
             }
         }
-        private void FilterCheckedListBox()
+        private void FilterCheckedListBox( )
         {
 
             string filterText = textBox1.Text.ToLower();

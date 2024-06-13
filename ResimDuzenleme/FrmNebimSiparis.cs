@@ -1,9 +1,5 @@
-﻿using DevExpress.XtraBars;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using NUnit.Framework;
-using ResimDuzenleme.EArchiveInvoiceWS;
-using ResimDuzenleme.Operations;
 //using System.Threading;
 
 using ResimDuzenleme.SiparisServis;
@@ -11,28 +7,24 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Xsl;
 
 
 namespace ResimDuzenleme
 {
     public partial class FrmNebimSiparis : Form
     {
-        public FrmNebimSiparis()
+        public FrmNebimSiparis( )
         {
             InitializeComponent();
         }
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private HttpClient httpClient = new HttpClient();
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -82,7 +74,7 @@ namespace ResimDuzenleme
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                  
+
                     await conn.OpenAsync();
                     SqlCommand command = new SqlCommand("MSG_GetOrderForInvoiceToplu_REOnlineReturnToplu", conn);
                     command.CommandTimeout = 3000;
@@ -113,7 +105,7 @@ namespace ResimDuzenleme
                         {
                             musteri.Invoicedate = Convert.ToDateTime(reader["Invoicedate"]); // DateTime'a çevirildi
                         }
-                   
+
 
                         musteri.Description = reader["Description"].ToString();
                         musteri.InternalDescription = reader["InternalDescription"].ToString();
@@ -336,7 +328,7 @@ namespace ResimDuzenleme
 
 
 
-        private async Task<int> GetOrderForInvoiceReturnToplamAsync()
+        private async Task<int> GetOrderForInvoiceReturnToplamAsync( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -361,7 +353,7 @@ namespace ResimDuzenleme
                 }
             }
         }
-        public async void TopluFaturalastir()
+        public async void TopluFaturalastir( )
         {
             labelStatus.Text = "Fatura Aktarımı Başladı...";
             List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
@@ -635,7 +627,7 @@ namespace ResimDuzenleme
             }
         }
 
-        public void KoctasCek()
+        public void KoctasCek( )
         {
             List<WebSiparis> uyeListe = SiparisServiceMethods.SelectSiparisKoctas();
             List<WebSiparisUrun> uyeAdresListe = SiparisServiceMethods.SelectSiparisDetay();

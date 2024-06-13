@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Security.Cryptography;
-using ResimDuzenleme.Services.Database;
+﻿using ResimDuzenleme.Services.Database;
 using ResimDuzenleme.Services.Models.Entities;
+using System;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
+using System.Windows.Forms;
 
 
 
@@ -44,7 +38,7 @@ namespace ResimDuzenleme
             Properties.Settings.Default.Save();
         }
 
-        private void LoadCredentials()
+        private void LoadCredentials( )
         {
             if (Properties.Settings.Default.RememberMe)
             {
@@ -62,7 +56,7 @@ namespace ResimDuzenleme
                 checkBoxBeniHatirla.Checked = true;
             }
         }
-        private void ClearCredentials()
+        private void ClearCredentials( )
         {
             // Kaydedilmiş bilgileri temizle
             Properties.Settings.Default.EncryptedUserName = string.Empty;
@@ -125,14 +119,14 @@ namespace ResimDuzenleme
             }
 
             // Yetki seviyesine göre işlem yap
-       
+
         }
         private void Yonlendir(string yetki)
         {
             if (yetki == "1")
             {
                 this.Hide(); // Şu anki LoginForm'u gizle
-                Misigo frm = new Misigo(_context,_repository);
+                Misigo frm = new Misigo(_context, _repository);
                 frm.FormClosed += (s, args) => this.Show(); // Magaza formu kapandığında LoginForm'u tekrar göster
                 frm.Show();
 
@@ -156,7 +150,7 @@ namespace ResimDuzenleme
         private void LoginForm_Load(object sender, EventArgs e)
         {
             LoadCredentials();
-       
+
 
         }
     }

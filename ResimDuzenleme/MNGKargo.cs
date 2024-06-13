@@ -1,38 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using ResimDuzenleme.MngKargo;
-using System.Web;
 using System.Data.SqlClient;
-using System.Configuration;
-using System.Net;
-using System.IO;
-using Newtonsoft.Json;
-
-using ResimDuzenleme.Services.Models.MNG.Request;
-using ResimDuzenleme.Services.Models.MNG.Order;
-using ResimDuzenleme.Services.Models.MNG.Cargo;
+using System.Windows.Forms;
 
 
 namespace ResimDuzenleme
 {
     public partial class MNGKargo : Form
     {
-        public MNGKargo()
+        public MNGKargo( )
         {
             InitializeComponent();
         }
 
         public class MngKargoBilgileriModel
         {
-     
+
             public string KullaniciAdi { get; set; }
             public string Sifre { get; set; }
         }
@@ -92,7 +75,7 @@ namespace ResimDuzenleme
         //    }
         //}
 
-        public MngKargoBilgileriModel GetMngBilgileri()
+        public MngKargoBilgileriModel GetMngBilgileri( )
         {
             MngKargoBilgileriModel mng = new MngKargoBilgileriModel();
 
@@ -277,7 +260,7 @@ namespace ResimDuzenleme
             try
             {
 
-              
+
 
 
                 ////string KullaniciAdi = "302617285";
@@ -346,10 +329,10 @@ namespace ResimDuzenleme
 
         private async void button2_Click(object sender, EventArgs e)
         {
-         
+
 
         }
 
-  
+
     }
 }

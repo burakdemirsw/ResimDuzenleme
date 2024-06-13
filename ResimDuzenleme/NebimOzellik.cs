@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class NebimOzellik : Form
     {
-        public NebimOzellik()
+        public NebimOzellik( )
         {
             InitializeComponent();
         }
@@ -24,7 +19,7 @@ namespace ResimDuzenleme
             public string SelectedValue { get; private set; }
 
 
-            public OzellikDetay()
+            public OzellikDetay( )
             {
                 dataGridView = new DataGridView
                 {
@@ -45,7 +40,7 @@ namespace ResimDuzenleme
             }
 
         }
-        private List<string> GetSirketKodlari()
+        private List<string> GetSirketKodlari( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -77,7 +72,7 @@ namespace ResimDuzenleme
 
             return sirketKodlari;
         }
-        private void LoadNebimOzellikForm()
+        private void LoadNebimOzellikForm( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -176,7 +171,7 @@ namespace ResimDuzenleme
                 }
             }
         }
-    
+
         private void NebimOzellik_Load(object sender, EventArgs e)
         {
 

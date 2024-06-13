@@ -1,23 +1,12 @@
-﻿using System;
+﻿using ImageMagick;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-using ImageMagick;
-using Excel = Microsoft.Office.Interop.Excel;
-using CsvHelper;
-using System.Globalization;
-using ClosedXML.Excel;
-using NPOI;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-
 using System.Linq;
-
-
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 
 
@@ -26,7 +15,7 @@ namespace ResimDuzenleme
 {
     public partial class PhotoDuzenleme : Form
     {
-        public PhotoDuzenleme()
+        public PhotoDuzenleme( )
         {
             InitializeComponent();
         }
@@ -66,7 +55,8 @@ namespace ResimDuzenleme
             var orderedFiles = imageFiles.OrderBy(file =>
             {
                 string fileName = Path.GetFileNameWithoutExtension(file);
-                if (string.IsNullOrEmpty(fileName)) return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
+                if (string.IsNullOrEmpty(fileName))
+                    return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
                 return fileName.Contains(" ") || fileName.Contains("-") || fileName.Contains("(") ? int.MaxValue : 0;
             }).ThenBy(file => file).ToArray(); //Eğer dosya ismi " " veya "-" içermiyorsa, o dosyaları önce döndürür, sonrasında kalan dosyaları isim sıralamasına göre döndürür.
 
@@ -409,9 +399,9 @@ namespace ResimDuzenleme
             catch (Exception)
             {
 
-                
+
             }
-          
+
         }
         private void ProcessMiscPhotosFolders(string folder)
         {
@@ -523,7 +513,7 @@ namespace ResimDuzenleme
 
                 throw;
             }
-           
+
         }
         private void button5_Click(object sender, EventArgs e)
         {
@@ -537,7 +527,7 @@ namespace ResimDuzenleme
 
         private void button6_Click(object sender, EventArgs e)
         {
-        
+
             if (string.IsNullOrEmpty(textBoxImageFolder.Text))
             {
                 MessageBox.Show("Lütfen önce bir klasör seçin.");
@@ -558,7 +548,8 @@ namespace ResimDuzenleme
             var orderedFiles = imageFiles.OrderBy(file =>
             {
                 string fileName = Path.GetFileNameWithoutExtension(file);
-                if (string.IsNullOrEmpty(fileName)) return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
+                if (string.IsNullOrEmpty(fileName))
+                    return int.MaxValue; //Null veya boş isimli dosyaları listenin sonuna atar.
                 return fileName.Contains(" ") || fileName.Contains("-") || fileName.Contains("(") ? int.MaxValue : 0;
             }).ThenBy(file => file).ToArray(); //Eğer dosya ismi " " veya "-" içermiyorsa, o dosyaları önce döndürür, sonrasında kalan dosyaları isim sıralamasına göre döndürür.
 

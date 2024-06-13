@@ -43,6 +43,7 @@
             this.viewDataSource1 = new DevExpress.Persistent.Base.ReportsV2.ViewDataSource();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -208,12 +209,22 @@
             // 
             // xtraTabPage4
             // 
+            this.xtraTabPage4.Controls.Add(this.simpleButton16);
             this.xtraTabPage4.Controls.Add(this.simpleButton15);
             this.xtraTabPage4.Controls.Add(this.panel1);
             this.xtraTabPage4.Controls.Add(this.xtraTabControl1);
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(1455, 787);
             this.xtraTabPage4.Text = "Toplu İşlemler";
+            // 
+            // simpleButton16
+            // 
+            this.simpleButton16.Location = new System.Drawing.Point(8, 88);
+            this.simpleButton16.Name = "simpleButton16";
+            this.simpleButton16.Size = new System.Drawing.Size(1439, 23);
+            this.simpleButton16.TabIndex = 24;
+            this.simpleButton16.Text = "Servisi Başlat";
+            this.simpleButton16.Click += new System.EventHandler(this.simpleButton16_Click);
             // 
             // simpleButton15
             // 
@@ -335,10 +346,10 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 105);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 117);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 682);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 670);
             this.xtraTabControl1.TabIndex = 16;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -349,7 +360,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 657);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 645);
             this.xtraTabPage1.Text = "Çekilen Siparişler";
             // 
             // gridControl1
@@ -358,7 +369,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1453, 657);
+            this.gridControl1.Size = new System.Drawing.Size(1453, 645);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -385,7 +396,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 657);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 645);
             this.xtraTabPage3.Text = "Barkod Yazdır";
             // 
             // gridControl3
@@ -394,7 +405,7 @@
             this.gridControl3.Location = new System.Drawing.Point(0, 0);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1453, 657);
+            this.gridControl3.Size = new System.Drawing.Size(1453, 645);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -410,7 +421,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 657);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 645);
             this.xtraTabPage2.Text = "Loglar";
             // 
             // gridControl2
@@ -419,7 +430,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1453, 657);
+            this.gridControl2.Size = new System.Drawing.Size(1453, 645);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -524,5 +535,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton12;
         private DevExpress.XtraEditors.SimpleButton simpleButton13;
         private DevExpress.XtraEditors.SimpleButton simpleButton15;
+        private DevExpress.XtraEditors.SimpleButton simpleButton16;
     }
 }

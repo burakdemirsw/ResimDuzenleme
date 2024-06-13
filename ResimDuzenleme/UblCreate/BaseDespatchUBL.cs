@@ -1,10 +1,5 @@
-﻿using ResimDuzenleme;
-using ResimDuzenleme.Ubl;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UblDespatch;
 
 
@@ -17,7 +12,7 @@ namespace ResimDuzenleme.UblCreate
         public List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
 
 
-        public BaseDespatchUBL()
+        public BaseDespatchUBL( )
         {
             baseDespatchUBL = new DespatchAdviceType();
             createDespatchHeader();
@@ -30,7 +25,7 @@ namespace ResimDuzenleme.UblCreate
 
         }
 
-        public void createDespatchHeader()
+        public void createDespatchHeader( )
         {
             Random random = new Random();
             var despatchId = random.Next(100000000, 999999999);
@@ -39,7 +34,7 @@ namespace ResimDuzenleme.UblCreate
             //uluslararası fatura standardı 2.1
             baseDespatchUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2" };
             baseDespatchUBL.ProfileID = new ProfileIDType { Value = "TEMELIRSALIYE" };
-            baseDespatchUBL.ID = new IDType { Value = "IRS2022"+ despatchId };
+            baseDespatchUBL.ID = new IDType { Value = "IRS2022" + despatchId };
             baseDespatchUBL.CopyIndicator = new CopyIndicatorType { Value = false };
             baseDespatchUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
             baseDespatchUBL.IssueDate = new IssueDateType { Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")) };
@@ -87,7 +82,7 @@ namespace ResimDuzenleme.UblCreate
 
 
 
-        public void createSignature()
+        public void createSignature( )
         {
             var signature = new[]
             {
@@ -111,21 +106,21 @@ namespace ResimDuzenleme.UblCreate
             baseDespatchUBL.Signature = signature;
         }
 
-        public void DespatchSupplierParty()
+        public void DespatchSupplierParty( )
         {
             var despatchSupplierParty = new SupplierPartyType //göndericinin irsaliye üzerindeki bilgileri
             {
                 Party = BaseDespatchUBL.createParty("ResimDuzenleme BİLİŞİM TEKNOLOJİLERİ AŞ", "İSTANBUL", "2122121212", "2121111111", "defaultgb@ResimDuzenleme.com.tr", "4840847211"),
                 DespatchContact = new ContactType
                 {
-                  //  ID = new IDType { Value = "" },
+                    //  ID = new IDType { Value = "" },
                     Name = new NameType1 { Value = "" }
                 }
             };
             baseDespatchUBL.DespatchSupplierParty = despatchSupplierParty;
         }
 
-        public void CreateDelivery()
+        public void CreateDelivery( )
         {
             var customerPartyType = new CustomerPartyType //Alıcının irsaliye üzerindeki bilgileri
             {
@@ -135,11 +130,11 @@ namespace ResimDuzenleme.UblCreate
 
         }
 
-        public void Shipment()
+        public void Shipment( )
         {
             var shipment = new ShipmentType
             {
-                ID = new IDType {},
+                ID = new IDType { },
                 NetWeightMeasure = new NetWeightMeasureType { unitCode = "C62", Value = 50.0M },
                 TotalGoodsItemQuantity = new TotalGoodsItemQuantityType { Value = 1.0m },
                 GoodsItem = new GoodsItemType[]
@@ -198,7 +193,7 @@ namespace ResimDuzenleme.UblCreate
             baseDespatchUBL.Shipment = shipment;
         }
 
-        public void addDespatchLine()
+        public void addDespatchLine( )
         {
             var despatchLine = new DespatchLineType
             {

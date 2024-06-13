@@ -1,39 +1,23 @@
-﻿using DevExpress.XtraBars;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NUnit.Framework;
-using ResimDuzenleme.EArchiveInvoiceWS;
-using ResimDuzenleme.Operations;
-//using System.Threading;
+﻿//using System.Threading;
 
-using ResimDuzenleme.SiparisServis;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Xsl;
 
 
 namespace ResimDuzenleme
 {
     public partial class NebimFaturaListesi2 : Form
     {
-        public NebimFaturaListesi2()
+        public NebimFaturaListesi2( )
         {
             InitializeComponent();
         }
         public FrmFaturalastirTekli FrmFaturalastirTekliRef { get; set; }
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-          
+
             var point = gridControl1.PointToClient(Control.MousePosition);
             var hitInfo = gridView1.CalcHitInfo(point);
             if (hitInfo.InRow || hitInfo.InRowCell)
@@ -101,7 +85,7 @@ namespace ResimDuzenleme
             gridView1.Columns["Açıklama"].Caption = "Açıklama";
             gridView1.Columns["Detaylı Açıklama"].Caption = "Detaylı Açıklama";
             gridView1.Columns["Durumu"].Caption = "Durumu";
-          
+
             // ... Diğer sütun başlıkları
 
             // GridView ayarları...

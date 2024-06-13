@@ -1,50 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraBars;
-using System.Data.SqlClient;
-using System.IO;
-using Excel = Microsoft.Office.Interop.Excel;
-using CsvHelper;
-using System.Globalization;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using DevExpress.XtraReports.UI;
-using Newtonsoft.Json.Linq;
-using System.Net;
-using System.Xml;
-using System.Xml.Linq;
-using System.Net.Http;
-using Newtonsoft.Json;
+﻿using DevExpress.XtraBars;
 using Google.Cloud.Translation.V2;
-using System.ServiceProcess;
-using System.Diagnostics;
-using System.Security.Principal;
-using System.Configuration.Install;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using ResimDuzenleme.Services.Cargo;
+using ResimDuzenleme.Services.Database;
+using ResimDuzenleme.Services.Forms;
+using ResimDuzenleme.Services.Models.Entities;
 //using System.Threading;
 using ResimDuzenleme.SiparisServis;
 using ResimDuzenleme.UrunServis;
-using NUnit.Framework;
-using ResimDuzenleme.EArchiveInvoiceWS;
-using ResimDuzenleme.Operations;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
 //using System.Threading;
-using System.Xml.XPath;
-using System.Xml.Xsl;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
-using ResimDuzenleme.Services.Forms;
-using System.Runtime.Remoting.Contexts;
-using ResimDuzenleme.Services.Database;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using Context = ResimDuzenleme.Services.Database.Context;
-using ResimDuzenleme.Services.Models.Entities;
-using DocumentFormat.OpenXml.InkML;
-using ResimDuzenleme.Services.Cargo;
 
 
 
@@ -57,6 +36,7 @@ namespace ResimDuzenleme
         private System.Timers.Timer timer;
         private readonly Context _context; //OrderDetail_DTO
         private readonly DbContextRepository<CargoBarcode> _repository;
+
         public Misigo(Context context, DbContextRepository<CargoBarcode> repository)
         {
             InitializeComponent();
@@ -234,7 +214,7 @@ namespace ResimDuzenleme
                 }
             }
         }
-        private DataTable VerileriGetir()
+        private DataTable VerileriGetir( )
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -319,7 +299,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private DataTable VerileriGetirRenk()
+        private DataTable VerileriGetirRenk( )
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -415,7 +395,7 @@ namespace ResimDuzenleme
                 MessageBox.Show($"Çeviri işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private DataTable VerileriGetirOzellik()
+        private DataTable VerileriGetirOzellik( )
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -503,7 +483,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private DataTable VerileriGetirOzellikTipi()
+        private DataTable VerileriGetirOzellikTipi( )
         {
             // SQL sorgusu ile verilerinizi çekmek için kullanabileceğiniz bir işlevi burada uygulayın.
             // Veritabanı bağlantısı kurun ve gerekli sorguyu çalıştırın.
@@ -840,7 +820,7 @@ namespace ResimDuzenleme
             }
         }
 
-      
+
 
         private void barButtonItem80_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -865,7 +845,7 @@ namespace ResimDuzenleme
         {
             List<Kategori> KategoriListe = UrunServiceMethods.SelectKategori();
 
-            
+
             int eklenenKategoriId = UrunServiceMethods.SaveKategori();
             MessageBox.Show("Kategori Aktarımı Tamamlandı...");
         }
@@ -1048,7 +1028,7 @@ namespace ResimDuzenleme
             return stoks;
         }
 
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -1101,7 +1081,7 @@ namespace ResimDuzenleme
                 return null;
             }
         }
-       private async void  SayimCikar()
+        private async void SayimCikar( )
         {
             List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
             try
@@ -1186,11 +1166,11 @@ namespace ResimDuzenleme
                 Console.WriteLine(ex.Message, "Hata Alındı Tekrar Faturalaştır Tuşuna basınız.");
 
             }
-      
+
         }
 
 
-        private async void SayimTemizle()
+        private async void SayimTemizle( )
         {
             List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
             try
@@ -1279,7 +1259,7 @@ namespace ResimDuzenleme
         }
 
 
-        private async void SayimEkle()
+        private async void SayimEkle( )
         {
             List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
             try
@@ -1411,8 +1391,8 @@ namespace ResimDuzenleme
             }
         }
         private bool isGreen = false;
-     
-        private void InitializeTimer()
+
+        private void InitializeTimer( )
         {
             // Timer oluştur
             timer = new System.Timers.Timer();
@@ -1421,7 +1401,7 @@ namespace ResimDuzenleme
             timer.AutoReset = true; // Otomatik tekrar et
             timer.Enabled = true; // Timer'ı başlat
         }
-        private void InitializeTimer2()
+        private void InitializeTimer2( )
         {
             // Timer oluştur
             timer = new System.Timers.Timer();
@@ -1431,7 +1411,7 @@ namespace ResimDuzenleme
             timer.Enabled = true; // Timer'ı başlat
         }
 
-        private void InitializeTimerSiparis()
+        private void InitializeTimerSiparis( )
         {
             // Timer oluştur
             timer = new System.Timers.Timer();
@@ -1440,7 +1420,7 @@ namespace ResimDuzenleme
             timer.AutoReset = true; // Otomatik tekrar et
             timer.Enabled = true; // Timer'ı başlat
         }
-        private void InitializeTimerIrsaliye()
+        private void InitializeTimerIrsaliye( )
         {
             // Timer oluştur
             timer = new System.Timers.Timer();
@@ -1449,7 +1429,7 @@ namespace ResimDuzenleme
             timer.AutoReset = true; // Otomatik tekrar et
             timer.Enabled = true; // Timer'ı başlat
         }
-        private void InitializeTimerKoctas()
+        private void InitializeTimerKoctas( )
         {
             // Timer oluştur
             timer = new System.Timers.Timer();
@@ -1478,7 +1458,7 @@ namespace ResimDuzenleme
             catch (Exception ex)
             {
 
-                MessageBox.Show("Sayim Çıkarırken hata oluştu"+ex.Message);
+                MessageBox.Show("Sayim Çıkarırken hata oluştu" + ex.Message);
             }
 
 
@@ -1493,7 +1473,7 @@ namespace ResimDuzenleme
                 MessageBox.Show("Sayim Eklerken hata oluştu" + ex.Message);
             }
 
-        
+
 
         }
         private void TimerElapsed2(object sender, System.Timers.ElapsedEventArgs e)
@@ -1534,7 +1514,7 @@ namespace ResimDuzenleme
             Durumu = "False";
             string ServisAdi;
             ServisAdi = "Nebim Stok Eşitle";
-            if (isGreen == false )
+            if (isGreen == false)
             {
                 barButtonItem85.Appearance.BackColor = Color.Green;
                 isGreen = true;
@@ -1551,7 +1531,7 @@ namespace ResimDuzenleme
                 ServisDurum(ServisAdi, Durumu);
                 timer.Stop();
             }
-        
+
         }
 
         private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
@@ -1811,7 +1791,7 @@ namespace ResimDuzenleme
                         musteri.SalesViaInternetInfo = SalesViaInternetInfoArray.ToObject<List<SalesViaInternetInfo>>().First();
 
 
-                    
+
 
                         //string attributesJson = reader["Attributes"].ToString();
                         //JArray attributesArray = JArray.Parse(attributesJson);
@@ -1833,7 +1813,7 @@ namespace ResimDuzenleme
 
         }
 
-        private async Task<int> GetOrderForInvoiceToplamAsync()
+        private async Task<int> GetOrderForInvoiceToplamAsync( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -1901,7 +1881,7 @@ namespace ResimDuzenleme
                             {
                                 postCount++;
                                 //var result = await response.Content.ReadAsStringAsync();
-                             
+
 
 
                                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -1918,7 +1898,7 @@ namespace ResimDuzenleme
                                         //cmd.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar, -1) { Value = json });
                                         //cmd.Parameters.Add(new SqlParameter("@Cevap", SqlDbType.NVarChar, -1) { Value = jsonResponse });
 
-                                      
+
                                         conn.Open();
                                         cmd.ExecuteNonQuery();
 
@@ -2012,9 +1992,9 @@ namespace ResimDuzenleme
                 ServisDurum(ServisAdi, Durumu);
                 timer.Stop();
             }
-      
+
         }
-        private  void SiparisTopluCek()
+        private void SiparisTopluCek( )
         {
             List<WebSiparis> uyeListe = SiparisServiceMethods.SelectSiparis();
             List<WebSiparisUrun> uyeAdresListe = SiparisServiceMethods.SelectSiparisDetay();
@@ -2066,7 +2046,7 @@ namespace ResimDuzenleme
 
             return stoks;
         }
-        private async void SayimEsitle()
+        private async void SayimEsitle( )
         {
             List<FaturaBilgisi> faturaBilgileri = await GetFaturaBilgileriFromDatabasee();
             try
@@ -2151,7 +2131,7 @@ namespace ResimDuzenleme
                 Console.WriteLine(ex.Message, "Hata Alındı Tekrar Faturalaştır Tuşuna basınız.");
 
             }
-    
+
         }
 
         private void barButtonItem56_ItemClick(object sender, ItemClickEventArgs e)
@@ -2234,7 +2214,7 @@ namespace ResimDuzenleme
         {
             await DownloadImagesAsync();
         }
-        private async Task DownloadImagesAsync()
+        private async Task DownloadImagesAsync( )
         {
             try
             {
@@ -2323,8 +2303,8 @@ namespace ResimDuzenleme
 
         private void barButtonItem103_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MNG_CargoService srv = new MNG_CargoService(_context);  
-            MNG_CargoForm frm = new MNG_CargoForm(_context,_repository, srv);
+            MNG_CargoService srv = new MNG_CargoService(_repository, _context);
+            MNG_CargoForm frm = new MNG_CargoForm(_context, _repository, srv);
             frm.MdiParent = this;
             frm.Show();
         }

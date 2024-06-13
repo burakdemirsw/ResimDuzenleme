@@ -1,10 +1,5 @@
-﻿using ResimDuzenleme;
-using ResimDuzenleme.Ubl;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UblReceipt;
 
 
@@ -17,7 +12,7 @@ namespace ResimDuzenleme.UblCreate
         public List<DocumentReferenceType> docRefList = new List<DocumentReferenceType>();
 
 
-        public BaseReceiptUBL()
+        public BaseReceiptUBL( )
         {
             baseReceiptUBL = new ReceiptAdviceType();
             createDespatchHeader();
@@ -31,7 +26,7 @@ namespace ResimDuzenleme.UblCreate
 
         }
 
-        public void createDespatchHeader()
+        public void createDespatchHeader( )
         {
             Random random = new Random();
             var receiptId = random.Next(100000000, 999999999);
@@ -39,14 +34,14 @@ namespace ResimDuzenleme.UblCreate
             baseReceiptUBL.CustomizationID = new CustomizationIDType { Value = "TR1.2.1" };
             //uluslararası fatura standardı 2.1
             baseReceiptUBL.ProfileID = new ProfileIDType { Value = "TEMELIRSALIYE" };
-            baseReceiptUBL.ID = new IDType { Value = "RES2022"+receiptId };
+            baseReceiptUBL.ID = new IDType { Value = "RES2022" + receiptId };
             baseReceiptUBL.CopyIndicator = new CopyIndicatorType { Value = false };
             baseReceiptUBL.UUID = new UUIDType { Value = Guid.NewGuid().ToString() };
             baseReceiptUBL.IssueDate = new IssueDateType { Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")) };
             baseReceiptUBL.IssueTime = new IssueTimeType { Value = Convert.ToDateTime(DateTime.Now.ToString("HH:mm:ss.")) };
             baseReceiptUBL.ReceiptAdviceTypeCode = new ReceiptAdviceTypeCodeType { Value = "SEVK" };
             baseReceiptUBL.Note = new NoteType[] { new NoteType { Value = "Denemedir" } };
-            baseReceiptUBL.LineCountNumeric = new LineCountNumericType { Value =1 };
+            baseReceiptUBL.LineCountNumeric = new LineCountNumericType { Value = 1 };
         }
 
 
@@ -85,7 +80,7 @@ namespace ResimDuzenleme.UblCreate
             return party;
         }
 
-        public void DespatchDocumentReference()
+        public void DespatchDocumentReference( )
         {
             var documentReference = new DocumentReferenceType();
             documentReference.ID = new IDType { Value = "293f0d1c-836e-4d26-a055-2e443b35cd4b" };//yanıt verilen irsaliyenin uıque ıdsi yazılmalıdır.
@@ -93,7 +88,7 @@ namespace ResimDuzenleme.UblCreate
             baseReceiptUBL.DespatchDocumentReference = documentReference;
         }
 
-        public void addAdditionalDocumentReference()
+        public void addAdditionalDocumentReference( )
         {
 
             var recRef = new DocumentReferenceType();
@@ -106,7 +101,7 @@ namespace ResimDuzenleme.UblCreate
             baseReceiptUBL.AdditionalDocumentReference = docRefList.ToArray();
         }
 
-        public void createSignature()
+        public void createSignature( )
         {//irsaliyedeki customer alanı
             var signature = new[]
             {
@@ -114,7 +109,7 @@ namespace ResimDuzenleme.UblCreate
                 {
                     ID = new IDType { schemeID = "VKN_TCKN", Value = "4840847211" },
                     SignatoryParty = BaseReceiptUBL.createParty("akbil teknolojileri","ANKARA","DENEME ADRES BİLGİLERİ","KAHRAMANKAZAN","","TÜRKİYE","KURUMLAR","(800) 811-1199","","yazilim@ResimDuzenleme.com.tr","4840847211"),
-                                                                   
+
                     DigitalSignatureAttachment=new AttachmentType
                     {
                         ExternalReference=new ExternalReferenceType
@@ -131,7 +126,7 @@ namespace ResimDuzenleme.UblCreate
             baseReceiptUBL.Signature = signature;
         }
 
-        public void DespatchSupplierParty()
+        public void DespatchSupplierParty( )
         {
             var despatchSupplierParty = new SupplierPartyType //göndericinin irsaliye üzerindeki bilgileri
             {
@@ -145,7 +140,7 @@ namespace ResimDuzenleme.UblCreate
             baseReceiptUBL.DespatchSupplierParty = despatchSupplierParty;
         }
 
-        public void CreateDelivery()
+        public void CreateDelivery( )
         {
             var customerPartyType = new CustomerPartyType //Alıcının irsaliye üzerindeki bilgileri
             {
@@ -155,7 +150,7 @@ namespace ResimDuzenleme.UblCreate
 
         }
 
-        public void Shipment()
+        public void Shipment( )
         {
             var shipment = new ShipmentType
             {
@@ -202,10 +197,10 @@ namespace ResimDuzenleme.UblCreate
             return receiptLine;
         }
 
-        public void addReceiptLine()
+        public void addReceiptLine( )
         {
-      
-var receiptLine = BaseReceiptUBL.Linetype("1", "1", "", "DEFTER");
+
+            var receiptLine = BaseReceiptUBL.Linetype("1", "1", "", "DEFTER");
             //  var receiptLine2 = BaseReceiptUBL.Linetype("2", "2", "2", "K2000 MAT KROM 16 KALİBRE 890 AAAAA FSASF FASFA");
             listReceiptLine.Add(receiptLine);
             //  listReceiptLine.Add(receiptLine2);

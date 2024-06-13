@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
+using System.Data.SqlClient;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ResimDuzenleme
 {
@@ -15,7 +12,7 @@ namespace ResimDuzenleme
     {
         private readonly string _connectionString;
         private TrendyolService trendyolService;
-        public DatabaseService()
+        public DatabaseService( )
         {
 
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -116,7 +113,7 @@ namespace ResimDuzenleme
         }
 
 
-        public async Task ProductUpdate()
+        public async Task ProductUpdate( )
         {
             DeliveryOption option = new DeliveryOption();
             option.deliveryDuration = 2;

@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class UrunAcmaParametreleri : Form
     {
-        public UrunAcmaParametreleri()
+        public UrunAcmaParametreleri( )
         {
             InitializeComponent();
         }
@@ -28,7 +22,7 @@ namespace ResimDuzenleme
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-             
+
                 connection.Open();
 
                 using (SqlCommand command = new SqlCommand("SELECT DataBaseNebim, SirketKodu,ResimYolu,IpAdres FROM ZTMSGTicUrunAcmaParametreleri Order By SirketKodu asc", connection))
@@ -84,7 +78,7 @@ namespace ResimDuzenleme
                 }
             }
             MessageBox.Show("Kayıt Başarıyla Eklendi.");
-            
+
         }
 
         private void btnsil_Click(object sender, EventArgs e)

@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using System.Data.SqlClient;
+﻿using DevExpress.XtraReports.Parameters;
 using DevExpress.XtraReports.UI;
-using DevExpress.XtraReports.Parameters;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class SiparisBarkodYazdir : Form
     {
-        public SiparisBarkodYazdir()
+        public SiparisBarkodYazdir( )
         {
             InitializeComponent();
         }
@@ -43,7 +37,7 @@ namespace ResimDuzenleme
                 dataGridView1.DataSource = dtbl;
             }
         }
-     
+
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string orderNumber = dataGridView1.Rows[e.RowIndex].Cells["OrderNumber"].Value.ToString();

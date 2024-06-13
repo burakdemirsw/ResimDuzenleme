@@ -1,19 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Data.SqlClient;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using Newtonsoft.Json.Linq;
-using System.Net.Http;
-using Newtonsoft.Json;
 
 
 
@@ -22,9 +20,9 @@ namespace ResimDuzenleme
 {
     public partial class NebimSiparisAktarExcell : Form
     {
-     
+
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
-        public NebimSiparisAktarExcell()
+        public NebimSiparisAktarExcell( )
         {
             InitializeComponent();
         }
@@ -94,7 +92,7 @@ namespace ResimDuzenleme
                     }
                 }
             }
-          
+
         }
 
         private void btnSiparisAktar_Click(object sender, EventArgs e)
@@ -110,7 +108,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private async Task<string> ConnectIntegrator()
+        private async Task<string> ConnectIntegrator( )
         {
             try
             {
@@ -323,7 +321,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private async Task<List<ZTMSGTicUyeAdresR>> VeritabanindanMusteriGetirR()
+        private async Task<List<ZTMSGTicUyeAdresR>> VeritabanindanMusteriGetirR( )
         {
             List<ZTMSGTicUyeAdresR> musteriler = new List<ZTMSGTicUyeAdresR>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -504,7 +502,7 @@ namespace ResimDuzenleme
         }
 
 
-        private async Task<List<ZtNebimFaturaR>> VeritabanindanMusteriGetirFaturaR()
+        private async Task<List<ZtNebimFaturaR>> VeritabanindanMusteriGetirFaturaR( )
         {
 
             try

@@ -1,8 +1,8 @@
 ﻿
 
-using System.Collections.Generic;
 using ResimDuzenleme.Services.Models.MNG.Cargo;
 using ResimDuzenleme.Services.Models.MNG.Order;
+using System.Collections.Generic;
 
 namespace ResimDuzenleme.Services.Models.MNG.Request
 {
@@ -20,6 +20,11 @@ namespace ResimDuzenleme.Services.Models.MNG.Request
         public CreateBarcode_MNG_Request BarcodeRequest { get; set; }
         public string BarcodeBase64 { get; set; }
         public int CargoFirmId { get; set; }
+        public string Marketplace { get; set; }
+        public string SalesUrl { get; set; }
+        public string FirstItem { get; set; }
+        public string OrderStatus { get; set; }
+        public string Country { get; set; }
 
     }
 

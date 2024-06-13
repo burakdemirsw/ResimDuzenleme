@@ -1,32 +1,16 @@
-﻿using DevExpress.XtraBars;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NUnit.Framework;
-using ResimDuzenleme.EArchiveInvoiceWS;
-using ResimDuzenleme.Operations;
-//using System.Threading;
+﻿//using System.Threading;
 
-using ResimDuzenleme.SiparisServis;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Xsl;
 
 
 namespace ResimDuzenleme
 {
     public partial class NebimIrsaliyeListesi : Form
     {
-        public NebimIrsaliyeListesi()
+        public NebimIrsaliyeListesi( )
         {
             InitializeComponent();
         }

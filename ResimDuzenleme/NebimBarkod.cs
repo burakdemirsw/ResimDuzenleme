@@ -1,26 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class NebimBarkod : Form
     {
-        public NebimBarkod()
+        public NebimBarkod( )
         {
             InitializeComponent();
         }
         public string AnaUrunKodu { get; set; }
         private void Btnbarkod_Click(object sender, EventArgs e)
         {
-            
+
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
             string password = Properties.Settings.Default.Sifre;
@@ -83,7 +77,7 @@ namespace ResimDuzenleme
 
 
         }
-        private void LoadNebimOzellikForm()
+        private void LoadNebimOzellikForm( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;

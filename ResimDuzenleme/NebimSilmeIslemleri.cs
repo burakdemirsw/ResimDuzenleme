@@ -1,18 +1,12 @@
-﻿using DevExpress.XtraBars;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ResimDuzenleme.EArchiveInvoiceWS;
 using ResimDuzenleme.Operations;
 //using System.Threading;
 
-using ResimDuzenleme.SiparisServis;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +19,7 @@ namespace ResimDuzenleme
 {
     public partial class NebimSilmeIslemleri : DevExpress.XtraEditors.XtraForm
     {
-        public NebimSilmeIslemleri()
+        public NebimSilmeIslemleri( )
         {
             InitializeComponent();
         }
@@ -183,7 +177,7 @@ namespace ResimDuzenleme
                 PROFILE = nameof(EI.DocumentType.XML)
             };
 
-            ArchiveInvoiceReadResponse response = await Task.Run(() => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
+            ArchiveInvoiceReadResponse response = await Task.Run(( ) => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
 
             Assert.AreEqual(response.REQUEST_RETURN.RETURN_CODE, 0);
             Assert.IsTrue(response.INVOICE.Length > 0);
@@ -216,7 +210,7 @@ namespace ResimDuzenleme
                     EArchiveContent
                 },
             };
-            CancelEArchiveInvoiceResponse response = await Task.Run(() => _ResimDuzenlemeClient.EInvoiceArchive().CancelEArchiveInvoiceResponse(request));
+            CancelEArchiveInvoiceResponse response = await Task.Run(( ) => _ResimDuzenlemeClient.EInvoiceArchive().CancelEArchiveInvoiceResponse(request));
             Assert.Null(response.ERROR_TYPE);
             Assert.AreEqual(response.REQUEST_RETURN.RETURN_CODE, 0);
         }
@@ -288,13 +282,13 @@ namespace ResimDuzenleme
                 string xsltContent = File.ReadAllText("general.xslt", Encoding.UTF8);
                 string xmlContent = File.ReadAllText(filePath, Encoding.UTF8);
                 string htmlContent = TransformXmlToHtml(xmlContent, xsltContent);
-              
+
                 // Fatura görselini göster
                 textBox1.Text = invoiceID;
                 bool faturaSil = checkBox1.Checked ? true : false;
                 bool irsaliyeSil = checkBox3.Checked ? true : false;
                 bool siparisSil = checkBox2.Checked ? true : false;
-                
+
                 // DeleteInvoice metodu çağrılacak
                 string serverName = Properties.Settings.Default.SunucuAdi;
                 string userName = Properties.Settings.Default.KullaniciAdi;

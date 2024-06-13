@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ResimDuzenleme.Services.Models.MNG
+﻿namespace ResimDuzenleme.Services.Models.MNG
 {
     public class BulkDeleteShipment_CM
     {

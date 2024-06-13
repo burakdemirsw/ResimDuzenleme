@@ -11,7 +11,7 @@ namespace ResimDuzenleme
     static class Program
     {
         [STAThread]
-        static void Main()
+        static void Main( )
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

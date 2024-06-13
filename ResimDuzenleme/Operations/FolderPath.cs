@@ -1,11 +1,6 @@
-﻿using ResimDuzenleme.Ubl;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ResimDuzenleme.Operations
 {

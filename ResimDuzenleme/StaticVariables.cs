@@ -1,9 +1,5 @@
-﻿using System;
+﻿using ResimDuzenleme.UrunServis;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ResimDuzenleme.UrunServis;
 
 
 namespace ResimDuzenleme
@@ -29,7 +25,7 @@ namespace ResimDuzenleme
         public static SiparisServis.SiparisServisClient siparisServisClient;
         public static UrunServis.UrunServisClient urunServisClient;
         //public static UyeServis.UyeServisClient uyeServisClient = new UyeServisClient();
-  
+
         public static CustomServis.CustomServisClient customServisClient;
         public static UyeServis.UyeServisClient uyeServisClient;
         public static string uyeKodu = "";

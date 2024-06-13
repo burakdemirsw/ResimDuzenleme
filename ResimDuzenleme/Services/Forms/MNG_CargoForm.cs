@@ -1,13 +1,7 @@
-﻿using DevExpress.CodeParser;
-using DevExpress.Office.Utils;
-using DevExpress.Pdf;
-using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
-using GoogleAPI.Domain.Models.Cargo.Mng.Response;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using NPOI.SS.Formula.Functions;
 using ResimDuzenleme.Services.Cargo;
 using ResimDuzenleme.Services.Cargo.Reports.ReportModels;
 using ResimDuzenleme.Services.Database;
@@ -21,14 +15,10 @@ using ResimDuzenleme.Services.Models.MNG.Request;
 using ResimDuzenleme.Services.Models.MNG.Response;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using CreatePackage_MNG_RR = ResimDuzenleme.Services.Models.MNG.Response.CreatePackage_MNG_RR;
 using Formatting = Newtonsoft.Json.Formatting;
@@ -42,60 +32,89 @@ namespace ResimDuzenleme.Services.Forms
         private readonly DbContextRepository<OrderDetail_DTO> _or;
         private readonly MNG_CargoService mNG_CargoService;
 
-        public MNG_CargoForm(Context context, DbContextRepository<CargoBarcode> repository, MNG_CargoService mNG_CargoService)
+        public MNG_CargoForm(
+            Context context,
+            DbContextRepository<CargoBarcode> repository,
+            MNG_CargoService mNG_CargoService
+        )
         {
             _repository = repository;
             _context = context;
             this.mNG_CargoService = mNG_CargoService;
+
             InitializeComponent();
         }
 
-        CreatePackage_MNG_RM mainCargo = new CreatePackage_MNG_RM(); 
+        Timer timer = new Timer();
+
+        public async void Service()
+        {
+            // Timer'ı her 1 dakikada bir tetikle (1 dakika = 60000 milisaniye)
+            timer.Interval = 60000;
+            timer.Tick += Timer_Tick;
+            // Timer'ı başlat
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            simpleButton1_Click(sender, e);
+        }
+
+        CreatePackage_MNG_RM mainCargo = new CreatePackage_MNG_RM();
+
         private void simpleButton3_Click(object sender, EventArgs e)
         {
             var orderNumber = textBox1.Text.Trim();
             var query = $"exec [ZTMSG_CreateCargoBarcode] 1,'{orderNumber}'";
-            Models.Entities.ZTMSG_CreateCargoBarcode _cargo = _context.ZTMSG_CreateCargoBarcode.FromSqlRaw(query).AsEnumerable().FirstOrDefault();
+            Models.Entities.ZTMSG_CreateCargoBarcode _cargo = _context.ZTMSG_CreateCargoBarcode
+                .FromSqlRaw(query)
+                .AsEnumerable()
+                .FirstOrDefault();
             CreatePackage_MNG_RM createPackage_MNG_RM = new CreatePackage_MNG_RM
             {
                 OrderRequest = new CreatePackage_MNG_Request
                 {
                     Order = JsonConvert.DeserializeObject<Order_MNG>(_cargo.Order),
                     OrderPieceList = JsonConvert.DeserializeObject<List<OrderPieceList_MNG>>(
-                            _cargo.OrderPieceList
-                        ),
+                        _cargo.OrderPieceList
+                    ),
                     Recipient = JsonConvert.DeserializeObject<Recipient_MNG>(_cargo.Recepient)
                 },
                 BarcodeRequest = JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(
-                        _cargo.BarcodeRequest
-                    ),
+                    _cargo.BarcodeRequest
+                ),
                 BarcodeBase64 = _cargo.BarcodeBase64,
-                CargoFirmId = _cargo.CargoFirmId
+                CargoFirmId = _cargo.CargoFirmId,
+                Marketplace = _cargo.Marketplace,
+                SalesUrl = _cargo.SalesUrl,
+                FirstItem = _cargo.FirstItem,
+                OrderStatus = _cargo.OrderStatus
             };
-            mainCargo = new CreatePackage_MNG_RM(); 
-            mainCargo = createPackage_MNG_RM;   
+            mainCargo = new CreatePackage_MNG_RM();
+            mainCargo = createPackage_MNG_RM;
 
-            richTextBox1.Text = JsonConvert.SerializeObject(createPackage_MNG_RM, Formatting.Indented);
+            richTextBox1.Text = JsonConvert.SerializeObject(
+                createPackage_MNG_RM,
+                Formatting.Indented
+            );
         }
 
-        private async  void simpleButton2_Click(object sender, EventArgs e)
+        private async void simpleButton2_Click(object sender, EventArgs e)
         {
             var response = await mNG_CargoService.CreateToken();
-            MessageBox.Show(System.Text.Json.JsonSerializer.Serialize(response),"Token Yanıtı");
+            MessageBox.Show(System.Text.Json.JsonSerializer.Serialize(response), "Token Yanıtı");
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
 
         private async void simpleButton4_Click(object sender, EventArgs e)
         {
-            var response =await  mNG_CargoService.CreateCargo(mainCargo);
+            var response = await mNG_CargoService.CreateCargo(mainCargo);
             this.richTextBox2.Text = JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
-        private async void  simpleButton5_Click(object sender, EventArgs e)
+        private async void simpleButton5_Click(object sender, EventArgs e)
         {
             var response = await mNG_CargoService.CreateBarcode(textBox2.Text);
             this.richTextBox3.Text = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -103,13 +122,15 @@ namespace ResimDuzenleme.Services.Forms
 
         private async void simpleButton6_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string referenceIdsInput = textBox3.Text;
                 string shipmentIdsInput = textBox4.Text;
 
-                if (string.IsNullOrWhiteSpace(referenceIdsInput) || string.IsNullOrWhiteSpace(shipmentIdsInput))
+                if (
+                    string.IsNullOrWhiteSpace(referenceIdsInput)
+                    || string.IsNullOrWhiteSpace(shipmentIdsInput)
+                )
                 {
                     MessageBox.Show("Reference IDs or Shipment IDs cannot be empty.");
                     return;
@@ -120,7 +141,9 @@ namespace ResimDuzenleme.Services.Forms
 
                 if (referenceIdList.Count != shipmentIdList.Count)
                 {
-                    MessageBox.Show("Number of reference IDs does not match number of shipment IDs.");
+                    MessageBox.Show(
+                        "Number of reference IDs does not match number of shipment IDs."
+                    );
                     return;
                 }
 
@@ -132,7 +155,7 @@ namespace ResimDuzenleme.Services.Forms
                         ShipmentId = shipmentIdList[i]
                     };
 
-                   await mNG_CargoService.DeleteShippedCargo(bulkDeleteShipment_RM);
+                    await mNG_CargoService.DeleteShippedCargo(bulkDeleteShipment_RM);
                 }
 
                 MessageBox.Show("Deletion completed successfully.");
@@ -143,11 +166,14 @@ namespace ResimDuzenleme.Services.Forms
             }
         }
 
-        List<OrderDetail_DTO> selectedOrders = new List<OrderDetail_DTO>(); 
+        List<OrderDetail_DTO> selectedOrders = new List<OrderDetail_DTO>();
+
         private async void simpleButton1_Click(object sender, EventArgs e)
         {
             //SİPARİŞ LİSTESİNİ GETİR *****************************
-            List<OrderDetail_DTO> orderDetail_DTOs = _context.OrderDetail_DTO.FromSqlRaw("exec [ZTMSG_CreateCargoList]").ToList();
+            List<OrderDetail_DTO> orderDetail_DTOs = await _context.OrderDetail_DTO
+                .FromSqlRaw("exec [ZTMSG_CreateCargoList]")
+                .ToListAsync();
 
             List<string> orderNumbers = orderDetail_DTOs.Select(x => x.OrderNumber).ToList();
             var orderListQuery = "";
@@ -156,16 +182,14 @@ namespace ResimDuzenleme.Services.Forms
             {
                 orderListQuery += item + ",";
             }
-            selectedOrders  = orderDetail_DTOs;
-
+            selectedOrders = orderDetail_DTOs;
 
             //SİPARİŞ İSTEKLERİNİ GETİR *****************************
 
             var query = $"exec [ZTMSG_CreateCargoBarcode] 1,'{orderListQuery}'";
-            List<Models.Entities.ZTMSG_CreateCargoBarcode> _cargos = _context.ZTMSG_CreateCargoBarcode.FromSqlRaw(query).AsEnumerable().ToList();
-
+            List<Models.Entities.ZTMSG_CreateCargoBarcode> _cargos =
+                await _context.ZTMSG_CreateCargoBarcode.FromSqlRaw(query).ToListAsync();
             List<CreatePackage_MNG_RM> createPackage_MNG_RMs = new List<CreatePackage_MNG_RM>();
-           
 
             foreach (var _cargo in _cargos)
             {
@@ -175,52 +199,56 @@ namespace ResimDuzenleme.Services.Forms
                     {
                         Order = JsonConvert.DeserializeObject<Order_MNG>(_cargo.Order),
                         OrderPieceList = JsonConvert.DeserializeObject<List<OrderPieceList_MNG>>(
-                           _cargo.OrderPieceList
-                       ),
+                            _cargo.OrderPieceList
+                        ),
                         Recipient = JsonConvert.DeserializeObject<Recipient_MNG>(_cargo.Recepient)
                     },
                     BarcodeRequest = JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(
-                       _cargo.BarcodeRequest
-                   ),
+                        _cargo.BarcodeRequest
+                    ),
                     BarcodeBase64 = _cargo.BarcodeBase64,
-                    CargoFirmId = _cargo.CargoFirmId
+                    CargoFirmId = _cargo.CargoFirmId,
+                    Marketplace = _cargo.Marketplace,
+                    SalesUrl = _cargo.SalesUrl,
+                    FirstItem = _cargo.FirstItem,
+                    OrderStatus = _cargo.OrderStatus,
+                    Country = _cargo.Country
                 };
 
                 createPackage_MNG_RMs.Add(createPackage_MNG_RM);
             }
             //SİPARİŞ OLUŞTUR *****************************
 
-            DialogResult dialogResult = MessageBox.Show("Seçili siparişleri MNG Kargo'ya göndermek istediğinize emin misiniz","Onay",MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No)
+            //DialogResult dialogResult = MessageBox.Show("Seçili siparişleri MNG Kargo'ya göndermek istediğinize emin misiniz","Onay",MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.No)
+            //{
+            //    MessageBox.Show("İşlem iptal edildi.");
+            //    return;
+            //}
+
+            List<CreateCargo_RM<CreatePackage_MNG_RR>> createPackage_MNG_RRs =
+                new List<CreateCargo_RM<CreatePackage_MNG_RR>>();
+
+            foreach (var order in createPackage_MNG_RMs) // Note: What is the type of createPackage_MNG_RMs? It's not shown.
             {
-                MessageBox.Show("İşlem iptal edildi."); 
-                return;
+                var random = GeneralService.GenerateRandomNumber();
+                order.OrderRequest.Order.ReferenceId = random;
+                order.BarcodeRequest.ReferenceId = random;
+                CreateCargo_RM<CreatePackage_MNG_RR> response = await mNG_CargoService.CreateCargo(
+                    order
+                );
+                response.OrderNumber = order.OrderRequest.Order.BillOfLandingId;
+
+                createPackage_MNG_RRs.Add(response);
             }
-            else
-            {
-                List<CreateCargo_RM<CreatePackage_MNG_RR>> createPackage_MNG_RRs = new List<CreateCargo_RM<CreatePackage_MNG_RR>>();
-
-                foreach (var order in createPackage_MNG_RMs) // Note: What is the type of createPackage_MNG_RMs? It's not shown.
-                {
-
-                    var random = GeneralService.GenerateRandomNumber();
-                    order.OrderRequest.Order.ReferenceId = random;
-                    order.BarcodeRequest.ReferenceId = random;
-                    CreateCargo_RM<CreatePackage_MNG_RR> response = await mNG_CargoService.CreateCargo(order);
-                    response.OrderNumber = order.OrderRequest.Order.ReferenceId;
-
-                    createPackage_MNG_RRs.Add(response);
-                }
-                //LOGLARI TABLOYA BAS *****************************
+            //LOGLARI TABLOYA BAS *****************************
 
 
-                gridControl2.DataSource = createPackage_MNG_RRs;
-                gridControl1.DataSource = createPackage_MNG_RMs;
-            }
+            gridControl2.DataSource = createPackage_MNG_RRs;
+            gridControl1.DataSource = createPackage_MNG_RMs;
+
             this.xtraTabControl1.SelectedTabPageIndex = 2;
-            MessageBox.Show("İşlem tamamlandı.");   
-            
-
+            //MessageBox.Show("İşlem tamamlandı.");
         }
 
         private void simpleButton7_Click(object sender, EventArgs e)
@@ -242,7 +270,7 @@ namespace ResimDuzenleme.Services.Forms
             }
         }
 
-        public async void DeleteSelectedBarcodes( )
+        public async void DeleteSelectedBarcodes()
         {
             GridView view = gridControl3.MainView as GridView;
 
@@ -301,8 +329,8 @@ namespace ResimDuzenleme.Services.Forms
                 MessageBox.Show("Grid görünümü uygun değil.", "Hata");
                 return;
             }
-            barcodes  = barcodes.Where(b => b.BarcodeResponse != null).ToList(); 
-            List<BulkDeleteShipment_RM> responses = new List<BulkDeleteShipment_RM>();    
+            barcodes = barcodes.Where(b => b.BarcodeResponse != null).ToList();
+            List<BulkDeleteShipment_RM> responses = new List<BulkDeleteShipment_RM>();
 
             for (int i = 0; i < barcodes.Count; i++)
             {
@@ -312,16 +340,20 @@ namespace ResimDuzenleme.Services.Forms
                     ShipmentId = barcodes[i].ShipmentId
                 };
 
-               BulkDeleteShipment_RM response =  await mNG_CargoService.DeleteShippedCargo(bulkDeleteShipment_RM);
-                responses.Add(response);    
+                BulkDeleteShipment_RM response = await mNG_CargoService.DeleteShippedCargo(
+                    bulkDeleteShipment_RM
+                );
+                responses.Add(response);
             }
             GetPrintableCargos(true);
-            MessageBox.Show($"İşlem Tamamlandı ({barcodes.Count}/{responses.Where(r=>r.Status ==true).ToList().Count} Adet Kargo Başarılı Şekilde Silindi)", "Hata");
-
+            MessageBox.Show(
+                $"İşlem Tamamlandı ({barcodes.Count}/{responses.Where(r => r.Status == true).ToList().Count} Adet Kargo Başarılı Şekilde Silindi)",
+                "Hata"
+            );
         }
+
         private async void simpleButton8_Click(object sender, EventArgs e)
         {
-
             GridView view = gridControl3.MainView as GridView;
 
             List<CargoBarcode> barcodes = new List<CargoBarcode>();
@@ -382,12 +414,14 @@ namespace ResimDuzenleme.Services.Forms
 
             //MNG KARGO BARKODU OLUŞTURMA İSTEĞİ ATILIR *****************************
             List<string> referenceIds = barcodes.Select(b => b.ReferenceId).ToList();
-            MNG_CargoService _mngCargoService = new MNG_CargoService(_context);
-
 
             List<CreateBarcode_MNG_Response> responses = new List<CreateBarcode_MNG_Response>();
 
-            DialogResult dialogResult = MessageBox.Show($"Seçili barkodları yazdırmak istediğinize emin misiniz? ({referenceIds.Count} Adet)", "Onay",MessageBoxButtons.YesNo);  
+            DialogResult dialogResult = MessageBox.Show(
+                $"Seçili barkodları yazdırmak istediğinize emin misiniz? ({referenceIds.Count} Adet)",
+                "Onay",
+                MessageBoxButtons.YesNo
+            );
 
             if (dialogResult == DialogResult.No)
             {
@@ -404,14 +438,12 @@ namespace ResimDuzenleme.Services.Forms
                 {
                     continue;
                 }
-
             }
-
 
             List<string> referenceIdList = responses.Select(r => r.ReferenceId).Distinct().ToList();
             List<CargoBarcode_ZPL> cargoBarcode_ZPLs = new List<CargoBarcode_ZPL>();
 
-            int barcodeCount = 0;   
+            int barcodeCount = 0;
             foreach (var referenceId in referenceIdList)
             {
                 try
@@ -424,39 +456,50 @@ namespace ResimDuzenleme.Services.Forms
                             mng_barcodes.Add(r.Barcodes.First());
                         }
                     });
-                    barcodeCount += mng_barcodes.Count; 
-                    CargoBarcode cargo = _context.ZTMSG_CargoBarcodes.FirstOrDefault(c => c.ReferenceId == referenceId);
-                    CreateBarcode_MNG_Request barcode = JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(cargo.BarcodeRequest);
+                    barcodeCount += mng_barcodes.Count;
+                    CargoBarcode cargo = _context.ZTMSG_CargoBarcodes.FirstOrDefault(
+                        c => c.ReferenceId == referenceId
+                    );
+                    CreateBarcode_MNG_Request barcode =
+                        JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(
+                            cargo.BarcodeRequest
+                        );
 
-                    
                     foreach (var item in mng_barcodes)
                     {
-                        CreatePackage_MNG_Request order = JsonConvert.DeserializeObject<CreatePackage_MNG_Request>(cargo.OrderRequest);
+                        CreatePackage_MNG_Request order =
+                            JsonConvert.DeserializeObject<CreatePackage_MNG_Request>(
+                                cargo.OrderRequest
+                            );
 
                         CargoBarcode_ZPL cargoBarcode_ZPL = new CargoBarcode_ZPL();
                         cargoBarcode_ZPL.CargoCompany = "MNG KARGO";
                         cargoBarcode_ZPL.SupplierName = "ASSUR";
                         cargoBarcode_ZPL.ReceiverName = order.Recipient.FullName.ToUpper();
-                        cargoBarcode_ZPL.Address =  order.Recipient.Address.ToUpper();
-                        cargoBarcode_ZPL.Desi = barcode.OrderPieceList[item.PieceNumber-1].Desi.ToString() ;
-                        cargoBarcode_ZPL.Kg = barcode.OrderPieceList[item.PieceNumber - 1].Kg.ToString();
+                        cargoBarcode_ZPL.Address = order.Recipient.Address.ToUpper();
+                        cargoBarcode_ZPL.Desi = barcode.OrderPieceList[
+                            item.PieceNumber - 1
+                        ].Desi.ToString();
+                        cargoBarcode_ZPL.Kg = barcode.OrderPieceList[
+                            item.PieceNumber - 1
+                        ].Kg.ToString();
                         cargoBarcode_ZPL.ShipmentType = order.Order.PaymentType == 1 ? "GO" : "AO";
-                        cargoBarcode_ZPL.Amount = order.Order.IsCOD == 0 ? "0" : order.Order.CodAmount.ToString();
+                        cargoBarcode_ZPL.Amount =
+                            order.Order.IsCOD == 0 ? "0" : order.Order.CodAmount.ToString();
                         cargoBarcode_ZPL.PaymentType = order.Order.IsCOD == 1 ? "KÖ" : "ONL";
                         cargoBarcode_ZPL.OrderNo = order.Order.Barcode;
                         cargoBarcode_ZPL.OrderNo = cargo.CreatedDate?.ToString("yyyy-MM-dd");
                         cargoBarcode_ZPL.Description = barcode.OrderPieceList.First().Content;
                         cargoBarcode_ZPL.CargoBarcode = item.Barcode;
+                        cargoBarcode_ZPL.Marketplace = cargo.Marketplace;
+                        cargoBarcode_ZPL.SalesUrl = cargo.SalesUrl;
                         cargoBarcode_ZPLs.Add(cargoBarcode_ZPL);
-
                     }
                 }
                 catch
                 {
-
                     continue;
                 }
-
             }
 
             XtraReport report = XtraReport.FromFile("C:\\code\\CargoBarcode_ZPL.repx", true);
@@ -471,44 +514,68 @@ namespace ResimDuzenleme.Services.Forms
                 pdfViewerForm.ShowDialog();
             }
 
-
-            MessageBox.Show($"Barkodlar Yazdırıldı ({barcodeCount} Adet)." ,"Bilgi");
+            MessageBox.Show($"Barkodlar Yazdırıldı ({barcodeCount} Adet).", "Bilgi");
             GetPrintableCargos(false);
-
-
-
         }
 
         private void simpleButton9_Click(object sender, EventArgs e)
         {
             GetPrintableCargos(false);
         }
+
         public void GetPrintableCargos(bool status)
         {
             if (!status)
             {
                 //yazdırılmayanlar
-                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes.Where(c => c.ReferenceId != null && c.BarcodeResponse == null).ToList();
+                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes
+                    .Where(c => c.ReferenceId != null && c.BarcodeResponse == null)
+                    .OrderByDescending(p => p.FirstItem)
+                    .OrderByDescending(p => p.SalesUrl)
+                    .ToList();
                 gridControl3.DataSource = cargoBarcodes;
             }
             else
             {
-                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes.Where(c => c.ReferenceId != null && c.BarcodeResponse != null).ToList();
+                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes
+                    .Where(c => c.ReferenceId != null && c.BarcodeResponse != null)
+                    .OrderByDescending(p => p.FirstItem)
+                    .OrderByDescending(p => p.SalesUrl)
+                    .ToList();
+                ;
                 gridControl3.DataSource = cargoBarcodes;
             }
             this.xtraTabControl1.SelectedTabPageIndex = 1;
-
         }
-       
 
         private void simpleButton14_Click(object sender, EventArgs e)
         {
             GetPrintableCargos(true);
         }
 
-        private  void simpleButton15_Click(object sender, EventArgs e)
+        private void simpleButton15_Click(object sender, EventArgs e)
         {
-             DeleteSelectedBarcodes();
+            DeleteSelectedBarcodes();
+        }
+
+        bool serviceStatus = false;
+
+        private void simpleButton16_Click(object sender, EventArgs e)
+        {
+            serviceStatus = !serviceStatus;
+
+            if (serviceStatus)
+            {
+                Service();
+                simpleButton16.Appearance.BackColor = Color.Green;
+                MessageBox.Show("Servis Başlatıldı.");
+            }
+            else
+            {
+                timer.Stop();
+                simpleButton16.Appearance.BackColor = Color.Red;
+                MessageBox.Show("Servis Durduruldu.");
+            }
         }
     }
 }

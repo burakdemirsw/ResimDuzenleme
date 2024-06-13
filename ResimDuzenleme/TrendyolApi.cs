@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class TrendyolApi : Form
     {
-        public TrendyolApi()
+        public TrendyolApi( )
         {
             InitializeComponent();
         }
@@ -27,7 +20,7 @@ namespace ResimDuzenleme
             txtApiKey.Text = Properties.Settings.Default.txtApiKey;
             txtApiSecret.Text = Properties.Settings.Default.txtApiSecret;
             TxtSatici.Text = Properties.Settings.Default.TxtSatici;
-         
+
         }
 
         private void TrendyolApi_FormClosing(object sender, FormClosingEventArgs e)

@@ -10,10 +10,10 @@
 
     public interface ICreateCargoResponse
     {
-         string OrderNumber { get; set; }
-         int CargoFirmId { get; set; }
-         bool Status { get; set; }
-         string ErrMsg { get; set; }
+        string OrderNumber { get; set; }
+        int CargoFirmId { get; set; }
+        bool Status { get; set; }
+        string ErrMsg { get; set; }
     }
 
     public class CreateCargo_RM<T> : ICreateCargoResponse

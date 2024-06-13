@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ResimDuzenleme.Services.Models.MNG
+﻿namespace ResimDuzenleme.Services.Models.MNG
 {
     public class ZTMSG_CreateCargoBarcode
     {
@@ -24,7 +18,7 @@ namespace ResimDuzenleme.Services.Models.MNG
         public int CargoFirmId { get; set; }
 
     }
-    public class ZTMSG_CreateCargoBarcode_RM <T> : ZTMSG_CreateCargoBarcode_CM
+    public class ZTMSG_CreateCargoBarcode_RM<T> : ZTMSG_CreateCargoBarcode_CM
     {
         public bool Status { get; set; }
         public T Response { get; set; }

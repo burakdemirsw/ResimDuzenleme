@@ -1,23 +1,16 @@
-﻿using ResimDuzenleme;
-using ResimDuzenleme.Operations;
+﻿using ResimDuzenleme.Operations;
 using ResimDuzenleme.Ubl;
-using ResimDuzenleme.UblCreate;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Xsl;
 using UblInvoice;
 
-namespace  ResimDuzenleme.UblCreate
+namespace ResimDuzenleme.UblCreate
 {
     public class SmmUBL : BaseESmmUBL
     {
 
 
 
-        public SmmUBL()
+        public SmmUBL( )
             : base()
         {
             addAdinationalDocRefXslt();
@@ -26,7 +19,7 @@ namespace  ResimDuzenleme.UblCreate
 
 
 
-        private void addAdinationalDocRefXslt()
+        private void addAdinationalDocRefXslt( )
         {
             var idRef = new DocumentReferenceType();
             idRef.ID = new IDType { Value = Guid.NewGuid().ToString() };
@@ -44,11 +37,11 @@ namespace  ResimDuzenleme.UblCreate
             baseInvoiceUBL.AdditionalDocumentReference = docRefList.ToArray();
         }
 
-    
+
         /// <summary>
         /// e-Arşiv UBL de fatura ye ek olarak eklenecek alanların eklenmesi
         /// </summary>
-        private void createSmmUbl()
+        private void createSmmUbl( )
         {
             addAdditionalDocumentReference();
             addAdditionalDocumentReferencee();
