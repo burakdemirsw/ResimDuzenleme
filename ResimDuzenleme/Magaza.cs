@@ -28,10 +28,10 @@ namespace ResimDuzenleme
     {
         Encoding encoding = Encoding.UTF8;
 
-    //    string pngOutputPath;
+        //    string pngOutputPath;
         private FaturaGorsel faturaGorselForm = new FaturaGorsel();
 
-        public Magaza()
+        public Magaza( )
         {
             InitializeComponent();
             this.Height = 1080;
@@ -75,7 +75,7 @@ namespace ResimDuzenleme
             browser.DocumentCompleted += handler;
             return tcs.Task;
         }
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabase()
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabase( )
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -150,7 +150,7 @@ namespace ResimDuzenleme
                 {
                     await conn.OpenAsync();
                     SqlCommand command = new SqlCommand("MSG_GetOrderForInvoiceToplu_RShipment", conn);
-                
+
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Firma", storecode);
 
@@ -227,7 +227,7 @@ namespace ResimDuzenleme
 
 
 
-        private async Task<int> GetOrderForInvoiceToplamAsync()
+        private async Task<int> GetOrderForInvoiceToplamAsync( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -253,7 +253,7 @@ namespace ResimDuzenleme
         }
 
 
-        public async void IrsaliyeFaturalastir()
+        public async void IrsaliyeFaturalastir( )
         {
 
 
@@ -372,7 +372,7 @@ namespace ResimDuzenleme
         }
         private async void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+
 
 
 
@@ -522,7 +522,7 @@ namespace ResimDuzenleme
             // Formu göster
             faturaGorselForm.Show();
         }
-        private  void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -604,7 +604,7 @@ namespace ResimDuzenleme
         //        throw new InvalidOperationException("Fatura içeriği boş veya hata oluştu.");
         //    }
         //}
-          public async Task<string> ReadFromArchive_XML(string invoiceID)
+        public async Task<string> ReadFromArchive_XML(string invoiceID)
         {
             var deger = BaseAdapter.EArchiveRequestHeaderType();
             deger.COMPRESSED = nameof(EI.YesNo.N);
@@ -617,7 +617,7 @@ namespace ResimDuzenleme
                 PROFILE = nameof(EI.DocumentType.XML)
             };
 
-            ArchiveInvoiceReadResponse response = await Task.Run(() => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
+            ArchiveInvoiceReadResponse response = await Task.Run(( ) => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
 
             Assert.AreEqual(response.REQUEST_RETURN.RETURN_CODE, 0);
             Assert.IsTrue(response.INVOICE.Length > 0);
@@ -631,7 +631,7 @@ namespace ResimDuzenleme
                 throw new InvalidOperationException("Fatura içeriği boş veya hata oluştu.");
             }
         }
-  
+
         private DataTable LoadNebimOzellikForm(string storeCode)
         {
             DataTable dataTable = new DataTable();
@@ -858,7 +858,7 @@ namespace ResimDuzenleme
             }
 
         }
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -900,7 +900,7 @@ namespace ResimDuzenleme
 
         }
 
-        private  void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridControl1.Visible = false;
             FrmNebimSiparis frm = new FrmNebimSiparis();

@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class NebimResim : Form
     {
-        public NebimResim()
+        public NebimResim( )
         {
             InitializeComponent();
         }
@@ -26,8 +21,8 @@ namespace ResimDuzenleme
             public string SirketKodu { get; set; }
             public string ResimYolu { get; set; }
         }
-        private List<SirketKodlari> GetSirketKodlari()
-          
+        private List<SirketKodlari> GetSirketKodlari( )
+
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -60,7 +55,7 @@ namespace ResimDuzenleme
 
                             sirketKodlari.Add(sirketKod);
                         }
-                      
+
                     }
                 }
             }
@@ -72,7 +67,7 @@ namespace ResimDuzenleme
             public string Colorcode { get; set; }
             public string ColorDescription { get; set; }
         }
-        private List<ColorInfo> GetRenkKodlari()
+        private List<ColorInfo> GetRenkKodlari( )
         {
             string serverName = Properties.Settings.Default.SunucuAdi;
             string userName = Properties.Settings.Default.KullaniciAdi;
@@ -132,7 +127,7 @@ namespace ResimDuzenleme
             {
                 // Seçilen resmi al
                 List<SirketKodlari> sirketListesi = GetSirketKodlari();
-            
+
                 string selectedSirketKodu = comboBox2.SelectedValue.ToString(); // combobox'tan seçilen sirket kodunu al
                 SirketKodlari sirket = sirketListesi.FirstOrDefault(s => s.SirketKodu == selectedSirketKodu);  // Seçilen resmin yolu
                 string sourcePath = openFileDialog.FileName;  // Seçilen resmin yolu

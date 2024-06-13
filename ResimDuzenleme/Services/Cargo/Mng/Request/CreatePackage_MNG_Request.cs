@@ -1,9 +1,5 @@
-﻿using System;
+﻿using GoogleAPI.Domain.Models.Cargo.Mng.Order;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GoogleAPI.Domain.Models.Cargo.Mng.Order;
 
 
 namespace GoogleAPI.Domain.Models.Cargo.Mng.Request

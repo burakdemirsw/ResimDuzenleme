@@ -1,11 +1,5 @@
 ﻿using GoogleAPI.Domain.Models.Cargo.Mng.Order;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace ResimDuzenleme.Models.Cargo.Mng.Request
 {

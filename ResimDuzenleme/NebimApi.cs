@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Data.SqlClient;
-using ResimDuzenleme;
+using System.IO;
+using System.Windows.Forms;
 namespace ResimDuzenleme
 {
     public partial class NebimApi : Form
     {
-        public NebimApi()
+        public NebimApi( )
         {
             InitializeComponent();
         }
@@ -24,7 +16,7 @@ namespace ResimDuzenleme
             Properties.Settings.Default.SunucuAdi = textBoxServerName.Text;
             Properties.Settings.Default.KullaniciAdi = textBoxUserName.Text;
             Properties.Settings.Default.Sifre = textBoxPassword.Text;
-            Properties.Settings.Default.StoredProcedureAdi =textBoxStoredProcedureName.Text;
+            Properties.Settings.Default.StoredProcedureAdi = textBoxStoredProcedureName.Text;
             Properties.Settings.Default.database = txtdatabase.Text;
             Properties.Settings.Default.txtEntegrator = txtEntegrator.Text;
             Properties.Settings.Default.txtOfis = txtOfis.Text;
@@ -77,12 +69,12 @@ namespace ResimDuzenleme
         private void button1_Click(object sender, EventArgs e)
         {
 
-        string   Entegrator =txtEntegrator.Text;
+            string Entegrator = txtEntegrator.Text;
             string SiteAdi = txtSiteAdi.Text;
             string WsYetki = txtWsYetki.Text;
             string DEUser = textBox1.Text;
             string DESifre = textBox2.Text;
-          
+
 
             string serverName = textBoxServerName.Text;
             string userName = textBoxUserName.Text;
@@ -95,11 +87,11 @@ namespace ResimDuzenleme
                 string query = "delete ZTMSGSettings";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                   
+
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
-                string query2= "INSERT INTO ZTMSGSettings (Entegrator,SiteAdi,WsYetki,DEUser,DESifre) VALUES (@Entegrator,@SiteAdi,@WsYetki,@DEUser,@DESifre)";
+                string query2 = "INSERT INTO ZTMSGSettings (Entegrator,SiteAdi,WsYetki,DEUser,DESifre) VALUES (@Entegrator,@SiteAdi,@WsYetki,@DEUser,@DESifre)";
 
 
                 using (SqlCommand command = new SqlCommand(query2, connection))
@@ -110,12 +102,12 @@ namespace ResimDuzenleme
                     command.Parameters.AddWithValue("@DEUser", DEUser);
                     command.Parameters.AddWithValue("@DESifre", DESifre);
 
-                 
+
                     command.ExecuteNonQuery();
                 }
             }
-            
-       
+
+
             NebimApi.ActiveForm.Close();
 
         }

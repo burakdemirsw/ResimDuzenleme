@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ResimDuzenleme
 {
@@ -97,7 +94,7 @@ namespace ResimDuzenleme
         public string InternalDescription { get; set; }
         public List<InvoiceLiness> Lines { get; set; }
         public SalesViaInternetInfo SalesViaInternetInfo { get; set; }
-    
+
     }
 
 
@@ -118,10 +115,10 @@ namespace ResimDuzenleme
         public int PosTerminalID { get; set; }
         public int ShipmentMethodCode { get; set; }
         public DateTime Invoicedate { get; set; }
- 
+
 
         public bool IsCompleted { get; set; }
- 
+
 
         public string Description { get; set; }
         public string InternalDescription { get; set; }
@@ -143,7 +140,7 @@ namespace ResimDuzenleme
         public string StoreCode { get; set; }
         public string WarehouseCode { get; set; }
         public string DeliveryCompanyCode { get; set; }
-    
+
         public string BillingPostalAddressID { get; set; }
         public string ShippingPostalAddressID { get; set; }
         public int TaxExemptionCode { get; set; }
@@ -158,7 +155,7 @@ namespace ResimDuzenleme
         public string InternalDescription { get; set; }
         public List<InvoiceLinesAlis> Lines { get; set; }
         public bool IsCompleted { get; set; }
-   
+
 
 
     }
@@ -167,12 +164,12 @@ namespace ResimDuzenleme
     {
 
         public string OrderlineID { get; set; }
-  
+
         public int VatRate { get; set; }
         public decimal PriceVI { get; set; }
         public decimal AmountVI { get; set; }
         public int Qty1 { get; set; }
-   
+
     }
 
 
@@ -210,7 +207,7 @@ namespace ResimDuzenleme
     {
         public string FaturaNo { get; set; }
         public string Cevap { get; set; }
-  
+
 
     }
     public class ZtNebimFaturaRShipment
@@ -239,7 +236,7 @@ namespace ResimDuzenleme
         public SalesViaInternetInfo SalesViaInternetInfo { get; set; }
         public List<Payments> Payments { get; set; }
         public PostalAddress PostalAddress { get; set; }
-        
+
 
     }
 
@@ -368,7 +365,7 @@ namespace ResimDuzenleme
         public string TaxNumber { get; set; }
         public string TaxOfficeCode { get; set; }
         public string ZipCode { get; set; }
-      
+
 
     }
 

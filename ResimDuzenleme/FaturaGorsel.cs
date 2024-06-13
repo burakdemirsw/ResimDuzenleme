@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
-using System.Text;
-using ResimDuzenleme;
-using ResimDuzenleme.Adapter;
-using ResimDuzenleme.EArchiveInvoiceWS;
-using ResimDuzenleme.Operations;
-using NUnit.Framework;
 
 
 
@@ -19,14 +11,14 @@ namespace ResimDuzenleme
     {
         private readonly ResimDuzenlemeClient _ResimDuzenlemeClient = new ResimDuzenlemeClient();
         public WebBrowser webBrowserControl;
-        public FaturaGorsel()
+        public FaturaGorsel( )
         {
             InitializeComponent();
-         
+
             webBrowserControl = webBrowser1;
             webBrowserControl.DocumentCompleted += WebBrowserControl_DocumentCompleted;
-    
-           
+
+
 
         }
 
@@ -36,7 +28,7 @@ namespace ResimDuzenleme
             //PrintDocument();
             ShowPrintDialog();
         }
-        private void ShowPrintDialog()
+        private void ShowPrintDialog( )
         {
             // Yazdırma diyalogunu göster
             webBrowserControl.ShowPrintDialog();
@@ -55,7 +47,7 @@ namespace ResimDuzenleme
                 PrintDocument();
             }
         }
-        private void PrintDocument()
+        private void PrintDocument( )
         {
             // WebBrowser kontrolünde yazdırma işlemi
             webBrowserControl.Print();
@@ -71,12 +63,12 @@ namespace ResimDuzenleme
             }
             else
             {
-             //   MessageBox.Show("Bu dosya bir HTML dosyası değil: " + filePath);
+                //   MessageBox.Show("Bu dosya bir HTML dosyası değil: " + filePath);
             }
         }
         private void FaturaGorsel_Load(object sender, EventArgs e)
         {
-          
+
         }
     }
 }

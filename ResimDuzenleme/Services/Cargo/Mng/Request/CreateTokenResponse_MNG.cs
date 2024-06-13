@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GoogleAPI.Domain.Models.Cargo.Mng.Request
+﻿namespace GoogleAPI.Domain.Models.Cargo.Mng.Request
 {
     public class CreateTokenResponse_MNG
     {

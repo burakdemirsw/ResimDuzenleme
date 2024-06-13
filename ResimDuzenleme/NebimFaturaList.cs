@@ -1,18 +1,12 @@
-﻿using DevExpress.XtraBars;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ResimDuzenleme.EArchiveInvoiceWS;
 using ResimDuzenleme.Operations;
 //using System.Threading;
 
-using ResimDuzenleme.SiparisServis;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +20,7 @@ namespace ResimDuzenleme
 {
     public partial class NebimFaturaList : Form
     {
-        public NebimFaturaList()
+        public NebimFaturaList( )
         {
             InitializeComponent();
         }
@@ -158,7 +152,7 @@ namespace ResimDuzenleme
                 PROFILE = nameof(EI.DocumentType.XML)
             };
 
-            ArchiveInvoiceReadResponse response = await Task.Run(() => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
+            ArchiveInvoiceReadResponse response = await Task.Run(( ) => _ResimDuzenlemeClient.EInvoiceArchive().ArchiveRead(request));
 
             Assert.AreEqual(response.REQUEST_RETURN.RETURN_CODE, 0);
             Assert.IsTrue(response.INVOICE.Length > 0);

@@ -1,8 +1,8 @@
 ﻿
 
-using System.Collections.Generic;
 using ResimDuzenleme.Services.Models.MNG.Cargo;
 using ResimDuzenleme.Services.Models.MNG.Order;
+using System.Collections.Generic;
 
 namespace ResimDuzenleme.Services.Models.MNG.Request
 {

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ResimDuzenleme.Operations
 {
-   public class Utf8StringWriter:StringWriter
+    public class Utf8StringWriter : StringWriter
     {
         public override Encoding Encoding => Encoding.UTF8;
     }

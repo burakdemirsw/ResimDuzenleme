@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class NebimKategori : Form
     {
-        public NebimKategori()
+        public NebimKategori( )
         {
             InitializeComponent();
         }
@@ -49,7 +44,7 @@ namespace ResimDuzenleme
 
                 using (SqlCommand command = new SqlCommand("SELECT * FROM ZTMSGTicKategoriler  ORDER BY Marka", connection))
                 {
-                   
+
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         DataTable dataTable = new DataTable();
@@ -106,7 +101,7 @@ namespace ResimDuzenleme
                     }
                 }
             }
-            
+
         }
 
         private void checkedListBoxControl1_Validated(object sender, EventArgs e)

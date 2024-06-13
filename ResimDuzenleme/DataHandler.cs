@@ -22,7 +22,7 @@ namespace ResimDuzenleme
 
         private string connectionString;
 
-        public DataHandler()
+        public DataHandler( )
         {
             connectionString = $"Server={serverName};Database={database};User Id={userName};Password={password};";
         }
@@ -39,7 +39,7 @@ namespace ResimDuzenleme
             }
         }
 
-        private bool TestSqlConnection()
+        private bool TestSqlConnection( )
         {
             try
             {

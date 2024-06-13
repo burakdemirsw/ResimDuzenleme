@@ -1,33 +1,33 @@
-﻿using Newtonsoft.Json;
-using ResimDuzenleme.Services.Models.MNG.Request;
-using ResimDuzenleme.Services.Models.MNG.Response;
-using ResimDuzenleme.Services.Models.MNG;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System;
-using ResimDuzenleme.Services.Models.Entities;
-using Nancy.Json;
-using System.Linq;
+﻿using Nancy.Json;
+using Newtonsoft.Json;
 using ResimDuzenleme.Services.Database;
 using ResimDuzenleme.Services.Helpers;
 using ResimDuzenleme.Services.Models.Cargo.DTO_s;
-using RDLCDesign;
-using CargoBarcode = ResimDuzenleme.Services.Models.Entities.CargoBarcode;
+using ResimDuzenleme.Services.Models.MNG;
+using ResimDuzenleme.Services.Models.MNG.Request;
+using ResimDuzenleme.Services.Models.MNG.Response;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using CargoBarcode = ResimDuzenleme.Services.Models.Entities.CargoBarcode;
 
 namespace ResimDuzenleme.Services.Cargo
 {
     public class MNG_CargoService
     {
         private readonly Context _context;
+        private readonly DbContextRepository<CargoBarcode> _repository;
 
-        public MNG_CargoService(Context context)
+
+        public MNG_CargoService(DbContextRepository<CargoBarcode> repository, Context context)
         {
             _context = context;
-
+            _repository = repository;
             MNG_CompanyInfo mNG_CompanyInfo = context.ZTMSGMngKargoApi.FirstOrDefault();
             if (mNG_CompanyInfo != null)
             {
@@ -43,7 +43,7 @@ namespace ResimDuzenleme.Services.Cargo
         string ClientSecret;
 
 
-   
+
         public async Task<CreateCargo_RM<CreatePackage_MNG_RR>> CreateCargo(
             CreatePackage_MNG_RM request
         )
@@ -132,8 +132,8 @@ namespace ResimDuzenleme.Services.Cargo
                             _cargoBarcode.OrderStatus = request.OrderStatus;
                             _cargoBarcode.Country = request.Country;
 
-                            var repository = new DbContextRepository<CargoBarcode>(_context);
-                            await repository.Add(_cargoBarcode);
+
+                            await _repository.Add(_cargoBarcode);
 
                             //for (int i = 1; i <= request.BarcodeRequest.OrderPieceList.Count; i++)
                             //{
@@ -225,15 +225,14 @@ namespace ResimDuzenleme.Services.Cargo
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var repository = new DbContextRepository<CargoBarcode>(_context);
 
-                    List<CargoBarcode> cargoBarcodes = repository._dbSet
+                    List<CargoBarcode> cargoBarcodes = _repository._dbSet
                         .Where(c => c.ReferenceId == request.ReferenceId)
                         .ToList();
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                        await repository.Delete(cargoBarcode);
+                        await _repository.Delete(cargoBarcode);
                     }
                     BulkDeleteShipment_RM bulkDeleteShipment_RM = new BulkDeleteShipment_RM();
                     bulkDeleteShipment_RM.ReferenceId = JsonConvert.SerializeObject(
@@ -244,15 +243,14 @@ namespace ResimDuzenleme.Services.Cargo
                 }
                 else
                 {
-                    var repository = new DbContextRepository<CargoBarcode>(_context);
 
-                    List<CargoBarcode> cargoBarcodes = repository._dbSet
+                    List<CargoBarcode> cargoBarcodes = _repository._dbSet
                         .Where(c => c.ReferenceId == request.ReferenceId)
                         .ToList();
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                        await repository.Delete(cargoBarcode);
+                        await _repository.Delete(cargoBarcode);
                     }
                     BulkDeleteShipment_RM bulkDeleteShipment_RM = new BulkDeleteShipment_RM();
                     bulkDeleteShipment_RM.ReferenceId = JsonConvert.SerializeObject(
@@ -268,9 +266,8 @@ namespace ResimDuzenleme.Services.Cargo
         {
             List<CreateBarcode_MNG_Response> responses = new List<CreateBarcode_MNG_Response>();
 
-           var repository = new DbContextRepository<CargoBarcode>(_context);
 
-            List<CargoBarcode> cargoBarcodes = repository._dbSet
+            List<CargoBarcode> cargoBarcodes = _repository._dbSet
                 .Where(cb => cb.ReferenceId == referenceId)
                 .ToList();
             List<string> barcodePaths = new List<string>();
@@ -282,8 +279,8 @@ namespace ResimDuzenleme.Services.Cargo
                 }
                 if (cargoBarcode.BarcodeZplCode != null)
                 {
-                    List<CreateBarcode_MNG_Response> barcodeResponses = JsonConvert.DeserializeObject<List<CreateBarcode_MNG_Response>>(cargoBarcode.BarcodeResponse); 
-                  
+                    List<CreateBarcode_MNG_Response> barcodeResponses = JsonConvert.DeserializeObject<List<CreateBarcode_MNG_Response>>(cargoBarcode.BarcodeResponse);
+
                     responses.AddRange(barcodeResponses);
                     continue;
                 }
@@ -293,113 +290,113 @@ namespace ResimDuzenleme.Services.Cargo
             {
                 return responses;
             }
-           
-                CreateBarcode_MNG_Request Request =
-                    JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(
-                        cargoBarcodes.First().BarcodeRequest
+
+            CreateBarcode_MNG_Request Request =
+                JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(
+                    cargoBarcodes.First().BarcodeRequest
+                );
+
+            string url = "https://api.mngkargo.com.tr/mngapi/api/barcodecmdapi/createbarcode";
+            string clientId = ClientId;
+            string clientSecret = ClientSecret;
+
+            CreateTokenResponse_MNG token = await CreateToken();
+            CreateBarcode_MNG_Request request = new CreateBarcode_MNG_Request();
+            request.ReferenceId = Request.ReferenceId;
+            request.BillOfLandingId = Request.BillOfLandingId;
+            request.IsCOD = Request.IsCOD;
+            request.CodAmount = Request.CodAmount;
+            request.PackagingType = Request.PackagingType;
+            request.OrderPieceList = Request.OrderPieceList;
+            string json = JsonConvert.SerializeObject(request);
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("X-IBM-Client-Id", clientId.Trim());
+                client.DefaultRequestHeaders.Add(
+                    "X-IBM-Client-Secret",
+                    clientSecret.ToString()
+                );
+                client.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue(
+                        "Bearer",
+                        token.Jwt.ToString()
                     );
 
-                string url = "https://api.mngkargo.com.tr/mngapi/api/barcodecmdapi/createbarcode";
-                string clientId = ClientId;
-                string clientSecret = ClientSecret;
+                var content = new StringContent(
+                    json,
+                    System.Text.Encoding.UTF8,
+                    "application/json"
+                );
 
-                CreateTokenResponse_MNG token = await CreateToken();
-                CreateBarcode_MNG_Request request = new CreateBarcode_MNG_Request();
-                request.ReferenceId = Request.ReferenceId;
-                request.BillOfLandingId = Request.BillOfLandingId;
-                request.IsCOD = Request.IsCOD;
-                request.CodAmount = Request.CodAmount;
-                request.PackagingType = Request.PackagingType;
-                request.OrderPieceList = Request.OrderPieceList;
-                string json = JsonConvert.SerializeObject(request);
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseContent = await response.Content.ReadAsStringAsync();
 
-                using (HttpClient client = new HttpClient())
+                if (response.IsSuccessStatusCode)
                 {
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", clientId.Trim());
-                    client.DefaultRequestHeaders.Add(
-                        "X-IBM-Client-Secret",
-                        clientSecret.ToString()
-                    );
-                    client.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue(
-                            "Bearer",
-                            token.Jwt.ToString()
+                    CreateBarcode_MNG_Response[] tokenResponse =
+                        JsonConvert.DeserializeObject<CreateBarcode_MNG_Response[]>(
+                            responseContent
                         );
-
-                    var content = new StringContent(
-                        json,
-                        System.Text.Encoding.UTF8,
-                        "application/json"
-                    );
-
-                    HttpResponseMessage response = await client.PostAsync(url, content);
-                    string responseContent = await response.Content.ReadAsStringAsync();
-
-                    if (response.IsSuccessStatusCode)
+                    if (tokenResponse != null && tokenResponse.Length > 0)
                     {
-                        CreateBarcode_MNG_Response[] tokenResponse =
-                            JsonConvert.DeserializeObject<CreateBarcode_MNG_Response[]>(
-                                responseContent
-                            );
-                        if (tokenResponse != null && tokenResponse.Length > 0)
+                        try
                         {
-                            try
+                            var index = 0;
+                            foreach (var barcode in tokenResponse)
                             {
-                                var index = 0;
-                                foreach (var barcode in tokenResponse)
-                                {
-                                    List<CargoBarcode> __cargoBarcodes = repository._dbSet
-                                        .Where(
-                                            cb =>
-                                                cb.ReferenceId == Request.ReferenceId
-                                                && cb.BarcodeZplCode == null
-                                        )
-                                        .ToList();
-                                    foreach (var _cargoBarcode in __cargoBarcodes)
-                                    {
-                                        _cargoBarcode.BarcodeZplCode = barcode.Barcodes[0].Value;
-                                        _cargoBarcode.ShipmentId = barcode.ShipmentId;
-                                        _cargoBarcode.BarcodeResponse =
-                                            new JavaScriptSerializer().Serialize(tokenResponse);
-                                    await repository.Update(_cargoBarcode);
-                                        break;
-                                    }
-                                    index++;
-                                }
-
-                                List<CargoBarcode> _cargoBarcodes = repository._dbSet
+                                List<CargoBarcode> __cargoBarcodes = _context.ZTMSG_CargoBarcodes
                                     .Where(
                                         cb =>
                                             cb.ReferenceId == Request.ReferenceId
-                                            && cb.BarcodeZplCode != null
+                                            && cb.BarcodeZplCode == null
                                     )
                                     .ToList();
-
-                                foreach (var _cargoBarcode in _cargoBarcodes)
+                                foreach (var _cargoBarcode in __cargoBarcodes)
                                 {
-                                    List<CreateBarcode_MNG_Response> barcodeResponses = JsonConvert.DeserializeObject<List<CreateBarcode_MNG_Response>>(_cargoBarcode.BarcodeResponse);
-
-                                    responses.AddRange(barcodeResponses);
+                                    _cargoBarcode.BarcodeZplCode = barcode.Barcodes[0].Value;
+                                    _cargoBarcode.ShipmentId = barcode.ShipmentId;
+                                    _cargoBarcode.BarcodeResponse =
+                                        new JavaScriptSerializer().Serialize(tokenResponse);
+                                    await _repository.Update(_cargoBarcode);
+                                    break;
                                 }
-
-
-                                return responses;
+                                index++;
                             }
-                            catch (Exception ex)
+
+                            List<CargoBarcode> _cargoBarcodes = _context.ZTMSG_CargoBarcodes
+                                .Where(
+                                    cb =>
+                                        cb.ReferenceId == Request.ReferenceId
+                                        && cb.BarcodeZplCode != null
+                                )
+                                .ToList();
+
+                            foreach (var _cargoBarcode in _cargoBarcodes)
                             {
-                                throw new Exception(ex.Message + ex.InnerException);
+                                List<CreateBarcode_MNG_Response> barcodeResponses = JsonConvert.DeserializeObject<List<CreateBarcode_MNG_Response>>(_cargoBarcode.BarcodeResponse);
+
+                                responses.AddRange(barcodeResponses);
                             }
+
+
+                            return responses;
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            throw new Exception($"Gelen Yanıt Yok:{responseContent}");
+                            throw new Exception(ex.Message + ex.InnerException);
                         }
                     }
                     else
                     {
-                        throw new Exception($"Yanıt Başarısız:{responseContent}");
+                        throw new Exception($"Gelen Yanıt Yok:{responseContent}");
                     }
                 }
+                else
+                {
+                    throw new Exception($"Yanıt Başarısız:{responseContent}");
+                }
+            }
 
         }
 
@@ -445,7 +442,7 @@ namespace ResimDuzenleme.Services.Cargo
             }
         }
 
-        public async Task<CreateTokenResponse_MNG> CreateToken()
+        public async Task<CreateTokenResponse_MNG> CreateToken( )
         {
             string url = "https://api.mngkargo.com.tr/mngapi/api/token";
             string clientId = ClientId;

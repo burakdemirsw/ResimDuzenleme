@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ResimDuzenleme
 {
@@ -32,7 +28,7 @@ namespace ResimDuzenleme
 
 
 
-        public void HandleNullFields()
+        public void HandleNullFields( )
         {
             if (Variants == null)
             {
@@ -57,5 +53,5 @@ namespace ResimDuzenleme
         }
     }
 
-   
+
 }

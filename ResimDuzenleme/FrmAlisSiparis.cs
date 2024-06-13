@@ -1,30 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using DevExpress.XtraEditors.Repository;
+﻿using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using NUnit.Framework;
-using ResimDuzenleme.EArchiveInvoiceWS;
-using ResimDuzenleme.Operations;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
 using System.Net.Http;
-using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Xsl;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ResimDuzenleme
 {
     public partial class FrmAlisSiparis : Form
     {
-        public FrmAlisSiparis()
+        public FrmAlisSiparis( )
         {
             InitializeComponent();
         }
@@ -101,7 +94,7 @@ namespace ResimDuzenleme
 
             return dataTable;
         }
-        private void InitializeGridView()
+        private void InitializeGridView( )
         {
             // CheckBox için RepositoryItemCheckEdit oluştur
             RepositoryItemCheckEdit repositoryItemCheckEdit = new RepositoryItemCheckEdit();
@@ -359,8 +352,8 @@ namespace ResimDuzenleme
                     }
                 }
                 // Tüm satırları döngüye al
-               
-                  else 
+
+                else
                 {
 
                     for (int i = 0; i < gridView1.DataRowCount; i++)
@@ -368,7 +361,7 @@ namespace ResimDuzenleme
                         // Burada "Barcode" sütununuzun adını kullanın
                         object barcode = gridView1.GetRowCellValue(i, "Barcode");
 
-                        if ( buttonEdit1.IsOn == true)
+                        if (buttonEdit1.IsOn == true)
                         {
 
                             matchFound = true;
@@ -405,7 +398,7 @@ namespace ResimDuzenleme
                                 }
                             }
                             gridView1.RefreshData(); // GridView verilerini yenile
-                          //  break;
+                                                     //  break;
                         }
 
 
@@ -455,7 +448,7 @@ namespace ResimDuzenleme
         private FaturaGorsel faturaGorselForm = new FaturaGorsel();
         string ipAdresi = Properties.Settings.Default.txtEntegrator;
         private HttpClient httpClient = new HttpClient();
-        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee()
+        private async Task<List<FaturaBilgisi>> GetFaturaBilgileriFromDatabasee( )
         {
             List<FaturaBilgisi> faturaBilgileri = new List<FaturaBilgisi>();
             string serverName = Properties.Settings.Default.SunucuAdi;
@@ -559,14 +552,14 @@ namespace ResimDuzenleme
                         musteri.PosTerminalID = Convert.ToInt32(reader["PosTerminalID"]); // int'e çevirildi
                         musteri.TaxExemptionCode = Convert.ToInt32(reader["TaxExemptionCode"]); // int'e çevirildi
                         musteri.ShipmentMethodCode = Convert.ToInt32(reader["ShipmentMethodCode"]); // int'e çevirildi
-          
+
 
                         musteri.IsOrderBase = bool.Parse(reader["IsOrderBase"].ToString());
                         if (reader["Invoicedate"] != DBNull.Value)
                         {
                             musteri.Invoicedate = Convert.ToDateTime(reader["Invoicedate"]); // DateTime'a çevirildi
                         }
-                
+
                         musteri.Description = reader["Description"].ToString();
                         musteri.InternalDescription = reader["InternalDescription"].ToString();
 
@@ -595,7 +588,7 @@ namespace ResimDuzenleme
                         //    musteri.OrdersViaInternetInfo.Add(singleObject);
                         //}
 
-                   
+
 
                         //string PaymentsJson = reader["Payments"].ToString();
                         //JArray PaymentsArray = JArray.Parse(PaymentsJson);
@@ -966,7 +959,7 @@ namespace ResimDuzenleme
 
 
 
-        private void OpenNebimFaturaListesi2()
+        private void OpenNebimFaturaListesi2( )
         {
             var nebimFaturaListesi2 = new NebimFaturaListesiAlis();
             nebimFaturaListesi2.FrmFaturalastirTekliRef = this; // Bu satır önemli
@@ -980,7 +973,7 @@ namespace ResimDuzenleme
             set { textBox1.Text = value; }
         }
 
-        public void TriggerEnterOperation()
+        public void TriggerEnterOperation( )
         {
             // Enter tuşuna basıldığında gerçekleşmesini istediğiniz işlemler
             // Örneğin, simpleButton1'in click event'ini burada çağırabilirsiniz
@@ -1016,7 +1009,7 @@ namespace ResimDuzenleme
                 }
             }
         }
-        private void SelectRowsBasedOnCondition()
+        private void SelectRowsBasedOnCondition( )
         {
             for (int i = 0; i < gridView1.DataRowCount; i++)
             {

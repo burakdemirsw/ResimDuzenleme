@@ -1,11 +1,7 @@
 
-using System;
-using System.Collections.Generic;
 using ResimDuzenleme.AuthenticationWS;
-using ResimDuzenleme.EArchiveInvoiceWS;
-using ResimDuzenleme.EIrsaliyeWS;
-using ResimDuzenleme.SmmWs;
 using ResimDuzenleme.Operations;
+using System;
 
 namespace ResimDuzenleme.Adapter
 {
@@ -31,7 +27,7 @@ namespace ResimDuzenleme.Adapter
             }
         }
 
-        public static EArchiveInvoiceWS.REQUEST_HEADERType EArchiveRequestHeaderType()
+        public static EArchiveInvoiceWS.REQUEST_HEADERType EArchiveRequestHeaderType( )
         {
             return new EArchiveInvoiceWS.REQUEST_HEADERType
             {
@@ -41,7 +37,7 @@ namespace ResimDuzenleme.Adapter
             };
         }
 
-        public static AuthenticationWS.REQUEST_HEADERType AuntWSRequestHeaderType()
+        public static AuthenticationWS.REQUEST_HEADERType AuntWSRequestHeaderType( )
         {
             return new AuthenticationWS.REQUEST_HEADERType
             {
@@ -51,7 +47,7 @@ namespace ResimDuzenleme.Adapter
             };
         }
 
-        public static EInvoiceWS.REQUEST_HEADERType EInvoiceWSRequestHeaderType()
+        public static EInvoiceWS.REQUEST_HEADERType EInvoiceWSRequestHeaderType( )
         {
             return new EInvoiceWS.REQUEST_HEADERType
             {
@@ -62,7 +58,7 @@ namespace ResimDuzenleme.Adapter
             };
         }
 
-        public static EIrsaliyeWS.REQUEST_HEADERType EDespatchWSRequestHeaderType()
+        public static EIrsaliyeWS.REQUEST_HEADERType EDespatchWSRequestHeaderType( )
         {
             return new EIrsaliyeWS.REQUEST_HEADERType
             {
@@ -72,7 +68,7 @@ namespace ResimDuzenleme.Adapter
             };
         }
 
-        public static CreditNoteWS.REQUEST_HEADERType CreditNoteWSRequestHeaderType()
+        public static CreditNoteWS.REQUEST_HEADERType CreditNoteWSRequestHeaderType( )
         {
             return new CreditNoteWS.REQUEST_HEADERType
             {
@@ -82,7 +78,7 @@ namespace ResimDuzenleme.Adapter
             };
         }
 
-        public static SmmWs.REQUEST_HEADERType SmmWSRequestHeaderType()
+        public static SmmWs.REQUEST_HEADERType SmmWSRequestHeaderType( )
         {
             return new SmmWs.REQUEST_HEADERType
             {

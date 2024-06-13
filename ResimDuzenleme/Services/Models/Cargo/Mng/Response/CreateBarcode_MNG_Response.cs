@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ResimDuzenleme.Services.Models.MNG.Response
 {
-    
+
 
     public class CreateBarcode_MNG_Response
     {
