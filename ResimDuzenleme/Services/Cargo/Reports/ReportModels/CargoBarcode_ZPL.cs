@@ -9,7 +9,6 @@ namespace ResimDuzenleme.Services.Cargo.Reports.ReportModels
     public class CargoBarcode_ZPL
     {
         public string CargoCompany { get; set; }
-
         public string SupplierName { get; set; }
         public string ReceiverName { get; set; }
         public string Address { get; set; }
@@ -22,6 +21,9 @@ namespace ResimDuzenleme.Services.Cargo.Reports.ReportModels
         public string OrderNo { get; set; }
         public string CreatedDate { get; set; }
         public string Description { get; set; }
+        public string Marketplace { get; set; }
+        public string SalesUrl { get; set; }
+        public string Country { get; set; }
 
     }
 }

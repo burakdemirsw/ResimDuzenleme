@@ -47,7 +47,26 @@ namespace ResimDuzenleme.Services.Forms
             _repository = repository;
             _context = context;
             this.mNG_CargoService = mNG_CargoService;
+           
             InitializeComponent();
+        }
+        Timer timer = new Timer();
+        public async void Service( )
+        {
+
+           
+            // Timer'ı her 1 dakikada bir tetikle (1 dakika = 60000 milisaniye)
+            timer.Interval = 60000;
+            timer.Tick += Timer_Tick;
+            // Timer'ı başlat
+            timer.Start();
+        }
+
+
+        private  void Timer_Tick(object sender, EventArgs e)
+        {
+           simpleButton1_Click(sender, e);
+
         }
 
         CreatePackage_MNG_RM mainCargo = new CreatePackage_MNG_RM(); 
@@ -70,7 +89,12 @@ namespace ResimDuzenleme.Services.Forms
                         _cargo.BarcodeRequest
                     ),
                 BarcodeBase64 = _cargo.BarcodeBase64,
-                CargoFirmId = _cargo.CargoFirmId
+                CargoFirmId = _cargo.CargoFirmId,
+                Marketplace = _cargo.Marketplace,
+                SalesUrl = _cargo.SalesUrl,
+                FirstItem = _cargo.FirstItem,
+                OrderStatus = _cargo.OrderStatus
+
             };
             mainCargo = new CreatePackage_MNG_RM(); 
             mainCargo = createPackage_MNG_RM;   
@@ -147,7 +171,9 @@ namespace ResimDuzenleme.Services.Forms
         private async void simpleButton1_Click(object sender, EventArgs e)
         {
             //SİPARİŞ LİSTESİNİ GETİR *****************************
-            List<OrderDetail_DTO> orderDetail_DTOs = _context.OrderDetail_DTO.FromSqlRaw("exec [ZTMSG_CreateCargoList]").ToList();
+            List<OrderDetail_DTO> orderDetail_DTOs = await _context.OrderDetail_DTO
+            .FromSqlRaw("exec [ZTMSG_CreateCargoList]")
+            .ToListAsync();
 
             List<string> orderNumbers = orderDetail_DTOs.Select(x => x.OrderNumber).ToList();
             var orderListQuery = "";
@@ -162,7 +188,9 @@ namespace ResimDuzenleme.Services.Forms
             //SİPARİŞ İSTEKLERİNİ GETİR *****************************
 
             var query = $"exec [ZTMSG_CreateCargoBarcode] 1,'{orderListQuery}'";
-            List<Models.Entities.ZTMSG_CreateCargoBarcode> _cargos = _context.ZTMSG_CreateCargoBarcode.FromSqlRaw(query).AsEnumerable().ToList();
+            List<Models.Entities.ZTMSG_CreateCargoBarcode> _cargos = await _context.ZTMSG_CreateCargoBarcode
+       .FromSqlRaw(query)
+       .ToListAsync();
 
             List<CreatePackage_MNG_RM> createPackage_MNG_RMs = new List<CreatePackage_MNG_RM>();
            
@@ -183,21 +211,26 @@ namespace ResimDuzenleme.Services.Forms
                        _cargo.BarcodeRequest
                    ),
                     BarcodeBase64 = _cargo.BarcodeBase64,
-                    CargoFirmId = _cargo.CargoFirmId
+                    CargoFirmId = _cargo.CargoFirmId,
+                    Marketplace = _cargo.Marketplace,
+                    SalesUrl = _cargo.SalesUrl,
+                    FirstItem = _cargo.FirstItem,
+                    OrderStatus = _cargo.OrderStatus,
+                    Country = _cargo.Country
+
                 };
 
                 createPackage_MNG_RMs.Add(createPackage_MNG_RM);
             }
             //SİPARİŞ OLUŞTUR *****************************
 
-            DialogResult dialogResult = MessageBox.Show("Seçili siparişleri MNG Kargo'ya göndermek istediğinize emin misiniz","Onay",MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No)
-            {
-                MessageBox.Show("İşlem iptal edildi."); 
-                return;
-            }
-            else
-            {
+            //DialogResult dialogResult = MessageBox.Show("Seçili siparişleri MNG Kargo'ya göndermek istediğinize emin misiniz","Onay",MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.No)
+            //{
+            //    MessageBox.Show("İşlem iptal edildi."); 
+            //    return;
+            //}
+          
                 List<CreateCargo_RM<CreatePackage_MNG_RR>> createPackage_MNG_RRs = new List<CreateCargo_RM<CreatePackage_MNG_RR>>();
 
                 foreach (var order in createPackage_MNG_RMs) // Note: What is the type of createPackage_MNG_RMs? It's not shown.
@@ -207,7 +240,7 @@ namespace ResimDuzenleme.Services.Forms
                     order.OrderRequest.Order.ReferenceId = random;
                     order.BarcodeRequest.ReferenceId = random;
                     CreateCargo_RM<CreatePackage_MNG_RR> response = await mNG_CargoService.CreateCargo(order);
-                    response.OrderNumber = order.OrderRequest.Order.ReferenceId;
+                    response.OrderNumber = order.OrderRequest.Order.BillOfLandingId;
 
                     createPackage_MNG_RRs.Add(response);
                 }
@@ -216,9 +249,9 @@ namespace ResimDuzenleme.Services.Forms
 
                 gridControl2.DataSource = createPackage_MNG_RRs;
                 gridControl1.DataSource = createPackage_MNG_RMs;
-            }
+            
             this.xtraTabControl1.SelectedTabPageIndex = 2;
-            MessageBox.Show("İşlem tamamlandı.");   
+            //MessageBox.Show("İşlem tamamlandı.");   
             
 
         }
@@ -447,6 +480,8 @@ namespace ResimDuzenleme.Services.Forms
                         cargoBarcode_ZPL.OrderNo = cargo.CreatedDate?.ToString("yyyy-MM-dd");
                         cargoBarcode_ZPL.Description = barcode.OrderPieceList.First().Content;
                         cargoBarcode_ZPL.CargoBarcode = item.Barcode;
+                        cargoBarcode_ZPL.Marketplace = cargo.Marketplace;
+                        cargoBarcode_ZPL.SalesUrl = cargo.SalesUrl;
                         cargoBarcode_ZPLs.Add(cargoBarcode_ZPL);
 
                     }
@@ -488,12 +523,13 @@ namespace ResimDuzenleme.Services.Forms
             if (!status)
             {
                 //yazdırılmayanlar
-                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes.Where(c => c.ReferenceId != null && c.BarcodeResponse == null).ToList();
+                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes.Where(c => c.ReferenceId != null && c.BarcodeResponse == null).OrderByDescending(p=>p.FirstItem).OrderByDescending(p => p.SalesUrl).ToList();
                 gridControl3.DataSource = cargoBarcodes;
             }
             else
             {
-                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes.Where(c => c.ReferenceId != null && c.BarcodeResponse != null).ToList();
+                List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes.Where(c => c.ReferenceId != null && c.BarcodeResponse != null).OrderByDescending(p => p.FirstItem).OrderByDescending(p => p.SalesUrl).ToList();
+                ;
                 gridControl3.DataSource = cargoBarcodes;
             }
             this.xtraTabControl1.SelectedTabPageIndex = 1;
@@ -509,6 +545,24 @@ namespace ResimDuzenleme.Services.Forms
         private  void simpleButton15_Click(object sender, EventArgs e)
         {
              DeleteSelectedBarcodes();
+        }
+        bool serviceStatus = false; 
+        private void simpleButton16_Click(object sender, EventArgs e)
+        {
+            serviceStatus = !serviceStatus;
+
+            if (serviceStatus)
+            {
+                Service();
+                simpleButton16.Appearance.BackColor = Color.Green;
+                MessageBox.Show("Servis Başlatıldı.");  
+            }
+            else
+            {
+                timer.Stop();
+                simpleButton16.Appearance.BackColor = Color.Red;
+                MessageBox.Show("Servis Durduruldu.");
+            }
         }
     }
 }

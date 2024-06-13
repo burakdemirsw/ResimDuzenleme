@@ -42,6 +42,8 @@ namespace ResimDuzenleme.Services.Cargo
         string ClientId;
         string ClientSecret;
 
+
+   
         public async Task<CreateCargo_RM<CreatePackage_MNG_RR>> CreateCargo(
             CreatePackage_MNG_RM request
         )
@@ -124,9 +126,14 @@ namespace ResimDuzenleme.Services.Cargo
                             _cargoBarcode.Desi = request.BarcodeRequest.OrderPieceList.First().Desi;
                             _cargoBarcode.Kg = request.BarcodeRequest.OrderPieceList.First().Desi;
                             _cargoBarcode.PackagingType = request.BarcodeRequest.PackagingType;
+                            _cargoBarcode.Marketplace = request.Marketplace;
+                            _cargoBarcode.SalesUrl = request.SalesUrl;
+                            _cargoBarcode.FirstItem = request.FirstItem;
+                            _cargoBarcode.OrderStatus = request.OrderStatus;
+                            _cargoBarcode.Country = request.Country;
 
                             var repository = new DbContextRepository<CargoBarcode>(_context);
-                            repository.Add(_cargoBarcode);
+                            await repository.Add(_cargoBarcode);
 
                             //for (int i = 1; i <= request.BarcodeRequest.OrderPieceList.Count; i++)
                             //{
@@ -226,7 +233,7 @@ namespace ResimDuzenleme.Services.Cargo
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                        repository.Delete(cargoBarcode);
+                        await repository.Delete(cargoBarcode);
                     }
                     BulkDeleteShipment_RM bulkDeleteShipment_RM = new BulkDeleteShipment_RM();
                     bulkDeleteShipment_RM.ReferenceId = JsonConvert.SerializeObject(
@@ -245,7 +252,7 @@ namespace ResimDuzenleme.Services.Cargo
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                        repository.Delete(cargoBarcode);
+                        await repository.Delete(cargoBarcode);
                     }
                     BulkDeleteShipment_RM bulkDeleteShipment_RM = new BulkDeleteShipment_RM();
                     bulkDeleteShipment_RM.ReferenceId = JsonConvert.SerializeObject(
@@ -354,7 +361,7 @@ namespace ResimDuzenleme.Services.Cargo
                                         _cargoBarcode.ShipmentId = barcode.ShipmentId;
                                         _cargoBarcode.BarcodeResponse =
                                             new JavaScriptSerializer().Serialize(tokenResponse);
-                                        repository.Update(_cargoBarcode);
+                                    await repository.Update(_cargoBarcode);
                                         break;
                                     }
                                     index++;
