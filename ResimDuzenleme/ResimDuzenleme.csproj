@@ -474,10 +474,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcilirPanelGoster.cs">
+    <Compile Include="Forms\AcilirPanelGoster.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AcilirPanelGoster.Designer.cs">
+    <Compile Include="Forms\AcilirPanelGoster.Designer.cs">
       <DependentUpon>AcilirPanelGoster.cs</DependentUpon>
     </Compile>
     <Compile Include="Adapter\AuthAdapter.cs" />
@@ -487,15 +487,15 @@
     <Compile Include="Adapter\EDespatchAdapter.cs" />
     <Compile Include="Adapter\EInvoiceAdapter.cs" />
     <Compile Include="Adapter\SmmAdapter.cs" />
-    <Compile Include="AnaUser.cs">
+    <Compile Include="Forms\AnaUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnaUser.Designer.cs">
+    <Compile Include="Forms\AnaUser.Designer.cs">
       <DependentUpon>AnaUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="attribute.cs" />
+    <Compile Include="OtherObjects\attribute.cs" />
     <Compile Include="Authentication\AuthenticationSample.cs" />
-    <Compile Include="BaseAdapter.cs" />
+    <Compile Include="OtherObjects\BaseAdapter.cs" />
     <Compile Include="Connected Services\AuthenticationWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -551,105 +551,105 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseService.cs" />
-    <Compile Include="DataHandler.cs" />
-    <Compile Include="DegisimListesi.cs">
+    <Compile Include="OtherObjects\DatabaseService.cs" />
+    <Compile Include="OtherObjects\DataHandler.cs" />
+    <Compile Include="Forms\DegisimListesi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DegisimListesi.Designer.cs">
+    <Compile Include="Forms\DegisimListesi.Designer.cs">
       <DependentUpon>DegisimListesi.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeliveryOption.cs" />
-    <Compile Include="ExcelIslemleri.cs">
+    <Compile Include="OtherObjects\DeliveryOption.cs" />
+    <Compile Include="Forms\ExcelIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExcelIslemleri.Designer.cs">
+    <Compile Include="Forms\ExcelIslemleri.Designer.cs">
       <DependentUpon>ExcelIslemleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExcellData.cs" />
-    <Compile Include="ExpenseVoucher.cs">
+    <Compile Include="OtherObjects\ExcellData.cs" />
+    <Compile Include="OtherObjects\ExpenseVoucher.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExpenseVoucher.Designer.cs">
+    <Compile Include="OtherObjects\ExpenseVoucher.Designer.cs">
       <DependentUpon>ExpenseVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="FaturaGorsel.cs">
+    <Compile Include="Forms\FaturaGorsel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FaturaGorsel.Designer.cs">
+    <Compile Include="Forms\FaturaGorsel.Designer.cs">
       <DependentUpon>FaturaGorsel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Forms\Form2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
+    <Compile Include="Forms\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAlisSiparis.cs">
+    <Compile Include="Forms\FrmAlisSiparis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAlisSiparis.Designer.cs">
+    <Compile Include="Forms\FrmAlisSiparis.Designer.cs">
       <DependentUpon>FrmAlisSiparis.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFaturalastir.cs">
+    <Compile Include="Forms\frmFaturalastir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFaturalastir.Designer.cs">
+    <Compile Include="Forms\frmFaturalastir.Designer.cs">
       <DependentUpon>frmFaturalastir.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmFaturalastirTekli.cs">
+    <Compile Include="Forms\FrmFaturalastirTekli.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmFaturalastirTekli.Designer.cs">
+    <Compile Include="Forms\FrmFaturalastirTekli.Designer.cs">
       <DependentUpon>FrmFaturalastirTekli.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmIrsaliyeFaturalastirTekli.cs">
+    <Compile Include="Forms\FrmIrsaliyeFaturalastirTekli.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmIrsaliyeFaturalastirTekli.Designer.cs">
+    <Compile Include="Forms\FrmIrsaliyeFaturalastirTekli.Designer.cs">
       <DependentUpon>FrmIrsaliyeFaturalastirTekli.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmKullanicilar.cs">
+    <Compile Include="Forms\frmKullanicilar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmKullanicilar.Designer.cs">
+    <Compile Include="Forms\frmKullanicilar.Designer.cs">
       <DependentUpon>frmKullanicilar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMagazalar.cs">
+    <Compile Include="Forms\frmMagazalar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMagazalar.Designer.cs">
+    <Compile Include="Forms\frmMagazalar.Designer.cs">
       <DependentUpon>frmMagazalar.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmNebimSiparis.cs">
+    <Compile Include="Forms\FrmNebimSiparis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmNebimSiparis.Designer.cs">
+    <Compile Include="Forms\FrmNebimSiparis.Designer.cs">
       <DependentUpon>FrmNebimSiparis.cs</DependentUpon>
     </Compile>
-    <Compile Include="GiderPusulasi.cs">
+    <Compile Include="Forms\GiderPusulasi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GiderPusulasi.Designer.cs">
+    <Compile Include="Forms\GiderPusulasi.Designer.cs">
       <DependentUpon>GiderPusulasi.cs</DependentUpon>
     </Compile>
-    <Compile Include="IadeListTicimax.cs">
+    <Compile Include="OtherObjects\IadeListTicimax.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IadeListTicimax.designer.cs">
+    <Compile Include="OtherObjects\IadeListTicimax.designer.cs">
       <DependentUpon>IadeListTicimax.cs</DependentUpon>
     </Compile>
-    <Compile Include="image.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="Item2.cs" />
-    <Compile Include="Itemm.cs" />
-    <Compile Include="IzibizClient.cs" />
+    <Compile Include="OtherObjects\image.cs" />
+    <Compile Include="OtherObjects\Item.cs" />
+    <Compile Include="OtherObjects\Item2.cs" />
+    <Compile Include="OtherObjects\Itemm.cs" />
+    <Compile Include="OtherObjects\IzibizClient.cs" />
     <Compile Include="KargoApi\ArasKargoApi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -674,60 +674,60 @@
     <Compile Include="KargoApi\YurtIciKargoApi.Designer.cs">
       <DependentUpon>YurtIciKargoApi.cs</DependentUpon>
     </Compile>
-    <Compile Include="KargoCikis.cs">
+    <Compile Include="Forms\KargoCikis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KargoCikis.Designer.cs">
+    <Compile Include="Forms\KargoCikis.Designer.cs">
       <DependentUpon>KargoCikis.cs</DependentUpon>
     </Compile>
-    <Compile Include="KargoTakip.cs">
+    <Compile Include="Forms\KargoTakip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KargoTakip.Designer.cs">
+    <Compile Include="Forms\KargoTakip.Designer.cs">
       <DependentUpon>KargoTakip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Kategori.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="OtherObjects\Kategori.cs" />
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Magaza.cs">
+    <Compile Include="Forms\Magaza.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Magaza.Designer.cs">
+    <Compile Include="Forms\Magaza.Designer.cs">
       <DependentUpon>Magaza.cs</DependentUpon>
     </Compile>
-    <Compile Include="Marka2.cs" />
-    <Compile Include="Misigo.cs">
+    <Compile Include="OtherObjects\Marka2.cs" />
+    <Compile Include="OtherObjects\Misigo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Misigo.Designer.cs">
+    <Compile Include="OtherObjects\Misigo.Designer.cs">
       <DependentUpon>Misigo.cs</DependentUpon>
     </Compile>
-    <Compile Include="MisigoFirmaBilgileri.cs">
+    <Compile Include="Forms\MisigoFirmaBilgileri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MisigoFirmaBilgileri.Designer.cs">
+    <Compile Include="Forms\MisigoFirmaBilgileri.Designer.cs">
       <DependentUpon>MisigoFirmaBilgileri.cs</DependentUpon>
     </Compile>
-    <Compile Include="MisigoKategoriEslestir.cs">
+    <Compile Include="Forms\MisigoKategoriEslestir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MisigoKategoriEslestir.Designer.cs">
+    <Compile Include="Forms\MisigoKategoriEslestir.Designer.cs">
       <DependentUpon>MisigoKategoriEslestir.cs</DependentUpon>
     </Compile>
-    <Compile Include="MisigoOzellikEslestir.cs">
+    <Compile Include="Forms\MisigoOzellikEslestir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MisigoOzellikEslestir.Designer.cs">
+    <Compile Include="Forms\MisigoOzellikEslestir.Designer.cs">
       <DependentUpon>MisigoOzellikEslestir.cs</DependentUpon>
     </Compile>
-    <Compile Include="MNGKargo.cs">
+    <Compile Include="Forms\MNGKargo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MNGKargo.Designer.cs">
+    <Compile Include="Forms\MNGKargo.Designer.cs">
       <DependentUpon>MNGKargo.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\Cargo\Mng\MngCargoService.cs" />
@@ -741,100 +741,100 @@
     <Compile Include="Services\Cargo\Mng\Request\CreateToken_MNG_Request.cs" />
     <Compile Include="Services\Cargo\Mng\Response\CreateBarcode_MNG_Response.cs" />
     <Compile Include="Services\Cargo\Mng\Response\CreatePackage_MNG_Response.cs" />
-    <Compile Include="NebimApi.cs">
+    <Compile Include="Forms\NebimApi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimApi.Designer.cs">
+    <Compile Include="Forms\NebimApi.Designer.cs">
       <DependentUpon>NebimApi.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimBarkod.cs">
+    <Compile Include="Forms\NebimBarkod.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimBarkod.Designer.cs">
+    <Compile Include="Forms\NebimBarkod.Designer.cs">
       <DependentUpon>NebimBarkod.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimFaturaList.cs">
+    <Compile Include="Forms\NebimFaturaList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimFaturaList.Designer.cs">
+    <Compile Include="Forms\NebimFaturaList.Designer.cs">
       <DependentUpon>NebimFaturaList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimFaturaListesi2.cs">
+    <Compile Include="Forms\NebimFaturaListesi2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimFaturaListesi2.Designer.cs">
+    <Compile Include="Forms\NebimFaturaListesi2.Designer.cs">
       <DependentUpon>NebimFaturaListesi2.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimFaturaListesiAlis.cs">
+    <Compile Include="Forms\NebimFaturaListesiAlis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimFaturaListesiAlis.Designer.cs">
+    <Compile Include="Forms\NebimFaturaListesiAlis.Designer.cs">
       <DependentUpon>NebimFaturaListesiAlis.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimFaturaListesiGider.cs">
+    <Compile Include="Forms\NebimFaturaListesiGider.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimFaturaListesiGider.Designer.cs">
+    <Compile Include="Forms\NebimFaturaListesiGider.Designer.cs">
       <DependentUpon>NebimFaturaListesiGider.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimFiyat.cs">
+    <Compile Include="Forms\NebimFiyat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimFiyat.Designer.cs">
+    <Compile Include="Forms\NebimFiyat.Designer.cs">
       <DependentUpon>NebimFiyat.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimIrsaliyeListesi.cs">
+    <Compile Include="Forms\NebimIrsaliyeListesi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimIrsaliyeListesi.Designer.cs">
+    <Compile Include="Forms\NebimIrsaliyeListesi.Designer.cs">
       <DependentUpon>NebimIrsaliyeListesi.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimKategori.cs">
+    <Compile Include="Forms\NebimKategori.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimKategori.Designer.cs">
+    <Compile Include="Forms\NebimKategori.Designer.cs">
       <DependentUpon>NebimKategori.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimOdemeYontemleri.cs">
+    <Compile Include="Forms\NebimOdemeYontemleri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimOdemeYontemleri.Designer.cs">
+    <Compile Include="Forms\NebimOdemeYontemleri.Designer.cs">
       <DependentUpon>NebimOdemeYontemleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimOzellik.cs">
+    <Compile Include="Forms\NebimOzellik.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimOzellik.Designer.cs">
+    <Compile Include="Forms\NebimOzellik.Designer.cs">
       <DependentUpon>NebimOzellik.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimResim.cs">
+    <Compile Include="Forms\NebimResim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimResim.Designer.cs">
+    <Compile Include="Forms\NebimResim.Designer.cs">
       <DependentUpon>NebimResim.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimSayim.cs">
+    <Compile Include="Forms\NebimSayim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimSayim.Designer.cs">
+    <Compile Include="Forms\NebimSayim.Designer.cs">
       <DependentUpon>NebimSayim.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimSilmeIslemleri.cs">
+    <Compile Include="Forms\NebimSilmeIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimSilmeIslemleri.Designer.cs">
+    <Compile Include="Forms\NebimSilmeIslemleri.Designer.cs">
       <DependentUpon>NebimSilmeIslemleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimSiparisAktarExcell.cs">
+    <Compile Include="Forms\NebimSiparisAktarExcell.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimSiparisAktarExcell.Designer.cs">
+    <Compile Include="Forms\NebimSiparisAktarExcell.Designer.cs">
       <DependentUpon>NebimSiparisAktarExcell.cs</DependentUpon>
     </Compile>
-    <Compile Include="NebimUrunAcma.cs">
+    <Compile Include="Forms\NebimUrunAcma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NebimUrunAcma.Designer.cs">
+    <Compile Include="Forms\NebimUrunAcma.Designer.cs">
       <DependentUpon>NebimUrunAcma.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\Compress.cs" />
@@ -844,27 +844,27 @@
     <Compile Include="Operations\Utf8StringWriter.cs" />
     <Compile Include="Operations\XmlProcess.cs" />
     <Compile Include="Operations\XmlSerializerr.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="OtherObjects\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QROlusturma.cs">
+    <Compile Include="Forms\QROlusturma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QROlusturma.Designer.cs">
+    <Compile Include="Forms\QROlusturma.Designer.cs">
       <DependentUpon>QROlusturma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resim.cs" />
-    <Compile Include="PhotoDuzenleme.cs">
+    <Compile Include="OtherObjects\Resim.cs" />
+    <Compile Include="Forms\PhotoDuzenleme.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PhotoDuzenleme.Designer.cs">
+    <Compile Include="Forms\PhotoDuzenleme.Designer.cs">
       <DependentUpon>PhotoDuzenleme.cs</DependentUpon>
     </Compile>
-    <Compile Include="Root.cs" />
-    <Compile Include="SatisForm.cs">
+    <Compile Include="OtherObjects\Root.cs" />
+    <Compile Include="Forms\SatisForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SatisForm.Designer.cs">
+    <Compile Include="Forms\SatisForm.Designer.cs">
       <DependentUpon>SatisForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\Cargo\MNG_CargoService.cs" />
@@ -919,17 +919,17 @@
     <Compile Include="Services\Models\Cargo\Mng\Response\GetPackageStatus_MNG_Response.cs" />
     <Compile Include="Services\Models\Cargo\Mng\ZTMSG_CreateCargoBarcode.cs" />
     <Compile Include="Services\StaticVariables.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="Settings1.cs" />
+    <Compile Include="OtherObjects\Settings.cs" />
+    <Compile Include="OtherObjects\Settings1.cs" />
     <Compile Include="Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
-    <Compile Include="SiparisBarkodYazdir.cs">
+    <Compile Include="Forms\SiparisBarkodYazdir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SiparisBarkodYazdir.Designer.cs">
+    <Compile Include="Forms\SiparisBarkodYazdir.Designer.cs">
       <DependentUpon>SiparisBarkodYazdir.cs</DependentUpon>
     </Compile>
     <Compile Include="SiparisListPdf.cs">
@@ -950,43 +950,43 @@
     <Compile Include="SiparisListTicimax.Designer.cs">
       <DependentUpon>SiparisListTicimax.cs</DependentUpon>
     </Compile>
-    <Compile Include="SiparisServiceMethods.cs" />
-    <Compile Include="StaticFunctions.cs" />
-    <Compile Include="StaticVariables.cs" />
-    <Compile Include="Stok.cs" />
-    <Compile Include="TicimaxAyarlar.cs">
+    <Compile Include="OtherObjects\SiparisServiceMethods.cs" />
+    <Compile Include="OtherObjects\StaticFunctions.cs" />
+    <Compile Include="OtherObjects\StaticVariables.cs" />
+    <Compile Include="OtherObjects\Stok.cs" />
+    <Compile Include="Forms\TicimaxAyarlar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TicimaxAyarlar.Designer.cs">
+    <Compile Include="Forms\TicimaxAyarlar.Designer.cs">
       <DependentUpon>TicimaxAyarlar.cs</DependentUpon>
     </Compile>
-    <Compile Include="TicimaxSiparisList.cs" />
-    <Compile Include="TrendyolApi.cs">
+    <Compile Include="OtherObjects\TicimaxSiparisList.cs" />
+    <Compile Include="Forms\TrendyolApi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TrendyolApi.Designer.cs">
+    <Compile Include="Forms\TrendyolApi.Designer.cs">
       <DependentUpon>TrendyolApi.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrendyolContentModel.cs" />
-    <Compile Include="TrendyolItemModel.cs" />
-    <Compile Include="TrendyolResimCek.cs">
+    <Compile Include="OtherObjects\TrendyolContentModel.cs" />
+    <Compile Include="OtherObjects\TrendyolItemModel.cs" />
+    <Compile Include="Forms\TrendyolResimCek.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TrendyolResimCek.Designer.cs">
+    <Compile Include="Forms\TrendyolResimCek.Designer.cs">
       <DependentUpon>TrendyolResimCek.cs</DependentUpon>
     </Compile>
     <Compile Include="TrendyolRoot\Root2cs.cs" />
-    <Compile Include="TrendyolService.cs" />
-    <Compile Include="TrendyolSiparisAktar.cs">
+    <Compile Include="OtherObjects\TrendyolService.cs" />
+    <Compile Include="Forms\TrendyolSiparisAktar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TrendyolSiparisAktar.Designer.cs">
+    <Compile Include="Forms\TrendyolSiparisAktar.Designer.cs">
       <DependentUpon>TrendyolSiparisAktar.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrendyolYurtDisiSiparis.cs">
+    <Compile Include="Forms\TrendyolYurtDisiSiparis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TrendyolYurtDisiSiparis.Designer.cs">
+    <Compile Include="Forms\TrendyolYurtDisiSiparis.Designer.cs">
       <DependentUpon>TrendyolYurtDisiSiparis.cs</DependentUpon>
     </Compile>
     <Compile Include="UblCreate\ArchiveUBL.cs" />
@@ -1009,65 +1009,65 @@
     <Compile Include="Ubl\UblInvoice.cs" />
     <Compile Include="Ubl\UblReceipt.cs" />
     <Compile Include="Ubl\Xslt.cs" />
-    <Compile Include="Urun.cs" />
-    <Compile Include="UrunAcmaParametreleri.cs">
+    <Compile Include="OtherObjects\Urun.cs" />
+    <Compile Include="Forms\UrunAcmaParametreleri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UrunAcmaParametreleri.Designer.cs">
+    <Compile Include="Forms\UrunAcmaParametreleri.Designer.cs">
       <DependentUpon>UrunAcmaParametreleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="UrunServiceMethods.cs" />
-    <Compile Include="VM_HttpConnectionRequest.cs" />
-    <Compile Include="ZTMSGUrunListMisigo.cs" />
-    <Compile Include="ZtNebimFaturaRYD.cs" />
-    <Compile Include="ZtTicimaxUyeAdres.cs" />
-    <EmbeddedResource Include="AcilirPanelGoster.resx">
+    <Compile Include="OtherObjects\UrunServiceMethods.cs" />
+    <Compile Include="OtherObjects\VM_HttpConnectionRequest.cs" />
+    <Compile Include="OtherObjects\ZTMSGUrunListMisigo.cs" />
+    <Compile Include="OtherObjects\ZtNebimFaturaRYD.cs" />
+    <Compile Include="OtherObjects\ZtTicimaxUyeAdres.cs" />
+    <EmbeddedResource Include="Forms\AcilirPanelGoster.resx">
       <DependentUpon>AcilirPanelGoster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DegisimListesi.resx">
+    <EmbeddedResource Include="Forms\DegisimListesi.resx">
       <DependentUpon>DegisimListesi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExcelIslemleri.resx">
+    <EmbeddedResource Include="Forms\ExcelIslemleri.resx">
       <DependentUpon>ExcelIslemleri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExpenseVoucher.resx">
+    <EmbeddedResource Include="OtherObjects\ExpenseVoucher.resx">
       <DependentUpon>ExpenseVoucher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FaturaGorsel.resx">
+    <EmbeddedResource Include="Forms\FaturaGorsel.resx">
       <DependentUpon>FaturaGorsel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
+    <EmbeddedResource Include="Forms\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAlisSiparis.resx">
+    <EmbeddedResource Include="Forms\FrmAlisSiparis.resx">
       <DependentUpon>FrmAlisSiparis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFaturalastir.resx">
+    <EmbeddedResource Include="Forms\frmFaturalastir.resx">
       <DependentUpon>frmFaturalastir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmFaturalastirTekli.resx">
+    <EmbeddedResource Include="Forms\FrmFaturalastirTekli.resx">
       <DependentUpon>FrmFaturalastirTekli.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmIrsaliyeFaturalastirTekli.resx">
+    <EmbeddedResource Include="Forms\FrmIrsaliyeFaturalastirTekli.resx">
       <DependentUpon>FrmIrsaliyeFaturalastirTekli.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmKullanicilar.resx">
+    <EmbeddedResource Include="Forms\frmKullanicilar.resx">
       <DependentUpon>frmKullanicilar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMagazalar.resx">
+    <EmbeddedResource Include="Forms\frmMagazalar.resx">
       <DependentUpon>frmMagazalar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmNebimSiparis.resx">
+    <EmbeddedResource Include="Forms\FrmNebimSiparis.resx">
       <DependentUpon>FrmNebimSiparis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GiderPusulasi.resx">
+    <EmbeddedResource Include="Forms\GiderPusulasi.resx">
       <DependentUpon>GiderPusulasi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IadeListTicimax.resx">
+    <EmbeddedResource Include="OtherObjects\IadeListTicimax.resx">
       <DependentUpon>IadeListTicimax.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KargoApi\ArasKargoApi.resx">
@@ -1079,80 +1079,80 @@
     <EmbeddedResource Include="KargoApi\YurtIciKargoApi.resx">
       <DependentUpon>YurtIciKargoApi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KargoCikis.resx">
+    <EmbeddedResource Include="Forms\KargoCikis.resx">
       <DependentUpon>KargoCikis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KargoTakip.resx">
+    <EmbeddedResource Include="Forms\KargoTakip.resx">
       <DependentUpon>KargoTakip.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Magaza.resx">
+    <EmbeddedResource Include="Forms\Magaza.resx">
       <DependentUpon>Magaza.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Misigo.resx">
+    <EmbeddedResource Include="OtherObjects\Misigo.resx">
       <DependentUpon>Misigo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MisigoFirmaBilgileri.resx">
+    <EmbeddedResource Include="Forms\MisigoFirmaBilgileri.resx">
       <DependentUpon>MisigoFirmaBilgileri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MisigoKategoriEslestir.resx">
+    <EmbeddedResource Include="Forms\MisigoKategoriEslestir.resx">
       <DependentUpon>MisigoKategoriEslestir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MisigoOzellikEslestir.resx">
+    <EmbeddedResource Include="Forms\MisigoOzellikEslestir.resx">
       <DependentUpon>MisigoOzellikEslestir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MNGKargo.resx">
+    <EmbeddedResource Include="Forms\MNGKargo.resx">
       <DependentUpon>MNGKargo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimApi.resx">
+    <EmbeddedResource Include="Forms\NebimApi.resx">
       <DependentUpon>NebimApi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimBarkod.resx">
+    <EmbeddedResource Include="Forms\NebimBarkod.resx">
       <DependentUpon>NebimBarkod.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimFaturaList.resx">
+    <EmbeddedResource Include="Forms\NebimFaturaList.resx">
       <DependentUpon>NebimFaturaList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimFaturaListesi2.resx">
+    <EmbeddedResource Include="Forms\NebimFaturaListesi2.resx">
       <DependentUpon>NebimFaturaListesi2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimFaturaListesiAlis.resx">
+    <EmbeddedResource Include="Forms\NebimFaturaListesiAlis.resx">
       <DependentUpon>NebimFaturaListesiAlis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimFaturaListesiGider.resx">
+    <EmbeddedResource Include="Forms\NebimFaturaListesiGider.resx">
       <DependentUpon>NebimFaturaListesiGider.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimFiyat.resx">
+    <EmbeddedResource Include="Forms\NebimFiyat.resx">
       <DependentUpon>NebimFiyat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimIrsaliyeListesi.resx">
+    <EmbeddedResource Include="Forms\NebimIrsaliyeListesi.resx">
       <DependentUpon>NebimIrsaliyeListesi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimKategori.resx">
+    <EmbeddedResource Include="Forms\NebimKategori.resx">
       <DependentUpon>NebimKategori.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimOdemeYontemleri.resx">
+    <EmbeddedResource Include="Forms\NebimOdemeYontemleri.resx">
       <DependentUpon>NebimOdemeYontemleri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimOzellik.resx">
+    <EmbeddedResource Include="Forms\NebimOzellik.resx">
       <DependentUpon>NebimOzellik.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimResim.resx">
+    <EmbeddedResource Include="Forms\NebimResim.resx">
       <DependentUpon>NebimResim.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimSayim.resx">
+    <EmbeddedResource Include="Forms\NebimSayim.resx">
       <DependentUpon>NebimSayim.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimSilmeIslemleri.resx">
+    <EmbeddedResource Include="Forms\NebimSilmeIslemleri.resx">
       <DependentUpon>NebimSilmeIslemleri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimSiparisAktarExcell.resx">
+    <EmbeddedResource Include="Forms\NebimSiparisAktarExcell.resx">
       <DependentUpon>NebimSiparisAktarExcell.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NebimUrunAcma.resx">
+    <EmbeddedResource Include="Forms\NebimUrunAcma.resx">
       <DependentUpon>NebimUrunAcma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -1165,13 +1165,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="QROlusturma.resx">
+    <EmbeddedResource Include="Forms\QROlusturma.resx">
       <DependentUpon>QROlusturma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhotoDuzenleme.resx">
+    <EmbeddedResource Include="Forms\PhotoDuzenleme.resx">
       <DependentUpon>PhotoDuzenleme.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SatisForm.resx">
+    <EmbeddedResource Include="Forms\SatisForm.resx">
       <DependentUpon>SatisForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\Cargo\Reports\CargoBarcode.resx">
@@ -1183,7 +1183,7 @@
     <EmbeddedResource Include="Services\Forms\PdfViewerForm.resx">
       <DependentUpon>PdfViewerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SiparisBarkodYazdir.resx">
+    <EmbeddedResource Include="Forms\SiparisBarkodYazdir.resx">
       <DependentUpon>SiparisBarkodYazdir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SiparisListPdf.resx">
@@ -1195,22 +1195,22 @@
     <EmbeddedResource Include="SiparisListTicimax.resx">
       <DependentUpon>SiparisListTicimax.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TicimaxAyarlar.resx">
+    <EmbeddedResource Include="Forms\TicimaxAyarlar.resx">
       <DependentUpon>TicimaxAyarlar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrendyolApi.resx">
+    <EmbeddedResource Include="Forms\TrendyolApi.resx">
       <DependentUpon>TrendyolApi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrendyolResimCek.resx">
+    <EmbeddedResource Include="Forms\TrendyolResimCek.resx">
       <DependentUpon>TrendyolResimCek.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrendyolSiparisAktar.resx">
+    <EmbeddedResource Include="Forms\TrendyolSiparisAktar.resx">
       <DependentUpon>TrendyolSiparisAktar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrendyolYurtDisiSiparis.resx">
+    <EmbeddedResource Include="Forms\TrendyolYurtDisiSiparis.resx">
       <DependentUpon>TrendyolYurtDisiSiparis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UrunAcmaParametreleri.resx">
+    <EmbeddedResource Include="Forms\UrunAcmaParametreleri.resx">
       <DependentUpon>UrunAcmaParametreleri.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Barkod\Barkod.repx" />
@@ -2356,8 +2356,8 @@
     <None Include="Connected Services\UyeServis\UyeServis3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ExpenseVoucher.repx" />
-    <None Include="packages.config" />
+    <None Include="OtherObjects\ExpenseVoucher.repx" />
+    <None Include="OtherObjects\packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -2372,7 +2372,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Trendyol.xlsx" />
+    <None Include="OtherObjects\Trendyol.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -2390,10 +2390,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="logo.png" />
-    <Content Include="logo2.ico" />
-    <Content Include="MisigoScript2012Sürüm.sql" />
-    <Content Include="MisigoScript2019Sürüm.sql" />
+    <Content Include="OtherObjects\logo.png" />
+    <Content Include="OtherObjects\logo2.ico" />
+    <Content Include="OtherObjects\MisigoScript2012Sürüm.sql" />
+    <Content Include="OtherObjects\MisigoScript2019Sürüm.sql" />
     <None Include="Connected Services\SiparisServis\SiparisServis.disco" />
     <None Include="Connected Services\SiparisServis\configuration91.svcinfo" />
     <None Include="Connected Services\SiparisServis\configuration.svcinfo" />
@@ -2422,7 +2422,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="imzaico.ico" />
+    <Content Include="OtherObjects\imzaico.ico" />
     <None Include="Connected Services\AuthenticationWS\configuration91.svcinfo" />
     <None Include="Connected Services\AuthenticationWS\configuration.svcinfo" />
     <None Include="Connected Services\AuthenticationWS\Reference.svcmap">
@@ -2459,7 +2459,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="general.xslt" />
+    <Content Include="OtherObjects\general.xslt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\AuthenticationWS\" />
