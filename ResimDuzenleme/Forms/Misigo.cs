@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using Google.Cloud.Translation.V2;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ResimDuzenleme.Services.Cargo;
@@ -23,7 +24,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Context = ResimDuzenleme.Services.Database.Context;
+
 
 
 
@@ -35,14 +36,12 @@ namespace ResimDuzenleme
         private HttpClient httpClient = new HttpClient();
         private System.Timers.Timer timer;
         private readonly Context _context; //OrderDetail_DTO
-        private readonly DbContextRepository<CargoBarcode> _repository;
-
-        public Misigo(Context context, DbContextRepository<CargoBarcode> repository)
+        private readonly IServiceProvider _serviceProvider;
+        public Misigo(Context context, IServiceProvider serviceProvider)
         {
-            InitializeComponent();
-            _repository = repository;
             _context = context;
-
+            _serviceProvider = serviceProvider;
+            InitializeComponent();
 
         }
 
@@ -2303,8 +2302,8 @@ namespace ResimDuzenleme
 
         private void barButtonItem103_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MNG_CargoService srv = new MNG_CargoService(_repository, _context);
-            MNG_CargoForm frm = new MNG_CargoForm(_context, _repository, srv);
+            var frm = _serviceProvider.GetRequiredService<MNG_CargoForm>();
+
             frm.MdiParent = this;
             frm.Show();
         }

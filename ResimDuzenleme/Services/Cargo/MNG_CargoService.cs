@@ -1,7 +1,8 @@
-﻿using Nancy.Json;
+﻿
+using Microsoft.EntityFrameworkCore;
+using Nancy.Json;
 using Newtonsoft.Json;
-using NPOI.OpenXmlFormats.Dml;
-using ResimDuzenleme.Services.Database;
+using ResimDuzenleme.Services.Cargo.Abstractions;
 using ResimDuzenleme.Services.Helpers;
 using ResimDuzenleme.Services.Models.Cargo.DTO_s;
 using ResimDuzenleme.Services.Models.MNG;
@@ -19,16 +20,15 @@ using CargoBarcode = ResimDuzenleme.Services.Models.Entities.CargoBarcode;
 
 namespace ResimDuzenleme.Services.Cargo
 {
-    public class MNG_CargoService
+    public class MNG_CargoService : IMNG_CargoService
     {
-        private readonly Context __context;
-        private readonly DbContextRepository<CargoBarcode> __repository;
+        private readonly Context _context;
 
 
-        public MNG_CargoService(DbContextRepository<CargoBarcode> repository, Context context)
+        public MNG_CargoService( Context context)
         {
-            __context = context;
-            __repository = repository;
+           _context = context;
+
             MNG_CompanyInfo mNG_CompanyInfo = context.ZTMSGMngKargoApi.FirstOrDefault();
             if (mNG_CompanyInfo != null)
             {
@@ -44,15 +44,34 @@ namespace ResimDuzenleme.Services.Cargo
         string ClientSecret;
 
 
-
+        public async Task<List<CargoBarcode>> GetPrintableCargos(bool status)
+        {
+            if (!status)
+            {
+               var response = await _context.ZTMSG_CargoBarcodes
+                    .Where(c => c.ReferenceId != null && c.BarcodeResponse == null)
+                    .OrderByDescending(p => p.FirstItem)
+                    .OrderByDescending(p => p.SalesUrl)
+                    .ToListAsync();
+                return response;
+            }
+            else
+            {
+                     var response  =  await _context.ZTMSG_CargoBarcodes
+                    .Where(c => c.ReferenceId != null && c.BarcodeResponse != null)
+                    .OrderByDescending(p => p.FirstItem)
+                    .OrderByDescending(p => p.SalesUrl)
+                    .ToListAsync();
+                return response;
+            }
+        }
         public async Task<CreateCargo_RM<CreatePackage_MNG_RR>> CreateCargo(
             CreatePackage_MNG_RM request
         )
         {
             try
             {
-                var _context = new Context();
-                DbContextRepository<CargoBarcode> _repository = new DbContextRepository<CargoBarcode>(_context);
+             
 
                 string url = "https://api.mngkargo.com.tr/mngapi/api/standardcmdapi/createOrder";
                 string clientId = ClientId;
@@ -137,8 +156,8 @@ namespace ResimDuzenleme.Services.Cargo
                             _cargoBarcode.Country = request.Country;
 
 
-                            await _repository.Add(_cargoBarcode);
-
+                            await _context.ZTMSG_CargoBarcodes.AddAsync(_cargoBarcode);
+                            _context.SaveChanges();
                             //for (int i = 1; i <= request.BarcodeRequest.OrderPieceList.Count; i++)
                             //{
 
@@ -188,8 +207,6 @@ namespace ResimDuzenleme.Services.Cargo
         )
         {
 
-            var _context = new Context();
-            DbContextRepository<CargoBarcode> _repository = new DbContextRepository<CargoBarcode>(_context);
 
             string url = "https://api.mngkargo.com.tr/mngapi/api/barcodecmdapi/cancelshipment";
             string clientId = ClientId;
@@ -234,13 +251,15 @@ namespace ResimDuzenleme.Services.Cargo
                 if (response.IsSuccessStatusCode)
                 {
 
-                    List<CargoBarcode> cargoBarcodes = _repository._dbSet
+                    List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes
                         .Where(c => c.ReferenceId == request.ReferenceId)
                         .ToList();
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                        await _repository.Delete(cargoBarcode);
+                         _context.ZTMSG_CargoBarcodes.Remove(cargoBarcode);
+                        _context.SaveChanges();
+
                     }
                     BulkDeleteShipment_RM bulkDeleteShipment_RM = new BulkDeleteShipment_RM();
                     bulkDeleteShipment_RM.ReferenceId = JsonConvert.SerializeObject(
@@ -252,13 +271,15 @@ namespace ResimDuzenleme.Services.Cargo
                 else
                 {
 
-                    List<CargoBarcode> cargoBarcodes = _repository._dbSet
+                    List<CargoBarcode> cargoBarcodes =await  _context.ZTMSG_CargoBarcodes
                         .Where(c => c.ReferenceId == request.ReferenceId)
-                        .ToList();
+                        .ToListAsync();
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                        await _repository.Delete(cargoBarcode);
+                         _context.ZTMSG_CargoBarcodes.Remove(cargoBarcode);
+                        _context.SaveChanges();
+
                     }
                     BulkDeleteShipment_RM bulkDeleteShipment_RM = new BulkDeleteShipment_RM();
                     bulkDeleteShipment_RM.ReferenceId = JsonConvert.SerializeObject(
@@ -273,13 +294,12 @@ namespace ResimDuzenleme.Services.Cargo
         public async Task<List<CreateBarcode_MNG_Response>> CreateBarcode(string referenceId)
         {
 
-            var _context = new Context();
-            DbContextRepository<CargoBarcode> _repository = new DbContextRepository<CargoBarcode>(_context);
+ 
 
             List<CreateBarcode_MNG_Response> responses = new List<CreateBarcode_MNG_Response>();
 
 
-            List<CargoBarcode> cargoBarcodes = _repository._dbSet
+            List<CargoBarcode> cargoBarcodes = _context.ZTMSG_CargoBarcodes
                 .Where(cb => cb.ReferenceId == referenceId)
                 .ToList();
             List<string> barcodePaths = new List<string>();
@@ -371,7 +391,9 @@ namespace ResimDuzenleme.Services.Cargo
                                     _cargoBarcode.ShipmentId = barcode.ShipmentId;
                                     _cargoBarcode.BarcodeResponse =
                                         new JavaScriptSerializer().Serialize(tokenResponse);
-                                    await _repository.Update(_cargoBarcode);
+                                     _context.ZTMSG_CargoBarcodes.Update(_cargoBarcode);
+                                    _context.SaveChanges();
+
                                     break;
                                 }
                                 index++;
@@ -510,7 +532,7 @@ namespace ResimDuzenleme.Services.Cargo
             }
         }
 
-        async Task<bool> PrintBarcode(string zplCode)
+        public async Task<bool> PrintBarcode(string zplCode)
         {
             return ZplPrinterService.SendStringToPrinter("KARGOYAZICISI", zplCode);
         }

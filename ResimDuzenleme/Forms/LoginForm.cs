@@ -1,4 +1,5 @@
-﻿using ResimDuzenleme.Services.Database;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ResimDuzenleme.Services.Database;
 using ResimDuzenleme.Services.Models.Entities;
 using System;
 using System.Data.SqlClient;
@@ -12,12 +13,12 @@ namespace ResimDuzenleme
 {
     public partial class LoginForm : Form
     {
+        private readonly IServiceProvider _serviceProvider;
         private readonly Context _context; //OrderDetail_DTO
-        public readonly DbContextRepository<CargoBarcode> _repository;
-        public LoginForm(Context context, DbContextRepository<CargoBarcode> repository)
+        public LoginForm(Context context, IServiceProvider serviceProvider)
         {
             _context = context;
-            _repository = repository;
+            _serviceProvider = serviceProvider;
             InitializeComponent();
         }
 
@@ -126,9 +127,11 @@ namespace ResimDuzenleme
             if (yetki == "1")
             {
                 this.Hide(); // Şu anki LoginForm'u gizle
-                Misigo frm = new Misigo(_context, _repository);
-                frm.FormClosed += (s, args) => this.Show(); // Magaza formu kapandığında LoginForm'u tekrar göster
-                frm.Show();
+                var misigo = _serviceProvider.GetRequiredService<Misigo>();
+
+
+                misigo.FormClosed += (s, args) => this.Show(); // Magaza formu kapandığında LoginForm'u tekrar göster
+                misigo.Show();
 
             }
             else if (yetki == "2")

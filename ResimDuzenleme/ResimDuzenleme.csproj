@@ -794,6 +794,12 @@
     <Compile Include="Forms\MNGKargo.Designer.cs">
       <DependentUpon>MNGKargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Cargo\Abstractions\IMNG_CargoService.cs" />
     <Compile Include="Services\Cargo\Mng\MngCargoService.cs" />
     <Compile Include="Services\Cargo\Mng\Order\OrderPieceList_MNG.cs" />
     <Compile Include="Services\Cargo\Mng\Order\Order_MNG.cs" />
@@ -1225,16 +1231,12 @@
     <EmbeddedResource Include="Forms\NebimUrunAcma.resx">
       <DependentUpon>NebimUrunAcma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\QROlusturma.resx">
       <DependentUpon>QROlusturma.cs</DependentUpon>
     </EmbeddedResource>
@@ -2464,8 +2466,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Objects\logo.png" />
-    <Content Include="Objects\logo2.ico" />
+    <Content Include="logo.png" />
+    <Content Include="logo2.ico" />
     <Content Include="Objects\MisigoScript2012Sürüm.sql" />
     <Content Include="Objects\MisigoScript2019Sürüm.sql" />
     <None Include="Connected Services\SiparisServis\SiparisServis.disco" />

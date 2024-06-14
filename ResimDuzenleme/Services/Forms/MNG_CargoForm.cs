@@ -2,7 +2,9 @@
 using DevExpress.XtraReports.UI;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using ResimDuzenleme.Mng;
 using ResimDuzenleme.Services.Cargo;
+using ResimDuzenleme.Services.Cargo.Abstractions;
 using ResimDuzenleme.Services.Cargo.Reports.ReportModels;
 using ResimDuzenleme.Services.Database;
 using ResimDuzenleme.Services.Helpers;
@@ -28,26 +30,23 @@ namespace ResimDuzenleme.Services.Forms
     public partial class MNG_CargoForm : DevExpress.XtraEditors.XtraForm
     {
         private readonly Context _context; //OrderDetail_DTO
-        private readonly DbContextRepository<CargoBarcode> _repository;
-        private readonly DbContextRepository<OrderDetail_DTO> _or;
-        private readonly MNG_CargoService mNG_CargoService;
+        private readonly IMNG_CargoService mNG_CargoService;
 
         public MNG_CargoForm(
             Context context,
-            DbContextRepository<CargoBarcode> repository,
-            MNG_CargoService mNG_CargoService
+           
+            IMNG_CargoService mNG_CargoService
         )
         {
-            _repository = repository;
+          
             _context = context;
             this.mNG_CargoService = mNG_CargoService;
-
             InitializeComponent();
         }
 
         Timer timer = new Timer();
 
-        public async void Service()
+        public async Task Service()
         {
             // Timer'ı her 1 dakikada bir tetikle (1 dakika = 60000 milisaniye)
             timer.Interval = 60000;
@@ -168,6 +167,12 @@ namespace ResimDuzenleme.Services.Forms
 
         List<OrderDetail_DTO> selectedOrders = new List<OrderDetail_DTO>();
 
+        private async void simpleButton9_Click(object sender, EventArgs e)
+        {
+             await GetPrintableCargos(false);
+        }
+
+   
         private async void simpleButton1_Click(object sender, EventArgs e)
         {
 
@@ -367,11 +372,15 @@ namespace ResimDuzenleme.Services.Forms
             );
         }
 
-        private async void simpleButton8_Click(object sender, EventArgs e)
+        private async void  simpleButton8_Click(object sender, EventArgs e)
+        {
+            await PrintBarcodes();
+           
+        }
+        public async Task PrintBarcodes( )
         {
             this.progressBar1.Visible = true;
             this.progressBar1.Value = 10;
-            var Context = new Context();
             GridView view = gridControl3.MainView as GridView;
 
             List<CargoBarcode> barcodes = new List<CargoBarcode>();
@@ -465,16 +474,16 @@ namespace ResimDuzenleme.Services.Forms
                 catch (Exception ex)
                 {
                     continue;
-                  
+
                 }
-              
+
             }
 
             List<string> referenceIdList = responses.Select(r => r.ReferenceId).Distinct().ToList();
             List<CargoBarcode_ZPL> cargoBarcode_ZPLs = new List<CargoBarcode_ZPL>();
 
             int barcodeCount = 0;
-            var count = 1;  
+            var count = 1;
             foreach (var referenceId in referenceIdList)
             {
                 this.progressBar1.Value = count * 100 / referenceIdList.Count;
@@ -491,7 +500,7 @@ namespace ResimDuzenleme.Services.Forms
                         }
                     });
                     barcodeCount += mng_barcodes.Count;
-                    CargoBarcode cargo =await Context.ZTMSG_CargoBarcodes.FirstOrDefaultAsync(
+                    CargoBarcode cargo = await _context.ZTMSG_CargoBarcodes.FirstOrDefaultAsync(
                         c => c.ReferenceId == referenceId
                     );
                     CreateBarcode_MNG_Request barcode =
@@ -555,36 +564,11 @@ namespace ResimDuzenleme.Services.Forms
 
             await GetPrintableCargos(false);
         }
-
-        private async void simpleButton9_Click(object sender, EventArgs e)
-        {
-            await GetPrintableCargos(false);
-        }
-
         public async Task GetPrintableCargos(bool status)
         {
-            var Context = new Context();
-            if (!status)
-            {
-                //yazdırılmayanlar
-                List<CargoBarcode> cargoBarcodes =await Context.ZTMSG_CargoBarcodes
-                    .Where(c => c.ReferenceId != null && c.BarcodeResponse == null)
-                    .OrderByDescending(p => p.FirstItem)
-                    .OrderByDescending(p => p.SalesUrl)
-                    .ToListAsync();
-                gridControl3.DataSource = cargoBarcodes;
-            }
-            else
-            {
-                List<CargoBarcode> cargoBarcodes = await Context.ZTMSG_CargoBarcodes
-                    .Where(c => c.ReferenceId != null && c.BarcodeResponse != null)
-                    .OrderByDescending(p => p.FirstItem)
-                    .OrderByDescending(p => p.SalesUrl)
-                    .ToListAsync();
-                ;
-                gridControl3.DataSource = cargoBarcodes;
-            }
-            this.xtraTabControl1.SelectedTabPageIndex = 1;
+            var response = await this.mNG_CargoService.GetPrintableCargos(status);
+            gridControl3.DataSource = response;
+            xtraTabControl1.SelectedTabPageIndex = 1;
         }
 
         private async  void simpleButton14_Click(object sender, EventArgs e)
@@ -592,9 +576,9 @@ namespace ResimDuzenleme.Services.Forms
             await GetPrintableCargos(true);
         }
 
-        private void simpleButton15_Click(object sender, EventArgs e)
+        private async void simpleButton15_Click(object sender, EventArgs e)
         {
-            DeleteSelectedBarcodes();
+          await   DeleteSelectedBarcodes();
         }
 
         bool serviceStatus = false;
