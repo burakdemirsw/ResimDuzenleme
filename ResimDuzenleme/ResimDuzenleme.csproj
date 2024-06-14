@@ -280,8 +280,8 @@
     <Reference Include="Magick.NET.Core, Version=13.1.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
       <HintPath>..\packages\Magick.NET.Core.13.1.1\lib\netstandard20\Magick.NET.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
@@ -311,23 +311,86 @@
     <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.32\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.8.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.CommandLine, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.CommandLine.8.0.0\lib\net462\Microsoft.Extensions.Configuration.CommandLine.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.EnvironmentVariables, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.EnvironmentVariables.8.0.0\lib\net462\Microsoft.Extensions.Configuration.EnvironmentVariables.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Json.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.UserSecrets, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.UserSecrets.8.0.0\lib\net462\Microsoft.Extensions.Configuration.UserSecrets.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Diagnostics, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Diagnostics.8.0.0\lib\net462\Microsoft.Extensions.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Diagnostics.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Diagnostics.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Diagnostics.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.8.0.0\lib\net462\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.8.0.0\lib\net462\Microsoft.Extensions.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.8.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Configuration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Configuration.8.0.0\lib\net462\Microsoft.Extensions.Logging.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Console, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Console.8.0.0\lib\net462\Microsoft.Extensions.Logging.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Debug, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Debug.8.0.0\lib\net462\Microsoft.Extensions.Logging.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.EventLog, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.EventLog.8.0.0\lib\net462\Microsoft.Extensions.Logging.EventLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.EventSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.EventSource.8.0.0\lib\net462\Microsoft.Extensions.Logging.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.ConfigurationExtensions.8.0.0\lib\net462\Microsoft.Extensions.Options.ConfigurationExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Identity.Client, Version=3.0.8.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Identity.Client.3.0.8\lib\net45\Microsoft.Identity.Client.dll</HintPath>
@@ -407,8 +470,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
@@ -433,6 +496,7 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -443,11 +507,11 @@
     <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.7.0.3\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.8.0.0\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -493,9 +557,9 @@
     <Compile Include="Forms\AnaUser.Designer.cs">
       <DependentUpon>AnaUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\attribute.cs" />
+    <Compile Include="Objects\attribute.cs" />
     <Compile Include="Authentication\AuthenticationSample.cs" />
-    <Compile Include="OtherObjects\BaseAdapter.cs" />
+    <Compile Include="Objects\BaseAdapter.cs" />
     <Compile Include="Connected Services\AuthenticationWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -551,26 +615,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\DatabaseService.cs" />
-    <Compile Include="OtherObjects\DataHandler.cs" />
+    <Compile Include="Objects\DatabaseService.cs" />
+    <Compile Include="Objects\DataHandler.cs" />
     <Compile Include="Forms\DegisimListesi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DegisimListesi.Designer.cs">
       <DependentUpon>DegisimListesi.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\DeliveryOption.cs" />
+    <Compile Include="Objects\DeliveryOption.cs" />
     <Compile Include="Forms\ExcelIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ExcelIslemleri.Designer.cs">
       <DependentUpon>ExcelIslemleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\ExcellData.cs" />
-    <Compile Include="OtherObjects\ExpenseVoucher.cs">
+    <Compile Include="Objects\ExcellData.cs" />
+    <Compile Include="ExpenseVoucher.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="OtherObjects\ExpenseVoucher.Designer.cs">
+    <Compile Include="ExpenseVoucher.Designer.cs">
       <DependentUpon>ExpenseVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FaturaGorsel.cs">
@@ -639,17 +703,17 @@
     <Compile Include="Forms\GiderPusulasi.Designer.cs">
       <DependentUpon>GiderPusulasi.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\IadeListTicimax.cs">
+    <Compile Include="IadeListTicimax.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="OtherObjects\IadeListTicimax.designer.cs">
+    <Compile Include="IadeListTicimax.designer.cs">
       <DependentUpon>IadeListTicimax.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\image.cs" />
-    <Compile Include="OtherObjects\Item.cs" />
-    <Compile Include="OtherObjects\Item2.cs" />
-    <Compile Include="OtherObjects\Itemm.cs" />
-    <Compile Include="OtherObjects\IzibizClient.cs" />
+    <Compile Include="Objects\image.cs" />
+    <Compile Include="Objects\Item.cs" />
+    <Compile Include="Objects\Item2.cs" />
+    <Compile Include="Objects\Itemm.cs" />
+    <Compile Include="Objects\IzibizClient.cs" />
     <Compile Include="KargoApi\ArasKargoApi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -686,7 +750,7 @@
     <Compile Include="Forms\KargoTakip.Designer.cs">
       <DependentUpon>KargoTakip.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\Kategori.cs" />
+    <Compile Include="Objects\Kategori.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -699,11 +763,11 @@
     <Compile Include="Forms\Magaza.Designer.cs">
       <DependentUpon>Magaza.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\Marka2.cs" />
-    <Compile Include="OtherObjects\Misigo.cs">
+    <Compile Include="Objects\Marka2.cs" />
+    <Compile Include="Forms\Misigo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OtherObjects\Misigo.Designer.cs">
+    <Compile Include="Forms\Misigo.Designer.cs">
       <DependentUpon>Misigo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MisigoFirmaBilgileri.cs">
@@ -844,7 +908,7 @@
     <Compile Include="Operations\Utf8StringWriter.cs" />
     <Compile Include="Operations\XmlProcess.cs" />
     <Compile Include="Operations\XmlSerializerr.cs" />
-    <Compile Include="OtherObjects\Product.cs" />
+    <Compile Include="Objects\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\QROlusturma.cs">
@@ -853,14 +917,14 @@
     <Compile Include="Forms\QROlusturma.Designer.cs">
       <DependentUpon>QROlusturma.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\Resim.cs" />
+    <Compile Include="Objects\Resim.cs" />
     <Compile Include="Forms\PhotoDuzenleme.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\PhotoDuzenleme.Designer.cs">
       <DependentUpon>PhotoDuzenleme.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\Root.cs" />
+    <Compile Include="Objects\Root.cs" />
     <Compile Include="Forms\SatisForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -877,6 +941,12 @@
     <Compile Include="Services\Cargo\Reports\ReportModels\CargoBarcode_ZPL.cs" />
     <Compile Include="Services\Database\Context.cs" />
     <Compile Include="Services\Database\DbContextRepository.cs" />
+    <Compile Include="Services\Forms\DebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Services\Forms\DebugForm.Designer.cs">
+      <DependentUpon>DebugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\Forms\MNG_CargoBarcodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -919,8 +989,8 @@
     <Compile Include="Services\Models\Cargo\Mng\Response\GetPackageStatus_MNG_Response.cs" />
     <Compile Include="Services\Models\Cargo\Mng\ZTMSG_CreateCargoBarcode.cs" />
     <Compile Include="Services\StaticVariables.cs" />
-    <Compile Include="OtherObjects\Settings.cs" />
-    <Compile Include="OtherObjects\Settings1.cs" />
+    <Compile Include="Objects\Settings.cs" />
+    <Compile Include="Objects\Settings1.cs" />
     <Compile Include="Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -950,25 +1020,25 @@
     <Compile Include="SiparisListTicimax.Designer.cs">
       <DependentUpon>SiparisListTicimax.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\SiparisServiceMethods.cs" />
-    <Compile Include="OtherObjects\StaticFunctions.cs" />
-    <Compile Include="OtherObjects\StaticVariables.cs" />
-    <Compile Include="OtherObjects\Stok.cs" />
+    <Compile Include="Objects\SiparisServiceMethods.cs" />
+    <Compile Include="Objects\StaticFunctions.cs" />
+    <Compile Include="Objects\StaticVariables.cs" />
+    <Compile Include="Objects\Stok.cs" />
     <Compile Include="Forms\TicimaxAyarlar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TicimaxAyarlar.Designer.cs">
       <DependentUpon>TicimaxAyarlar.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\TicimaxSiparisList.cs" />
+    <Compile Include="Objects\TicimaxSiparisList.cs" />
     <Compile Include="Forms\TrendyolApi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TrendyolApi.Designer.cs">
       <DependentUpon>TrendyolApi.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\TrendyolContentModel.cs" />
-    <Compile Include="OtherObjects\TrendyolItemModel.cs" />
+    <Compile Include="Objects\TrendyolContentModel.cs" />
+    <Compile Include="Objects\TrendyolItemModel.cs" />
     <Compile Include="Forms\TrendyolResimCek.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -976,7 +1046,7 @@
       <DependentUpon>TrendyolResimCek.cs</DependentUpon>
     </Compile>
     <Compile Include="TrendyolRoot\Root2cs.cs" />
-    <Compile Include="OtherObjects\TrendyolService.cs" />
+    <Compile Include="Objects\TrendyolService.cs" />
     <Compile Include="Forms\TrendyolSiparisAktar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1009,18 +1079,18 @@
     <Compile Include="Ubl\UblInvoice.cs" />
     <Compile Include="Ubl\UblReceipt.cs" />
     <Compile Include="Ubl\Xslt.cs" />
-    <Compile Include="OtherObjects\Urun.cs" />
+    <Compile Include="Objects\Urun.cs" />
     <Compile Include="Forms\UrunAcmaParametreleri.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\UrunAcmaParametreleri.Designer.cs">
       <DependentUpon>UrunAcmaParametreleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherObjects\UrunServiceMethods.cs" />
-    <Compile Include="OtherObjects\VM_HttpConnectionRequest.cs" />
-    <Compile Include="OtherObjects\ZTMSGUrunListMisigo.cs" />
-    <Compile Include="OtherObjects\ZtNebimFaturaRYD.cs" />
-    <Compile Include="OtherObjects\ZtTicimaxUyeAdres.cs" />
+    <Compile Include="Objects\UrunServiceMethods.cs" />
+    <Compile Include="Objects\VM_HttpConnectionRequest.cs" />
+    <Compile Include="Objects\ZTMSGUrunListMisigo.cs" />
+    <Compile Include="Objects\ZtNebimFaturaRYD.cs" />
+    <Compile Include="Objects\ZtTicimaxUyeAdres.cs" />
     <EmbeddedResource Include="Forms\AcilirPanelGoster.resx">
       <DependentUpon>AcilirPanelGoster.cs</DependentUpon>
     </EmbeddedResource>
@@ -1030,7 +1100,7 @@
     <EmbeddedResource Include="Forms\ExcelIslemleri.resx">
       <DependentUpon>ExcelIslemleri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OtherObjects\ExpenseVoucher.resx">
+    <EmbeddedResource Include="ExpenseVoucher.resx">
       <DependentUpon>ExpenseVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FaturaGorsel.resx">
@@ -1067,7 +1137,7 @@
     <EmbeddedResource Include="Forms\GiderPusulasi.resx">
       <DependentUpon>GiderPusulasi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OtherObjects\IadeListTicimax.resx">
+    <EmbeddedResource Include="IadeListTicimax.resx">
       <DependentUpon>IadeListTicimax.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KargoApi\ArasKargoApi.resx">
@@ -1092,7 +1162,7 @@
       <DependentUpon>Magaza.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="OtherObjects\Misigo.resx">
+    <EmbeddedResource Include="Forms\Misigo.resx">
       <DependentUpon>Misigo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MisigoFirmaBilgileri.resx">
@@ -1155,6 +1225,7 @@
     <EmbeddedResource Include="Forms\NebimUrunAcma.resx">
       <DependentUpon>NebimUrunAcma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1176,6 +1247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Services\Cargo\Reports\CargoBarcode.resx">
       <DependentUpon>CargoBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Forms\DebugForm.resx">
+      <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\Forms\MNG_CargoForm.resx">
       <DependentUpon>MNG_CargoForm.cs</DependentUpon>
@@ -2356,8 +2430,9 @@
     <None Include="Connected Services\UyeServis\UyeServis3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="OtherObjects\ExpenseVoucher.repx" />
-    <None Include="OtherObjects\packages.config" />
+    <None Include="ExpenseVoucher.repx" />
+    <None Include="Objects\packages.config" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -2372,7 +2447,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
-    <None Include="OtherObjects\Trendyol.xlsx" />
+    <None Include="Trendyol.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -2390,10 +2465,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="OtherObjects\logo.png" />
-    <Content Include="OtherObjects\logo2.ico" />
-    <Content Include="OtherObjects\MisigoScript2012Sürüm.sql" />
-    <Content Include="OtherObjects\MisigoScript2019Sürüm.sql" />
+    <Content Include="logo.png" />
+    <Content Include="logo2.ico" />
+    <Content Include="Objects\MisigoScript2012Sürüm.sql" />
+    <Content Include="Objects\MisigoScript2019Sürüm.sql" />
     <None Include="Connected Services\SiparisServis\SiparisServis.disco" />
     <None Include="Connected Services\SiparisServis\configuration91.svcinfo" />
     <None Include="Connected Services\SiparisServis\configuration.svcinfo" />
@@ -2422,7 +2497,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="OtherObjects\imzaico.ico" />
+    <Content Include="imzaico.ico" />
     <None Include="Connected Services\AuthenticationWS\configuration91.svcinfo" />
     <None Include="Connected Services\AuthenticationWS\configuration.svcinfo" />
     <None Include="Connected Services\AuthenticationWS\Reference.svcmap">
@@ -2459,7 +2534,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="OtherObjects\general.xslt" />
+    <Content Include="general.xslt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\AuthenticationWS\" />

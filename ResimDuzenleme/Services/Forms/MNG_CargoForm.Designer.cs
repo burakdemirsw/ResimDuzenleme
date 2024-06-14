@@ -40,9 +40,9 @@
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.viewDataSource1 = new DevExpress.Persistent.Base.ReportsV2.ViewDataSource();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,7 +69,8 @@
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
-            ((System.ComponentModel.ISupportInitialize)(this.viewDataSource1)).BeginInit();
+            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage4.SuspendLayout();
@@ -89,10 +90,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
+            this.xtraTabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton2
             // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Location = new System.Drawing.Point(3, 3);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(1441, 23);
@@ -102,6 +106,8 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(725, 63);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(719, 21);
@@ -119,6 +125,8 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(3, 90);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(1441, 171);
@@ -127,6 +135,8 @@
             // 
             // simpleButton4
             // 
+            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton4.Location = new System.Drawing.Point(3, 267);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(1441, 23);
@@ -136,6 +146,8 @@
             // 
             // richTextBox2
             // 
+            this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox2.Location = new System.Drawing.Point(3, 296);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(1441, 201);
@@ -153,6 +165,9 @@
             // 
             // richTextBox3
             // 
+            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox3.Location = new System.Drawing.Point(3, 532);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(1441, 244);
@@ -161,6 +176,8 @@
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(309, 505);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(1135, 21);
@@ -184,16 +201,12 @@
             // 
             // textBox4
             // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox4.Location = new System.Drawing.Point(1095, 34);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(349, 21);
             this.textBox4.TabIndex = 12;
-            // 
-            // viewDataSource1
-            // 
-            this.viewDataSource1.Name = "viewDataSource1";
-            this.viewDataSource1.ObjectTypeName = null;
-            this.viewDataSource1.TopReturnedRecords = 0;
             // 
             // xtraTabControl2
             // 
@@ -205,10 +218,12 @@
             this.xtraTabControl2.TabIndex = 17;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage4,
-            this.xtraTabPage5});
+            this.xtraTabPage5,
+            this.xtraTabPage6});
             // 
             // xtraTabPage4
             // 
+            this.xtraTabPage4.Controls.Add(this.progressBar1);
             this.xtraTabPage4.Controls.Add(this.simpleButton16);
             this.xtraTabPage4.Controls.Add(this.simpleButton15);
             this.xtraTabPage4.Controls.Add(this.panel1);
@@ -217,8 +232,20 @@
             this.xtraTabPage4.Size = new System.Drawing.Size(1455, 787);
             this.xtraTabPage4.Text = "Toplu İşlemler";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(11, 117);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1433, 23);
+            this.progressBar1.TabIndex = 25;
+            this.progressBar1.Visible = false;
+            // 
             // simpleButton16
             // 
+            this.simpleButton16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton16.Location = new System.Drawing.Point(8, 88);
             this.simpleButton16.Name = "simpleButton16";
             this.simpleButton16.Size = new System.Drawing.Size(1439, 23);
@@ -228,6 +255,8 @@
             // 
             // simpleButton15
             // 
+            this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton15.Location = new System.Drawing.Point(8, 59);
             this.simpleButton15.Name = "simpleButton15";
             this.simpleButton15.Size = new System.Drawing.Size(1439, 23);
@@ -282,6 +311,8 @@
             // 
             // simpleButton11
             // 
+            this.simpleButton11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton11.Location = new System.Drawing.Point(721, 30);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(726, 23);
@@ -291,6 +322,8 @@
             // 
             // simpleButton12
             // 
+            this.simpleButton12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton12.Location = new System.Drawing.Point(721, 1);
             this.simpleButton12.Name = "simpleButton12";
             this.simpleButton12.Size = new System.Drawing.Size(726, 23);
@@ -345,11 +378,13 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 117);
+            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 146);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 670);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 638);
             this.xtraTabControl1.TabIndex = 16;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -360,7 +395,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 645);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 613);
             this.xtraTabPage1.Text = "Çekilen Siparişler";
             // 
             // gridControl1
@@ -369,7 +404,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1453, 645);
+            this.gridControl1.Size = new System.Drawing.Size(1453, 613);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -396,7 +431,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 645);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 613);
             this.xtraTabPage3.Text = "Barkod Yazdır";
             // 
             // gridControl3
@@ -405,7 +440,7 @@
             this.gridControl3.Location = new System.Drawing.Point(0, 0);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1453, 645);
+            this.gridControl3.Size = new System.Drawing.Size(1453, 613);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -421,7 +456,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 645);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 613);
             this.xtraTabPage2.Text = "Loglar";
             // 
             // gridControl2
@@ -430,7 +465,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1453, 645);
+            this.gridControl2.Size = new System.Drawing.Size(1453, 613);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -458,6 +493,25 @@
             this.xtraTabPage5.Size = new System.Drawing.Size(1455, 787);
             this.xtraTabPage5.Text = "Tekil İşlemler";
             // 
+            // xtraTabPage6
+            // 
+            this.xtraTabPage6.Controls.Add(this.button2);
+            this.xtraTabPage6.Name = "xtraTabPage6";
+            this.xtraTabPage6.Size = new System.Drawing.Size(1455, 787);
+            this.xtraTabPage6.Text = "Ayarlar";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(3, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(1432, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Debug Paneli Aç";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MNG_CargoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,9 +520,9 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1457, 812);
             this.Controls.Add(this.xtraTabControl2);
+            this.IconOptions.Image = global::ResimDuzenleme.Properties.Resources.logo1;
             this.Name = "MNG_CargoForm";
-            this.Text = "MNG_CargoForm";
-            ((System.ComponentModel.ISupportInitialize)(this.viewDataSource1)).EndInit();
+            this.Text = "MNG Entegrasyon";
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage4.ResumeLayout(false);
@@ -490,6 +544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             this.xtraTabPage5.PerformLayout();
+            this.xtraTabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -536,5 +591,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton13;
         private DevExpress.XtraEditors.SimpleButton simpleButton15;
         private DevExpress.XtraEditors.SimpleButton simpleButton16;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button2;
     }
 }

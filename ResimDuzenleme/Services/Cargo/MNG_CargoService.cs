@@ -1,5 +1,6 @@
 ﻿using Nancy.Json;
 using Newtonsoft.Json;
+using NPOI.OpenXmlFormats.Dml;
 using ResimDuzenleme.Services.Database;
 using ResimDuzenleme.Services.Helpers;
 using ResimDuzenleme.Services.Models.Cargo.DTO_s;
@@ -20,14 +21,14 @@ namespace ResimDuzenleme.Services.Cargo
 {
     public class MNG_CargoService
     {
-        private readonly Context _context;
-        private readonly DbContextRepository<CargoBarcode> _repository;
+        private readonly Context __context;
+        private readonly DbContextRepository<CargoBarcode> __repository;
 
 
         public MNG_CargoService(DbContextRepository<CargoBarcode> repository, Context context)
         {
-            _context = context;
-            _repository = repository;
+            __context = context;
+            __repository = repository;
             MNG_CompanyInfo mNG_CompanyInfo = context.ZTMSGMngKargoApi.FirstOrDefault();
             if (mNG_CompanyInfo != null)
             {
@@ -50,6 +51,9 @@ namespace ResimDuzenleme.Services.Cargo
         {
             try
             {
+                var _context = new Context();
+                DbContextRepository<CargoBarcode> _repository = new DbContextRepository<CargoBarcode>(_context);
+
                 string url = "https://api.mngkargo.com.tr/mngapi/api/standardcmdapi/createOrder";
                 string clientId = ClientId;
                 string clientSecret = ClientSecret;
@@ -183,6 +187,10 @@ namespace ResimDuzenleme.Services.Cargo
             DeletePackage_MNG_Request request
         )
         {
+
+            var _context = new Context();
+            DbContextRepository<CargoBarcode> _repository = new DbContextRepository<CargoBarcode>(_context);
+
             string url = "https://api.mngkargo.com.tr/mngapi/api/barcodecmdapi/cancelshipment";
             string clientId = ClientId;
             string clientSecret = ClientSecret;
@@ -264,6 +272,10 @@ namespace ResimDuzenleme.Services.Cargo
 
         public async Task<List<CreateBarcode_MNG_Response>> CreateBarcode(string referenceId)
         {
+
+            var _context = new Context();
+            DbContextRepository<CargoBarcode> _repository = new DbContextRepository<CargoBarcode>(_context);
+
             List<CreateBarcode_MNG_Response> responses = new List<CreateBarcode_MNG_Response>();
 
 
@@ -271,6 +283,7 @@ namespace ResimDuzenleme.Services.Cargo
                 .Where(cb => cb.ReferenceId == referenceId)
                 .ToList();
             List<string> barcodePaths = new List<string>();
+            
             foreach (var cargoBarcode in cargoBarcodes)
             {
                 if (cargoBarcode.BarcodeZplCode == null)
@@ -384,16 +397,19 @@ namespace ResimDuzenleme.Services.Cargo
                         }
                         catch (Exception ex)
                         {
+                            return null;
                             throw new Exception(ex.Message + ex.InnerException);
                         }
                     }
                     else
                     {
+                        return null;
                         throw new Exception($"Gelen Yanıt Yok:{responseContent}");
                     }
                 }
                 else
                 {
+                    return null;
                     throw new Exception($"Yanıt Başarısız:{responseContent}");
                 }
             }

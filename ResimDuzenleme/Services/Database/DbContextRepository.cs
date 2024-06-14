@@ -9,10 +9,10 @@ namespace ResimDuzenleme.Services.Database
 {
     public class DbContextRepository<T> where T : class
     {
-        public readonly DbContext _context;
+        public readonly Context _context;
         public readonly DbSet<T> _dbSet;
 
-        public DbContextRepository(DbContext context)
+        public DbContextRepository(Context context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _dbSet = context.Set<T>();

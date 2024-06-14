@@ -34,11 +34,15 @@ namespace ResimDuzenleme
         public static List<Marka> markaList = new List<Marka>();
         public static List<Tedarikci> tedarikciList = new List<Tedarikci>();
         public static List<Etiket> etiketList = new List<Etiket>();
+        public static List<string> errors = new List<string>();
+
         public enum Tip { Kategori, Marka, Tedarikci, Etiket }
+        public static bool DebugMode { get; set; } = false; 
         //public static string uyeKodu = "";
         //public static string alanAdi = "";
 
 
 
     }
+    
 }

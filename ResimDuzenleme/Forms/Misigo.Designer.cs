@@ -1646,6 +1646,7 @@
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.IconOptions.Image = global::ResimDuzenleme.Properties.Resources.logo;
             this.IconOptions.ShowIcon = false;
             this.IsMdiContainer = true;
             this.Name = "Misigo";

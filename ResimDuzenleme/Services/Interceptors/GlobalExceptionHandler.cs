@@ -20,7 +20,12 @@ namespace ResimDuzenleme.Services.Interceptors
 
         private static void ShowExceptionMessage(Exception ex)
         {
-            MessageBox.Show(ex.Message + " " + ex.StackTrace, "An Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (StaticVariables.errors.Count > 100)
+            {
+                StaticVariables.errors.Clear();
+            }
+            StaticVariables.errors.Add(ex.Message + " " + ex.StackTrace.ToString() + "\n\n\n");
+
         }
     }
 
