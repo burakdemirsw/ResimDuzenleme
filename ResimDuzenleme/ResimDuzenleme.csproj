@@ -631,10 +631,10 @@
       <DependentUpon>ExcelIslemleri.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\ExcellData.cs" />
-    <Compile Include="ExpenseVoucher.cs">
+    <Compile Include="Objects\ExpenseVoucher.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExpenseVoucher.Designer.cs">
+    <Compile Include="Objects\ExpenseVoucher.Designer.cs">
       <DependentUpon>ExpenseVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FaturaGorsel.cs">
@@ -703,10 +703,10 @@
     <Compile Include="Forms\GiderPusulasi.Designer.cs">
       <DependentUpon>GiderPusulasi.cs</DependentUpon>
     </Compile>
-    <Compile Include="IadeListTicimax.cs">
+    <Compile Include="Objects\IadeListTicimax.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IadeListTicimax.designer.cs">
+    <Compile Include="Objects\IadeListTicimax.designer.cs">
       <DependentUpon>IadeListTicimax.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\image.cs" />
@@ -1002,22 +1002,22 @@
     <Compile Include="Forms\SiparisBarkodYazdir.Designer.cs">
       <DependentUpon>SiparisBarkodYazdir.cs</DependentUpon>
     </Compile>
-    <Compile Include="SiparisListPdf.cs">
+    <Compile Include="Objects\SiparisListPdf.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SiparisListPdf.Designer.cs">
+    <Compile Include="Objects\SiparisListPdf.Designer.cs">
       <DependentUpon>SiparisListPdf.cs</DependentUpon>
     </Compile>
-    <Compile Include="SiparisListPdf2.cs">
+    <Compile Include="Objects\SiparisListPdf2.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SiparisListPdf2.Designer.cs">
+    <Compile Include="Objects\SiparisListPdf2.Designer.cs">
       <DependentUpon>SiparisListPdf2.cs</DependentUpon>
     </Compile>
-    <Compile Include="SiparisListTicimax.cs">
+    <Compile Include="Objects\SiparisListTicimax.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SiparisListTicimax.Designer.cs">
+    <Compile Include="Objects\SiparisListTicimax.Designer.cs">
       <DependentUpon>SiparisListTicimax.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\SiparisServiceMethods.cs" />
@@ -1100,7 +1100,7 @@
     <EmbeddedResource Include="Forms\ExcelIslemleri.resx">
       <DependentUpon>ExcelIslemleri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExpenseVoucher.resx">
+    <EmbeddedResource Include="Objects\ExpenseVoucher.resx">
       <DependentUpon>ExpenseVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FaturaGorsel.resx">
@@ -1137,7 +1137,7 @@
     <EmbeddedResource Include="Forms\GiderPusulasi.resx">
       <DependentUpon>GiderPusulasi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IadeListTicimax.resx">
+    <EmbeddedResource Include="Objects\IadeListTicimax.resx">
       <DependentUpon>IadeListTicimax.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KargoApi\ArasKargoApi.resx">
@@ -1225,7 +1225,6 @@
     <EmbeddedResource Include="Forms\NebimUrunAcma.resx">
       <DependentUpon>NebimUrunAcma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1260,13 +1259,13 @@
     <EmbeddedResource Include="Forms\SiparisBarkodYazdir.resx">
       <DependentUpon>SiparisBarkodYazdir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SiparisListPdf.resx">
+    <EmbeddedResource Include="Objects\SiparisListPdf.resx">
       <DependentUpon>SiparisListPdf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SiparisListPdf2.resx">
+    <EmbeddedResource Include="Objects\SiparisListPdf2.resx">
       <DependentUpon>SiparisListPdf2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SiparisListTicimax.resx">
+    <EmbeddedResource Include="Objects\SiparisListTicimax.resx">
       <DependentUpon>SiparisListTicimax.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TicimaxAyarlar.resx">
@@ -2430,7 +2429,7 @@
     <None Include="Connected Services\UyeServis\UyeServis3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ExpenseVoucher.repx" />
+    <None Include="Objects\ExpenseVoucher.repx" />
     <None Include="Objects\packages.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
@@ -2447,10 +2446,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Trendyol.xlsx" />
+    <None Include="Objects\Trendyol.xlsx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
+    <None Include="Objects\App.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -2465,8 +2464,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="logo.png" />
-    <Content Include="logo2.ico" />
+    <Content Include="Objects\logo.png" />
+    <Content Include="Objects\logo2.ico" />
     <Content Include="Objects\MisigoScript2012Sürüm.sql" />
     <Content Include="Objects\MisigoScript2019Sürüm.sql" />
     <None Include="Connected Services\SiparisServis\SiparisServis.disco" />
@@ -2497,7 +2496,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="imzaico.ico" />
+    <Content Include="Objects\imzaico.ico" />
     <None Include="Connected Services\AuthenticationWS\configuration91.svcinfo" />
     <None Include="Connected Services\AuthenticationWS\configuration.svcinfo" />
     <None Include="Connected Services\AuthenticationWS\Reference.svcmap">
@@ -2534,7 +2533,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="general.xslt" />
+    <Content Include="Objects\general.xslt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\AuthenticationWS\" />
