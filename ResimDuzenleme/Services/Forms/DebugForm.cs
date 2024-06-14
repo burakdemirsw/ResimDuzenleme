@@ -34,6 +34,7 @@ namespace ResimDuzenleme.Services.Forms
       
         private void button1_Click(object sender, EventArgs e)
         {
+            StaticVariables.errors.Clear();
             clearTextBox();
         }
 

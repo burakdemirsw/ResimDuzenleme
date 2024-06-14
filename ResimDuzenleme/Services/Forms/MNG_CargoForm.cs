@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -29,7 +30,9 @@ namespace ResimDuzenleme.Services.Forms
 {
     public partial class MNG_CargoForm : DevExpress.XtraEditors.XtraForm
     {
-        private readonly Context _context; //OrderDetail_DTO
+        private readonly Context _context;
+
+
         private readonly IMNG_CargoService mNG_CargoService;
 
         public MNG_CargoForm(
@@ -42,6 +45,7 @@ namespace ResimDuzenleme.Services.Forms
             _context = context;
             this.mNG_CargoService = mNG_CargoService;
             InitializeComponent();
+            simpleButton1.Enabled = false;
         }
 
         Timer timer = new Timer();
@@ -175,6 +179,13 @@ namespace ResimDuzenleme.Services.Forms
    
         private async void simpleButton1_Click(object sender, EventArgs e)
         {
+            simpleButton13.Enabled = false;
+
+            try
+            {
+
+          
+
 
             //SİPARİŞ LİSTESİNİ GETİR *****************************
             this.progressBar1.Visible = true;
@@ -268,7 +279,13 @@ namespace ResimDuzenleme.Services.Forms
             gridControl1.DataSource = createPackage_MNG_RMs;
 
             this.xtraTabControl1.SelectedTabPageIndex = 2;
-            //MessageBox.Show("İşlem tamamlandı.");
+                //MessageBox.Show("İşlem tamamlandı.");
+            }
+            finally
+             {
+                // Re-enable the button after the operation completes.
+                simpleButton13.Enabled = true;
+             }
         }
 
         private void simpleButton7_Click(object sender, EventArgs e)
@@ -374,7 +391,21 @@ namespace ResimDuzenleme.Services.Forms
 
         private async void  simpleButton8_Click(object sender, EventArgs e)
         {
-            await PrintBarcodes();
+
+            simpleButton11.Enabled = false;
+
+
+            try
+            {
+                await PrintBarcodes();
+            }
+            finally
+            {
+                // Re-enable the button after the operation completes.
+                simpleButton11.Enabled = true;
+            }
+
+
            
         }
         public async Task PrintBarcodes( )
@@ -571,9 +602,23 @@ namespace ResimDuzenleme.Services.Forms
             xtraTabControl1.SelectedTabPageIndex = 1;
         }
 
-        private async  void simpleButton14_Click(object sender, EventArgs e)
+        private async void simpleButton14_Click(object sender, EventArgs e)
         {
-            await GetPrintableCargos(true);
+            simpleButton10.Enabled = false;
+            simpleButton14.Enabled = false;
+
+
+            try
+            {
+                await GetPrintableCargos(true);
+            }
+            finally
+            {
+                // Re-enable the button after the operation completes.
+                simpleButton10.Enabled = true;
+                simpleButton14.Enabled = true;
+
+            }
         }
 
         private async void simpleButton15_Click(object sender, EventArgs e)
