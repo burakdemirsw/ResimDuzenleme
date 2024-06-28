@@ -43,18 +43,11 @@
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.simpleButton14 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -70,12 +63,12 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -224,7 +217,6 @@
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.progressBar1);
-            this.xtraTabPage4.Controls.Add(this.simpleButton16);
             this.xtraTabPage4.Controls.Add(this.simpleButton15);
             this.xtraTabPage4.Controls.Add(this.panel1);
             this.xtraTabPage4.Controls.Add(this.xtraTabControl1);
@@ -236,22 +228,11 @@
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(11, 117);
+            this.progressBar1.Location = new System.Drawing.Point(8, 88);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1433, 23);
+            this.progressBar1.Size = new System.Drawing.Size(1439, 23);
             this.progressBar1.TabIndex = 25;
             this.progressBar1.Visible = false;
-            // 
-            // simpleButton16
-            // 
-            this.simpleButton16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton16.Location = new System.Drawing.Point(8, 88);
-            this.simpleButton16.Name = "simpleButton16";
-            this.simpleButton16.Size = new System.Drawing.Size(1439, 23);
-            this.simpleButton16.TabIndex = 24;
-            this.simpleButton16.Text = "Servisi Başlat";
-            this.simpleButton16.Click += new System.EventHandler(this.simpleButton16_Click);
             // 
             // simpleButton15
             // 
@@ -266,30 +247,15 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.simpleButton14);
             this.panel1.Controls.Add(this.simpleButton9);
             this.panel1.Controls.Add(this.simpleButton8);
-            this.panel1.Controls.Add(this.simpleButton7);
             this.panel1.Controls.Add(this.simpleButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1455, 59);
+            this.panel1.Size = new System.Drawing.Size(1455, 122);
             this.panel1.TabIndex = 17;
-            // 
-            // panel2
-            // 
-            this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.simpleButton14);
-            this.panel2.Controls.Add(this.simpleButton10);
-            this.panel2.Controls.Add(this.simpleButton11);
-            this.panel2.Controls.Add(this.simpleButton12);
-            this.panel2.Controls.Add(this.simpleButton13);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1455, 56);
-            this.panel2.TabIndex = 22;
             // 
             // simpleButton14
             // 
@@ -299,46 +265,6 @@
             this.simpleButton14.TabIndex = 22;
             this.simpleButton14.Text = "Yazdırılan Barkodları Getir";
             this.simpleButton14.Click += new System.EventHandler(this.simpleButton14_Click);
-            // 
-            // simpleButton10
-            // 
-            this.simpleButton10.Location = new System.Drawing.Point(8, 30);
-            this.simpleButton10.Name = "simpleButton10";
-            this.simpleButton10.Size = new System.Drawing.Size(357, 23);
-            this.simpleButton10.TabIndex = 21;
-            this.simpleButton10.Text = "Yazdırılmayan Barkodları Getir";
-            this.simpleButton10.Click += new System.EventHandler(this.simpleButton9_Click);
-            // 
-            // simpleButton11
-            // 
-            this.simpleButton11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton11.Location = new System.Drawing.Point(721, 30);
-            this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(726, 23);
-            this.simpleButton11.TabIndex = 20;
-            this.simpleButton11.Text = "Seçilen Barkodları Yazdır";
-            this.simpleButton11.Click += new System.EventHandler(this.simpleButton8_Click);
-            // 
-            // simpleButton12
-            // 
-            this.simpleButton12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton12.Location = new System.Drawing.Point(721, 1);
-            this.simpleButton12.Name = "simpleButton12";
-            this.simpleButton12.Size = new System.Drawing.Size(726, 23);
-            this.simpleButton12.TabIndex = 19;
-            this.simpleButton12.Text = "Seçilen Siparişleri Gönder";
-            this.simpleButton12.Click += new System.EventHandler(this.simpleButton14_Click);
-            // 
-            // simpleButton13
-            // 
-            this.simpleButton13.Location = new System.Drawing.Point(8, 1);
-            this.simpleButton13.Name = "simpleButton13";
-            this.simpleButton13.Size = new System.Drawing.Size(707, 23);
-            this.simpleButton13.TabIndex = 18;
-            this.simpleButton13.Text = "Siparişleri Çek";
-            this.simpleButton13.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton9
             // 
@@ -351,6 +277,8 @@
             // 
             // simpleButton8
             // 
+            this.simpleButton8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton8.Location = new System.Drawing.Point(721, 30);
             this.simpleButton8.Name = "simpleButton8";
             this.simpleButton8.Size = new System.Drawing.Size(726, 23);
@@ -358,20 +286,13 @@
             this.simpleButton8.Text = "Seçilen Barkodları Yazdır";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
-            // simpleButton7
-            // 
-            this.simpleButton7.Location = new System.Drawing.Point(721, 1);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(726, 23);
-            this.simpleButton7.TabIndex = 19;
-            this.simpleButton7.Text = "Seçilen Siparişleri Gönder";
-            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
-            // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(8, 1);
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(8, 3);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(707, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(1439, 23);
             this.simpleButton1.TabIndex = 18;
             this.simpleButton1.Text = "Siparişleri Çek";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -381,10 +302,10 @@
             this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 146);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 128);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 638);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 648);
             this.xtraTabControl1.TabIndex = 16;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -395,7 +316,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 613);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 623);
             this.xtraTabPage1.Text = "Çekilen Siparişler";
             // 
             // gridControl1
@@ -404,7 +325,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1453, 613);
+            this.gridControl1.Size = new System.Drawing.Size(1453, 623);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -431,7 +352,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 613);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 623);
             this.xtraTabPage3.Text = "Barkod Yazdır";
             // 
             // gridControl3
@@ -440,7 +361,7 @@
             this.gridControl3.Location = new System.Drawing.Point(0, 0);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1453, 613);
+            this.gridControl3.Size = new System.Drawing.Size(1453, 623);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -456,7 +377,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 613);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 623);
             this.xtraTabPage2.Text = "Loglar";
             // 
             // gridControl2
@@ -465,7 +386,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1453, 613);
+            this.gridControl2.Size = new System.Drawing.Size(1453, 623);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -495,10 +416,22 @@
             // 
             // xtraTabPage6
             // 
+            this.xtraTabPage6.Controls.Add(this.simpleButton16);
             this.xtraTabPage6.Controls.Add(this.button2);
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(1455, 787);
             this.xtraTabPage6.Text = "Ayarlar";
+            // 
+            // simpleButton16
+            // 
+            this.simpleButton16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton16.Location = new System.Drawing.Point(3, 32);
+            this.simpleButton16.Name = "simpleButton16";
+            this.simpleButton16.Size = new System.Drawing.Size(1441, 23);
+            this.simpleButton16.TabIndex = 25;
+            this.simpleButton16.Text = "Servisi Başlat";
+            this.simpleButton16.Click += new System.EventHandler(this.simpleButton16_Click_1);
             // 
             // button2
             // 
@@ -506,7 +439,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(1432, 23);
+            this.button2.Size = new System.Drawing.Size(1441, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Debug Paneli Aç";
             this.button2.UseVisualStyleBackColor = true;
@@ -527,8 +460,6 @@
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -581,18 +512,12 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton simpleButton14;
-        private DevExpress.XtraEditors.SimpleButton simpleButton10;
-        private DevExpress.XtraEditors.SimpleButton simpleButton11;
-        private DevExpress.XtraEditors.SimpleButton simpleButton12;
-        private DevExpress.XtraEditors.SimpleButton simpleButton13;
         private DevExpress.XtraEditors.SimpleButton simpleButton15;
-        private DevExpress.XtraEditors.SimpleButton simpleButton16;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton16;
     }
 }

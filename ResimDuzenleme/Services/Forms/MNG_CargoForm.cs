@@ -1,13 +1,9 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using ResimDuzenleme.Mng;
-using ResimDuzenleme.Services.Cargo;
 using ResimDuzenleme.Services.Cargo.Abstractions;
 using ResimDuzenleme.Services.Cargo.Reports.ReportModels;
-using ResimDuzenleme.Services.Database;
 using ResimDuzenleme.Services.Helpers;
 using ResimDuzenleme.Services.Models.DTO_s;
 using ResimDuzenleme.Services.Models.Entities;
@@ -30,9 +26,7 @@ namespace ResimDuzenleme.Services.Forms
 {
     public partial class MNG_CargoForm : DevExpress.XtraEditors.XtraForm
     {
-        private readonly Context _context;
-
-
+        private readonly Context _context; //OrderDetail_DTO
         private readonly IMNG_CargoService mNG_CargoService;
 
         public MNG_CargoForm(
@@ -45,14 +39,12 @@ namespace ResimDuzenleme.Services.Forms
             _context = context;
             this.mNG_CargoService = mNG_CargoService;
             InitializeComponent();
-            simpleButton1.Enabled = false;
         }
 
         Timer timer = new Timer();
 
         public async Task Service()
         {
-            // Timer'ı her 1 dakikada bir tetikle (1 dakika = 60000 milisaniye)
             timer.Interval = 60000;
             timer.Tick += Timer_Tick;
             // Timer'ı başlat
@@ -171,121 +163,124 @@ namespace ResimDuzenleme.Services.Forms
 
         List<OrderDetail_DTO> selectedOrders = new List<OrderDetail_DTO>();
 
-        private async void simpleButton9_Click(object sender, EventArgs e)
+        private  void simpleButton9_Click(object sender, EventArgs e)
         {
-             await GetPrintableCargos(false);
+              GetPrintableCargos(false);
         }
 
-   
+
+        private void simpleButton14_Click(object sender, EventArgs e)
+        {
+           GetPrintableCargos(true);
+        }
         private async void simpleButton1_Click(object sender, EventArgs e)
         {
-            simpleButton13.Enabled = false;
-
             try
             {
+                simpleButton1.Enabled = false;
 
-          
+                //SİPARİŞ LİSTESİNİ GETİR *****************************
+                this.progressBar1.Visible = true;
+                this.progressBar1.Value = 10;
+                List<OrderDetail_DTO> orderDetail_DTOs = await _context.OrderDetail_DTO
+                    .FromSqlRaw("exec [ZTMSG_CreateCargoList]")
+                    .ToListAsync();
 
-
-            //SİPARİŞ LİSTESİNİ GETİR *****************************
-            this.progressBar1.Visible = true;
-            this.progressBar1.Value = 10;
-            List<OrderDetail_DTO> orderDetail_DTOs = await _context.OrderDetail_DTO
-                .FromSqlRaw("exec [ZTMSG_CreateCargoList]")
-                .ToListAsync();
-
-            if(orderDetail_DTOs.Count == 0)
-            {
-                this.progressBar1.Value = 100;
-                this.progressBar1.Visible = false;
-                return;
-            }
-
-            List<string> orderNumbers = orderDetail_DTOs.Select(x => x.OrderNumber).ToList();
-            var orderListQuery = "";
-
-            foreach (var item in orderNumbers)
-            {
-                orderListQuery += item + ",";
-            }
-            selectedOrders = orderDetail_DTOs;
-
-            //SİPARİŞ İSTEKLERİNİ GETİR *****************************
-
-            var query = $"exec [ZTMSG_CreateCargoBarcode] 1,'{orderListQuery}'";
-            List<Models.Entities.ZTMSG_CreateCargoBarcode> _cargos =
-                await _context.ZTMSG_CreateCargoBarcode.FromSqlRaw(query).ToListAsync();
-            List<CreatePackage_MNG_RM> createPackage_MNG_RMs = new List<CreatePackage_MNG_RM>();
-
-            foreach (var _cargo in _cargos)
-            {
-               
-                CreatePackage_MNG_RM createPackage_MNG_RM = new CreatePackage_MNG_RM
+                if (orderDetail_DTOs.Count == 0)
                 {
-                    OrderRequest = new CreatePackage_MNG_Request
+                    this.progressBar1.Value = 100;
+                    this.progressBar1.Visible = false;
+                    return;
+                }
+
+                List<string> orderNumbers = orderDetail_DTOs.Select(x => x.OrderNumber).ToList();
+                var orderListQuery = "";
+
+                foreach (var item in orderNumbers)
+                {
+                    orderListQuery += item + ",";
+                }
+                selectedOrders = orderDetail_DTOs;
+
+                //SİPARİŞ İSTEKLERİNİ GETİR *****************************
+
+                var query = $"exec [ZTMSG_CreateCargoBarcode] 1,'{orderListQuery}'";
+                List<Models.Entities.ZTMSG_CreateCargoBarcode> _cargos =
+                    await _context.ZTMSG_CreateCargoBarcode.FromSqlRaw(query).ToListAsync();
+                List<CreatePackage_MNG_RM> createPackage_MNG_RMs = new List<CreatePackage_MNG_RM>();
+
+                foreach (var _cargo in _cargos)
+                {
+
+                    CreatePackage_MNG_RM createPackage_MNG_RM = new CreatePackage_MNG_RM
                     {
-                        Order = JsonConvert.DeserializeObject<Order_MNG>(_cargo.Order),
-                        OrderPieceList = JsonConvert.DeserializeObject<List<OrderPieceList_MNG>>(
-                            _cargo.OrderPieceList
+                        OrderRequest = new CreatePackage_MNG_Request
+                        {
+                            Order = JsonConvert.DeserializeObject<Order_MNG>(_cargo.Order),
+                            OrderPieceList = JsonConvert.DeserializeObject<List<OrderPieceList_MNG>>(
+                                _cargo.OrderPieceList
+                            ),
+                            Recipient = JsonConvert.DeserializeObject<Recipient_MNG>(_cargo.Recepient)
+                        },
+                        BarcodeRequest = JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(
+                            _cargo.BarcodeRequest
                         ),
-                        Recipient = JsonConvert.DeserializeObject<Recipient_MNG>(_cargo.Recepient)
-                    },
-                    BarcodeRequest = JsonConvert.DeserializeObject<CreateBarcode_MNG_Request>(
-                        _cargo.BarcodeRequest
-                    ),
-                    BarcodeBase64 = _cargo.BarcodeBase64,
-                    CargoFirmId = _cargo.CargoFirmId,
-                    Marketplace = _cargo.Marketplace,
-                    SalesUrl = _cargo.SalesUrl,
-                    FirstItem = _cargo.FirstItem,
-                    OrderStatus = _cargo.OrderStatus,
-                    Country = _cargo.Country
-                };
+                        BarcodeBase64 = _cargo.BarcodeBase64,
+                        CargoFirmId = _cargo.CargoFirmId,
+                        Marketplace = _cargo.Marketplace,
+                        SalesUrl = _cargo.SalesUrl,
+                        FirstItem = _cargo.FirstItem,
+                        OrderStatus = _cargo.OrderStatus,
+                        Country = _cargo.Country
+                    };
 
-                createPackage_MNG_RMs.Add(createPackage_MNG_RM);
-            }
-   
-            //SİPARİŞ OLUŞTUR *****************************
+                    createPackage_MNG_RMs.Add(createPackage_MNG_RM);
+                }
 
-            //DialogResult dialogResult = MessageBox.Show("Seçili siparişleri MNG Kargo'ya göndermek istediğinize emin misiniz","Onay",MessageBoxButtons.YesNo);
-            //if (dialogResult == DialogResult.No)
-            //{
-            //    MessageBox.Show("İşlem iptal edildi.");
-            //    return;
-            //}
+                //SİPARİŞ OLUŞTUR *****************************
 
-            List<CreateCargo_RM<CreatePackage_MNG_RR>> createPackage_MNG_RRs =
-                new List<CreateCargo_RM<CreatePackage_MNG_RR>>();
-            var count = 1;  
-            foreach (var order in createPackage_MNG_RMs) // Note: What is the type of createPackage_MNG_RMs? It's not shown.
-            {
-                this.progressBar1.Value = count * 100 / createPackage_MNG_RMs.Count;
-                var random = GeneralService.GenerateRandomNumber();
-                order.OrderRequest.Order.ReferenceId = random;
-                order.BarcodeRequest.ReferenceId = random;
-                CreateCargo_RM<CreatePackage_MNG_RR> response = await mNG_CargoService.CreateCargo(
-                    order
-                );
-                response.OrderNumber = order.OrderRequest.Order.BillOfLandingId;
+                //DialogResult dialogResult = MessageBox.Show("Seçili siparişleri MNG Kargo'ya göndermek istediğinize emin misiniz","Onay",MessageBoxButtons.YesNo);
+                //if (dialogResult == DialogResult.No)
+                //{
+                //    MessageBox.Show("İşlem iptal edildi.");
+                //    return;
+                //}
 
-                createPackage_MNG_RRs.Add(response);
-                count++;
-            }
-            //LOGLARI TABLOYA BAS *****************************
+                List<CreateCargo_RM<CreatePackage_MNG_RR>> createPackage_MNG_RRs =
+                    new List<CreateCargo_RM<CreatePackage_MNG_RR>>();
+                var count = 1;
+                foreach (var order in createPackage_MNG_RMs) // Note: What is the type of createPackage_MNG_RMs? It's not shown.
+                {
+                    this.progressBar1.Value = count * 100 / createPackage_MNG_RMs.Count;
+                    var random = GeneralService.GenerateRandomNumber();
+                    order.OrderRequest.Order.ReferenceId = random;
+                    order.BarcodeRequest.ReferenceId = random;
+                    CreateCargo_RM<CreatePackage_MNG_RR> response = await mNG_CargoService.CreateCargo(
+                        order
+                    );
+                    response.OrderNumber = order.OrderRequest.Order.BillOfLandingId;
+
+                    createPackage_MNG_RRs.Add(response);
+                    count++;
+                }
+                //LOGLARI TABLOYA BAS *****************************
 
 
-            this.progressBar1.Visible = false;  
-            gridControl2.DataSource = createPackage_MNG_RRs;
-            gridControl1.DataSource = createPackage_MNG_RMs;
+                this.progressBar1.Visible = false;
+                gridControl2.DataSource = createPackage_MNG_RRs;
+                gridControl1.DataSource = createPackage_MNG_RMs;
 
-            this.xtraTabControl1.SelectedTabPageIndex = 2;
+                this.xtraTabControl1.SelectedTabPageIndex = 2;
                 //MessageBox.Show("İşlem tamamlandı.");
+
+
             }
             finally
-             {
-                // Re-enable the button after the operation completes.
-                simpleButton13.Enabled = true;
-             }
+            {
+                simpleButton1.Enabled = true;
+             
+            }
+      
         }
 
         private void simpleButton7_Click(object sender, EventArgs e)
@@ -382,33 +377,19 @@ namespace ResimDuzenleme.Services.Forms
                 );
                 responses.Add(response);
             }
-            await GetPrintableCargos(true);
+             GetPrintableCargos(true);
             MessageBox.Show(
                 $"İşlem Tamamlandı ({barcodes.Count}/{responses.Where(r => r.Status == true).ToList().Count} Adet Kargo Başarılı Şekilde Silindi)",
                 "Hata"
             );
         }
 
-        private async void  simpleButton8_Click(object sender, EventArgs e)
+        private  void  simpleButton8_Click(object sender, EventArgs e)
         {
-
-            simpleButton11.Enabled = false;
-
-
-            try
-            {
-                await PrintBarcodes();
-            }
-            finally
-            {
-                // Re-enable the button after the operation completes.
-                simpleButton11.Enabled = true;
-            }
-
-
+             PrintBarcodes();
            
         }
-        public async Task PrintBarcodes( )
+        public async void PrintBarcodes( )
         {
             this.progressBar1.Visible = true;
             this.progressBar1.Value = 10;
@@ -593,42 +574,24 @@ namespace ResimDuzenleme.Services.Forms
                 pdfViewerForm.ShowDialog();
             }
 
-            await GetPrintableCargos(false);
+             GetPrintableCargos(false);
         }
-        public async Task GetPrintableCargos(bool status)
+        public void  GetPrintableCargos(bool status)
         {
-            var response = await this.mNG_CargoService.GetPrintableCargos(status);
+            var response =  this.mNG_CargoService.GetPrintableCargos(status);
             gridControl3.DataSource = response;
             xtraTabControl1.SelectedTabPageIndex = 1;
         }
 
-        private async void simpleButton14_Click(object sender, EventArgs e)
+
+        private   void simpleButton15_Click(object sender, EventArgs e)
         {
-            simpleButton10.Enabled = false;
-            simpleButton14.Enabled = false;
-
-
-            try
-            {
-                await GetPrintableCargos(true);
-            }
-            finally
-            {
-                // Re-enable the button after the operation completes.
-                simpleButton10.Enabled = true;
-                simpleButton14.Enabled = true;
-
-            }
-        }
-
-        private async void simpleButton15_Click(object sender, EventArgs e)
-        {
-          await   DeleteSelectedBarcodes();
+              DeleteSelectedBarcodes();
         }
 
         bool serviceStatus = false;
 
-        private void simpleButton16_Click(object sender, EventArgs e)
+        private void simpleButton16_Click_1(object sender, EventArgs e)
         {
             serviceStatus = !serviceStatus;
 
@@ -652,10 +615,6 @@ namespace ResimDuzenleme.Services.Forms
             MessageBox.Show("Debug Modu: " + StaticVariables.DebugMode);    
         }
 
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -668,5 +627,7 @@ namespace ResimDuzenleme.Services.Forms
         {
             throw new Exception("Hata oluştu.");
         }
+
+       
     }
 }

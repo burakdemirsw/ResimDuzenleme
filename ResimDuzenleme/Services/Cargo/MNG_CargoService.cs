@@ -27,9 +27,9 @@ namespace ResimDuzenleme.Services.Cargo
 
         public MNG_CargoService( Context context)
         {
-           _context = context;
-
-            MNG_CompanyInfo mNG_CompanyInfo = context.ZTMSGMngKargoApi.FirstOrDefault();
+            _context = context;
+      
+            MNG_CompanyInfo mNG_CompanyInfo = _context.ZTMSGMngKargoApi.FirstOrDefault();
             if (mNG_CompanyInfo != null)
             {
                 UserName = mNG_CompanyInfo.CustomerCode;
@@ -44,24 +44,24 @@ namespace ResimDuzenleme.Services.Cargo
         string ClientSecret;
 
 
-        public async Task<List<CargoBarcode>> GetPrintableCargos(bool status)
+        public  List<CargoBarcode> GetPrintableCargos(bool status)
         {
             if (!status)
             {
-               var response = await _context.ZTMSG_CargoBarcodes
+               var response =  _context.ZTMSG_CargoBarcodes
                     .Where(c => c.ReferenceId != null && c.BarcodeResponse == null)
                     .OrderByDescending(p => p.FirstItem)
                     .OrderByDescending(p => p.SalesUrl)
-                    .ToListAsync();
+                    .ToList();
                 return response;
             }
             else
             {
-                     var response  =  await _context.ZTMSG_CargoBarcodes
+                     var response  =   _context.ZTMSG_CargoBarcodes
                     .Where(c => c.ReferenceId != null && c.BarcodeResponse != null)
                     .OrderByDescending(p => p.FirstItem)
                     .OrderByDescending(p => p.SalesUrl)
-                    .ToListAsync();
+                    .ToList();
                 return response;
             }
         }
@@ -257,7 +257,7 @@ namespace ResimDuzenleme.Services.Cargo
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                         _context.ZTMSG_CargoBarcodes.Remove(cargoBarcode);
+                        _context.ZTMSG_CargoBarcodes.Remove(cargoBarcode);
                         _context.SaveChanges();
 
                     }
@@ -277,7 +277,7 @@ namespace ResimDuzenleme.Services.Cargo
 
                     foreach (var cargoBarcode in cargoBarcodes)
                     {
-                         _context.ZTMSG_CargoBarcodes.Remove(cargoBarcode);
+                        _context.ZTMSG_CargoBarcodes.Remove(cargoBarcode);
                         _context.SaveChanges();
 
                     }

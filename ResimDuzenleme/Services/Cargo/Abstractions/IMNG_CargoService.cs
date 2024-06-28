@@ -13,7 +13,7 @@ namespace ResimDuzenleme.Services.Cargo.Abstractions
 {
     public interface IMNG_CargoService
     {
-        Task<List<CargoBarcode>> GetPrintableCargos(bool status);
+        List<CargoBarcode> GetPrintableCargos(bool status);
         Task<CreateCargo_RM<CreatePackage_MNG_RR>> CreateCargo(
            CreatePackage_MNG_RM request
        );
