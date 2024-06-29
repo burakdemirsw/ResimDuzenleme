@@ -115,7 +115,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ResimDuzenleme.Properties.Resources.logo;
+            this.pictureBox1.Image = global::ResimDuzenleme.Properties.Resources.logo2;
+            this.pictureBox1.InitialImage = global::ResimDuzenleme.Properties.Resources.logo2;
             this.pictureBox1.Location = new System.Drawing.Point(12, 42);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(356, 146);

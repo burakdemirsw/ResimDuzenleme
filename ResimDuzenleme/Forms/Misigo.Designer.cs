@@ -193,6 +193,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.labelStatus = new System.Windows.Forms.Label();
+            this.barButtonItem104 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -307,9 +308,10 @@
             this.barButtonItem100,
             this.barButtonItem101,
             this.barButtonItem102,
-            this.barButtonItem103});
+            this.barButtonItem103,
+            this.barButtonItem104});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 110;
+            this.ribbon.MaxItemId = 111;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -1532,6 +1534,7 @@
             // 
             this.ribbonPageGroup43.ItemLinks.Add(this.barButtonItem87);
             this.ribbonPageGroup43.ItemLinks.Add(this.barButtonItem88);
+            this.ribbonPageGroup43.ItemLinks.Add(this.barButtonItem104);
             this.ribbonPageGroup43.Name = "ribbonPageGroup43";
             this.ribbonPageGroup43.Text = "ribbonPageGroup43";
             // 
@@ -1637,6 +1640,13 @@
             this.labelStatus.Size = new System.Drawing.Size(0, 13);
             this.labelStatus.TabIndex = 3;
             // 
+            // barButtonItem104
+            // 
+            this.barButtonItem104.Caption = "Sayim Eşitle";
+            this.barButtonItem104.Id = 110;
+            this.barButtonItem104.Name = "barButtonItem104";
+            this.barButtonItem104.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem104_ItemClick);
+            // 
             // Misigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1646,7 +1656,6 @@
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
-            this.IconOptions.Image = global::ResimDuzenleme.Properties.Resources.logo;
             this.IconOptions.ShowIcon = false;
             this.IsMdiContainer = true;
             this.Name = "Misigo";
@@ -1828,5 +1837,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem102;
         private DevExpress.XtraBars.BarButtonItem barButtonItem103;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem104;
     }
 }

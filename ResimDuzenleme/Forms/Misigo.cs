@@ -2308,5 +2308,11 @@ namespace ResimDuzenleme
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void barButtonItem104_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SayimEsitle();
+        }
     }
 }
+//logoyu at eklim

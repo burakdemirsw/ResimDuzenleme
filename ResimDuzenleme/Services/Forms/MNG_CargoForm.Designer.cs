@@ -520,7 +520,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1457, 812);
             this.Controls.Add(this.xtraTabControl2);
-            this.IconOptions.Image = global::ResimDuzenleme.Properties.Resources.logo1;
+  
             this.Name = "MNG_CargoForm";
             this.Text = "MNG Entegrasyon";
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
