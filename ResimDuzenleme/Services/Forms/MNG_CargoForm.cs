@@ -27,7 +27,7 @@ namespace ResimDuzenleme.Services.Forms
 {
     public partial class MNG_CargoForm : DevExpress.XtraEditors.XtraForm
     {
-        private readonly Context _context; //OrderDetail_DTO
+        private readonly Context _context;
         private readonly DbContextRepository<CargoBarcode> _repository;
         private readonly DbContextRepository<OrderDetail_DTO> _or;
         private readonly MNG_CargoService mNG_CargoService;
@@ -41,7 +41,6 @@ namespace ResimDuzenleme.Services.Forms
             _repository = repository;
             _context = context;
             this.mNG_CargoService = mNG_CargoService;
-
             InitializeComponent();
         }
 
@@ -223,7 +222,8 @@ namespace ResimDuzenleme.Services.Forms
                     SalesUrl = _cargo.SalesUrl,
                     FirstItem = _cargo.FirstItem,
                     OrderStatus = _cargo.OrderStatus,
-                    Country = _cargo.Country
+                    Country = _cargo.Country,
+                    OrderDate = _cargo.OrderDate
                 };
 
                 createPackage_MNG_RMs.Add(createPackage_MNG_RM);
@@ -247,6 +247,7 @@ namespace ResimDuzenleme.Services.Forms
                 var random = GeneralService.GenerateRandomNumber();
                 order.OrderRequest.Order.ReferenceId = random;
                 order.BarcodeRequest.ReferenceId = random;
+              
                 CreateCargo_RM<CreatePackage_MNG_RR> response = await mNG_CargoService.CreateCargo(
                     order
                 );
@@ -563,26 +564,78 @@ namespace ResimDuzenleme.Services.Forms
 
         public async Task GetPrintableCargos(bool status)
         {
+            if (dateTimeOffsetEdit1.DateTimeOffset == null)
+            {
+                MessageBox.Show("Lütfen Tarih Giriniz");
+                return;
+            }
+
             var Context = new Context();
             if (!status)
             {
-                //yazdırılmayanlar
-                List<CargoBarcode> cargoBarcodes =await Context.ZTMSG_CargoBarcodes
-                    .Where(c => c.ReferenceId != null && c.BarcodeResponse == null)
+               
+                // yazdırılmayanlar
+                List<CargoBarcode> cargoBarcodes = await Context.ZTMSG_CargoBarcodes
+                    .Where(c => c.ReferenceId != null && c.BarcodeResponse == null && c.OrderDate >=
+                    dateTimeOffsetEdit1.DateTimeOffset && c.OrderDate <=
+                    dateTimeOffsetEdit2.DateTimeOffset)
                     .OrderByDescending(p => p.FirstItem)
                     .OrderByDescending(p => p.SalesUrl)
                     .ToListAsync();
-                gridControl3.DataSource = cargoBarcodes;
+
+                if(cargoBarcodes.Count > 0)
+                {
+                    gridControl3.DataSource = cargoBarcodes;
+
+                    // GridControl'ün ilgili sütun formatını ayarlayalım
+                    GridView view = gridControl3.MainView as GridView;
+                    if (view != null)
+                    {
+                        view.Columns["CreatedDate"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                        view.Columns["CreatedDate"].DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
+                        view.Columns["OrderDate"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                        view.Columns["OrderDate"].DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Veri Yok");
+                }
+
+
             }
             else
             {
                 List<CargoBarcode> cargoBarcodes = await Context.ZTMSG_CargoBarcodes
-                    .Where(c => c.ReferenceId != null && c.BarcodeResponse != null)
+                    .Where(c => c.ReferenceId != null && c.BarcodeResponse != null && c.OrderDate >=
+                    dateTimeOffsetEdit1.DateTimeOffset && c.OrderDate <=
+                    dateTimeOffsetEdit2.DateTimeOffset)
                     .OrderByDescending(p => p.FirstItem)
                     .OrderByDescending(p => p.SalesUrl)
                     .ToListAsync();
-                ;
-                gridControl3.DataSource = cargoBarcodes;
+
+
+                if (cargoBarcodes.Count > 0)
+                {
+                    gridControl3.DataSource = cargoBarcodes;
+                    GridView view = gridControl3.MainView as GridView;
+                    if (view != null)
+                    {
+                        view.Columns["CreatedDate"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                        view.Columns["CreatedDate"].DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
+                        view.Columns["OrderDate"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                        view.Columns["OrderDate"].DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Veri Yok");
+                }
+
+
+              
             }
             this.xtraTabControl1.SelectedTabPageIndex = 1;
         }

@@ -2,6 +2,7 @@
 
 using ResimDuzenleme.Services.Models.MNG.Cargo;
 using ResimDuzenleme.Services.Models.MNG.Order;
+using System;
 using System.Collections.Generic;
 
 namespace ResimDuzenleme.Services.Models.MNG.Request
@@ -25,6 +26,8 @@ namespace ResimDuzenleme.Services.Models.MNG.Request
         public string FirstItem { get; set; }
         public string OrderStatus { get; set; }
         public string Country { get; set; }
+        public DateTime OrderDate { get; set; }
+
 
     }
 

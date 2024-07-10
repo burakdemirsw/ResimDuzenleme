@@ -3,6 +3,7 @@ using ResimDuzenleme.Services.Models.Cargo.DTO_s;
 using ResimDuzenleme.Services.Models.DTO_s;
 using ResimDuzenleme.Services.Models.Entities;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace ResimDuzenleme.Services.Database
 {
@@ -12,17 +13,25 @@ namespace ResimDuzenleme.Services.Database
         public ConnectionString connectionString = new ConnectionString();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-            string _connectionString = this.connectionString.GetConnectionString();
-            //   string connectionString = ConfigurationManager.ConnectionStrings[
-            //_connectionString
-            //   ].ConnectionString;
-            SqlConnection connection = new SqlConnection(_connectionString);
-            optionsBuilder.UseSqlServer(connection, options =>
+            try
             {
-                options.CommandTimeout(1000);
+                string _connectionString = this.connectionString.GetConnectionString();
+                //   string connectionString = ConfigurationManager.ConnectionStrings[
+                //_connectionString
+                //   ].ConnectionString;
+                SqlConnection connection = new SqlConnection(_connectionString);
+                optionsBuilder.UseSqlServer(connection, options =>
+                {
+                    options.CommandTimeout(1000);
 
-            });
+                });
+            }
+            catch (System.Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + this.connectionString.GetConnectionString());
+            }
+            
 
 
         }

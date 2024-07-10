@@ -135,7 +135,7 @@ namespace ResimDuzenleme.Services.Cargo
                             _cargoBarcode.FirstItem = request.FirstItem;
                             _cargoBarcode.OrderStatus = request.OrderStatus;
                             _cargoBarcode.Country = request.Country;
-
+                            _cargoBarcode.OrderDate = request.OrderDate;
 
                             await _repository.Add(_cargoBarcode);
 

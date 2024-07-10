@@ -25,6 +25,7 @@ namespace ResimDuzenleme.Services.Models.Entities
         public string FirstItem { get; set; }
         public string OrderStatus { get; set; }
         public string Country { get; set; }
+        public DateTime OrderDate { get; set; }
 
 
     }
@@ -60,7 +61,7 @@ namespace ResimDuzenleme.Services.Models.Entities
         public string FirstItem { get; set; }
         public string OrderStatus { get; set; }
         public string Country { get; set; }
-
+        public DateTime OrderDate { get; set; }
 
     }
 }

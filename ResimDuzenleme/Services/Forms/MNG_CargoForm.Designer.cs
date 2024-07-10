@@ -42,17 +42,19 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dateTimeOffsetEdit2 = new DevExpress.XtraEditors.DateTimeOffsetEdit();
+            this.dateTimeOffsetEdit1 = new DevExpress.XtraEditors.DateTimeOffsetEdit();
             this.simpleButton14 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -76,6 +78,8 @@
             this.xtraTabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeOffsetEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeOffsetEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -223,63 +227,43 @@
             // 
             // xtraTabPage4
             // 
-            this.xtraTabPage4.Controls.Add(this.progressBar1);
-            this.xtraTabPage4.Controls.Add(this.simpleButton16);
-            this.xtraTabPage4.Controls.Add(this.simpleButton15);
             this.xtraTabPage4.Controls.Add(this.panel1);
             this.xtraTabPage4.Controls.Add(this.xtraTabControl1);
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(1455, 787);
             this.xtraTabPage4.Text = "Toplu İşlemler";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(11, 117);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1433, 23);
-            this.progressBar1.TabIndex = 25;
-            this.progressBar1.Visible = false;
-            // 
-            // simpleButton16
-            // 
-            this.simpleButton16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton16.Location = new System.Drawing.Point(8, 88);
-            this.simpleButton16.Name = "simpleButton16";
-            this.simpleButton16.Size = new System.Drawing.Size(1439, 23);
-            this.simpleButton16.TabIndex = 24;
-            this.simpleButton16.Text = "Servisi Başlat";
-            this.simpleButton16.Click += new System.EventHandler(this.simpleButton16_Click);
-            // 
-            // simpleButton15
-            // 
-            this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton15.Location = new System.Drawing.Point(8, 59);
-            this.simpleButton15.Name = "simpleButton15";
-            this.simpleButton15.Size = new System.Drawing.Size(1439, 23);
-            this.simpleButton15.TabIndex = 23;
-            this.simpleButton15.Text = "Seçilen Barkodları Sil";
-            this.simpleButton15.Click += new System.EventHandler(this.simpleButton15_Click);
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.simpleButton16);
             this.panel1.Controls.Add(this.simpleButton9);
+            this.panel1.Controls.Add(this.simpleButton15);
             this.panel1.Controls.Add(this.simpleButton8);
             this.panel1.Controls.Add(this.simpleButton7);
             this.panel1.Controls.Add(this.simpleButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1455, 59);
+            this.panel1.Size = new System.Drawing.Size(1455, 191);
             this.panel1.TabIndex = 17;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(8, 154);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1436, 23);
+            this.progressBar1.TabIndex = 25;
+            this.progressBar1.Visible = false;
             // 
             // panel2
             // 
             this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.dateTimeOffsetEdit2);
+            this.panel2.Controls.Add(this.dateTimeOffsetEdit1);
             this.panel2.Controls.Add(this.simpleButton14);
             this.panel2.Controls.Add(this.simpleButton10);
             this.panel2.Controls.Add(this.simpleButton11);
@@ -288,8 +272,32 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1455, 56);
+            this.panel2.Size = new System.Drawing.Size(1455, 82);
             this.panel2.TabIndex = 22;
+            // 
+            // dateTimeOffsetEdit2
+            // 
+            this.dateTimeOffsetEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimeOffsetEdit2.EditValue = null;
+            this.dateTimeOffsetEdit2.Location = new System.Drawing.Point(1104, 30);
+            this.dateTimeOffsetEdit2.Name = "dateTimeOffsetEdit2";
+            this.dateTimeOffsetEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateTimeOffsetEdit2.Properties.MaskSettings.Set("mask", "d.MM.yyyy HH:mm");
+            this.dateTimeOffsetEdit2.Size = new System.Drawing.Size(340, 20);
+            this.dateTimeOffsetEdit2.TabIndex = 24;
+            // 
+            // dateTimeOffsetEdit1
+            // 
+            this.dateTimeOffsetEdit1.EditValue = null;
+            this.dateTimeOffsetEdit1.Location = new System.Drawing.Point(721, 30);
+            this.dateTimeOffsetEdit1.Name = "dateTimeOffsetEdit1";
+            this.dateTimeOffsetEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateTimeOffsetEdit1.Properties.MaskSettings.Set("mask", "d.MM.yyyy HH:mm");
+            this.dateTimeOffsetEdit1.Size = new System.Drawing.Size(377, 20);
+            this.dateTimeOffsetEdit1.TabIndex = 23;
             // 
             // simpleButton14
             // 
@@ -313,9 +321,9 @@
             // 
             this.simpleButton11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton11.Location = new System.Drawing.Point(721, 30);
+            this.simpleButton11.Location = new System.Drawing.Point(8, 56);
             this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(726, 23);
+            this.simpleButton11.Size = new System.Drawing.Size(1436, 23);
             this.simpleButton11.TabIndex = 20;
             this.simpleButton11.Text = "Seçilen Barkodları Yazdır";
             this.simpleButton11.Click += new System.EventHandler(this.simpleButton8_Click);
@@ -326,7 +334,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton12.Location = new System.Drawing.Point(721, 1);
             this.simpleButton12.Name = "simpleButton12";
-            this.simpleButton12.Size = new System.Drawing.Size(726, 23);
+            this.simpleButton12.Size = new System.Drawing.Size(723, 23);
             this.simpleButton12.TabIndex = 19;
             this.simpleButton12.Text = "Seçilen Siparişleri Gönder";
             this.simpleButton12.Click += new System.EventHandler(this.simpleButton14_Click);
@@ -340,6 +348,17 @@
             this.simpleButton13.Text = "Siparişleri Çek";
             this.simpleButton13.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // simpleButton16
+            // 
+            this.simpleButton16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton16.Location = new System.Drawing.Point(8, 125);
+            this.simpleButton16.Name = "simpleButton16";
+            this.simpleButton16.Size = new System.Drawing.Size(1436, 23);
+            this.simpleButton16.TabIndex = 24;
+            this.simpleButton16.Text = "Servisi Başlat";
+            this.simpleButton16.Click += new System.EventHandler(this.simpleButton16_Click);
+            // 
             // simpleButton9
             // 
             this.simpleButton9.Location = new System.Drawing.Point(8, 30);
@@ -348,6 +367,17 @@
             this.simpleButton9.TabIndex = 21;
             this.simpleButton9.Text = "Yazdırılmayan Barkodları Getir";
             this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
+            // 
+            // simpleButton15
+            // 
+            this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton15.Location = new System.Drawing.Point(8, 96);
+            this.simpleButton15.Name = "simpleButton15";
+            this.simpleButton15.Size = new System.Drawing.Size(1436, 23);
+            this.simpleButton15.TabIndex = 23;
+            this.simpleButton15.Text = "Seçilen Barkodları Sil";
+            this.simpleButton15.Click += new System.EventHandler(this.simpleButton15_Click);
             // 
             // simpleButton8
             // 
@@ -381,10 +411,10 @@
             this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 146);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 197);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 638);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1455, 587);
             this.xtraTabControl1.TabIndex = 16;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -395,7 +425,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 613);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1453, 562);
             this.xtraTabPage1.Text = "Çekilen Siparişler";
             // 
             // gridControl1
@@ -404,7 +434,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1453, 613);
+            this.gridControl1.Size = new System.Drawing.Size(1453, 562);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -431,7 +461,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 613);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1453, 562);
             this.xtraTabPage3.Text = "Barkod Yazdır";
             // 
             // gridControl3
@@ -440,7 +470,7 @@
             this.gridControl3.Location = new System.Drawing.Point(0, 0);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1453, 613);
+            this.gridControl3.Size = new System.Drawing.Size(1453, 562);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -456,7 +486,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 613);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1453, 562);
             this.xtraTabPage2.Text = "Loglar";
             // 
             // gridControl2
@@ -465,7 +495,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1453, 613);
+            this.gridControl2.Size = new System.Drawing.Size(1453, 562);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -520,7 +550,6 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1457, 812);
             this.Controls.Add(this.xtraTabControl2);
-  
             this.Name = "MNG_CargoForm";
             this.Text = "MNG Entegrasyon";
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
@@ -529,6 +558,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeOffsetEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeOffsetEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -594,5 +625,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button2;
+        private DevExpress.XtraEditors.DateTimeOffsetEdit dateTimeOffsetEdit2;
+        private DevExpress.XtraEditors.DateTimeOffsetEdit dateTimeOffsetEdit1;
     }
 }
